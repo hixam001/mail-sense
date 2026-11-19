@@ -201,7 +201,7 @@ A consistent JSON error structure and Pydantic validations apply to all route ha
 
 ## 7. Client design and state
 
-- React Router provides six browser routes (`/`, `/dataset`, `/probability`, `/statistics`, `/detect`, `/evaluation`).
+- A small History API router provides six static browser routes (`/`, `/dataset`, `/probability`, `/statistics`, `/detect`, `/evaluation`).
 - Recharts renders numerical series received from the backend. UI formatting must not silently replace undefined values with zero.
 - Use a small API module with central base URL, error translation and cancellation; state may be local or use a query cache library if already in the project, but none is required.
 - Query controls: selected word, scope, metric, distribution trials/successes, confidence and alpha.

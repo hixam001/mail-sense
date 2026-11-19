@@ -56,7 +56,7 @@ In one terminal:
 python3 scripts/node.py npm --prefix frontend run dev
 ```
 
-Open `http://localhost:5173/`. The page is the independent React scaffold.
+Open `http://localhost:5173/`. The shared React workspace connects to the local API.
 Vite stays on loopback and fails if that port is occupied.
 
 In a second terminal:

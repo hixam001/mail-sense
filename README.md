@@ -1,7 +1,7 @@
 # MailSense
 
 **Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** 26/39 implementation tasks verified. Latest: MSE-406 — Complete API contract coverage and Gate 4. Next: MSE-501. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
+**Status:** 27/39 implementation tasks verified. Latest: MSE-501 — Shared responsive analytical workspace and local API client. Next: MSE-502. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
 
 > **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
 
@@ -41,7 +41,7 @@ a queryable Graphify graph and its interactive visualization.
 - **Storage:** Local files only; no relational database.
 - **Deployment:** Localhost-only; offline after dependencies and corpus are prepared; no authentication or real email integration.
 
-## Run the local scaffolds
+## Run locally
 
 Prerequisites: Python 3.12+ for bootstrap, **uv 0.13.9**, and initial network
 access. From the repository root, install the pinned Node 22.23.5/npm 10.9.9 and
@@ -70,11 +70,9 @@ uv run --directory backend --frozen python -m scripts.serve
 ```
 
 Open `http://localhost:5173/` for the frontend, `http://127.0.0.1:8000/` for the API greeting or
-`http://127.0.0.1:8000/openapi.json` for its schema. These scaffolds run
-independently. The `/api/v1` contract, readiness checks and
-model endpoints are scheduled in later tickets.
+`http://127.0.0.1:8000/openapi.json` for its schema. The shared React workspace shows real readiness and scoped corpus totals. All twelve API endpoints are implemented; the five module interfaces follow in the remaining frontend tickets. Prepare the corpus and models using the setup guide before analytical use.
 
-### Scaffold checks
+### Checks
 
 From the repository root:
 

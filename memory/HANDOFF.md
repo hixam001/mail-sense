@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-406 — Complete API contract coverage and Gate 4**.
-Next implementation ticket: **MSE-501**.
+Latest implementation: **MSE-501 — Shared responsive analytical workspace and local API client**.
+Next implementation ticket: **MSE-502**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-501** — Build the shared React shell, six accessible routes, local-only API client, truthful readiness and request loading/error states with Impeccable. Preserve transient text and guard stale requests; verify lint/build and desktop/mobile browser, update memory then commit/push and continue MSE-502.
+**MSE-502** — Implement Dataset Explorer summary/provenance, character/token descriptive table, labeled histogram/five-number box plot and document-frequency words with scope/class controls and accessible numerical alternatives. Verify actual API counts and desktop/mobile states; commit/push then probability MSE-503.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -209,9 +209,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-406 implemented:** Complete API contract coverage and Gate 4. 397 backend tests passed under Gravitas; Ruff clean. Cross-route checks cover all twelve response models/OpenAPI refs, uniform missing-resource envelopes, all/train/test reconciliation and stale-evaluation isolation. Actual artifact acceptance exercised all twelve routes and confirmed 5862 retained, 1173 test and the measured Multinomial confusion matrix. Gate 4 complete.
 
+- **MSE-501 implemented:** Shared responsive analytical workspace and local API client. Gravitas frontend verification passed: ESLint, three client tests, production build and real Chromium acceptance. Six routes/active links/back, actual scoped totals, mobile bounds, backend failure replacement and retry passed without browser exceptions. Desktop 1366x900 and phone 390x844 renders inspected. Fixed endpoint/origin client uses POST bodies only; request signatures and cancellation suppress stale responses. Five module interfaces remain pending. Validator now starts its API dependency if the earlier long-lived process has exited.
+
 ## Full remaining implementation inventory
 
-**26 implementation tickets are complete; 13 are Not started**. Update statuses as work is
+**27 implementation tickets are complete; 12 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -244,8 +246,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-404 | Implement prediction, evaluation and explanation routes | Complete — acceptance verified |
 | MSE-405 | Verify loopback binding, CORS, redacted logging and input limits | Complete — acceptance verified |
 | MSE-406 | Implement and pass FastAPI contract tests | Complete — acceptance verified |
-| MSE-501 | Build shared React layout, router, API client and request states | Not started — next |
-| MSE-502 | Build Dataset Explorer and labeled charts | Not started |
+| MSE-501 | Build shared React layout, router, API client and request states | Complete — acceptance verified |
+| MSE-502 | Build Dataset Explorer and labeled charts | Not started — next |
 | MSE-503 | Build Probability Analysis | Not started |
 | MSE-504 | Build Statistical Inference | Not started |
 | MSE-505 | Build Spam Detector with dual model results | Not started |
@@ -259,6 +261,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-501 — Shared responsive analytical workspace and local API client:** Gravitas frontend verification passed: ESLint, three client tests, production build and real Chromium acceptance. Six routes/active links/back, actual scoped totals, mobile bounds, backend failure replacement and retry passed without browser exceptions. Desktop 1366x900 and phone 390x844 renders inspected. Fixed endpoint/origin client uses POST bodies only; request signatures and cancellation suppress stale responses. Five module interfaces remain pending. Validator now starts its API dependency if the earlier long-lived process has exited.
 
 - **MSE-406 — Complete API contract coverage and Gate 4:** 397 backend tests passed under Gravitas; Ruff clean. Cross-route checks cover all twelve response models/OpenAPI refs, uniform missing-resource envelopes, all/train/test reconciliation and stale-evaluation isolation. Actual artifact acceptance exercised all twelve routes and confirmed 5862 retained, 1173 test and the measured Multinomial confusion matrix. Gate 4 complete.
 

@@ -1,11 +1,11 @@
 # Graph Report - mail-sense  (2026-11-19)
 
 ## Corpus Check
-- 17 files · ~32,560 words
+- 18 files · ~33,017 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 215 nodes · 350 edges · 15 communities
+- 218 nodes · 352 edges · 16 communities (15 shown, 1 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -25,12 +25,13 @@
 - MSE-404
 - MSE-601
 - Analyze with Gravitas
+- docs/UI_DESIGN.md
 
 ## God Nodes (most connected - your core abstractions)
 1. `MSE-601` - 13 edges
-2. `MSE-501` - 11 edges
-3. `MSE-403` - 10 edges
-4. `MSE-404` - 10 edges
+2. `MSE-403` - 10 edges
+3. `MSE-404` - 10 edges
+4. `MSE-501` - 10 edges
 5. `MSE-207` - 8 edges
 6. `MSE-405` - 8 edges
 7. `MSE-507` - 8 edges
@@ -39,10 +40,10 @@
 10. `MSE-304` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Next task` --next_task--> `MSE-501`  [EXTRACTED]
+- `Next task` --next_task--> `MSE-502`  [EXTRACTED]
   memory/HANDOFF.md → docs/IMPLEMENTATION_PLAN.md
 
-## Communities (15 total, 0 thin omitted)
+## Communities (16 total, 1 thin omitted)
 
 ### Community 0 - "README.md"
 Cohesion: 0.08
@@ -105,8 +106,9 @@ Cohesion: 0.25
 Nodes (8): Analyze with Gravitas, map the task, implement, test, update handoff, final checks, commit, push
 
 ## Knowledge Gaps
-- **151 isolated node(s):** `Delivery sequence`, `Start every task`, `Implement and verify`, `Handoff and persistent memory`, `Commit and push` (+146 more)
-  These have ≤1 connection - possible missing edges. (Counts symbols only; 151 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **153 isolated node(s):** `Delivery sequence`, `Start every task`, `Implement and verify`, `Handoff and persistent memory`, `Commit and push` (+148 more)
+  These have ≤1 connection - possible missing edges. (Counts symbols only; 153 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -114,7 +116,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `MSE-601` connect `MSE-601` to `MSE-403`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **What connects `Delivery sequence`, `Start every task`, `Implement and verify` to the rest of the system?**
-  _151 weakly-connected nodes found - possible missing edges._
+  _153 weakly-connected nodes found - possible missing edges._
 - **Should `README.md` be split into smaller, more focused modules?**
   _Cohesion score 0.08307692307692308 - nodes in this community are weakly interconnected._
 - **Why does `MSE-603` connect `docs/IMPLEMENTATION_PLAN.md` to `MSE-601`?**
