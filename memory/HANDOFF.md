@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-306 — Transient dual-model inference and faithful log-odds explanations**.
-Next implementation ticket: **MSE-307**.
+Latest implementation: **MSE-307 — Measured model card and Gate 3 completion**.
+Next implementation ticket: **MSE-401**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-307** — Produce a measured model card from the evaluation report, documenting exact shared split/test identities, fixed parameters, calibration/historical/near-duplicate limitations and tradeoffs. Verify Gate 3, commit/push, then begin FastAPI readiness and shared errors MSE-401.
+**MSE-401** — Implement FastAPI health/readiness and redacted shared errors with verified, hash-invalidated application state and injectable project root; test missing/corrupt/actual readiness and safe validation/errors, commit/push then continue dataset routes MSE-402.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -195,9 +195,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-306 implemented:** Transient dual-model inference and faithful log-odds explanations. 314 tests passed under Gravitas; Ruff clean. Per-token contributions plus class prior, omitted-present remainder and Bernoulli absent-feature aggregate reconcile with public model log-probabilities on fixtures and actual models. Repetitions, class-column lookup, unknown tokens, blank/control-only text and 50000-character bounds verified. Predictions do not echo or persist submitted text; model file hashes remain unchanged.
 
+- **MSE-307 implemented:** Measured model card and Gate 3 completion. 314 tests passed under Gravitas; Ruff clean. Model card is generated from measured evaluation and verified against every model metric, dataset/split/test/artifact identity and actual inference. Historical sampling, near duplicates/dependence, calibration, one-split selection and false-positive limitations are explicit. Gate 3 complete without API/UI. Corrected inherited API documentation whitespace and added fail-fast final delivery checks after the earlier orchestration mistake.
+
 ## Full remaining implementation inventory
 
-**19 implementation tickets are complete; 20 are Not started**. Update statuses as work is
+**20 implementation tickets are complete; 19 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -223,8 +225,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-304 | Persist trusted artifacts, matching metadata and checksums | Complete — acceptance verified |
 | MSE-305 | Evaluate both models on the same untouched holdout | Complete — acceptance verified |
 | MSE-306 | Implement faithful token/prior and absent-feature explanations | Complete — acceptance verified |
-| MSE-307 | Save evaluation evidence and document model limitations | Not started — next |
-| MSE-401 | Implement FastAPI health/readiness and shared error envelope | Not started |
+| MSE-307 | Save evaluation evidence and document model limitations | Complete — acceptance verified |
+| MSE-401 | Implement FastAPI health/readiness and shared error envelope | Not started — next |
 | MSE-402 | Implement dataset summary/statistics/distribution routes | Not started |
 | MSE-403 | Implement probability and statistical inference routes | Not started |
 | MSE-404 | Implement prediction, evaluation and explanation routes | Not started |
@@ -245,6 +247,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-307 — Measured model card and Gate 3 completion:** 314 tests passed under Gravitas; Ruff clean. Model card is generated from measured evaluation and verified against every model metric, dataset/split/test/artifact identity and actual inference. Historical sampling, near duplicates/dependence, calibration, one-split selection and false-positive limitations are explicit. Gate 3 complete without API/UI. Corrected inherited API documentation whitespace and added fail-fast final delivery checks after the earlier orchestration mistake.
 
 - **MSE-306 — Transient dual-model inference and faithful log-odds explanations:** 314 tests passed under Gravitas; Ruff clean. Per-token contributions plus class prior, omitted-present remainder and Bernoulli absent-feature aggregate reconcile with public model log-probabilities on fixtures and actual models. Repetitions, class-column lookup, unknown tokens, blank/control-only text and 50000-character bounds verified. Predictions do not echo or persist submitted text; model file hashes remain unchanged.
 

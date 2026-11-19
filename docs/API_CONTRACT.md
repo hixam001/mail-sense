@@ -237,7 +237,7 @@ For numeric metrics `bins` holds `{lower,upper,count}` objects and `boxplot` hol
   "warnings": ["Probabilities are model estimates, not calibrated certainty."]
 }
 ```
-**Rules:** Text length 1–50,000 after trimming; whitespace-only invalid; model input is not stored. Explanation values represent signed contributions to **log posterior odds**, not probabilities. The implemented service also supplies `class_prior_log_odds`, `other_present_log_odds`, `absence_log_odds_contribution` and `log_odds` so truncated top terms still reconcile with the full score. `input.character_count` counts trimmed submitted characters; features use canonical normalization. For Bernoulli, the underlying score must include absent-vocabulary terms as well as present terms. If no known tokens are present, return a warning and both model results without inventing token contributions. Output numbers are illustrative.  
+**Rules:** Text length 1–50,000 after trimming; whitespace-only invalid; model input is not stored. Explanation values represent signed contributions to **log posterior odds**, not probabilities. The implemented service also supplies `class_prior_log_odds`, `other_present_log_odds`, `absence_log_odds_contribution` and `log_odds` so truncated top terms still reconcile with the full score. `input.character_count` counts trimmed submitted characters; features use canonical normalization. For Bernoulli, the underlying score must include absent-vocabulary terms as well as present terms. If no known tokens are present, return a warning and both model results without inventing token contributions. Output numbers are illustrative.
 **Errors:** `422` invalid input; `503` missing models, vocabulary or metadata; `500` unexpected error.
 
 ### A10 — `GET /models/metrics`

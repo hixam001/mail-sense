@@ -1,7 +1,7 @@
 # MailSense
 
 **Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** 19/39 implementation tasks verified. Latest: MSE-306 — Transient dual-model inference and faithful log-odds explanations. Next: MSE-307. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
+**Status:** 20/39 implementation tasks verified. Latest: MSE-307 — Measured model card and Gate 3 completion. Next: MSE-401. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
 
 > **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
 
@@ -203,6 +203,10 @@ Bernoulli on this historical split; confusion matrices and all metrics are
 recorded with provenance. These results do not establish modern robustness or
 calibrated probability. Evaluation never fits or tunes a model.
 
+See the [model card](docs/MODEL_CARD.md) for measured metrics, complete provenance,
+explanation semantics and limitations. Gate 3 is verified in Python; API/UI
+integration follows.
+
 ## Implementation sequence
 
 The requirements and acceptance gates are documented in `docs/`. Delivery follows
@@ -215,8 +219,8 @@ this sequence; the handoff records current ticket status:
 5. `MSE-105` (complete): Deduplicate, reject label conflicts and derive retained summary records.
 6. `MSE-106` (complete): Create a deterministic stratified split with verified disjoint IDs.
 7. `MSE-201–207` (complete): Implement and verify statistics independently from ML.
-8. `MSE-301–307` (next): Fit/evaluate both Naive Bayes models.
-9. `MSE-401–406`: Implement versioned FastAPI contract.
+8. `MSE-301–307` (complete): Fit/evaluate both Naive Bayes models.
+9. `MSE-401–406` (next): Implement versioned FastAPI contract.
 10. `MSE-501–507`: Build five frontend modules with real API results.
 11. `MSE-601–606`: Run tests, collect evidence, finalize university report/demo.
 

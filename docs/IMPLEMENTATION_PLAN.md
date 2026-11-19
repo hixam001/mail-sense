@@ -1,7 +1,7 @@
 # MailSense — Implementation Plan and Jira-Style Backlog
 
 **Version:** 1.0 · **Date:** 2026-11-19  
-**Status:** 19 implementation tickets verified; 20 remain. Latest MSE-306; next MSE-307. See the handoff for evidence.
+**Status:** 20 implementation tickets verified; 19 remain. Latest MSE-307; next MSE-401. See the handoff for evidence.
 **Scope:** Complete university project, local React + FastAPI, SpamAssassin, Multinomial NB + Bernoulli NB
 
 ## 1. Delivery strategy
@@ -94,7 +94,7 @@ training, model result or later gate is completed by this foundation.
 | MSE-306 | Implement inference-time token explanations | MSE-304 | Correct log-odds directions; Bernoulli absent-feature contributions disclosed |
 | MSE-307 | Save evaluation report and document limitations | MSE-305–306 | Same test set hash and positive class; no claimed calibrated probability |
 
-**Gate 3:** Both models and evaluation reports exist, and model predictions can be run from Python without the frontend.
+**Gate 3 complete:** Both trusted models, shared vocabulary and held-out evaluation are verified. Transient Python predictions and complete log-odds explanations work without frontend/API. The measured model card records identities, metrics and limitations; 314 tests passed.
 
 ### EPIC MSE-4 — FastAPI integration (2–3 working days)
 
@@ -201,6 +201,6 @@ Dates are deliberately **not invented**. Convert to calendar milestones after co
 - [x] Deduplicate exact normalized text, exclude conflicting labels and derive retained token/character records with verified counts for MSE-105.
 - [x] Freeze/verify seed-42 stratified membership without modifying retained records for MSE-106; complete Gate 1.
 
-**Next task:** `MSE-307`.
+**Next task:** `MSE-401`.
 Keep status synchronized with `memory/HANDOFF.md`; later tickets remain open
 until their acceptance criteria are verified.

@@ -1,6 +1,6 @@
 # MailSense — System Architecture and Technical Design
 
-**Version:** 1.3 · **Date:** 2026-11-19 · **Status:** Scaffolds, pinned environments and corpus pipeline through split implemented; later components below remain planned
+**Version:** 1.3 · **Date:** 2026-11-19 · **Status:** Corpus pipeline, statistics and trusted dual-model inference implemented; API/UI integration follows
 
 ## 1. Architecture goals
 
@@ -167,8 +167,9 @@ one shareable `split_manifest.json`. Its ID join supplies `split` in memory,
 preserving upstream bytes and avoiding duplicate private CSVs. Membership and
 input hashes, runtime/configuration and class counts verify by full rederivation.
 Both labels must occur in both partitions; unsupported small/imbalanced inputs
-fail explicitly. Steps 2–7 remain planned and must consume the verified train
-scope without fitting on held-out rows.
+fail explicitly. Steps 2–7 are implemented by model_features, training, model_store, evaluation
+and prediction services. They consume verified training scope without fitting
+on held-out rows; the model card records measured results and limitations.
 
 ### 5.3 Runtime classification
 1. React validates pasted text, calls `POST /api/v1/predict`.
