@@ -1,5 +1,9 @@
+import { useEffect, useRef } from 'react'
+
 export function PageTitle({ title, children }) {
-  return <header className="page-title"><h1 tabIndex="-1">{title}</h1><p>{children}</p></header>
+  const heading = useRef(null)
+  useEffect(() => { heading.current?.focus({ preventScroll: true }); document.title = `${title} · MailSense` }, [title])
+  return <header className="page-title"><h1 ref={heading} tabIndex="-1">{title}</h1><p>{children}</p></header>
 }
 export function AsyncPanel({ resource, children }) {
   if (resource.loading) return <div className="state" role="status">Loading local analysis…</div>

@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-501 — Shared responsive analytical workspace and local API client**.
-Next implementation ticket: **MSE-502**.
+Latest implementation: **MSE-502 — Dataset Explorer with provenance and scoped statistical charts**.
+Next implementation ticket: **MSE-503**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-502** — Implement Dataset Explorer summary/provenance, character/token descriptive table, labeled histogram/five-number box plot and document-frequency words with scope/class controls and accessible numerical alternatives. Verify actual API counts and desktop/mobile states; commit/push then probability MSE-503.
+**MSE-503** — Build Probability Analysis with canonical word validation, scoped contingency counts, prior/joint/conditional/posterior fractions and Bernoulli/binomial controls. Preserve unknown-word undefined values and assumptions; hide stale selections, verify real and teaching counts, commit/push then MSE-504.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -211,9 +211,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-501 implemented:** Shared responsive analytical workspace and local API client. Gravitas frontend verification passed: ESLint, three client tests, production build and real Chromium acceptance. Six routes/active links/back, actual scoped totals, mobile bounds, backend failure replacement and retry passed without browser exceptions. Desktop 1366x900 and phone 390x844 renders inspected. Fixed endpoint/origin client uses POST bodies only; request signatures and cancellation suppress stale responses. Five module interfaces remain pending. Validator now starts its API dependency if the earlier long-lived process has exited.
 
+- **MSE-502 implemented:** Dataset Explorer with provenance and scoped statistical charts. Frontend lint, three client tests and production build passed; owned Chromium acceptance passed after correcting the initial two-class table mismatch. Actual 5862/all and 1173/test totals, global 54 parse/130 duplicate exclusions, class and character/token filters, histogram, five-number box/table, word navigation and mobile bounds verified. Desktop/mobile renders inspected after chart resize settled. Charts load in a separate 422 kB chunk; initial workspace is 232 kB.
+
 ## Full remaining implementation inventory
 
-**27 implementation tickets are complete; 12 are Not started**. Update statuses as work is
+**28 implementation tickets are complete; 11 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -247,8 +249,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-405 | Verify loopback binding, CORS, redacted logging and input limits | Complete — acceptance verified |
 | MSE-406 | Implement and pass FastAPI contract tests | Complete — acceptance verified |
 | MSE-501 | Build shared React layout, router, API client and request states | Complete — acceptance verified |
-| MSE-502 | Build Dataset Explorer and labeled charts | Not started — next |
-| MSE-503 | Build Probability Analysis | Not started |
+| MSE-502 | Build Dataset Explorer and labeled charts | Complete — acceptance verified |
+| MSE-503 | Build Probability Analysis | Not started — next |
 | MSE-504 | Build Statistical Inference | Not started |
 | MSE-505 | Build Spam Detector with dual model results | Not started |
 | MSE-506 | Build Model Evaluation and confusion matrices | Not started |
@@ -261,6 +263,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-502 — Dataset Explorer with provenance and scoped statistical charts:** Frontend lint, three client tests and production build passed; owned Chromium acceptance passed after correcting the initial two-class table mismatch. Actual 5862/all and 1173/test totals, global 54 parse/130 duplicate exclusions, class and character/token filters, histogram, five-number box/table, word navigation and mobile bounds verified. Desktop/mobile renders inspected after chart resize settled. Charts load in a separate 422 kB chunk; initial workspace is 232 kB.
 
 - **MSE-501 — Shared responsive analytical workspace and local API client:** Gravitas frontend verification passed: ESLint, three client tests, production build and real Chromium acceptance. Six routes/active links/back, actual scoped totals, mobile bounds, backend failure replacement and retry passed without browser exceptions. Desktop 1366x900 and phone 390x844 renders inspected. Fixed endpoint/origin client uses POST bodies only; request signatures and cancellation suppress stale responses. Five module interfaces remain pending. Validator now starts its API dependency if the earlier long-lived process has exited.
 

@@ -1,8 +1,10 @@
-import { useEffect, useState, useSyncExternalStore } from 'react'
+import { lazy, Suspense, useEffect, useState, useSyncExternalStore } from 'react'
 import { PageTitle } from './components/common.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import { useApi } from './lib/useApi.js'
 import './styles.css'
+
+const Dataset = lazy(() => import('./pages/Dataset.jsx'))
 
 const routes = [
   ['/', 'Overview', 'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z'],
@@ -24,9 +26,9 @@ function navigate(path) {
 export default function App() {
   const path = useSyncExternalStore(subscribe, () => window.location.pathname)
   const [scope, setScope] = useState('all')
+  const [selectedWord, setSelectedWord] = useState('free')
   const health = useApi('/health')
   useEffect(() => {
-    document.querySelector('main h1')?.focus({ preventScroll: true })
     window.scrollTo(0, 0)
   }, [path])
   const route = routes.find(item => item[0] === path)
@@ -58,10 +60,13 @@ export default function App() {
         </div>
       </header>
       <main id="main-content">
+        <Suspense fallback={<div className="state" role="status">Opening analysis…</div>}>
         {path === '/' ? <Dashboard scope={scope} health={health} navigate={navigate} /> :
+          path === '/dataset' ? <Dataset scope={scope} onWord={word => { setSelectedWord(word); navigate('/probability') }} /> :
           route ? <><PageTitle title={route[1]}>Inspect the counts, assumptions and evidence behind the result.</PageTitle>
-            <section className="panel"><h2>Analysis workspace</h2><p>This module is being connected to the verified local API.</p></section></> :
+            <section className="panel"><h2>Analysis workspace</h2><p>This module is being connected to the verified local API.</p>{path === '/probability' && <p>Selected word: <strong>{selectedWord}</strong></p>}</section></> :
             <><PageTitle title="Page not found">Choose an analysis from the navigation to continue.</PageTitle><button onClick={() => navigate('/')}>Return to overview</button></>}
+        </Suspense>
       </main>
       <footer className="workspace-footer">Educational demonstration · Model estimates are not calibrated certainty.</footer>
     </div>
