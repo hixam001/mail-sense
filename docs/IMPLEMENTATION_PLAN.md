@@ -1,7 +1,7 @@
 # MailSense — Implementation Plan and Jira-Style Backlog
 
 **Version:** 1.0 · **Date:** 2026-11-19  
-**Status:** MSE-101/102 scaffold and reproducible environment verified; 37 implementation tickets remain, starting with MSE-103. See the handoff for live status.  
+**Status:** MSE-101–103 scaffold, environment and corpus acquisition verified; 36 implementation tickets remain, starting with MSE-104. See the handoff for live status.  
 **Scope:** Complete university project, local React + FastAPI, SpamAssassin, Multinomial NB + Bernoulli NB
 
 ## 1. Delivery strategy
@@ -189,8 +189,8 @@ Dates are deliberately **not invented**. Convert to calendar milestones after co
 - [x] Add `.gitignore` for raw emails, processed message text, virtualenv, `node_modules`, and models; allow empty directory placeholders.
 - [x] Create pinned runtime/dependency files and setup instructions; verify fresh installation for MSE-102.
 - [x] Complete MSE-101 as the first implementation milestone with runtime/build evidence.
-- [ ] Record exact dataset archives and checksums when downloaded.
+- [x] Record five canonical official archives, real acquisition metadata and verified SHA-256 values for MSE-103.
 
-**Next task:** `MSE-103 — Obtain canonical official corpus archives and record source/checksum manifest`.
+**Next task:** `MSE-104 — Implement safe archive extraction and MIME text parsing`.
 Keep status synchronized with `memory/HANDOFF.md`; later tickets remain open
 until their acceptance criteria are verified.

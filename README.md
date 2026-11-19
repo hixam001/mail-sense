@@ -1,7 +1,7 @@
 # MailSense
 
 **Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** MSE-101/102 provide local React/Vite and FastAPI scaffolds with pinned runtimes, locked dependencies and environment checks. Dataset preparation, statistical analysis, classifiers and the analytical interface remain unimplemented. No corpus or trained models are included.
+**Status:** MSE-101–103 provide local scaffolds, reproducible environments and verified acquisition of five official corpus archives. Extraction, parsing, deduplication, statistics, models and the analytical interface remain pending. Raw archives stay local and ignored; no trained models are included.
 
 > **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
 
@@ -16,7 +16,7 @@ a queryable Graphify graph and its interactive visualization.
 
 | File | What it contains |
 |---|---|
-| `docs/SETUP.md` | Pinned runtimes, installation, run/check commands, locks, platform scope and recovery |
+| `docs/SETUP.md` | Pinned setup, run/check commands, corpus acquisition/verification, locks and recovery |
 | `docs/PRD.md` | Product problem, users, goals, scoped features, scenarios and success metrics |
 | `docs/SRD.md` | Short, authoritative summary of the approved build scope |
 | `docs/SRS.md` | Locked functional/non-functional requirements and acceptance gates |
@@ -81,16 +81,32 @@ From the repository root:
 ```bash
 python3 scripts/node.py npm --prefix frontend run lint
 python3 scripts/node.py npm --prefix frontend run build
-uv run --project backend --frozen ruff check --config backend/pyproject.toml backend/app backend/tests scripts
+uv run --project backend --frozen ruff check --config backend/pyproject.toml backend/app backend/tests backend/scripts scripts
 uv run --project backend --frozen pytest -c backend/pyproject.toml backend/tests scripts/tests
 ```
 
 Frontend and backend locks are committed. Runtime downloads, `node_modules/`,
-build output and Python virtual environments are ignored. The nine environment
-and bootstrap tests use synthetic fixtures; they do not establish correctness
+build output and Python virtual environments are ignored. Environment,
+bootstrap and acquisition tests use synthetic fixtures; they do not establish correctness
 of the unimplemented domain services or empirical model performance. See
 [the setup guide](docs/SETUP.md) for lock maintenance and
 [the handoff](memory/HANDOFF.md) for observed evidence.
+
+## Corpus acquisition
+
+From the repository root, after backend setup:
+
+```bash
+uv run --directory backend --frozen python -m scripts.download_corpus download
+uv run --directory backend --frozen python -m scripts.download_corpus verify
+```
+
+The five canonical archives total **6,962,803 compressed bytes**. Their source
+URLs, groups, labels, UTC acquisition times, sizes and SHA-256 values are recorded
+in [source_manifest.json](data/processed/source_manifest.json). Raw downloads stay
+under ignored `data/raw/`; verification and complete-cache reuse work offline.
+Parsing counters remain explicitly unknown until the next task. See
+[the setup guide](docs/SETUP.md#acquire-the-corpus) for selection and recovery.
 
 ## Implementation sequence
 
@@ -99,15 +115,16 @@ this sequence; the handoff records current ticket status:
 
 1. `MSE-101` (complete): Create frontend (`frontend/`) and backend (`backend/`) skeletons.
 2. `MSE-102` (complete): Pin runtimes/dependencies and verify reproducible setup.
-3. `MSE-103–106` (next): Implement corpus acquisition, ingestion, content deduplication and deterministic split.
-4. `MSE-201–207`: Implement and verify statistics independently from ML.
-5. `MSE-301–307`: Fit/evaluate both Naive Bayes models.
-6. `MSE-401–406`: Implement versioned FastAPI contract.
-7. `MSE-501–507`: Build five frontend modules with real API results.
-8. `MSE-601–606`: Run tests, collect evidence, finalize university report/demo.
+3. `MSE-103` (complete): Acquire canonical archives and verify their provenance/checksums.
+4. `MSE-104–106` (next): Implement safe extraction/parsing, deduplication and deterministic split.
+5. `MSE-201–207`: Implement and verify statistics independently from ML.
+6. `MSE-301–307`: Fit/evaluate both Naive Bayes models.
+7. `MSE-401–406`: Implement versioned FastAPI contract.
+8. `MSE-501–507`: Build five frontend modules with real API results.
+9. `MSE-601–606`: Run tests, collect evidence, finalize university report/demo.
 
-The commands above run the scaffolds only. Later tasks will add and verify
-actual corpus preparation, model training and analytical workflows.
+The available commands run the scaffolds and acquire/verify raw archives.
+Later tasks add safe parsing, processed data, training and analytical workflows.
 
 ## Authoritative change policy
 

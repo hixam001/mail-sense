@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "dataset_source": "apache_spamassassin_public_corpus",
+  "source_index_url": "https://spamassassin.apache.org/old/publiccorpus/",
+  "source_readme_url": "https://spamassassin.apache.org/old/publiccorpus/readme.html",
+  "selection_policy": "one_canonical_archive_per_group",
+  "checksum_origin": "locally_computed_sha256",
+  "archives": [
+    {
+      "archive_name": "20030228_easy_ham.tar.bz2",
+      "source_url": "https://spamassassin.apache.org/old/publiccorpus/20030228_easy_ham.tar.bz2",
+      "source_group": "easy_ham",
+      "label": "ham",
+      "sha256": "2b7b65904bcfcc31d2b5f51946f2d261370b257402cbbd62930b46ab83367438",
+      "size_bytes": 1612216,
+      "acquired_at": "2026-11-19T08:16:17.146043Z",
+      "processing_status": "not_started",
+      "files_seen": null,
+      "files_accepted": null,
+      "files_rejected": null
+    },
+    {
+      "archive_name": "20030228_easy_ham_2.tar.bz2",
+      "source_url": "https://spamassassin.apache.org/old/publiccorpus/20030228_easy_ham_2.tar.bz2",
+      "source_group": "easy_ham_2",
+      "label": "ham",
+      "sha256": "b4bd3dc5ae5b40f38e99a0e41ad7d16b428b56e818e3a6ffa07330d62004dd38",
+      "size_bytes": 1077892,
+      "acquired_at": "2026-11-19T08:16:18.092958Z",
+      "processing_status": "not_started",
+      "files_seen": null,
+      "files_accepted": null,
+      "files_rejected": null
+    },
+    {
+      "archive_name": "20030228_hard_ham.tar.bz2",
+      "source_url": "https://spamassassin.apache.org/old/publiccorpus/20030228_hard_ham.tar.bz2",
+      "source_group": "hard_ham",
+      "label": "ham",
+      "sha256": "ce2ce67880643dbde65ea7f85bffbfe4417349c4bd80b6b0de56262ae6b0a9c9",
+      "size_bytes": 1029898,
+      "acquired_at": "2026-11-19T08:16:19.034547Z",
+      "processing_status": "not_started",
+      "files_seen": null,
+      "files_accepted": null,
+      "files_rejected": null
+    },
+    {
+      "archive_name": "20030228_spam.tar.bz2",
+      "source_url": "https://spamassassin.apache.org/old/publiccorpus/20030228_spam.tar.bz2",
+      "source_group": "spam",
+      "label": "spam",
+      "sha256": "c08debc32413804949a866be45ef78195cec2cbafd1da744ed76cdb860589743",
+      "size_bytes": 1183768,
+      "acquired_at": "2026-11-19T08:16:20.687702Z",
+      "processing_status": "not_started",
+      "files_seen": null,
+      "files_accepted": null,
+      "files_rejected": null
+    },
+    {
+      "archive_name": "20050311_spam_2.tar.bz2",
+      "source_url": "https://spamassassin.apache.org/old/publiccorpus/20050311_spam_2.tar.bz2",
+      "source_group": "spam_2",
+      "label": "spam",
+      "sha256": "44280a0e28bf7645b2279e8e42659271ad82c6f40bf8d364dbda7f1df344a765",
+      "size_bytes": 2059029,
+      "acquired_at": "2026-11-19T08:16:22.998095Z",
+      "processing_status": "not_started",
+      "files_seen": null,
+      "files_accepted": null,
+      "files_rejected": null
+    }
+  ]
+}

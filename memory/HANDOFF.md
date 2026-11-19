@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-102 — Pinned runtimes, locked dependencies and fresh environment setup verified**.
-Next implementation ticket: **MSE-103**.
+Latest implementation: **MSE-103 — Canonical official corpus acquisition and provenance verified**.
+Next implementation ticket: **MSE-104**.
 
 ## Read this at every task start
 
@@ -17,23 +17,28 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-103: Obtain canonical official corpus archives and record source/checksum manifest.**
+**MSE-104: Implement safe archive extraction and MIME text parsing.**
 
-1. Analyze the complete ticket with Gravitas; read the SRS and `SourceArchive`
-   schema in `docs/DATA_MODEL.md`. Use the pinned setup in `docs/SETUP.md`.
-2. Inspect the official SpamAssassin corpus index/README and select one canonical
-   archive for each approved group; do not count older dated revisions as extra
-   messages. Establish the exact selected archive list from upstream evidence.
-3. Download archives into ignored `data/raw/`; record actual URL, filename,
-   group/label, acquisition date and SHA-256 in `data/processed/source_manifest.json`.
-4. Verify every recorded checksum against downloaded bytes and ensure provenance
-   and group selection are complete. Keep original email text and archives out
-   of Git. Extraction/MIME parsing belongs to MSE-104; do not guess cleaned counts.
-5. Update this handoff and graph, revalidate, then commit and push with MSE-103.
+1. Analyze the complete ticket with Gravitas; read FR-02/03, the data schema,
+   planned ingestion flow and parser/security fixtures. Verify the local source
+   manifest before using archives; setup/acquisition commands are in `docs/SETUP.md`.
+2. Implement bounded archive handling that rejects absolute/traversal paths,
+   symlinks/unsafe members and escapes before writing. Keep raw/extracted email
+   content local and ignored; never execute attachments or message content.
+3. Decode MIME subject/body, prefer one plain-text alternative, and safely derive
+   text from HTML when needed without rendering scripts or fetching resources.
+   Only subject/body text is a model feature; source labels come from group metadata.
+4. Record parse/exclusion counts and errors without logging message bodies.
+   Populate SourceArchive integer counters and `processing_status: "complete"`
+   only after parsing; preserve recorded archive provenance. Deduplication and
+   final retained counts belong to MSE-105; split assignment belongs to MSE-106.
+5. Test valid/malformed encodings, multipart alternatives, HTML, attachments,
+   unsafe archive paths and failure recovery. Update handoff/graph, verify,
+   then commit and push with MSE-104.
 
-Acceptance: the manifest identifies the exact canonical archive files and their
-verified checksums without double-counting historical revisions. No corpus
-archives have been downloaded as part of MSE-102.
+Acceptance: plain-text/HTML/subject decoding works, attachments are ignored,
+unsafe extraction is prevented, and parse failures/exclusions are counted.
+No archives have been extracted or email messages parsed by MSE-103.
 
 ## Established and completed preparation
 
@@ -94,13 +99,24 @@ archives have been downloaded as part of MSE-102.
   commands and platform/offline limits. Nine environment/bootstrap tests cover
   native scientific APIs, both NB dependency classes, synthetic artifact
   roundtrips, API client compatibility and runtime-download failure boundaries.
-- Corpus ingestion, domain statistical/model services, five UI modules and their
+- **MSE-103 complete:** `backend/app/services/corpus_sources.py` and the
+  `backend/scripts/download_corpus.py` CLI acquire the five canonical archives,
+  stage bounded official-only downloads, enforce schema/group/URL/label rules,
+  pin cached/refetched bytes to recorded hashes, and verify everything offline.
+  Complete caches are network-free no-ops. Network, integrity and metadata-write
+  failures preserve provenance and clean staging/lock files.
+- `data/processed/source_manifest.json` records official source URLs, groups,
+  labels, actual UTC acquisition times, SHA-256 and compressed sizes. The five
+  local archives total **6,962,803 bytes**. All parsing counters are `null` with
+  `processing_status: "not_started"`; Data Model v1.1 documents that lifecycle.
+  Archive bytes remain ignored under `data/raw/`. No extraction has run.
+- Safe parsing/ingestion, domain statistical/model services, five UI modules and their
   unit/contract suites remain unimplemented. All six release gates remain open.
   Synthetic environment checks are not measured corpus/model results.
 
 ## Full remaining implementation inventory
 
-MSE-101 and MSE-102 are complete; the other **37 tickets are Not started**. Update statuses as work is
+MSE-101–103 are complete; the other **36 tickets are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -109,8 +125,8 @@ Dependencies and detailed acceptance criteria are in
 |---|---|---|
 | MSE-101 | Initialize React/FastAPI monorepo and project structure | Complete — runtime/build/lint verified |
 | MSE-102 | Pin dependencies and document environment setup | Complete — fresh install/locks/tests verified |
-| MSE-103 | Obtain canonical official corpus archives and source/checksum manifest | Not started — next |
-| MSE-104 | Implement safe extraction and MIME text parsing | Not started |
+| MSE-103 | Obtain canonical official corpus archives and source/checksum manifest | Complete — real downloads/hashes/offline verification |
+| MSE-104 | Implement safe extraction and MIME text parsing | Not started — next |
 | MSE-105 | Deduplicate, reject label conflicts and derive summary records | Not started |
 | MSE-106 | Verify deterministic stratified 80/20 split, seed 42 | Not started |
 | MSE-201 | Implement descriptive statistics for text length and token count | Not started |
@@ -149,6 +165,20 @@ Dependencies and detailed acceptance criteria are in
 
 ## Verification and delivery evidence
 
+- MSE-103: **38 pytest tests passed**, covering 29 acquisition regressions plus
+  the existing nine environment/bootstrap tests. Ruff passed for backend app,
+  scripts and tests. CLI download/verify succeeded for all five actual archives;
+  a separate stdlib pass independently recomputed each size and SHA-256.
+- Actual cache reuse was exercised with a forbidden-network opener: verification
+  and download succeeded offline and left manifest bytes unchanged. Tests cover
+  corrupted/missing/refetched bytes, pinned upstream mismatch, invalid metadata,
+  duplicate groups, partial network failure, redirects, size/header bounds,
+  local path/lock guards and failed manifest-write cleanup.
+- Canonical selection was checked against the official corpus index/README:
+  20030228 easy_ham/easy_ham_2/hard_ham/spam and corrected 20050311 spam_2.
+  Byte hashes establish this acquisition's reproducible inputs. Parsing and
+  cleaned/retained message counts are explicitly pending, with no release gate
+  or model/statistical result claimed by acquisition alone.
 - MSE-102: a source-only exported checkout started with no `.tools/`, frontend
   dependencies, backend environment or agent directories. The documented Node
   install, `npm ci`, frozen uv sync, lock check, dependency check, frontend
@@ -214,8 +244,8 @@ Dependencies and detailed acceptance criteria are in
   maintained-file diff hygiene. Results belong in the final delivery report.
 - Branch `main` tracks `origin/main` at
   `https://github.com/hixam001/mail-sense.git`. Preparation was pushed through
-  MSE-108 commit `f22db9b`. MSE-102 uses
-  `MSE-102: Pin runtimes and verify reproducible setup`.
+  MSE-102 commit `6079922`. MSE-103 uses
+  `MSE-103: Acquire canonical corpus archives and pin provenance`.
   Observe the new commit and push result in Git. On resume, check `git log -1`,
   `git status -sb` and the upstream branch before claiming delivery.
 

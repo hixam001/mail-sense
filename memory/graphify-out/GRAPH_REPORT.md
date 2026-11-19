@@ -1,16 +1,16 @@
 # Graph Report - mail-sense  (2026-11-19)
 
 ## Corpus Check
-- 16 files · ~22,387 words
+- 16 files · ~23,241 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 195 nodes · 324 edges · 16 communities
+- 197 nodes · 326 edges · 17 communities
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
-- AGENTS.md
+- README.md
 - PRODUCT.md
 - memory/HANDOFF.md
 - docs/IMPLEMENTATION_PLAN.md
@@ -24,6 +24,7 @@
 - docs/TEST_PLAN.md
 - MSE-404
 - MSE-601
+- docs/SETUP.md
 - docs/SRD.md
 - Analyze with Gravitas
 
@@ -40,14 +41,14 @@
 10. `MSE-304` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Next task` --next_task--> `MSE-103`  [EXTRACTED]
+- `Next task` --next_task--> `MSE-104`  [EXTRACTED]
   memory/HANDOFF.md → docs/IMPLEMENTATION_PLAN.md
 
-## Communities (16 total, 0 thin omitted)
+## Communities (17 total, 0 thin omitted)
 
-### Community 0 - "AGENTS.md"
-Cohesion: 0.08
-Nodes (22): Implement and verify, Delivery sequence, Handoff and persistent memory, Commit and push, Start every task, Authoritative change policy, Repository hygiene, Sources and responsible data use (+14 more)
+### Community 0 - "README.md"
+Cohesion: 0.11
+Nodes (17): Implement and verify, Delivery sequence, Handoff and persistent memory, Commit and push, Start every task, Implementation sequence, Authoritative change policy, Repository hygiene (+9 more)
 
 ### Community 1 - "PRODUCT.md"
 Cohesion: 0.12
@@ -71,7 +72,7 @@ Nodes (11): 5. Processing pipeline, 2. Component overview, 6. API architecture, 
 
 ### Community 6 - "docs/DATA_MODEL.md"
 Cohesion: 0.17
-Nodes (11): 7. Entity `ModelEvaluation` (`artifacts/reports/evaluation.json`), 8. API-view schemas (not persisted), 9. Storage layout, 10. No database / no user entity, 11. Data provenance and rights, 2. Entity `SourceArchive` (`data/processed/source_manifest.json`), 3. Entity `ProcessedEmail` (`data/processed/messages.csv`), 1. Design principles (+3 more)
+Nodes (11): 6. Entity `TrainedModel` (`artifacts/models/{model}.joblib`, `metadata.json`), 7. Entity `ModelEvaluation` (`artifacts/reports/evaluation.json`), 8. API-view schemas (not persisted), 9. Storage layout, 10. No database / no user entity, 11. Data provenance and rights, 2. Entity `SourceArchive` (`data/processed/source_manifest.json`), 3. Entity `ProcessedEmail` (`data/processed/messages.csv`) (+3 more)
 
 ### Community 7 - "docs/PRD.md"
 Cohesion: 0.17
@@ -101,17 +102,21 @@ Nodes (8): MSE-301, MSE-302, MSE-303, MSE-304, MSE-305, MSE-306, MSE-307, MSE-40
 Cohesion: 0.61
 Nodes (8): MSE-501, MSE-502, MSE-503, MSE-504, MSE-505, MSE-506, MSE-507, MSE-601
 
-### Community 14 - "docs/SRD.md"
+### Community 14 - "docs/SETUP.md"
+Cohesion: 0.25
+Nodes (7): Locks and intentional updates, Offline use and recovery, Install, Supported baseline, Run, Verify, Acquire the corpus
+
+### Community 15 - "docs/SRD.md"
 Cohesion: 0.25
 Nodes (7): Users, Primary end-to-end workflow, Must-have, Not in v1.0, Acceptance check, Build notes, Goal
 
-### Community 15 - "Analyze with Gravitas"
+### Community 16 - "Analyze with Gravitas"
 Cohesion: 0.25
 Nodes (8): Analyze with Gravitas, map the task, implement, test, update handoff, final checks, commit, push
 
 ## Knowledge Gaps
-- **132 isolated node(s):** `Delivery sequence`, `Start every task`, `Implement and verify`, `Handoff and persistent memory`, `Commit and push` (+127 more)
-  These have ≤1 connection - possible missing edges. (Counts symbols only; 132 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **134 isolated node(s):** `Delivery sequence`, `Start every task`, `Implement and verify`, `Handoff and persistent memory`, `Commit and push` (+129 more)
+  These have ≤1 connection - possible missing edges. (Counts symbols only; 134 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -119,9 +124,9 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `MSE-601` connect `MSE-601` to `MSE-403`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `Delivery sequence`, `Start every task`, `Implement and verify` to the rest of the system?**
-  _132 weakly-connected nodes found - possible missing edges._
-- **Should `AGENTS.md` be split into smaller, more focused modules?**
-  _Cohesion score 0.08307692307692308 - nodes in this community are weakly interconnected._
+  _134 weakly-connected nodes found - possible missing edges._
+- **Should `README.md` be split into smaller, more focused modules?**
+  _Cohesion score 0.11052631578947368 - nodes in this community are weakly interconnected._
 - **Why does `MSE-603` connect `docs/IMPLEMENTATION_PLAN.md` to `MSE-601`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **Should `PRODUCT.md` be split into smaller, more focused modules?**

@@ -77,20 +77,71 @@ python3 scripts/node.py npm --prefix frontend run lint
 python3 scripts/node.py npm --prefix frontend run build
 uv lock --project backend --check
 uv pip check --python backend/.venv/bin/python
-uv run --project backend --frozen ruff check --config backend/pyproject.toml backend/app backend/tests scripts
+uv run --project backend --frozen ruff check --config backend/pyproject.toml backend/app backend/tests backend/scripts scripts
 uv run --project backend --frozen pytest -c backend/pyproject.toml backend/tests scripts/tests
 ```
 
-The nine current tests check the pinned Python runtime, native-library numerical
+The environment/bootstrap tests check the pinned Python runtime, native-library numerical
 compatibility, both Naive Bayes classes and trusted synthetic artifact roundtrips,
 FastAPI test-client compatibility, and the Node installer's checksum/path/error
 boundaries. They use synthetic data and temporary files, not the SpamAssassin
 corpus. They do not complete the statistical algorithms, classifiers or release
-acceptance scenarios in the project backlog.
+acceptance scenarios in the project backlog. Corpus-acquisition regression tests
+also cover manifest integrity, cache reuse, missing/corrupted archives, transport
+limits and failure cleanup using synthetic byte streams.
 
 The installed application stack includes NumPy, Pandas, SciPy, scikit-learn and
 joblib, plus Recharts and a React-matched `react-is`. Matplotlib remains optional
 for later static report work and is not installed by this baseline.
+
+## Acquire the corpus
+
+After installing the backend environment, from the repository root:
+
+```bash
+uv run --directory backend --frozen python -m scripts.download_corpus download
+uv run --directory backend --frozen python -m scripts.download_corpus verify
+```
+
+`--directory backend` runs this preparation command in the backend project.
+The downloader uses only the fixed official Apache HTTPS URLs, refuses redirects,
+limits each archive to 32 MiB and stages downloads under ignored `data/raw/`.
+It publishes `data/processed/source_manifest.json` with actual byte sizes,
+SHA-256 values and UTC acquisition timestamps. No emails are extracted or parsed.
+
+The selected archives, confirmed against the
+[official index](https://spamassassin.apache.org/old/publiccorpus/) and
+[corpus README](https://spamassassin.apache.org/old/publiccorpus/readme.html), are:
+
+| Group | Archive | Label |
+|---|---|---|
+| easy_ham | `20030228_easy_ham.tar.bz2` | ham |
+| easy_ham_2 | `20030228_easy_ham_2.tar.bz2` | ham |
+| hard_ham | `20030228_hard_ham.tar.bz2` | ham |
+| spam | `20030228_spam.tar.bz2` | spam |
+| spam_2 | `20050311_spam_2.tar.bz2` | spam |
+
+The March 2005 spam_2 revision corrects a misclassified message. Older snapshots
+are not additional independent groups. Checksums are computed from downloaded
+bytes and pin subsequent verification/refetches to that acquisition.
+
+`verify` is offline. A complete matching cache makes `download` a network-free
+no-op that preserves the manifest. Missing files are downloaded and must match
+the existing pinned checksum/size; their acquisition timestamps are refreshed.
+Review resulting timestamp changes before committing metadata from a new machine.
+Corrupted local files, unmanifested existing archives and changed upstream bytes
+fail without silently replacing provenance. Move a damaged/unmanifested local
+archive aside before retrying; investigate an upstream checksum change explicitly.
+If an interrupted process leaves `data/raw/.acquisition.lock`, confirm no other
+acquisition process is active before removing that stale local lock.
+
+The acquisition stage records `processing_status: "not_started"` and `null`
+parsing counters. MSE-104 owns safe extraction and MIME parsing; MSE-105 owns
+deduplication/retained counts. The measured acquisition total is **6,962,803
+compressed bytes** across five archives, with no claim of a cleaned email count.
+Commit the manifest and code; raw archives and temporary download files stay
+ignored. Preserve the corpus README's restrictions on live-mail use and original
+message rights; do not send corpus messages through a live mail system.
 
 ## Locks and intentional updates
 
@@ -126,11 +177,11 @@ commit the pins and locks together. Routine installs must not change lockfiles.
 
 ## Offline use and recovery
 
-Initial runtime/package downloads need network access. After setup, the two
-local scaffolds and current tests run without external inference or corpus
-access. Full offline analytical use additionally requires the corpus and model
-artifacts from later tasks. No dataset, trained model, empirical score or
-statistical workflow is provided by environment setup.
+Initial runtime/package/corpus downloads need network access. The two local
+scaffolds, current tests and corpus verification run offline after preparation.
+Full analytical use still requires parsed data and model artifacts from later
+tasks. Acquisition/environment setup supplies no cleaned dataset, trained model,
+empirical score or statistical workflow.
 
 If a runtime download fails verification, the helper exits before extracting
 or executing it. If a cached Node installation is damaged, remove that release's

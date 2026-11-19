@@ -1,6 +1,6 @@
 # MailSense — Data Model and Local Artifact Specification
 
-**Version:** 1.0 · **Date:** 2026-11-19 · **Status:** Approved design, not implemented  
+**Version:** 1.1 · **Date:** 2026-11-19 · **Status:** Source acquisition implemented; processing/model artifacts remain planned  
 **Storage choice:** Local files (CSV + JSON metadata + trusted joblib model artifacts). **No database.**
 
 ## 1. Design principles
@@ -24,10 +24,25 @@ both models + shared test IDs ──> model_evaluation
 | `source_group` | enum | Yes | `easy_ham`, `easy_ham_2`, `hard_ham`, `spam`, `spam_2` |
 | `label` | enum | Yes | `spam` for `spam*`, else `ham` |
 | `sha256` | string | Yes | Checksum of downloaded archive bytes |
+| `size_bytes` | integer > 0 | Yes | Downloaded compressed archive size |
 | `acquired_at` | ISO timestamp | Yes | When downloaded locally |
-| `files_seen` | integer >= 0 | Yes | Before validation |
-| `files_accepted` | integer >= 0 | Yes | Before global deduplication |
-| `files_rejected` | integer >= 0 | Yes | Due to parse/empty/unsafe content |
+| `processing_status` | enum | Yes | `not_started` after acquisition; `complete` after parsing |
+| `files_seen` | integer >= 0 or null | Yes | Null until parsing; then count before validation |
+| `files_accepted` | integer >= 0 or null | Yes | Null until parsing; then count before global deduplication |
+| `files_rejected` | integer >= 0 or null | Yes | Null until parsing; then count rejected by parsing/validation |
+
+The manifest envelope has `schema_version: 1`, `dataset_source`, official index
+and README URLs, `selection_policy: "one_canonical_archive_per_group"`,
+`checksum_origin: "locally_computed_sha256"` and an `archives` array containing
+exactly one entry for each approved group. URLs, filenames and labels must match
+the fixed canonical selection; timestamps are timezone-aware UTC.
+
+Acquisition records all three parsing counters as explicit `null` with
+`processing_status: "not_started"`. MSE-104 will populate integer counts and
+set `complete`; `files_seen = files_accepted + files_rejected` then applies.
+This lifecycle clarification avoids reporting fabricated zero counts before
+any message has been parsed. Archive byte sizes are measured independently of
+email record counts. No cleaned/retained total is established by acquisition.
 
 **Archive selection rule:** Select a coherent latest collection per group. For example, `20030228_easy_ham`, `20030228_easy_ham_2`, `20030228_hard_ham`, `20030228_spam`, and `20050311_spam_2`. Older date-prefixed archives are snapshots/revisions, **not additional independent groups**. Record exact versions/checksums at ingestion and verify official source before download. Untrusted tar members must not escape the extraction directory.
 
