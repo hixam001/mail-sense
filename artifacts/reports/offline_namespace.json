@@ -1,0 +1,21 @@
+{
+  "artifact_bytes_unchanged": true,
+  "browser": "143.0.7499.4",
+  "checked_at": "2026-11-19T17:53:39.456827+00:00",
+  "core_routes": 6,
+  "dataset_id": "ccd3321b252f22aaa5e6e1e74d96140b46c088a15474e8607c6259b2467c9c7a",
+  "external_probe": "192.0.2.1:443 blocked by kernel ENETUNREACH",
+  "interfaces": [
+    "lo"
+  ],
+  "ipv4_routes": [],
+  "kernel": "7.3.4-1-cachyos",
+  "limitations": "Linux only; requires unprivileged user/network namespaces and iproute2.",
+  "machine": "x86_64",
+  "result": "pass",
+  "runtime_smoke_sha256": "d7a3c12e67ba2e03e4dc16364fba028caa51c163881a708d11caaaec343bfa3c",
+  "separate_child_network_namespace": true,
+  "split_id": "e10ea9f8b406c62d14a359dd864ef2a195c8c1960c2747f1feaaea313c148c31",
+  "system": "Linux",
+  "task": "MSE-606"
+}

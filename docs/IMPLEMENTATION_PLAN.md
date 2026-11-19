@@ -1,7 +1,7 @@
 # MailSense — Implementation Plan and Jira-Style Backlog
 
 **Version:** 1.0 · **Date:** 2026-11-19  
-**Status:** 38 implementation tickets verified; 1 remain. Latest MSE-605; next MSE-606. See the handoff for evidence.
+**Status:** All 39 implementation tickets verified; 0 remain. Latest MSE-606; v1.0.0 complete. See the handoff and RELEASE.md for evidence.
 **Scope:** Complete university project, local React + FastAPI, SpamAssassin, Multinomial NB + Bernoulli NB
 
 ## 1. Delivery strategy
@@ -59,7 +59,7 @@ This maintenance task changes no application behavior. Current task status lives
 | MSE-105 | Deduplicate, reject conflicting labels, derive summary records | MSE-104 | Unique retained texts and correct `spam`/`ham` labels; all exclusions logged |
 | MSE-106 | Create reproducible stratified 80/20 split, seed 42 | MSE-105 | Split manifest hashes and disjoint IDs verified in tests |
 
-**Gate 1:** Source manifest, processed data and train/test split are reproducible. Actual class counts reported; no training leakage through duplicates.
+**Gate 1 complete:** Source manifest, processed data and train/test split are reproducible. Actual class counts reported; no training leakage through duplicates.
 
 Gate 1 evidence: five verified canonical sources, 5,992 parsed rows, 5,862
 retained records after exact-text deduplication, and seed-42 stratified membership
@@ -107,7 +107,7 @@ training, model result or later gate is completed by this foundation.
 | MSE-405 | Harden local-only binding, CORS, redacted logging, input limits | MSE-401–404 | No external text leakage or unsafe file inputs |
 | MSE-406 | Add FastAPI contract tests | MSE-402–405 | Normal/error JSON shapes and HTTP codes verified |
 
-**Gate 4:** Every route in API contract responds from real local data/artifacts, not demo hardcoding.
+**Gate 4 complete:** Every route in API contract responds from real local data/artifacts, not demo hardcoding.
 
 ### EPIC MSE-5 — React user interface (4–6 working days)
 
@@ -121,7 +121,7 @@ training, model result or later gate is completed by this foundation.
 | MSE-506 | Model Evaluation with confusion matrices | MSE-404, MSE-501 | Shared split, all metrics, FP/FN interpretations |
 | MSE-507 | Responsive/keyboard/error state verification | MSE-502–506 | No misleading stale state; appropriate labeling |
 
-**Gate 5:** Complete five-module guided demonstration works with real backend results.
+**Gate 5 complete:** Complete five-module guided demonstration works with real backend results.
 
 ### EPIC MSE-6 — Quality, report and release (2–3 working days)
 
@@ -134,7 +134,7 @@ training, model result or later gate is completed by this foundation.
 | MSE-605 | Final installation README and demo script | MSE-604 | Fresh local install and 8-step classroom demonstration complete |
 | MSE-606 | Freeze version and list known limitations | MSE-605 | `v1.0` release checklist satisfied, deviations recorded |
 
-**Gate 6:** Academic deliverables, source code, test evidence and demo are complete. No delivery claim before tests run.
+**Gate 6 complete:** Academic report/figures, fresh installation, eight-step demo, final tests, OS-level offline verification and v1.0.0 freeze are complete. See [release checklist](RELEASE.md) and pinned evidence.
 
 ## 3. Dependency and parallelization overview
 
@@ -201,6 +201,6 @@ Dates are deliberately **not invented**. Convert to calendar milestones after co
 - [x] Deduplicate exact normalized text, exclude conflicting labels and derive retained token/character records with verified counts for MSE-105.
 - [x] Freeze/verify seed-42 stratified membership without modifying retained records for MSE-106; complete Gate 1.
 
-**Next task:** `MSE-606`.
-Keep status synchronized with `memory/HANDOFF.md`; later tickets remain open
-until their acceptance criteria are verified.
+**Next task:** None — v1.0 complete.
+All listed tickets have verified acceptance. Keep `memory/HANDOFF.md` and the
+graph synchronized when new user-requested work is assigned.

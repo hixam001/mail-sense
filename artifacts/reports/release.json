@@ -1,0 +1,178 @@
+{
+  "artifact_id": "747bb5f51c2d231140efcc17d1316be68407d07fa9f9a7adcca1b3df2ce01ca3",
+  "checked_at": "2026-11-19T17:58:51.083406+00:00",
+  "checks": {
+    "critical_scenarios": {
+      "T01": "pass",
+      "T02": "pass",
+      "T03": "pass",
+      "T04": "pass",
+      "T05": "pass",
+      "T06": "pass",
+      "T07": "pass",
+      "T08": "pass"
+    },
+    "dependency_compatibility": "pass",
+    "eslint": "pass",
+    "fresh_install_and_demo": "pass",
+    "frontend_tests_passed": 8,
+    "independent_scientific_refits": "pass",
+    "locks": "pass",
+    "os_level_offline": "pass",
+    "production_build": "pass",
+    "python_tests_passed": 413,
+    "ruff": "pass"
+  },
+  "dataset_id": "ccd3321b252f22aaa5e6e1e74d96140b46c088a15474e8607c6259b2467c9c7a",
+  "delivery": "Git tag v1.0.0 and remote main identify the final commit; verify actual refs in Git.",
+  "frozen_files": {
+    "backend/app/main.py": "9d9665b3b9038f3b4837615ab1d247bf78d9e81ce95408fe0c45aa8c586aa3ea",
+    "backend/pyproject.toml": "3df7cabaececa79949bda97c4ac8f8115805fc4fac0c90dc1268d2ab01333755",
+    "backend/requirements.txt": "5200c53a478411014afd28437d5131d1c783fe010af74fa067020e8b96c391f4",
+    "backend/tests/test_environment.py": "0aa119fba69dd035056db02a9ace0e3095a117d7c1ec8b4f2987693ec7e489fe",
+    "backend/uv.lock": "8e037ba6b6dbc900be5b9210de3c26ac26261b0347fd718b23bcf2f5c62505fd",
+    "frontend/package-lock.json": "2e50ac973cffe51b0e9dd63103669bbe9cb2908f487a8b223eb63bbb6e791dae",
+    "frontend/package.json": "13dab7270e2f5a142ca64f61133c24fc6d679dc16c0a2e7bcc26f4cfc97287db",
+    "memory/graph.py": "d6b904e646d52d3084ea51ad213d28d88aebf45597eef090ddd435fd66f238e0",
+    "scripts/offline_check.py": "e7fc336a58c2a62d6bf8638d70741c4d6b72e55700884b2a8dd115f9bbbf13b5",
+    "scripts/tests/test_memory.py": "67ea9264e95f5584da4b28f05cb064db7c147302ab6af1f53547b2931442bd0f"
+  },
+  "gates": {
+    "1": "pass",
+    "2": "pass",
+    "3": "pass",
+    "4": "pass",
+    "5": "pass",
+    "6": "pass"
+  },
+  "implementation_tickets_complete": 39,
+  "limitations": "See docs/RELEASE.md; no modern mail-security, calibrated-probability or full accessibility guarantee.",
+  "pending_v1_tickets": 0,
+  "performance": {
+    "cached_summary": {
+      "median_seconds": 0.03620488249725895,
+      "p95_seconds": 0.04525352699420182,
+      "percentile_method": "nearest_rank",
+      "requests": 30,
+      "target_seconds": 5,
+      "warmups": 3
+    },
+    "prediction": {
+      "median_seconds": 0.05362802300078329,
+      "p95_seconds": 0.06583619100274518,
+      "percentile_method": "nearest_rank",
+      "requests": 30,
+      "target_seconds": 3,
+      "warmups": 3
+    }
+  },
+  "reports": {
+    "artifacts/reports/acceptance.json": "d99b031d49f20494c9902dce64f12455deebc23de6a608a56e491bb3bc8c1c75",
+    "artifacts/reports/dependency_audit.json": "c8afe329f2fd86ec0cf6586906c8cfbc44b6d976cd1b8076b850c4f01b0bfb56",
+    "artifacts/reports/evaluation.json": "8faefc79665fb15c5a0a3ad5cab37cbf2d1fb92bd4bf3ac2b3628f8dd533422c",
+    "artifacts/reports/fresh_install.json": "4119f8acaf207601e51ad69fc81b43ff9b95704268e310584787d9e7d2abc40d",
+    "artifacts/reports/offline_namespace.json": "b06deb29fc81cea22bd9e003efc78d2c20db0e7cca326cb919c0afc1af92028c",
+    "artifacts/reports/reproducibility.json": "fe24ddeaecb5c3d645f472858d26d9910dc7aafa2ad63444b1142d7bafb503f2",
+    "artifacts/reports/runtime_smoke.json": "d7a3c12e67ba2e03e4dc16364fba028caa51c163881a708d11caaaec343bfa3c",
+    "artifacts/reports/statistics_verification.json": "0595b0970342c616cc6fb90b12d8a1292f2ad019a2020dc0a72d63b7d526e080"
+  },
+  "result": "pass",
+  "source_base_commit": "16a4b3957ae891be92e6ed7e9074d37bce806c6d",
+  "split_id": "e10ea9f8b406c62d14a359dd864ef2a195c8c1960c2747f1feaaea313c148c31",
+  "task": "MSE-606",
+  "ui": {
+    "browser": "143.0.7499.4",
+    "checked_at": "2026-11-19T17:55:39.777Z",
+    "checks": [
+      "routes",
+      "keyboard",
+      "stale responses",
+      "privacy",
+      "retry",
+      "404"
+    ],
+    "dataset_id": "ccd3321b252f22aaa5e6e1e74d96140b46c088a15474e8607c6259b2467c9c7a",
+    "result": "pass",
+    "routes": 6,
+    "split_id": "e10ea9f8b406c62d14a359dd864ef2a195c8c1960c2747f1feaaea313c148c31",
+    "text_contrast": [
+      {
+        "minimum": 5.3134987865626835,
+        "route": "/",
+        "samples": 54,
+        "width": 1366
+      },
+      {
+        "minimum": 5.3134987865626835,
+        "route": "/dataset",
+        "samples": 264,
+        "width": 1366
+      },
+      {
+        "minimum": 5.3134987865626835,
+        "route": "/probability",
+        "samples": 115,
+        "width": 1366
+      },
+      {
+        "minimum": 5.3134987865626835,
+        "route": "/statistics",
+        "samples": 94,
+        "width": 1366
+      },
+      {
+        "minimum": 5.3134987865626835,
+        "route": "/detect",
+        "samples": 146,
+        "width": 1366
+      },
+      {
+        "minimum": 5.3134987865626835,
+        "route": "/evaluation",
+        "samples": 116,
+        "width": 1366
+      },
+      {
+        "minimum": 5.3134987865626835,
+        "route": "/",
+        "samples": 49,
+        "width": 390
+      },
+      {
+        "minimum": 5.3134987865626835,
+        "route": "/dataset",
+        "samples": 255,
+        "width": 390
+      },
+      {
+        "minimum": 5.3134987865626835,
+        "route": "/probability",
+        "samples": 110,
+        "width": 390
+      },
+      {
+        "minimum": 5.3134987865626835,
+        "route": "/statistics",
+        "samples": 89,
+        "width": 390
+      },
+      {
+        "minimum": 5.3134987865626835,
+        "route": "/detect",
+        "samples": 141,
+        "width": 390
+      },
+      {
+        "minimum": 5.3134987865626835,
+        "route": "/evaluation",
+        "samples": 111,
+        "width": 390
+      }
+    ],
+    "viewports": [
+      "1366x900",
+      "390x844"
+    ]
+  },
+  "version": "1.0.0"
+}

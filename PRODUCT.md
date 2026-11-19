@@ -88,8 +88,7 @@ history. Normal laptop use and a classroom demonstration are the primary context
   inference, arbitrary dataset uploads, runtime retraining, neural models and
   prediction history from version 1.0.
 - Performance targets are warmed-up prediction p95 of at most 3 seconds and
-  typical cached summaries within 5 seconds on documented demo hardware. These
-  are acceptance targets, not achieved claims.
+  typical cached summaries within 5 seconds on documented demo hardware. Measured release evidence and hardware are documented in `docs/RUNTIME_VERIFICATION.md`.
 
 `docs/SRS.md` is the authoritative locked technical baseline. Scope, dataset,
 stack, model or deployment changes require a recorded approved version change
@@ -100,11 +99,12 @@ and coordinated updates to the related contracts and tests.
 The approved product name is **MailSense**, with the descriptive title
 **Statistical Analysis and Probabilistic Email Spam Detection**. Explanations must
 be understandable to students and precise enough for academic verification.
-The supplied documentation establishes no visual identity or binding aesthetic.
+The implemented workspace uses the Atlas-blue rail, pale-blue canvas, teal ham
+and orange spam tokens documented in `DESIGN.md`.
 
 ## Evidence on Hand
 
-The README and documentation describe approved requirements and planned behavior:
+The README and documentation describe approved requirements and implemented behavior:
 
 - [README](README.md): locked decisions and documentation index.
 - [PRD](docs/PRD.md), [SRD](docs/SRD.md) and [SRS](docs/SRS.md): users, purpose,
@@ -126,10 +126,10 @@ text. Pure statistics services and their numerical verification report now cover
 descriptive summaries, distributions, probabilities, binomial demonstrations,
 Pearson tests and Wilson intervals. Both Naive Bayes models now train on the shared frozen training features and
 reload from verified private artifacts. Identical held-out evaluation and faithful transient inference/explanations are
-verified in Python. All twelve API routes and all five module interfaces are implemented. Production Chromium checks cover six routes at desktop/mobile widths, keyboard flow, delayed responses, empty/error/retry states and transient input. Release acceptance, performance/security smoke tests and final report/setup freeze follow MSE-601–606.
+verified in Python. All twelve API routes and all five module interfaces are implemented. Production Chromium checks cover six routes at desktop/mobile widths, keyboard flow, delayed responses, empty/error/retry states and transient input. Release acceptance, independent scientific checks, fresh installation, academic report and final freeze are documented in MSE-601–606 evidence.
 Documentation examples are synthetic
-teaching fixtures unless explicitly identified as measured results. Model
-scores and timings must be established during implementation. No accuracy or
+teaching fixtures unless explicitly identified as measured results. Measured model
+scores and runtime timings are linked from the university report. No accuracy or
 calibration guarantee is approved. Historical corpus prevalence must not be
 presented as a modern general-population estimate. Original corpus messages
 must remain local and be excluded from public source distribution.

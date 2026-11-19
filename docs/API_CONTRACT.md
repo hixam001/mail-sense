@@ -2,7 +2,7 @@
 
 **Version:** 1.1 · **Date:** 2026-11-19 · **Status:** A01–A12 and shared safe errors implemented; local transport hardening implemented; cross-route contract suite verified (Gate 4 complete)
 **Base URL:** `http://127.0.0.1:8000/api/v1`  
-**Frontend:** `http://localhost:5173` (allowed local origin; adjust via configuration if necessary)  
+**Frontend:** `http://localhost:5173` (explicitly allowed loopback origin on fixed port 5173)
 **Access:** Local-only; no login or API tokens
 
 ## 1. Global conventions

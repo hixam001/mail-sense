@@ -1,9 +1,9 @@
 {
-  "checked_at": "2026-11-19T17:13:07.664101+00:00",
+  "checked_at": "2026-11-19T17:54:40.722262+00:00",
   "limitations": "Advisory feeds at this timestamp; absence of known advisories is not proof of security.",
   "locks": {
-    "backend/uv.lock": "cb8234f2113afc4dee8c3f553a864f6724f4d42264f04ad2422a80eb392bbe6c",
-    "frontend/package-lock.json": "a601d53018489bcf4d1612e8b2419f08dcddac65313e89a7b887fcd1b870279a"
+    "backend/uv.lock": "8e037ba6b6dbc900be5b9210de3c26ac26261b0347fd718b23bcf2f5c62505fd",
+    "frontend/package-lock.json": "2e50ac973cffe51b0e9dd63103669bbe9cb2908f487a8b223eb63bbb6e791dae"
   },
   "npm_audit": {
     "advisories": 0,

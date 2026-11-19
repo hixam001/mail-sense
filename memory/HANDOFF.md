@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-605 — Fresh installation and eight-step classroom rehearsal**.
-Next implementation ticket: **MSE-606**.
+Latest implementation: **MSE-606 — v1.0.0 verified release freeze**.
+Next implementation ticket: **None** — v1.0 complete.
 
 ## Read this at every task start
 
@@ -17,9 +17,42 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-606** — Freeze v1.0.0 consistently, document known limits and release checklist, teach graph memory the completed/no-next state, run final release/science/privacy/browser/dependency checks, update all39 statuses and Gate6, commit/push and verify clean remote delivery.
+**None — the complete v1.0.0 backlog is finished.** All 39 implementation
+requirements and Gates 1–6 have observed evidence. There is no required work left
+or automatic next ticket. Analyze and assign any new user-requested work with
+Gravitas before implementing; keep the standing commit/test/handoff workflow.
 
-Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
+## Current release snapshot
+
+- All five analytical modules plus overview are implemented with actual local
+  FastAPI results, readiness and recovery. No runtime training or external mail
+  service is needed. Both model predictions and complete explanations work.
+- The approved historical experiment retains 5,862 emails, split 4,689/1,173,
+  shared 60,135 training features, seed 42 and alpha 1. Measured confusion matrices
+  and all metrics are independently reconciled; no holdout tuning occurred.
+- Final v1.0.0: **413 Python tests, 8 frontend tests**, Ruff/ESLint, frozen-lock
+  and dependency compatibility checks, production build, all six browser routes
+  at desktop/mobile, keyboard/stale/privacy/retry checks and real API/missing-model
+  recovery pass. Matching Chromium 143 and earlier Chromium 151 are observed.
+- OS-level offline verification passes inside a separate Linux child namespace
+  with only loopback/no internet routes and a kernel-denied external probe.
+  Parent network and corpus/model bytes remain unchanged. Warmed prediction
+  p95=.065836s and cached-summary p95=.045254s pass 3s/5s targets on recorded hardware.
+- Source-only fresh installation separately downloaded all five official archives
+  and recreated environments/data/models. Scientific results and private text/CSV
+  bytes reproduce; new actual provenance times change artifact identity honestly.
+- University report with formulas/five inspected figures, README/SETUP, eight-step
+  demo and [release/known limitations](../docs/RELEASE.md) are complete.
+  [Aggregate release evidence](../artifacts/reports/release.json) pins checked reports.
+- No known blocker/high-severity defects in the executed scope. Historical data,
+  residual dependence/near duplicates, uncalibrated estimates, one holdout,
+  unmeasured platforms/accessibility/load remain documented limitations.
+- Final delivery uses normal configured identity, Jira commit subject and tag
+  `v1.0.0`, without contributor trailers. Check actual local/remote Git refs for
+  delivery confirmation; this note does not substitute for observing the push.
+
+The following preparation and implementation bullets are milestone history.
+Their early scaffold/no-API states are superseded by this completed snapshot.
 
 ## Established and completed preparation
 
@@ -32,8 +65,8 @@ Continue the application backlog autonomously after each verified commit/push. A
   `impeccable` and `security-audit`. They are ignored and untracked; a fresh
   clone needs its own skill installation. Local copies are retained.
 - Impeccable installed its local engine and `.codex/hooks.json`. Product context
-  initialization is complete. The frontend currently has a plain scaffold page;
-  no product visual identity or `DESIGN.md` has been established.
+  initialization is complete. The initial scaffold preceded MSE-501–507; the completed product identity and
+  interface conventions are now documented in `DESIGN.md`.
 - `AGENTS.md` persists the user's analyze → map → implement → verify → update
   handoff → final checks → commit → push workflow. Jira-style subjects use
   `MSE-<ticket>: <summary>`; no added contributor attribution or co-author/sign-off
@@ -55,7 +88,7 @@ Continue the application backlog autonomously after each verified commit/push. A
 - MSE-100 and MSE-107 cover documentation/tooling preparation only. They do not complete
   any MSE-101–606 feature ticket or any product acceptance gate.
 
-## Implemented application functionality
+## Implemented application functionality (milestone history)
 
 - **MSE-101 complete:** `frontend/` contains a React 19/Vite 8 JavaScript
   scaffold, React plugin, ESLint configuration, package manifest/lockfile,
@@ -231,12 +264,12 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-604 implemented:** University report with measured evidence. Academic report includes descriptive probability Pearson Wilson and both NB formulas, five inspected production screenshots with hashes, actual exclusions split metrics timings and authored disagreement. Owned validator reconciles all displayed metrics/descriptives/timings against JSON, image bytes/dimensions and local references. Primary Apache/scikit-learn/SciPy/Wilson references checked. Documentation-only task; application unchanged.
 
-- **MSE-605 implemented:** Fresh installation and eight-step classroom rehearsal. Source-only local clone began without runtime environments corpus text archives or models. Pinned Node/npm, frozen Python environment and matching Chromium143 installed; five official archives downloaded. Eight preparation stages and all verifiers pass. Fresh CSV/text bytes, exact split/vocabulary and both model results reproduce; new actual provenance changes artifact identity honestly. Fresh401 Python tests,8 frontend tests,Ruff,ESLint,production build,six desktop/mobile routes,keyboard,privacy and real API/missing-model recovery all pass. Fresh health and token/character UI controls verified. README/SETUP/DEMO and aggregate fresh-install report finalized.
+- **MSE-605 implemented:** Fresh installation and eight-step classroom rehearsal. Source-only local clone began without runtime environments corpus text archives or models. Pinned Node/npm, frozen Python environment and matching Chromium 143 installed; five official archives downloaded. Eight preparation stages and all verifiers pass. Fresh CSV/text bytes, exact split/vocabulary and both model results reproduce; new actual provenance changes artifact identity honestly. Fresh401 Python tests, 8 frontend tests,Ruff,ESLint,production build,six desktop/mobile routes,keyboard,privacy and real API/missing-model recovery all pass. Fresh health and token/character UI controls verified. README/SETUP/DEMO and aggregate fresh-install report finalized.
 
-## Full remaining implementation inventory
+## Full implementation inventory
 
-**38 implementation tickets are complete; 1 are Not started**. Update statuses as work is
-implemented and verified; retain incomplete and blocked tickets in this table.
+**39 implementation tickets are complete; 0 remain.** Preserve the full verified
+inventory below. New scope needs a newly assigned ticket rather than an invented next task.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
 
@@ -280,11 +313,13 @@ Dependencies and detailed acceptance criteria are in
 | MSE-603 | Independently verify math, provenance and model integrity | Complete — acceptance verified |
 | MSE-604 | Complete university report with real screenshots and measurements | Complete — acceptance verified |
 | MSE-605 | Finalize installation README and classroom demo script | Complete — acceptance verified |
-| MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started — next |
+| MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Complete — v1.0.0 release verified |
 
 ## Verification and delivery evidence
 
-- **MSE-605 — Fresh installation and eight-step classroom rehearsal:** Source-only local clone began without runtime environments corpus text archives or models. Pinned Node/npm, frozen Python environment and matching Chromium143 installed; five official archives downloaded. Eight preparation stages and all verifiers pass. Fresh CSV/text bytes, exact split/vocabulary and both model results reproduce; new actual provenance changes artifact identity honestly. Fresh401 Python tests,8 frontend tests,Ruff,ESLint,production build,six desktop/mobile routes,keyboard,privacy and real API/missing-model recovery all pass. Fresh health and token/character UI controls verified. README/SETUP/DEMO and aggregate fresh-install report finalized.
+- **MSE-606 — v1.0.0 freeze:** Frontend/backend/API and generated locks agree at1.0.0. Final owned release validator passed 413 Python tests including 11 terminal-memory and 1 version-consistency cases,8 frontend tests, all seven pipeline verifiers, independent science/refit verification, production browser desktop/mobile/keyboard/stale/privacy/recovery checks, Ruff/ESLint/lock/compatibility checks. Separate owned OS namespace smoke passed all six routes and both models; external connection failed ENETUNREACH while parent network stayed unchanged. Warmed p95 prediction .065836191s and cached summary .045253527s. Refreshed npm/Python advisories zero with zero skips. Academic report and runtime/test docs reconciled to latest evidence; all 39 tickets complete and graph has no next edge. Source/data/model scope unchanged; known limitations in RELEASE.md. Root greeting now identifies the completed API. Final graph/status/reference/diff gates must pass before commit/push; observe Git refs afterward.
+
+- **MSE-605 — Fresh installation and eight-step classroom rehearsal:** Source-only local clone began without runtime environments corpus text archives or models. Pinned Node/npm, frozen Python environment and matching Chromium 143 installed; five official archives downloaded. Eight preparation stages and all verifiers pass. Fresh CSV/text bytes, exact split/vocabulary and both model results reproduce; new actual provenance changes artifact identity honestly. Fresh401 Python tests, 8 frontend tests,Ruff,ESLint,production build,six desktop/mobile routes,keyboard,privacy and real API/missing-model recovery all pass. Fresh health and token/character UI controls verified. README/SETUP/DEMO and aggregate fresh-install report finalized.
 
 - **MSE-604 — University report with measured evidence:** Academic report includes descriptive probability Pearson Wilson and both NB formulas, five inspected production screenshots with hashes, actual exclusions split metrics timings and authored disagreement. Owned validator reconciles all displayed metrics/descriptives/timings against JSON, image bytes/dimensions and local references. Primary Apache/scikit-learn/SciPy/Wilson references checked. Documentation-only task; application unchanged.
 
@@ -498,7 +533,7 @@ Dependencies and detailed acceptance criteria are in
   records, dependency direction, graph references, removed legacy paths and
   maintained-file diff hygiene. Results belong in the final delivery report.
 - Branch `main` tracks `origin/main` at
-  `https://github.com/hixam001/mail-sense.git`. Preparation was pushed through
+  `https://github.com/hixam001/mail-sense.git`. Early preparation was pushed through
   MSE-105 commit `53576d9`. MSE-106 uses
   `MSE-106: Freeze reproducible stratified corpus split`.
   Observe the new commit and push result in Git. On resume, check `git log -1`,

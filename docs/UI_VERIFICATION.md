@@ -15,7 +15,7 @@ loopback. It found no page exceptions. Computed visible text contrast covered
 1,490 samples across the twelve route/viewport combinations; the lowest sampled
 ratio was 5.31:1. This is a focused UI check, not a full accessibility audit.
 
-Eight frontend unit tests and 397 backend/bootstrap tests pass. ESLint, Ruff
+At MSE-507, eight frontend unit tests and 397 backend/bootstrap tests passed. ESLint, Ruff
 and the production build pass. The production UI uses the same explicitly
 allowed port 5173 as development. Initial JavaScript is about 233 kB uncompressed;
 the Dataset/Recharts chunk loads separately at about 421 kB. No remote assets
@@ -42,3 +42,14 @@ Firefox, Safari, physical touch devices and assistive-technology sessions have
 not been exercised. English UI, local operation and the approved canonical
 corpus remain the supported scope. Release-critical scenarios and performance
 are tracked separately in [TEST_PLAN.md](TEST_PLAN.md).
+
+
+## Final v1.0.0 rerun
+
+MSE-606 passes all six routes at both viewports using the matching installed
+Playwright Chromium 143.0.7499.4, without an executable override. All eight
+frontend tests, 413 Python tests, lint and the production build pass. The
+[release evidence](../artifacts/reports/release.json) contains the latest UI
+aggregate; the initial MSE-507 report and academic screenshots retain their
+original Chromium151 provenance. Physical devices/assistive technologies remain
+unmeasured.

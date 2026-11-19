@@ -1,8 +1,8 @@
 # MailSense
 
-**Statistical Analysis and Probabilistic Email Spam Detection**
+**Version 1.0.0** · **Statistical Analysis and Probabilistic Email Spam Detection**
 
-**Status:** 38/39 implementation tasks verified. Latest: MSE-605 — Fresh installation and eight-step classroom rehearsal. Next: MSE-606. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
+**Status:** **39/39 tasks complete · v1.0.0**. All six release gates verified. No pending v1 ticket. See the [release checklist](docs/RELEASE.md) and [handoff](memory/HANDOFF.md).
 
 Explore a historical email corpus, verify probabilities and statistical tests,
 and compare Multinomial and Bernoulli Naive Bayes in one local workspace.
@@ -102,9 +102,11 @@ python3 scripts/node.py node frontend/node_modules/playwright-core/cli.js instal
 python3 scripts/browser_check.py --production
 python3 scripts/release_check.py
 python3 scripts/smoke_check.py
+python3 scripts/offline_check.py
 ```
 
-These runners start and stop their own missing local servers. Stop existing
+`offline_check.py` additionally needs Linux namespace support and iproute2; it
+leaves the workstation network unchanged. These runners start and stop their own missing local servers. Stop existing
 app servers before release/failure/offline checks to keep the test environment
 unambiguous. A trusted existing Chromium can be selected with
 `--browser /absolute/path/to/chromium`. Initial browser installation needs
@@ -136,6 +138,7 @@ screenshots, runtime measurements, an authored failure example and limitations.
 
 | Document | Purpose |
 |---|---|
+| [Release and known limits](docs/RELEASE.md) | v1.0.0 checklist, evidence and supported scope |
 | [Setup](docs/SETUP.md) | Full preparation, locks, verification and recovery |
 | [Demo](docs/DEMO.md) | Eight-step classroom walkthrough and evidence mapping |
 | [University report](docs/UNIVERSITY_REPORT.md) | Academic methods, figures, results and limitations |

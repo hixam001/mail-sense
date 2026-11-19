@@ -294,14 +294,13 @@ and [model card](MODEL_CARD.md). The test-ID SHA-256 shared by both models is
 
 ## 9. Verification, local privacy and runtime measurements
 
-As checked for MSE-603, 401 Python tests pass, covering mathematical fixtures,
-ingestion, deduplication, split/model integrity, API validation and failure
-handling. Eight frontend unit tests pass in the MSE-601 execution. Production
-Chromium checks cover all six routes at 1366×900 and 390×844, keyboard flow,
-stale responses, retries and transient input. T01–T08 execution evidence is in
-the [acceptance report](../artifacts/reports/acceptance.json); its earlier snapshot
-has 397 Python tests, before the four MSE-602 response-header regressions.
-These counts describe separate observed runs, not 401 distinct end-to-end cases.
+The final MSE-606 run passes 413 Python tests, covering mathematical fixtures,
+ingestion, deduplication, split/model integrity, API validation, version
+consistency and terminal graph-memory state. Eight frontend unit tests pass.
+Production Chromium checks cover all six routes at 1366×900 and 390×844,
+keyboard flow, stale responses, retries and transient input. T01–T08 execution
+evidence is in the [acceptance report](../artifacts/reports/acceptance.json).
+These counts describe separate observed runs, not 413 distinct end-to-end cases.
 
 Real API stop/restart and missing-model recovery were exercised using an isolated
 private copy. Corpus/model bytes remain unchanged. Pasted text is absent from
@@ -310,20 +309,24 @@ oversized requests are rejected; response errors are safe and noncacheable.
 HTML-like input is text and creates no remote resource request.
 
 With browser foreign requests blocked and API Python internet sockets denied,
-all core workflows pass. This verifies independence from internet services at
-those boundaries; it is not an OS-level disconnection test or a comprehensive
-penetration test. Dependency advisory checks found zero reported vulnerabilities
-and zero skipped packages at the recorded time, rather than proving absence of
-unknown vulnerabilities. [Runtime verification](RUNTIME_VERIFICATION.md)
+all core workflows pass. The final release also runs this workflow inside a
+separate Linux network namespace with only loopback and no external IPv4 routes.
+An external socket fails with kernel ENETUNREACH; all six pages and both models
+still work. The parent network remains unchanged. This is an OS-level offline
+check, not a comprehensive penetration test. The
+[namespace evidence](../artifacts/reports/offline_namespace.json) pins the exact
+runtime smoke report. Dependency advisory checks found zero reported
+vulnerabilities and zero skipped packages at the recorded time, rather than
+proving absence of unknown vulnerabilities. [Runtime verification](RUNTIME_VERIFICATION.md)
 
-**Measured MSE-602 timings:** three warmups followed by 30 sequential full HTTP
+**Measured final MSE-606 timings:** three warmups followed by 30 sequential full HTTP
 requests per endpoint, nearest-rank p95, on Linux x86_64, Intel Core i5-13420H,
 12 visible logical CPUs, backend Python 3.12.15. RAM was not measured.
 
 | Operation | Median seconds | p95 seconds | Target seconds |
 |---|---:|---:|---:|
-| Dual prediction, synthetic 100-character input | 0.053498 | 0.064165 | 3 |
-| Cached dataset summary | 0.037263 | 0.045441 | 5 |
+| Dual prediction, synthetic 100-character input | 0.053628 | 0.065836 | 3 |
+| Cached dataset summary | 0.036205 | 0.045254 | 5 |
 
 Both targets pass on this machine. These measurements exclude cold startup,
 installation and training; they do not measure maximum-length prediction or

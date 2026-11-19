@@ -1,6 +1,6 @@
 # MailSense — Data Model and Local Artifact Specification
 
-**Version:** 1.5 · **Date:** 2026-11-19 · **Status:** Acquisition, parsing, retained records and split and trusted models/evaluation implemented; API/UI follow
+**Version:** 1.6 · **Date:** 2026-11-19 · **Status:** Acquisition, parsing, retained records, split and trusted models/evaluation implemented; API/UI integration verified
 **Storage choice:** Local files (CSV + JSON metadata + trusted joblib model artifacts). **No database.**
 
 ## 1. Design principles

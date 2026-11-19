@@ -39,9 +39,9 @@ def create_app(root=None):
     application.include_router(probability_router)
     application.include_router(models_router)
 
-    @application.get("/", summary="Scaffold greeting")
+    @application.get("/", summary="API greeting")
     def greeting():
-        return {"message": "MailSense API scaffold is running."}
+        return {"message": "MailSense API is running."}
 
     @application.get("/api/v1/health", tags=["Readiness"], response_model=HealthResponse)
     def health():

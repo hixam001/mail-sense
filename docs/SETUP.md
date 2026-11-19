@@ -431,3 +431,23 @@ empty-input validation, real backend recovery and limitations. Browser/release
 checks generate ignored output under `frontend/test-results/` and `test-results/`.
 The [fresh-install evidence](../artifacts/reports/fresh_install.json) records the
 source-only rehearsal, separate environments and scientific comparisons.
+
+
+## Linux OS-level offline release check
+
+After installing the test browser and preparing artifacts, Linux hosts with
+`unshare` (util-linux), `ip` (iproute2) and permitted user/network namespaces can
+verify actual absence of external OS routes:
+
+```bash
+python3 scripts/offline_check.py
+```
+
+The runner creates a child user/network namespace, checks that it has only
+loopback and no IPv4 routes, enables its own loopback, and confirms an external
+socket fails with kernel `ENETUNREACH`. It runs the complete smoke workflow
+inside that namespace. The workstation's parent network is unchanged. The
+[namespace report](../artifacts/reports/offline_namespace.json) pins the runtime
+smoke bytes. This release check is Linux-specific; unavailable namespace support
+is an explicit failure, never a claimed pass. Normal application use needs none
+of these namespace tools.

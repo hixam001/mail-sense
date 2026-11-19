@@ -1,6 +1,6 @@
 # MailSense — Application Flow (APP_FLOW)
 
-**Version:** 1.0 · **Date:** 2026-11-19 · **Status:** Approved planned UX, not implemented
+**Version:** 1.1 · **Date:** 2026-11-19 · **Status:** All six routes implemented and production browser workflows verified
 
 ## 1. Context and entry points
 
@@ -10,7 +10,7 @@ MailSense is a **local, single-user academic application**. React/Vite hosts the
 - Browser at `http://localhost:5173/`: dashboard with dataset/model status.
 - Direct local routes while the local dev server is running: `/dataset`, `/probability`, `/statistics`, `/detect`, `/evaluation`.
 - Navigation via the persistent left/top menu and page-level related-analysis links.
-- FastAPI interactive documentation for developers at `http://127.0.0.1:8000/docs`; this is not a product UI flow.
+- Local API schema for developers at `http://127.0.0.1:8000/openapi.json`. CDN-dependent Swagger/Redoc pages are disabled for offline operation.
 
 ### First-run setup (replaces onboarding/account creation)
 1. Developer obtains the approved SpamAssassin archives and installs local dependencies.

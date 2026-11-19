@@ -10,7 +10,8 @@ workflow or memory index elsewhere in the repository.
 
 [graphify-out/graph.json](graphify-out/graph.json) is a Graphify-generated directed
 knowledge graph of the maintained documents, their sections, workflow policies,
-all implementation tickets, statuses, prerequisites and the explicit next task.
+all implementation tickets, statuses, prerequisites and the explicit next task. A completed backlog records **None**; the graph
+contains no next-task edge until a new ticket is assigned.
 Each node and edge has a source file/location. `EXTRACTED` relationships come
 from explicit document structure, links or ticket records; no speculative
 semantic relationships are added. The source hashes detect changes and removals.
@@ -31,7 +32,7 @@ uv pip install --python memory/.venv/bin/python -r memory/requirements.txt
 ```
 
 This isolated environment is ignored by Git. Do not add it to commits or mix its
-dependencies into the future MailSense application environment. Graphify does
+dependencies into the MailSense application environment. Graphify does
 not need a separate API key for this explicit document/task extraction.
 
 ## Retrieve context
@@ -68,3 +69,9 @@ credentials, installed agent skills, session logs, virtual environments and
 generated graph outputs. It uses Graphify's builder, clustering, analysis and
 exporters; it does not run an LLM extraction pass. When new kinds of memory
 relationships are needed, update the extractor and its checks together.
+
+
+When all 39 implementation tickets are complete, the handoff records
+`Next implementation ticket: **None**`. The extractor rejects this terminal
+state if any task is unfinished. Do not invent a next ticket after release;
+record and analyze a new user-requested task before changing the completed scope.

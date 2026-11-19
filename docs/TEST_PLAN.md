@@ -1,7 +1,7 @@
 # MailSense — Test Plan and Acceptance Checklist
 
 **Version:** 1.1 · **Date:** 2026-11-19
-**Status:** Gates 1–5 and all T01–T08 critical acceptance scenarios passed. MSE-602–606 cover final privacy/offline/performance, independent math/integrity, report, installation rehearsal and release freeze.
+**Status:** Gates 1–6 and all T01–T08 critical scenarios pass. Final MSE-606: 413 Python tests, eight frontend tests, production browser workflows, OS-level offline smoke, independent science and fresh-install evidence. See RELEASE.md.
 **Scope:** React/Vite, FastAPI, SpamAssassin ingestion, probability/statistics, Multinomial NB and Bernoulli NB.
 
 ## 1. Test philosophy
@@ -139,4 +139,15 @@ their requirements; dependency compatibility tests do not prove domain math.
 
 ## Consolidated critical acceptance
 
-`python3 scripts/release_check.py --browser /absolute/path/to/trusted/chromium` reruns the full 397-case backend/bootstrap suite with JUnit evidence, all seven offline artifact verifiers, eight frontend tests, a production build and real T07/T08 browser failures. The run passed on 2026-11-19. The temporary private artifact copy is removed afterward; no working corpus or model is removed. The aggregate [acceptance report](../artifacts/reports/acceptance.json) distinguishes module test counts from actual artifact/browser evidence. The checked JUnit and browser detail files are local ignored test output.
+`python3 scripts/release_check.py --browser /absolute/path/to/trusted/chromium` reruns the full 413-case backend/bootstrap/memory suite with JUnit evidence, all seven offline artifact verifiers, eight frontend tests, a production build and real T07/T08 browser failures. The final v1.0.0 run passed on 2026-11-19. The temporary private artifact copy is removed afterward; no working corpus or model is removed. The aggregate [acceptance report](../artifacts/reports/acceptance.json) distinguishes module test counts from actual artifact/browser evidence. The checked JUnit and browser detail files are local ignored test output.
+
+
+## Release verification
+
+The [v1.0.0 release checklist](RELEASE.md) maps all gates and AC-01–AC-10 to
+observed evidence. MSE-606 adds eleven terminal-memory cases and one version
+consistency case to the 401-test MSE-602 suite. The Linux OS-level offline
+workflow and its kernel-denied external probe pass; this supersedes the earlier
+boundary-only offline limitation. Fresh setup passed on a separate source-only
+checkout with no copied private data/models. No blocker or high-severity defect
+is known within the executed scope; unmeasured behaviors remain limitations.

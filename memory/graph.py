@@ -49,6 +49,25 @@ def prerequisites(value, known):
     return sorted(result)
 
 
+def planned_next(handoff, states):
+    """Allow a terminal handoff only after the entire inventory is complete."""
+    match = re.search(
+        r"^Next implementation ticket: \*\*(MSE-\d+|None)\*\*", handoff, re.M
+    )
+    if not match:
+        raise ValueError("Handoff must explicitly name its next ticket or None")
+    ticket = match.group(1)
+    if ticket == "None":
+        if not states or not all(
+            cells[1].split(" — ", 1)[0] == "Complete" for _, cells in states.values()
+        ):
+            raise ValueError("No next task is valid only when all tickets are complete")
+        return None
+    if ticket not in states or not states[ticket][1][1].startswith("Not started — next"):
+        raise ValueError("Next ticket must be a known pending ticket marked next")
+    return ticket
+
+
 def extraction():
     docs = documents()
     nodes, edges = {}, {}
@@ -96,11 +115,12 @@ def extraction():
         for dependency in prerequisites(cells[1], tickets):
             edge(ticket, dependency, "requires", PLAN, line)
 
-    next_ticket = re.search(r"Next implementation ticket: \*\*(MSE-\d+)\*\*", docs[HANDOFF]).group(1)
+    next_ticket = planned_next(docs[HANDOFF], states)
     next_node = next(n["id"] for n in nodes.values()
                      if n["source_file"] == HANDOFF and n["label"] == "Next task")
-    edge(next_node, next_ticket, "next_task", HANDOFF,
-         int(nodes[next_node]["source_location"][1:]))
+    if next_ticket is not None:
+        edge(next_node, next_ticket, "next_task", HANDOFF,
+             int(nodes[next_node]["source_location"][1:]))
 
     workflow_line, sequence = next((i, s) for i, s in enumerate(docs["AGENTS.md"].splitlines(), 1) if " → " in s)
     previous = None
@@ -172,7 +192,11 @@ def check():
                         if u == task_nodes[ticket]["id"] and d["relation"] == "requires"}
         assert dependencies == set(prerequisites(cells[1], tickets))
     next_edges = [e for e in edges if e["relation"] == "next_task"]
-    assert len(next_edges) == 1 and "next" in nodes[next_edges[0]["target"]]["status"].lower()
+    expected_next = planned_next(docs[HANDOFF], states)
+    if expected_next is None:
+        assert not next_edges, "A completed backlog must not invent another task"
+    else:
+        assert len(next_edges) == 1 and next_edges[0]["target"] == expected_next
     dependencies = nx.DiGraph((u, v) for u, v, d in graph.edges(data=True) if d["relation"] == "requires")
     assert nx.is_directed_acyclic_graph(dependencies), "Cyclic ticket prerequisites"
     assert nx.has_path(dependencies, task_nodes["MSE-106"]["id"], task_nodes["MSE-101"]["id"])

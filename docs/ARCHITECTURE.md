@@ -1,6 +1,6 @@
 # MailSense — System Architecture and Technical Design
 
-**Version:** 1.3 · **Date:** 2026-11-19 · **Status:** Corpus pipeline, statistics and trusted dual-model inference implemented; API/UI integration follows
+**Version:** 1.4 · **Date:** 2026-11-19 · **Status:** Corpus pipeline, statistics, trusted dual-model inference and all API/UI modules implemented and verified
 
 ## 1. Architecture goals
 
@@ -62,7 +62,7 @@ flowchart TB
 | CLI preprocessing | Extract official archives safely, MIME parsing, deduplication, split manifest | No runtime processing of arbitrary uploaded tarballs |
 | CLI training | Fit shared vectorizer and both models, evaluate once on untouched test set, persist metadata | No model fit on test messages |
 
-## 4. Repository layout (planned)
+## 4. Implemented repository layout (selected files)
 
 ```text
 mailsense/
@@ -75,14 +75,13 @@ mailsense/
 │       ├── App.jsx
 │       ├── pages/
 │       │   ├── Dashboard.jsx
-│       │   ├── DatasetExplorer.jsx
-│       │   ├── ProbabilityAnalysis.jsx
-│       │   ├── StatisticalInference.jsx
-│       │   ├── SpamDetector.jsx
-│       │   └── ModelEvaluation.jsx
+│       │   ├── Dataset.jsx
+│       │   ├── Probability.jsx
+│       │   ├── Statistics.jsx
+│       │   ├── Detect.jsx
+│       │   └── Evaluation.jsx
 │       ├── components/
-│       ├── services/api.js
-│       └── hooks/
+│       └── lib/                 # API client, request hook and validation
 ├── backend/
 │   ├── requirements.txt
 │   ├── app/
@@ -90,12 +89,12 @@ mailsense/
 │   │   ├── api/
 │   │   ├── schemas/
 │   │   ├── services/
-│   │   │   ├── dataset.py
+│   │   │   ├── analytics_data.py
 │   │   │   ├── descriptive.py
 │   │   │   ├── probability.py
 │   │   │   ├── inference.py
-│   │   │   ├── models.py
-│   │   │   └── explanations.py
+│   │   │   ├── model_store.py
+│   │   │   └── prediction.py
 │   │   └── core/
 │   ├── scripts/
 │   │   ├── ingest_corpus.py
