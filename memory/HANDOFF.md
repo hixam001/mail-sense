@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-404 — Transient prediction and verified model API routes**.
-Next implementation ticket: **MSE-405**.
+Latest implementation: **MSE-405 — Local API transport and logging privacy controls**.
+Next implementation ticket: **MSE-406**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-405** — Harden local binding, explicit CORS and host/origin rules, bounded request bodies and safe logs; test no body/query leakage and blocked external origins, update memory, commit/push then continue MSE-406.
+**MSE-406** — Add cross-route OpenAPI and response/error contract tests for all twelve endpoints, optional resources and invalid inputs; verify actual integration and Gate 4, update memory then commit/push and proceed to frontend MSE-501.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -205,9 +205,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-404 implemented:** Transient prediction and verified model API routes. 362 backend tests and Ruff passed; actual cached model HTTP acceptance passed for all four routes with identical service predictions and shared 1173 test IDs. Boundary/unknown/invalid/missing cases, score decomposition, safe responses and no file writes verified.
 
+- **MSE-405 implemented:** Local API transport and logging privacy controls. Ruff and all 372 backend tests passed. Live HTTP verified ready status, real prediction/CORS, foreign origin/host rejection, 413 body bound and no-store; ss confirmed only 127.0.0.1:8000. Logging tests exclude synthetic pasted bodies, query values and exception details. Supported launcher disables URL access logs; metadata reads are bounded. Stale graph was caught before commit and rebuilt.
+
 ## Full remaining implementation inventory
 
-**24 implementation tickets are complete; 15 are Not started**. Update statuses as work is
+**25 implementation tickets are complete; 14 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -238,8 +240,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-402 | Implement dataset summary/statistics/distribution routes | Complete — acceptance verified |
 | MSE-403 | Implement probability and statistical inference routes | Complete — acceptance verified |
 | MSE-404 | Implement prediction, evaluation and explanation routes | Complete — acceptance verified |
-| MSE-405 | Verify loopback binding, CORS, redacted logging and input limits | Not started — next |
-| MSE-406 | Implement and pass FastAPI contract tests | Not started |
+| MSE-405 | Verify loopback binding, CORS, redacted logging and input limits | Complete — acceptance verified |
+| MSE-406 | Implement and pass FastAPI contract tests | Not started — next |
 | MSE-501 | Build shared React layout, router, API client and request states | Not started |
 | MSE-502 | Build Dataset Explorer and labeled charts | Not started |
 | MSE-503 | Build Probability Analysis | Not started |
@@ -255,6 +257,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-405 — Local API transport and logging privacy controls:** Ruff and all 372 backend tests passed. Live HTTP verified ready status, real prediction/CORS, foreign origin/host rejection, 413 body bound and no-store; ss confirmed only 127.0.0.1:8000. Logging tests exclude synthetic pasted bodies, query values and exception details. Supported launcher disables URL access logs; metadata reads are bounded. Stale graph was caught before commit and rebuilt.
 
 - **MSE-404 — Transient prediction and verified model API routes:** 362 backend tests and Ruff passed; actual cached model HTTP acceptance passed for all four routes with identical service predictions and shared 1173 test IDs. Boundary/unknown/invalid/missing cases, score decomposition, safe responses and no file writes verified.
 

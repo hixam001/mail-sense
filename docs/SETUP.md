@@ -62,12 +62,10 @@ Vite stays on loopback and fails if that port is occupied.
 In a second terminal:
 
 ```bash
-uv run --project backend --frozen python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000
+uv run --directory backend --frozen python -m scripts.serve
 ```
 
-The greeting is at `http://127.0.0.1:8000/`; its schema is at
-`http://127.0.0.1:8000/openapi.json`. These are scaffold endpoints. Corpus
-readiness is implemented at `/api/v1/health`; analytical and prediction route integration follows the handoff. Missing corpus/models/evaluation yield truthful degraded readiness.
+The schema is at `http://127.0.0.1:8000/openapi.json`; all twelve versioned routes are implemented. Missing corpus/models/evaluation yield truthful degraded readiness at `/api/v1/health`. The launcher fixes the listener to loopback, disables forwarded-proxy trust and raw URL access logs. Local UI origins on port 5173 are explicitly allowed; other origins/hosts are rejected before parsing. Requests have a 512 KiB body bound, 4 KiB query bound and no-store responses. Prediction validates 1–50,000 trimmed characters. The 512 KiB wire bound also applies to unusually escaped JSON. Swagger/Redoc CDN pages are disabled for offline operation. Use the launcher to preserve logging privacy; application request records contain only method, static route and status.
 Stop each server with Ctrl+C.
 
 ## Verify

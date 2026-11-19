@@ -14,7 +14,7 @@ from app.services.prediction import predict_text
 def client(corpus):
     prepare_models(corpus)
     prepare_evaluation(corpus)
-    with TestClient(create_app(corpus)) as session:
+    with TestClient(create_app(corpus), base_url="http://127.0.0.1") as session:
         yield session
 
 
@@ -92,7 +92,7 @@ def test_invalid_model_queries(client, path, params):
 
 
 def test_missing_artifacts_are_safe(tmp_path):
-    with TestClient(create_app(tmp_path)) as session:
+    with TestClient(create_app(tmp_path), base_url="http://127.0.0.1") as session:
         assert session.post("/api/v1/predict", json={"text": "meeting"}).status_code == 503
         for path, params in [
             ("metrics", {"model": "multinomial"}),

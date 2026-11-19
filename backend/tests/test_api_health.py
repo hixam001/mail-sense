@@ -15,7 +15,7 @@ from app.services.model_store import MODEL_DIR, MODEL_FILES, prepare_models
 
 def test_missing_artifacts_degrade_and_use_safe_errors(tmp_path):
     app = create_app(tmp_path)
-    with TestClient(app) as client:
+    with TestClient(app, base_url="http://127.0.0.1") as client:
         response = client.get("/api/v1/health")
         assert response.status_code == 200
         result = response.json()
@@ -31,7 +31,7 @@ def test_missing_artifacts_degrade_and_use_safe_errors(tmp_path):
 
 
 def test_data_remains_available_when_models_are_missing(corpus):
-    with TestClient(create_app(corpus)) as client:
+    with TestClient(create_app(corpus), base_url="http://127.0.0.1") as client:
         result = client.get("/api/v1/health").json()
         assert result["dataset_ready"] and result["split_id"]
         assert result["models_ready"] == dict(multinomial=False, bernoulli=False)
@@ -41,7 +41,7 @@ def test_data_remains_available_when_models_are_missing(corpus):
 def test_actual_bundle_readiness_invalidates_on_corruption_and_recovers(corpus):
     prepare_models(corpus)
     prepare_evaluation(corpus)
-    with TestClient(create_app(corpus)) as client:
+    with TestClient(create_app(corpus), base_url="http://127.0.0.1") as client:
         first = client.get("/api/v1/health").json()
         assert first["status"] == "ready" and first["evaluation_ready"]
         path = corpus / MODEL_DIR / MODEL_FILES["bernoulli"]
@@ -63,7 +63,7 @@ def test_cache_uses_content_hashes_instead_of_size_or_timestamp(corpus, monkeypa
         return original_load(root)
 
     monkeypatch.setattr(state_module, "load_split_dataset", counted)
-    with TestClient(create_app(corpus)) as client:
+    with TestClient(create_app(corpus), base_url="http://127.0.0.1") as client:
         assert client.get("/api/v1/health").json()["dataset_ready"]
         assert client.get("/api/v1/health").json()["dataset_ready"]
         assert len(calls) == 1
@@ -94,7 +94,7 @@ def test_validation_and_unexpected_errors_do_not_echo_input_or_paths(tmp_path):
     def unexpected():
         raise RuntimeError("private@example.invalid /tmp/private/path")
 
-    with TestClient(app, raise_server_exceptions=False) as client:
+    with TestClient(app, base_url="http://127.0.0.1", raise_server_exceptions=False) as client:
         invalid = client.post("/validation-probe", json={"word": "private@example.invalid"})
         assert invalid.status_code == 422
         assert invalid.json()["error"]["code"] == "INVALID_INPUT"

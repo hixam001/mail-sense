@@ -49,6 +49,13 @@ class ApplicationState:
             return None
         return tuple(fingerprints)
 
+    def _read_json(self, name, limit):
+        with (self.root / name).open("rb") as stream:
+            content = stream.read(limit + 1)
+        if len(content) > limit:
+            raise ValueError("metadata_size_limit")
+        return json.loads(content)
+
     def refresh(self):
         with self.lock:
             if (self.root / "data/raw/.acquisition.lock").exists():
@@ -63,10 +70,8 @@ class ApplicationState:
                 if dataset_stamp is not None:
                     try:
                         self.rows, self.manifest = load_split_dataset(self.root)
-                        self.dataset_report = json.loads(
-                            (self.root / DATASET_REPORT_FILE).read_text()
-                        )
-                        self.sources = json.loads((self.root / MANIFEST_FILE).read_text())
+                        self.dataset_report = self._read_json(DATASET_REPORT_FILE, 32 * 1024 * 1024)
+                        self.sources = self._read_json(MANIFEST_FILE, 128 * 1024)
                     except (OSError, ValueError, KeyError, TypeError):
                         self.rows = self.manifest = None
             model_stamp = (dataset_stamp, self._fingerprint(MODEL_PATHS)) if self.rows else None
@@ -86,7 +91,7 @@ class ApplicationState:
                 self.evaluation = None
                 if evaluation_stamp is not None and evaluation_stamp[1] is not None:
                     try:
-                        actual = json.loads((self.root / EVALUATION_FILE).read_text())
+                        actual = self._read_json(EVALUATION_FILE, 128 * 1024)
                         expected = evaluate_loaded(
                             self.models,
                             [r for r in self.rows if r["split"] == "test"],

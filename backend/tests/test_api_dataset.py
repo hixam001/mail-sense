@@ -9,7 +9,7 @@ from app.services.distributions import distributions
 
 @pytest.mark.parametrize("scope,total", [("all", 25), ("train", 20), ("test", 5)])
 def test_summary_reconciles_scoped_counts_without_models(corpus, scope, total):
-    with TestClient(create_app(corpus)) as client:
+    with TestClient(create_app(corpus), base_url="http://127.0.0.1") as client:
         response = client.get("/api/v1/dataset/summary", params={"scope": scope})
         assert response.status_code == 200
         result = response.json()
@@ -24,7 +24,7 @@ def test_summary_reconciles_scoped_counts_without_models(corpus, scope, total):
 
 def test_api_numeric_and_word_aggregates_match_verified_services(corpus):
     app = create_app(corpus)
-    with TestClient(app) as client:
+    with TestClient(app, base_url="http://127.0.0.1") as client:
         rows, _, _, _ = app.state.mail_sense.dataset_snapshot()
         stats = client.get(
             "/api/v1/dataset/statistics", params={"scope": "test", "metric": "token_count"}
@@ -58,14 +58,14 @@ def test_api_numeric_and_word_aggregates_match_verified_services(corpus):
     ],
 )
 def test_bad_dataset_queries_are_redacted_422(tmp_path, path, params):
-    with TestClient(create_app(tmp_path)) as client:
+    with TestClient(create_app(tmp_path), base_url="http://127.0.0.1") as client:
         result = client.get(f"/api/v1/dataset/{path}", params=params)
         assert result.status_code == 422 and result.json()["error"]["code"] == "INVALID_INPUT"
 
 
 @pytest.mark.parametrize("path", ["summary", "statistics", "distributions?metric=top_words"])
 def test_missing_dataset_returns_safe_503(tmp_path, path):
-    with TestClient(create_app(tmp_path)) as client:
+    with TestClient(create_app(tmp_path), base_url="http://127.0.0.1") as client:
         response = client.get(f"/api/v1/dataset/{path}")
         assert response.status_code == 503
         assert response.json()["error"]["code"] == "DATASET_UNAVAILABLE"

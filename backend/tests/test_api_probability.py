@@ -13,7 +13,7 @@ def client(tmp_path):
     app.state.mail_sense = SimpleNamespace(
         dataset_snapshot=lambda: (teaching_records(), {}, {}, {})
     )
-    with TestClient(app) as session:
+    with TestClient(app, base_url="http://127.0.0.1") as session:
         yield session
 
 
@@ -84,7 +84,7 @@ def test_invalid_hypothesis_body_is_redacted(client, payload):
 
 def test_missing_and_empty_data_fail_safely(tmp_path):
     app = create_app(tmp_path)
-    with TestClient(app) as session:
+    with TestClient(app, base_url="http://127.0.0.1") as session:
         assert session.get("/api/v1/probability/word", params={"word": "free"}).status_code == 503
         assert (
             session.post("/api/v1/statistics/hypothesis-test", json={"word": "free"}).status_code

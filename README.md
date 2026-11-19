@@ -1,7 +1,7 @@
 # MailSense
 
 **Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** 24/39 implementation tasks verified. Latest: MSE-404 — Transient prediction and verified model API routes. Next: MSE-405. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
+**Status:** 25/39 implementation tasks verified. Latest: MSE-405 — Local API transport and logging privacy controls. Next: MSE-406. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
 
 > **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
 
@@ -66,7 +66,7 @@ python3 scripts/node.py npm --prefix frontend run dev
 In another terminal, start the backend:
 
 ```bash
-uv run --project backend --frozen python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000
+uv run --directory backend --frozen python -m scripts.serve
 ```
 
 Open `http://localhost:5173/` for the frontend, `http://127.0.0.1:8000/` for the API greeting or
