@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-302 — Multinomial Naive Bayes on shared count vectors**.
-Next implementation ticket: **MSE-303**.
+Latest implementation: **MSE-303 — Bernoulli Naive Bayes on shared binary presence**.
+Next implementation ticket: **MSE-304**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-303** — Train BernoulliNB on explicit binary presence from the same features/IDs; prove repeated tokens do not change presence, preserve count matrices and verify absent-term manual scores, commit/push then implement trusted artifacts MSE-304.
+**MSE-304** — Persist fixed local vectorizer and both models with checksums and split/runtime/vocabulary metadata; verify before unpickling, test tamper/staleness/rollback and repeat training, commit/push then implement held-out evaluation MSE-305.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -187,9 +187,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-302 implemented:** Multinomial Naive Bayes on shared count vectors. 276 tests passed under Gravitas; Ruff clean. alpha=1 feature likelihoods and priors match manual Laplace/softmax calculations; held-out label mutation cannot affect fitted parameters. Actual model fits 4689 training rows with 60135 fixed features and class counts 3285 ham/1404 spam; finite inference verified. Persistence/evaluation remain later tasks.
 
+- **MSE-303 implemented:** Bernoulli Naive Bayes on shared binary presence. 279 tests passed under Gravitas; Ruff clean. Binary conversion handles sparse zeros/invalid counts and preserves original matrices. Manual Bernoulli likelihoods and full scores including absent features match predictions; repetition and held-out labels cannot alter the fit. Actual classifiers share 4689 training IDs and 60135 features with finite inference.
+
 ## Full remaining implementation inventory
 
-**15 implementation tickets are complete; 24 are Not started**. Update statuses as work is
+**16 implementation tickets are complete; 23 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -211,8 +213,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-207 | Verify formula unit tests and record numerical evidence | Complete — acceptance verified |
 | MSE-301 | Fit a shared training-only CountVectorizer vocabulary | Complete — acceptance verified |
 | MSE-302 | Train Multinomial Naive Bayes with alpha=1.0 | Complete — acceptance verified |
-| MSE-303 | Train Bernoulli Naive Bayes with alpha=1.0 | Not started — next |
-| MSE-304 | Persist trusted artifacts, matching metadata and checksums | Not started |
+| MSE-303 | Train Bernoulli Naive Bayes with alpha=1.0 | Complete — acceptance verified |
+| MSE-304 | Persist trusted artifacts, matching metadata and checksums | Not started — next |
 | MSE-305 | Evaluate both models on the same untouched holdout | Not started |
 | MSE-306 | Implement faithful token/prior and absent-feature explanations | Not started |
 | MSE-307 | Save evaluation evidence and document model limitations | Not started |
@@ -237,6 +239,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-303 — Bernoulli Naive Bayes on shared binary presence:** 279 tests passed under Gravitas; Ruff clean. Binary conversion handles sparse zeros/invalid counts and preserves original matrices. Manual Bernoulli likelihoods and full scores including absent features match predictions; repetition and held-out labels cannot alter the fit. Actual classifiers share 4689 training IDs and 60135 features with finite inference.
 
 - **MSE-302 — Multinomial Naive Bayes on shared count vectors:** 276 tests passed under Gravitas; Ruff clean. alpha=1 feature likelihoods and priors match manual Laplace/softmax calculations; held-out label mutation cannot affect fitted parameters. Actual model fits 4689 training rows with 60135 fixed features and class counts 3285 ham/1404 spam; finite inference verified. Persistence/evaluation remain later tasks.
 

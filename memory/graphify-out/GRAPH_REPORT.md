@@ -1,7 +1,7 @@
 # Graph Report - mail-sense  (2026-11-19)
 
 ## Corpus Check
-- 16 files · ~29,531 words
+- 16 files · ~29,693 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -32,14 +32,14 @@
 3. `MSE-404` - 10 edges
 4. `MSE-501` - 10 edges
 5. `MSE-207` - 8 edges
-6. `MSE-405` - 8 edges
-7. `MSE-507` - 8 edges
-8. `MSE-201` - 7 edges
-9. `MSE-203` - 7 edges
-10. `MSE-304` - 7 edges
+6. `MSE-304` - 8 edges
+7. `MSE-405` - 8 edges
+8. `MSE-507` - 8 edges
+9. `MSE-201` - 7 edges
+10. `MSE-203` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Next task` --next_task--> `MSE-303`  [EXTRACTED]
+- `Next task` --next_task--> `MSE-304`  [EXTRACTED]
   memory/HANDOFF.md → docs/IMPLEMENTATION_PLAN.md
 
 ## Communities (15 total, 0 thin omitted)
@@ -70,7 +70,7 @@ Nodes (12): 6. Core flow F-04: Spam detection, 7. Core flow F-05: Model evaluati
 
 ### Community 6 - "memory/HANDOFF.md"
 Cohesion: 0.21
-Nodes (11): MSE-603, MSE-604, MSE-605, MSE-606, Full remaining implementation inventory, Verification and delivery evidence, Established and completed preparation, Environment notes and recovery (+3 more)
+Nodes (11): MSE-603, MSE-604, MSE-605, MSE-606, Full remaining implementation inventory, Established and completed preparation, Verification and delivery evidence, Environment notes and recovery (+3 more)
 
 ### Community 7 - "docs/PRD.md"
 Cohesion: 0.17
