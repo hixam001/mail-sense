@@ -1,6 +1,6 @@
 # MailSense — REST API Contract
 
-**Version:** 1.1 · **Date:** 2026-11-19 · **Status:** A01–A12 and shared safe errors implemented; local transport hardening implemented; cross-route contract suite follows
+**Version:** 1.1 · **Date:** 2026-11-19 · **Status:** A01–A12 and shared safe errors implemented; local transport hardening implemented; cross-route contract suite verified (Gate 4 complete)
 **Base URL:** `http://127.0.0.1:8000/api/v1`  
 **Frontend:** `http://localhost:5173` (allowed local origin; adjust via configuration if necessary)  
 **Access:** Local-only; no login or API tokens
@@ -310,7 +310,7 @@ For Bernoulli, response must also disclose that absent-word effects influence cl
 
 ## 4. Implementation note
 
-A01–A12 are implemented with FastAPI/Pydantic. MSE-405–406 add local transport hardening and cross-route contract coverage. Shared errors redact input values, contexts, paths and tracebacks; validation details contain only known field names and error types. When code is written, update this document to reflect actual response schemas and keep `SRS.md`, `DATA_MODEL.md`, `APP_FLOW.md` and tests aligned. The numeric examples are synthetic and cannot be represented as real model results.
+A01–A12 are implemented with FastAPI/Pydantic. Local transport hardening and cross-route contract coverage are verified (Gate 4). Shared errors redact input values, contexts, paths and tracebacks; validation details contain only known field names and error types. When code is written, update this document to reflect actual response schemas and keep `SRS.md`, `DATA_MODEL.md`, `APP_FLOW.md` and tests aligned. The numeric examples are synthetic and cannot be represented as real model results.
 
 MSE-404 implements A09–A12 from cached, verified artifacts. Prediction bodies forbid extra fields and validate trimmed text including normalized emptiness. Metrics preserve test-ID hashes and zero-division notes; comparison includes dataset/artifact/split identities and limitations. General word explanations always expose the absence flag and a nullable absent-word weight. Prediction returns no submitted text and writes no files.
 

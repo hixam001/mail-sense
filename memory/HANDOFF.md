@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-405 — Local API transport and logging privacy controls**.
-Next implementation ticket: **MSE-406**.
+Latest implementation: **MSE-406 — Complete API contract coverage and Gate 4**.
+Next implementation ticket: **MSE-501**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-406** — Add cross-route OpenAPI and response/error contract tests for all twelve endpoints, optional resources and invalid inputs; verify actual integration and Gate 4, update memory then commit/push and proceed to frontend MSE-501.
+**MSE-501** — Build the shared React shell, six accessible routes, local-only API client, truthful readiness and request loading/error states with Impeccable. Preserve transient text and guard stale requests; verify lint/build and desktop/mobile browser, update memory then commit/push and continue MSE-502.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -207,9 +207,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-405 implemented:** Local API transport and logging privacy controls. Ruff and all 372 backend tests passed. Live HTTP verified ready status, real prediction/CORS, foreign origin/host rejection, 413 body bound and no-store; ss confirmed only 127.0.0.1:8000. Logging tests exclude synthetic pasted bodies, query values and exception details. Supported launcher disables URL access logs; metadata reads are bounded. Stale graph was caught before commit and rebuilt.
 
+- **MSE-406 implemented:** Complete API contract coverage and Gate 4. 397 backend tests passed under Gravitas; Ruff clean. Cross-route checks cover all twelve response models/OpenAPI refs, uniform missing-resource envelopes, all/train/test reconciliation and stale-evaluation isolation. Actual artifact acceptance exercised all twelve routes and confirmed 5862 retained, 1173 test and the measured Multinomial confusion matrix. Gate 4 complete.
+
 ## Full remaining implementation inventory
 
-**25 implementation tickets are complete; 14 are Not started**. Update statuses as work is
+**26 implementation tickets are complete; 13 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -241,8 +243,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-403 | Implement probability and statistical inference routes | Complete — acceptance verified |
 | MSE-404 | Implement prediction, evaluation and explanation routes | Complete — acceptance verified |
 | MSE-405 | Verify loopback binding, CORS, redacted logging and input limits | Complete — acceptance verified |
-| MSE-406 | Implement and pass FastAPI contract tests | Not started — next |
-| MSE-501 | Build shared React layout, router, API client and request states | Not started |
+| MSE-406 | Implement and pass FastAPI contract tests | Complete — acceptance verified |
+| MSE-501 | Build shared React layout, router, API client and request states | Not started — next |
 | MSE-502 | Build Dataset Explorer and labeled charts | Not started |
 | MSE-503 | Build Probability Analysis | Not started |
 | MSE-504 | Build Statistical Inference | Not started |
@@ -257,6 +259,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-406 — Complete API contract coverage and Gate 4:** 397 backend tests passed under Gravitas; Ruff clean. Cross-route checks cover all twelve response models/OpenAPI refs, uniform missing-resource envelopes, all/train/test reconciliation and stale-evaluation isolation. Actual artifact acceptance exercised all twelve routes and confirmed 5862 retained, 1173 test and the measured Multinomial confusion matrix. Gate 4 complete.
 
 - **MSE-405 — Local API transport and logging privacy controls:** Ruff and all 372 backend tests passed. Live HTTP verified ready status, real prediction/CORS, foreign origin/host rejection, 413 body bound and no-store; ss confirmed only 127.0.0.1:8000. Logging tests exclude synthetic pasted bodies, query values and exception details. Supported launcher disables URL access logs; metadata reads are bounded. Stale graph was caught before commit and rebuilt.
 
