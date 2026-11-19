@@ -217,7 +217,8 @@ def _outputs(root):
     return root, paths
 
 
-def _publish(pairs, staging, validate):
+def publish_artifacts(pairs, staging, validate):
+    """Publish a preparation stage, restoring the previous set on ordinary failures."""
     backups, published = {}, []
     try:
         for index, (temporary, target) in enumerate(pairs):
@@ -306,7 +307,7 @@ def ingest_sources(root, limits=DEFAULT_LIMITS):
             )
             new_manifest.write_text(updated.model_dump_json(indent=2) + "\n", encoding="utf-8")
             verify_sources(root)  # Detect changes to inputs before publication.
-            return _publish(
+            return publish_artifacts(
                 [(records, records_path), (new_report, report_path), (new_manifest, manifest_path)],
                 staging,
                 lambda: verify_parsed_sources(root, limits),

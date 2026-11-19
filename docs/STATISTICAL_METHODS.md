@@ -1,8 +1,8 @@
 # MailSense — Statistical and Probabilistic Methodology
 
-**Version:** 1.0 · **Date:** 2026-11-19  
+**Version:** 1.1 · **Date:** 2026-11-19
 **Purpose:** Academic formulas, assumptions, verifiable examples and reproducibility rules  
-**Status:** Planned methods; no empirical corpus results claimed yet
+**Status:** Canonical tokenization and retained-record counts implemented; statistical services and model methods remain planned
 
 ## 1. Statistical units and data definitions
 
@@ -14,6 +14,23 @@
 **Population caveat:** The historical corpus is a curated collection, not a probability sample of modern-world emails. Intervals and p-values should be interpreted **conditional on assumptions and on this dataset design**.
 
 All views label their subset (`all`, `train` or `test`). Only training records can fit ML features or models. Word analysis and inference may explore all records for pedagogy but should not drive post-hoc tuning against the test split.
+
+### Canonical tokenization (`unicode-word-v1`)
+
+Apply Python `str.lower()` to normalized `model_text`, then extract Unicode
+word runs matching `(?u)\b\w\w+\b`: at least two letters/digits/underscore
+characters. Punctuation separates tokens; single-character runs are excluded.
+Keep repeated tokens for `token_count`/TF and take a set for document presence.
+Use unigrams, no stop words, accent stripping, stemming or learned filtering.
+For example, `FREE free e-mail foo_bar 42 I` yields
+`[free, free, mail, foo_bar, 42]` (five tokens, four distinct tokens).
+Case remains unchanged in stored text and exact-content deduplication.
+
+This fixed rule matches the pinned CountVectorizer's default word analyzer;
+tests compare tokens without calling `fit`. See the
+[official CountVectorizer documentation](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html).
+MSE-301 must reuse these parameters and fit its vocabulary only on training
+records. Summary token counts require no corpus-fitted state or vocabulary.
 
 ## 2. Descriptive statistics
 

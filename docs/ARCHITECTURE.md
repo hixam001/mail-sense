@@ -1,6 +1,6 @@
 # MailSense — System Architecture and Technical Design
 
-**Version:** 1.1 · **Date:** 2026-11-19 · **Status:** Scaffolds, pinned environments, acquisition and parsing implemented; later components below remain planned
+**Version:** 1.2 · **Date:** 2026-11-19 · **Status:** Scaffolds, pinned environments, acquisition, parsing and deduplication implemented; later components below remain planned
 
 ## 1. Architecture goals
 
@@ -139,8 +139,17 @@ candidate/accepted/rejected counts without text or raw member names.
 Publication backs up prior artifacts, rolls back ordinary failures and verifies
 the resulting record/report/source-manifest set. Acquisition and ingestion
 share a preparation lock; abrupt interruption requires verification/rerun.
-MSE-105 owns deduplication/conflicts/summary records, MSE-106 the split, and
-later tickets the training/runtime architecture. See [SETUP.md](SETUP.md).
+MSE-105 adds `corpus_dataset.py`, fixed `text_features.py` and the
+`prepare_dataset` CLI. Verified parsed records are grouped by exact content
+hash with text equality checked; conflicting-label groups are excluded in full,
+otherwise the smallest stable ID is retained. Owner-only ignored `messages.csv`
+keeps representative provenance and fixed token/character counts, without a
+split. The public deduplication report pins input/output hashes, dataset identity,
+versions/configuration, per-class/source counts and hash-only exclusion mappings.
+Offline verification rederives the complete dataset/report. This stage shares
+the lock/publication rollback helper with ingestion and leaves parser artifacts
+unchanged. MSE-106 owns the split; later tickets own training and runtime
+analytics. See [SETUP.md](SETUP.md).
 
 ### 5.2 Split and train
 1. Stratified `train_test_split(test_size=0.2, random_state=42)` after deduplication.

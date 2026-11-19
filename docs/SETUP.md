@@ -167,7 +167,7 @@ group is ignored and reported separately from candidate mail.
 The parser decodes subject/body only, prefers plain text over its HTML
 alternative, strips HTML safely and ignores attachments. The detailed
 [normalization and diagnostics contract](DATA_MODEL.md#implemented-parsing-contract-mime-v1)
-defines `mime-v1`; no tokenization, deduplication or split runs yet.
+defines `mime-v1`; this stage does not tokenize, deduplicate or assign a split.
 
 | Bound | Default |
 |---|---|
@@ -212,6 +212,70 @@ rerun ingestion from the verified archives. Do not edit counts/hashes to make
 verification pass. A clone has the public report but no private text: acquire
 the pinned archives and run ingestion before parsed verification can succeed.
 
+## Prepare retained records
+
+After parsing, from the repository root:
+
+```bash
+uv run --directory backend --frozen python -m scripts.prepare_dataset run
+uv run --directory backend --frozen python -m scripts.prepare_dataset verify
+```
+
+Both commands run offline. `corpus_dataset.py` verifies the parsed corpus,
+checks text equality within each content-hash group, excludes whole groups
+with conflicting labels, and retains the smallest stable message ID from each
+same-label group. Retained rows sort by ID. Token counts use the fixed
+`unicode-word-v1` rule: lowercase Unicode word runs of at least two characters,
+including digits/underscores; no stop words, accent stripping or fitted state.
+Case/punctuation remain significant for exact-content deduplication. See the
+[retained data contract](DATA_MODEL.md#implemented-retained-dataset-exact-text-v1)
+and [canonical tokenizer](STATISTICAL_METHODS.md#canonical-tokenization-unicode-word-v1).
+
+Observed counts for the pinned corpus:
+
+| Group | Parsed input | Retained | Duplicate exclusions | Conflict exclusions |
+|---|---:|---:|---:|---:|
+| easy_ham | 2,500 | 2,471 | 29 | 0 |
+| easy_ham_2 | 1,400 | 1,389 | 11 | 0 |
+| hard_ham | 249 | 247 | 2 | 0 |
+| spam | 473 | 454 | 19 | 0 |
+| spam_2 | 1,370 | 1,301 | 69 | 0 |
+| Total | 5,992 | 5,862 | 130 | 0 |
+
+The 5,862 retained records comprise **4,107 ham and 1,755 spam**. There are
+96 duplicate groups and no observed conflicting-label groups. Tests cover
+conflicts separately. Input = retained + duplicate exclusions + conflict
+exclusions; conflict rows are not also counted as duplicates. The earlier
+54 parse rejections remain separate. These counts describe this historical
+dataset and exact-text policy, not modern email prevalence or model accuracy.
+
+Private `data/processed/messages.csv` is ignored and owner-only. It preserves
+the representative's provenance, text, content hash, character count and parse
+warnings and adds `token_count`; it has no `split` column yet. Standard CSV
+quoting preserves embedded model-text newlines; warning cells contain JSON
+arrays. A CSV reader needs a field limit of 1,000,000 characters for this schema.
+The CSV output limit is 512 MiB. Empty parsed input yields a header-only CSV
+and zero counts; nonblank text with no tokens is retained with token count zero.
+
+The shareable `deduplication_report.json` pins parser/runtime/tokenizer/dedup
+versions, source-manifest/parsing-report/private-input hashes and sizes, output
+hash/size, dataset ID, per-class/source counts and every excluded hash ID with
+reason/representative mapping. No message text, member names or addresses enter
+the report or CLI output. The dataset ID depends on canonical retained CSV and
+configuration; input serialization is pinned separately. Raw archives,
+acquisition metadata, parser outputs and SourceArchive counters are unchanged.
+
+Publication stages both outputs in private `data/raw/.dataset-*`, shares the
+preparation lock and restores the previous set on ordinary exceptions.
+Verification rederives the full retained dataset/report from verified inputs,
+so changing the CSV and its reported checksum together still fails. If inputs
+change, rerun downstream preparation in order. After abrupt termination, check
+no preparation process is active, remove stale lock/staging state, rerun from
+verified parsed inputs and verify again. Do not manually repair hashes/counts.
+A clone must acquire, parse and prepare locally to recreate private files.
+MSE-106 will assign the stratified 80/20 split; no vocabulary or model is fitted
+by any current corpus preparation command.
+
 ## Locks and intentional updates
 
 Frontend direct pins live in `frontend/package.json`; transitive versions and
@@ -248,7 +312,7 @@ commit the pins and locks together. Routine installs must not change lockfiles.
 
 Initial runtime/package/corpus downloads need network access. The two local
 scaffolds, current tests and corpus parsing/verification run offline after preparation.
-Full analytical use still requires retained data and model artifacts from later
+Full analytical use still requires split metadata and model artifacts from later
 tasks. Acquisition/environment setup supplies no cleaned dataset, trained model,
 empirical score or statistical workflow.
 

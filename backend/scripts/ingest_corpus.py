@@ -28,7 +28,7 @@ def main():
         f"{report['metadata_files_ignored']:,} metadata files ignored."
     )
     print("Private parsed text: data/processed/messages.parsed.jsonl (ignored).")
-    print("Report: data/processed/parsing_report.json; deduplication and split remain pending.")
+    print("Report: data/processed/parsing_report.json; parsed stage precedes deduplication/split.")
     return 0
 
 

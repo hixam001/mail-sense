@@ -1,6 +1,6 @@
 # MailSense — Data Model and Local Artifact Specification
 
-**Version:** 1.2 · **Date:** 2026-11-19 · **Status:** Acquisition and pre-deduplication parsing implemented; retained dataset, splits and models remain planned
+**Version:** 1.3 · **Date:** 2026-11-19 · **Status:** Acquisition, parsing and retained records implemented; splits and models remain planned
 **Storage choice:** Local files (CSV + JSON metadata + trusted joblib model artifacts). **No database.**
 
 ## 1. Design principles
@@ -39,7 +39,7 @@ the fixed canonical selection; timestamps are timezone-aware UTC.
 
 Acquisition records all three parsing counters as explicit `null` with
 `processing_status: "not_started"`. MSE-104 populates integer counts and
-set `complete`; `files_seen = files_accepted + files_rejected` then applies.
+sets `complete`; `files_seen = files_accepted + files_rejected` then applies.
 This lifecycle clarification avoids reporting fabricated zero counts before
 any message has been parsed. Archive byte sizes are measured independently of
 email record counts. No cleaned/retained total is established by acquisition.
@@ -48,11 +48,11 @@ email record counts. No cleaned/retained total is established by acquisition.
 
 ## 3. Entity `ProcessedEmail` (`data/processed/messages.csv`)
 
-This is the target retained/split schema, not the current parser output.
-MSE-104 writes an ignored intermediate `messages.parsed.jsonl` with the same
-fields except `token_count` and `split`, plus sorted `parse_warnings` reason
-codes. MSE-105 owns deduplication, label conflicts and summary records; MSE-106
-owns splitting. Parsing acceptance is not a final retained count.
+MSE-105 implements this retained schema except for `split`, which belongs to
+MSE-106. MSE-104's ignored `messages.parsed.jsonl` contains the same provenance
+and text before deduplication, without token counts or splits. Both stages keep
+sorted `parse_warnings`; JSONL stores an array and CSV a JSON-encoded array cell.
+Parsing acceptance and post-deduplication retention are separate counts.
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
@@ -67,7 +67,8 @@ owns splitting. Parsing acceptance is not a final retained count.
 | `character_count` | integer >= 0 | Yes | Unicode characters in normalized model text |
 | `token_count` | integer >= 0 | Yes | Count after the canonical tokenizer |
 | `content_sha256` | string | Yes | Hash of normalized model text for deduplication |
-| `split` | `train`/`test` | Yes | Assigned after deduplication |
+| `parse_warnings` | array of reason codes | Yes | Preserved from the selected parsed row; JSON array string in CSV |
+| `split` | `train`/`test` | After MSE-106 | Not assigned or present in the current retained CSV |
 
 Rules:
 - `model_text` cannot be blank after normalization; a blank-message record is rejected.
@@ -119,6 +120,52 @@ normalization, warnings, output digest and all report/manifest counts. A
 `complete` source status means parsing completed, not deduplication or readiness
 for training. Current measured totals are 6,046 candidates, 5,992 accepted,
 54 malformed-MIME rejections, five ignored directories and five ignored `cmds`.
+
+### Implemented retained dataset (`exact-text-v1`)
+
+Group by `content_sha256` and check actual `model_text` equality within each
+group; a hash collision aborts. If a group has both labels, exclude all its
+rows, including any repeats within either label. Otherwise retain the smallest
+lexicographic `message_id` and exclude the remaining same-label duplicates.
+Comparison is exact after `mime-v1` normalization, preserving case and
+punctuation. Approximate/near-duplicate detection is outside this stage.
+
+The representative keeps all original provenance/text/hash/character-count and
+warning fields. `token_count` uses the fixed `unicode-word-v1` definition in
+[STATISTICAL_METHODS.md](STATISTICAL_METHODS.md#canonical-tokenization-unicode-word-v1),
+without fitting any vocabulary. Nonblank records with zero tokens are retained.
+CSV rows sort by `message_id`, use fixed header order, UTF-8, LF record endings
+and standard CSV quoting. Embedded model-text LF is preserved; warnings use a
+compact JSON array cell. CSV readers must support fields up to the parser's
+1,000,000-character bound. The ignored file has owner-only permissions.
+
+### Deduplication report (`data/processed/deduplication_report.json`)
+
+Schema version 1, stage `retained_before_split`, pins the parser/deduplication/
+tokenizer configuration, Python runtime, input file hashes/sizes and CSV output
+hash/size. `dataset_id` hashes UTF-8 compact sorted-key JSON containing
+`schema_version`, `preprocessing_version`, `deduplication_version`,
+`representative_policy`, `tokenizer` and `records_sha256`. Thus dataset identity
+depends on canonical retained records/configuration, not input row ordering or
+run time; input serialization changes are separately pinned by the report.
+
+The report includes parsed input/retained class counts, per-source counts,
+duplicate/conflicting group counts and every excluded hashed ID/content hash,
+reason and retained representative ID (`null` for label conflicts). It contains
+no message text, per-member filenames or addresses. All original provenance is
+recoverable locally from the unchanged parsed records and this ID mapping.
+Parse exclusions remain in the parsing report; `parse_rejections` references
+their count without mixing them into deduplication denominators.
+
+`input_records = retained_records + duplicate_records_excluded +
+conflicting_records_excluded`, globally and per source. Conflict exclusions
+take precedence and are not double-counted as duplicates. Class counts sum to
+retained records. `verify` rederives selection, exact CSV bytes, complete report
+and dataset identity from verified parser inputs. Missing/changed inputs,
+tampered output or unknown report fields fail verification. Publication shares
+the preparation lock and rollback helper; an abrupt interrupted artifact set
+requires verification/rerun. Current measured retention is 5,862 of 5,992 rows:
+4,107 ham, 1,755 spam, 130 duplicate exclusions in 96 groups, zero label conflicts.
 
 ## 4. Entity `SplitManifest` (`data/processed/split_manifest.json`)
 
@@ -207,6 +254,7 @@ data/
     messages.csv        # gitignored; includes textual email content
     source_manifest.json
     parsing_report.json # implemented aggregate/hash diagnostics; shareable
+    deduplication_report.json # implemented retained counts/hash exclusion ledger
     split_manifest.json
 artifacts/
   models/

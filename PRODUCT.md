@@ -119,9 +119,12 @@ The README and documentation describe approved requirements and planned behavior
 
 Source code for the local React/Vite and FastAPI hello-world scaffolds is
 available in `frontend/` and `backend/`; the handoff records their runtime and
-build verification. Domain features, corpus files and trained models remain
-absent. Documentation examples are synthetic teaching fixtures unless
-explicitly identified as measured results. Actual retained corpus counts, model
+build verification. Local CLI services now acquire and parse the pinned corpus,
+deduplicate exact text, exclude label conflicts and derive summary records.
+The measured retained dataset has 5,862 records (4,107 ham, 1,755 spam); raw and
+processed mail remain private and ignored. Splits, analytical services, product
+UI and trained models remain pending. Documentation examples are synthetic
+teaching fixtures unless explicitly identified as measured results. Model
 scores and timings must be established during implementation. No accuracy or
 calibration guarantee is approved. Historical corpus prevalence must not be
 presented as a modern general-population estimate. Original corpus messages

@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-104 — Safe archive extraction and MIME text parsing verified**.
-Next implementation ticket: **MSE-105**.
+Latest implementation: **MSE-105 — Deterministic deduplication and retained summary records verified**.
+Next implementation ticket: **MSE-106**.
 
 ## Read this at every task start
 
@@ -17,31 +17,33 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-105: Deduplicate, reject conflicting labels and derive summary records.**
+**MSE-106: Create reproducible stratified 80/20 split, seed 42.**
 
-1. Analyze the complete ticket with Gravitas; read FR-02/03, DATA_MODEL,
-   STATISTICAL_METHODS and deduplication fixtures. Run parsed verification first:
-   `uv run --directory backend --frozen python -m scripts.ingest_corpus verify`.
-   A fresh clone must acquire the pinned archives and run ingestion to recreate
-   the ignored private `data/processed/messages.parsed.jsonl`.
-2. Group canonical `model_text` by its content SHA-256, verifying actual text
-   equality. Exclude every record in a conflicting-label group, then retain one
-   deterministic representative per same-label group. Preserve provenance and
-   log exclusion counts/hashed IDs without text, addresses or member filenames.
-3. Define/reuse the canonical tokenizer from the locked statistical methods to
-   derive token counts without fitting a vocabulary. Produce private retained
-   records and a shareable summary/report with real class counts and input/output
-   hashes. Keep parsing counters distinct from deduplication/retention counters.
-4. Test duplicates within/across archives, conflicting labels, stable selection,
-   empty/Unicode text, counter reconciliation and failed publication. Measure
-   retained counts on the actual parsed corpus and verify repeatability.
-5. Update schema/setup/README and this handoff/graph, run final checks, then
-   commit and push with MSE-105. Split assignment remains MSE-106; no training
-   vocabulary or model fitting belongs in this task.
+1. Analyze the complete ticket with Gravitas; read SRS split/leakage rules,
+   DATA_MODEL SplitManifest, STATISTICAL_METHODS and split fixtures. First run
+   `uv run --directory backend --frozen python -m scripts.prepare_dataset verify`.
+   A fresh clone must acquire, parse and prepare locally to recreate ignored
+   `messages.parsed.jsonl` and `messages.csv`; see SETUP commands.
+2. Consume the verified 5,862 retained rows in their canonical order. Assign
+   stratified train/test membership with test_size=0.2 and random_state=42,
+   recording the exact rounding/class counts and library/runtime configuration.
+   Reuse the existing dataset ID and `unicode-word-v1`; fit no vocabulary/model.
+3. Write a reproducible split manifest containing the seed/fractions, dataset
+   identity, disjoint unique train/test IDs, class counts, source/output hashes
+   and preprocessing version. Decide/document how current retained CSV gets its
+   planned split field without breaking MSE-105 verification; prefer a separate
+   derived artifact or join by ID rather than changing frozen retained bytes.
+4. Test deterministic repeat runs, input-order handling, disjointness, full
+   union coverage, class stratification, small/empty/single-class edge cases,
+   stale hashes and failed publication/recovery. Independently reconcile actual
+   split membership/counts; do not claim Gate 1 until all its evidence passes.
+5. Update data/setup/README and this handoff/graph, run checks, then commit/push
+   with MSE-106. The next epic starts with MSE-201 descriptive statistics; MSE-301
+   later owns training-only vocabulary fitting.
 
-Acceptance: retained normalized texts are unique, labels derive correctly from
-source metadata, all duplicates/conflicts/exclusions reconcile, and summary
-records are deterministic. Current 5,992 parsed rows are not a retained total.
+Acceptance: identical verified corpus/config/seed yields identical split IDs
+and membership, train/test IDs are unique and disjoint, their union is exactly
+the retained dataset, and recorded class counts/hashes reconcile.
 
 ## Established and completed preparation
 
@@ -123,7 +125,8 @@ records are deterministic. Current 5,992 parsed rows are not a retained total.
   `data/processed/messages.parsed.jsonl` stays ignored (owner-only permissions).
   Shareable `parsing_report.json` contains only source metadata, versions/limits,
   counts/hashes and rejected hash IDs/reason codes. Manifest parsing counters
-  are complete and reconcile; token counts, deduplication and splits remain pending.
+  are complete and reconcile. This parser stage precedes deduplication/token
+  counts; MSE-105 implements those downstream and splits remain pending.
 - The actual corpus has **6,046 candidates, 5,992 accepted and 54 rejected**
   for malformed MIME; five directories and five `cmds` control files are counted
   separately. Accepted by group: easy_ham 2,500; easy_ham_2 1,400; hard_ham 249;
@@ -135,13 +138,39 @@ records are deterministic. Current 5,992 parsed rows are not a retained total.
   structure/resource failures abort; individual message failures are counted.
   Ordinary publication exceptions restore prior artifacts, and verification
   detects inconsistent sets after abrupt termination; rerun from pinned inputs.
-- Deduplication, domain statistical/model services, five UI modules and their
+- **MSE-105 complete:** `corpus_dataset.py` groups exact text hashes with
+  equality checked, excludes every row in conflicting-label groups, and retains
+  the smallest stable ID from each same-label group. Fixed `text_features.py`
+  defines `unicode-word-v1`: lowercase + Unicode `(?u)\b\w\w+\b` unigrams,
+  no stop words/accent stripping or learned state. Tests match the pinned
+  CountVectorizer analyzer without fitting. Case/punctuation remain significant
+  for content deduplication, and nonblank zero-token rows remain valid.
+- `backend/scripts/prepare_dataset.py` exposes offline `run`/`verify`. Ignored,
+  owner-only `messages.csv` keeps representative provenance/text/character
+  counts/warnings and adds token counts; rows sort by ID and have no split yet.
+  Shared `publish_artifacts` rolls back ordinary publication failures; verifier
+  rederives exact CSV/report bytes from verified parser inputs. No upstream
+  input, raw archive, acquisition field or SourceArchive count changes.
+- Public `deduplication_report.json` pins input/output hashes/sizes, versions,
+  tokenizer/configuration and dataset ID, per-source/class counts and complete
+  hash-only exclusion/representative mapping. Dataset ID hashes canonical
+  retained CSV plus explicit configuration; it is independent of input row order.
+- Actual retention: **5,862 / 5,992 parsed rows**, comprising **4,107 ham and
+  1,755 spam**. There are **130 duplicate exclusions across 96 groups**, zero
+  observed conflicts (whole-group conflict removal verified synthetically).
+  Retained per source: easy_ham 2,471; easy_ham_2 1,389; hard_ham 247; spam 454;
+  spam_2 1,301. The earlier 54 MIME rejections are separate. Exact-text dedup
+  does not remove near duplicates or guarantee independence/modern prevalence.
+- DATA_MODEL v1.3, STATISTICAL_METHODS token rules, SETUP/README/architecture
+  and PRODUCT evidence reflect the implemented lifecycle; split/readiness,
+  statistics, training and product UI remain pending.
+- Split assignment, domain statistical/model services, five UI modules and their
   unit/contract suites remain unimplemented. All six release gates remain open.
   Synthetic environment checks are not measured corpus/model results.
 
 ## Full remaining implementation inventory
 
-MSE-101–104 are complete; the other **35 tickets are Not started**. Update statuses as work is
+MSE-101–105 are complete; the other **34 tickets are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -152,8 +181,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-102 | Pin dependencies and document environment setup | Complete — fresh install/locks/tests verified |
 | MSE-103 | Obtain canonical official corpus archives and source/checksum manifest | Complete — real downloads/hashes/offline verification |
 | MSE-104 | Implement safe extraction and MIME text parsing | Complete — real parsing/counts/hashes verified |
-| MSE-105 | Deduplicate, reject label conflicts and derive summary records | Not started — next |
-| MSE-106 | Verify deterministic stratified 80/20 split, seed 42 | Not started |
+| MSE-105 | Deduplicate, reject label conflicts and derive summary records | Complete — retained uniqueness/counts/tokenizer verified |
+| MSE-106 | Verify deterministic stratified 80/20 split, seed 42 | Not started — next |
 | MSE-201 | Implement descriptive statistics for text length and token count | Not started |
 | MSE-202 | Aggregate histograms, box plots and top-word data | Not started |
 | MSE-203 | Implement 2×2 word contingency and empirical probabilities | Not started |
@@ -190,6 +219,29 @@ Dependencies and detailed acceptance criteria are in
 
 ## Verification and delivery evidence
 
+- MSE-105: **127 pytest tests passed** (36 new dataset/tokenizer cases plus the
+  previous 91); Ruff passed across backend app/scripts/tests and bootstrap code.
+  Fixtures cover within/across-group duplicates, full conflicting-label groups,
+  deterministic representative/order, Unicode/case/punctuation/zero-token rows,
+  empty input, hash collisions, complete exclusion/provenance accounting,
+  missing/stale/corrupt inputs and outputs, forged report hashes/config/types,
+  privacy, limits/locks/symlinks and rollback with/without previous artifacts.
+- Actual retained CSV: **24,182,963 bytes**, SHA-256
+  `cfb3aca92056ab548d694e0d501ba3d336202e6c42c237b069d6ad705d990d6f`.
+  Dataset ID: `ccd3321b252f22aaa5e6e1e74d96140b46c088a15474e8607c6259b2467c9c7a`.
+  Final acceptance confirmed repeated-run byte identity, independently grouped
+  parsed text/labels, read CSV, compared token counts with sklearn's unfitted
+  analyzer, reconciled every exclusion/count and confirmed unchanged input/raw
+  hashes. No private text or member filename is staged. Frontend is unchanged;
+  browser/build checks do not apply to this backend-only task.
+- MSE-105 final acceptance command:
+  `python3 .agents/skills/gravitas/scripts/verify.py --cmd 'python3 .gravitas/sessions/MSE-105/verify.py'`.
+  It returned **VERDICT: PASS**, including the actual preparation/verification,
+  full suite, independent cross-check and staged privacy/ignore/diff checks.
+  Graphify produced **201 nodes, 335 directed edges and 14 communities**;
+  all 39 ticket statuses reconcile (5 complete, 34 not started) and MSE-106
+  retrieves as next. Local session artifacts remain ignored; no installed
+  Gravitas CLI/hook runtime is claimed. Verify Git delivery against the remote.
 - MSE-104: **91 pytest tests passed**, including 53 new MIME/archive/ingestion
   cases plus the previous 38. Ruff passes across app, scripts and tests.
   New tests cover encoded/invalid charsets, multipart/related/alternatives,
@@ -291,8 +343,8 @@ Dependencies and detailed acceptance criteria are in
   maintained-file diff hygiene. Results belong in the final delivery report.
 - Branch `main` tracks `origin/main` at
   `https://github.com/hixam001/mail-sense.git`. Preparation was pushed through
-  MSE-103 commit `e8dd322`. MSE-104 uses
-  `MSE-104: Parse corpus archives safely with verified MIME counts`.
+  MSE-104 commit `ee4acdf`. MSE-105 uses
+  `MSE-105: Deduplicate corpus and derive verified summary records`.
   Observe the new commit and push result in Git. On resume, check `git log -1`,
   `git status -sb` and the upstream branch before claiming delivery.
 

@@ -1,0 +1,881 @@
+{
+  "class_counts": {
+    "ham": 4107,
+    "spam": 1755
+  },
+  "conflicting_groups": 0,
+  "conflicting_records_excluded": 0,
+  "dataset_id": "ccd3321b252f22aaa5e6e1e74d96140b46c088a15474e8607c6259b2467c9c7a",
+  "deduplication_version": "exact-text-v1",
+  "duplicate_groups": 96,
+  "duplicate_records_excluded": 130,
+  "exclusions": [
+    {
+      "content_sha256": "e300431e702c537f8d0388df872be4deeafc6284a287152cd420648240f967fb",
+      "message_id": "1510f5b4cbcf3cdb769cf28cff404794574036a965b09772f37dbb3c2e7dba46",
+      "reason": "duplicate",
+      "retained_message_id": "14d8adc0804fbe676168f9241ee08312e116805fb2cda7581d77620fccf7f077"
+    },
+    {
+      "content_sha256": "d38bfc46d81c92a368fc60a2ab6cd464953fd787d437056106eba4c7aa847154",
+      "message_id": "1b1e05e11ac838e8dac0318969913f89eeb3214f82141d314d796d4ff1e98e10",
+      "reason": "duplicate",
+      "retained_message_id": "1733a2a0d9d9f59d90c26b5ccef104693b80a10f8fdc5ce8249f257923625e4b"
+    },
+    {
+      "content_sha256": "ea4b86325cc0d7c892e16744fbd4ec20041b654aa9bf6d500908166b941e9c3a",
+      "message_id": "1c0a0fcbe8199d35e1ff5a3bc354a298a8a1627bb32e4652751dcc63315a562d",
+      "reason": "duplicate",
+      "retained_message_id": "09ac37c0e31fcea9cf39e9e0fabb4e9fe597de4cc0c1a46baa093859d1cc9ae1"
+    },
+    {
+      "content_sha256": "2237fa629425e3bc2202ef65f6597cf4d32644c27448f5798f4f2acf67af7251",
+      "message_id": "240fb3add294a56efe92be05d096f7499ce91f40237cd91ffddca1b30c06f62e",
+      "reason": "duplicate",
+      "retained_message_id": "20e5a2984a15f260e7ac862a00445a480de8e9feea1f45784c7852586c565066"
+    },
+    {
+      "content_sha256": "0e925ee5747c7d87ba4904f468f4e6d08c42afa0c5a60f3a41a322eb845059bf",
+      "message_id": "2eb0c6a1f154bff7bf9f28c4c0e28ca9c774e8ed0b22c26ed266df3d99631e49",
+      "reason": "duplicate",
+      "retained_message_id": "262313087f4fd8b7993a7d1fd95abf3b14a928c9335838ef86d8b705cedc03dc"
+    },
+    {
+      "content_sha256": "0e925ee5747c7d87ba4904f468f4e6d08c42afa0c5a60f3a41a322eb845059bf",
+      "message_id": "2f9789d75159b12e3057a2e54cb158963dc92b16d489663aa625a3e658f48cfb",
+      "reason": "duplicate",
+      "retained_message_id": "262313087f4fd8b7993a7d1fd95abf3b14a928c9335838ef86d8b705cedc03dc"
+    },
+    {
+      "content_sha256": "7efcdf6dc15cdc2848312c119a66a73e2f63711860d9159bb2c826de8cccb760",
+      "message_id": "316f1a7146219985cd923ebe6e705d59833a3b78d1ddb1f04fb29ea8a2e2dfc7",
+      "reason": "duplicate",
+      "retained_message_id": "1da0ae7b9245700e9c5f1395a11623b8b41218dba3d4b1a5de0f944e34535c10"
+    },
+    {
+      "content_sha256": "0e925ee5747c7d87ba4904f468f4e6d08c42afa0c5a60f3a41a322eb845059bf",
+      "message_id": "34207b0bae88c80eccc6ba0d171678481adef4bd49fc3403a0ebf48b971d3290",
+      "reason": "duplicate",
+      "retained_message_id": "262313087f4fd8b7993a7d1fd95abf3b14a928c9335838ef86d8b705cedc03dc"
+    },
+    {
+      "content_sha256": "8e77553948e9d40317c6f22730f2705713b9838d68ea15207d21829e4fe7caba",
+      "message_id": "3c7b509ec73c426a2b3e407c43188ded3409dd376186aff14e189e78f5bbe70e",
+      "reason": "duplicate",
+      "retained_message_id": "17b6f3d9f775e721989922755fc514adfb19900fd476947a022c07418750a981"
+    },
+    {
+      "content_sha256": "44d0109e2c7da21e6d0210e45c00c75a318c008b22b55ab978f026e712df32bb",
+      "message_id": "3f35c021df5730b58e7504bb648cb9bb59f16ebb0717bd584d6415c8df957535",
+      "reason": "duplicate",
+      "retained_message_id": "2158c0651309ed5f98947a2bfc574b24b7056c1c1ba31a335179706dbf3556e2"
+    },
+    {
+      "content_sha256": "9edad4d9eea0e5ef11b51aca057e62f1bf37f598d1870bd8db4b3c5a8aed6fc1",
+      "message_id": "403ef63ecac001217a233204ad1664f7562b12eb9c6d2f27e7d0a390a9fdc96b",
+      "reason": "duplicate",
+      "retained_message_id": "1fc37c4fae59e6e7fc27c16c8af52330c0340c6597cc76ec84a81f3ccb8de3cc"
+    },
+    {
+      "content_sha256": "fc7940449174fc1aae8353927c86754a988a8c470c9767802aad2bd9e20ec175",
+      "message_id": "408a87e7128298be2622953de4d380162405f754cc5abad91a8026a870ee4d77",
+      "reason": "duplicate",
+      "retained_message_id": "2ec9b39a30882fe4c2b93ab59fea7950fdfa548b4f3a35ee3bc64806bae926c0"
+    },
+    {
+      "content_sha256": "e4c5ba3b0fe5004abb146aaf2ecd0a12a75da79d25ea5c74eee908e255660ff6",
+      "message_id": "410c28eb20f53e8e0057d7205210ee13e87d514b855a1b8540932334d1b0053b",
+      "reason": "duplicate",
+      "retained_message_id": "16c4e8a35391c1a44af36333cbffb7dccffd6b74d28283774bc880dcb1a5f171"
+    },
+    {
+      "content_sha256": "ef213b9ff1e7fce70bcc062515efcd8ed9e7617c591b7aacf65123ed6c39ee0d",
+      "message_id": "44f6d7d7bc7508324c5ad862c2adbe2a62609c3d41c16ba2638c8d7c48e1553d",
+      "reason": "duplicate",
+      "retained_message_id": "2fca16ce3afa301adcc1acabec8bd923a7a0d7e2f869b10b22cec79016446253"
+    },
+    {
+      "content_sha256": "bbdfa69a909ea9fd7148871ff90e1a8d7d229bff6dc89067d5c9192d8d8af79d",
+      "message_id": "49d44dd53503862d31442347fad146b859e0d64b96e79b76ae9c1d282a5202a8",
+      "reason": "duplicate",
+      "retained_message_id": "332603ccd2a0ae7ec2a333806aa8fb172e59511621dda221f4567fc2a77a188d"
+    },
+    {
+      "content_sha256": "403ab0c9210eaab58f0bdc2849b938910bf61c370cb89d7d6676ab72a250141b",
+      "message_id": "4d71d6a14d14d82b66be27339169e4eea47b4b0215b12c6eefd0b7355f0e8f5a",
+      "reason": "duplicate",
+      "retained_message_id": "051efeb67b8fe3ca4d3c43335de21cee3fd83515e06926ebad0f951dfa1d34cc"
+    },
+    {
+      "content_sha256": "f089d75d8af2631a04ec214bbe03e9d03c9d5029c084e384189722436cb2f41b",
+      "message_id": "4ec62da43b89ebfc541efec70539e39cdce4da6859bcdfba81c0da7c44068e5a",
+      "reason": "duplicate",
+      "retained_message_id": "3d0b16836fd94c3dc6621897ce51b58d1765e050a517c41263a82f45ef1ff7b8"
+    },
+    {
+      "content_sha256": "5b12fc61bd0b96a8db38ce4280ffb553d12a0589c8f2b66dd105894d6f8773ec",
+      "message_id": "59adf83103ef685c924d24f0f9978cea1dbfaa4c3bb5a07790a528255f30279b",
+      "reason": "duplicate",
+      "retained_message_id": "23a455ddf5f04a99cfec445caefe808fad583e7113c6a9fcb2c79692d5276202"
+    },
+    {
+      "content_sha256": "a9a4f72474bc37d28bf63136a55fef02691bd59504c395f9f4a89f6f6e4f2cd9",
+      "message_id": "5bdb40906b444701f8acbccc9e4f2623e1caad339733407d3377290c9a4a23d1",
+      "reason": "duplicate",
+      "retained_message_id": "1148ec124cf1a9179cf0f74c574aee24a96582fb1e2de401a219cb5c57269042"
+    },
+    {
+      "content_sha256": "3fc4310665ea4ae70de3c89a016f8e618bec8962882aa38591609ab9635688da",
+      "message_id": "5da42666aa040a8ac3de695e24650667b372fb01ad0e38dfdc9541ed8047afb1",
+      "reason": "duplicate",
+      "retained_message_id": "53475f4df4824d47c0f07a8912d1f539b59238eda5ea1a321aacd3945b98d15d"
+    },
+    {
+      "content_sha256": "ea3248ad6682a23ea395c9a1d1011019df06eca5aecc324f9a55d2821e3eec4b",
+      "message_id": "680852c7bb39e54ea9741f3846f549b25a91217e473e3df810680be66d54bac3",
+      "reason": "duplicate",
+      "retained_message_id": "2dc2914daef46ea3e945c9fc16e4840c1b8831c8a2fcc69a849710c4268ec496"
+    },
+    {
+      "content_sha256": "647bf36f023178e2f63146b3bac08a0e613fe2db77f353e9977fcf4df82d8a80",
+      "message_id": "6a4d6a2486748e9862d4dd144460fc047b615e9bd5d28c3645263761d98ede02",
+      "reason": "duplicate",
+      "retained_message_id": "51291d7ad20ccb6251fc497e986c1f7b5123c03eed4bcd69af622b6ce5b39d74"
+    },
+    {
+      "content_sha256": "a9a4f72474bc37d28bf63136a55fef02691bd59504c395f9f4a89f6f6e4f2cd9",
+      "message_id": "6b20b1dba647d4270e0b5266ec7a54d8efbd015a72a8c4d57b5edf403d6f7e65",
+      "reason": "duplicate",
+      "retained_message_id": "1148ec124cf1a9179cf0f74c574aee24a96582fb1e2de401a219cb5c57269042"
+    },
+    {
+      "content_sha256": "b6ee6295239dc791eea8fc5c29430636b48591a8f22909c9b00316e738a7c108",
+      "message_id": "6b468ef5e51c29e8a1a0b245363ef92e24da5637dbcb1a1c1dea746e5abfc473",
+      "reason": "duplicate",
+      "retained_message_id": "5894ee0b3a562393484524ea10646f5052c6fa72bd74daf157c8a8928f030056"
+    },
+    {
+      "content_sha256": "8f0c80f65ed046193aff24bd1609eb3e097f59158120240ec5e49a8e39ec028c",
+      "message_id": "6bfdda3495fb39bccf23550af077e74451e7e71b8233b930ca3f65c4267c6d89",
+      "reason": "duplicate",
+      "retained_message_id": "0ddcb3b14cc19536eb4663fe30ff695bd1c12788bc5d96064c27d060c2b1c020"
+    },
+    {
+      "content_sha256": "332720fe733c7c52013d1845c1b27ca282ee96732571f202a99b6c150830d0db",
+      "message_id": "6e834d9da0cd16834c7ecac5f60336b4116837b14cc19f1018c3aa6d409bc1a9",
+      "reason": "duplicate",
+      "retained_message_id": "3a24067372ce1c71fdaca8a877548bf834f315992be90cce69682ba4d02c305e"
+    },
+    {
+      "content_sha256": "ea4b86325cc0d7c892e16744fbd4ec20041b654aa9bf6d500908166b941e9c3a",
+      "message_id": "6f4134f4cd05e65221d32d95876147eb6ae479b612b244a35ee00bcb6a65b983",
+      "reason": "duplicate",
+      "retained_message_id": "09ac37c0e31fcea9cf39e9e0fabb4e9fe597de4cc0c1a46baa093859d1cc9ae1"
+    },
+    {
+      "content_sha256": "0d9647a1d1b5006b10552ce00e108569d9edb8703e3301ad6b0d691d8212c60f",
+      "message_id": "6faaf743aad2f9524c0fe3ab1a4202268b983402b58bd207a5443e9f6cf38812",
+      "reason": "duplicate",
+      "retained_message_id": "0920fbdbb8ac55595d12d8d8ebe4e62f8b637917275a3061f064835605dd2112"
+    },
+    {
+      "content_sha256": "ab650fa767ebdf474c2cd1e05d3500e370b400504d6fd6786eab2767c5de054d",
+      "message_id": "7081ed8b1be5ed3fd6d8327d897662f3ba83e48b31181d92bbf1951726984035",
+      "reason": "duplicate",
+      "retained_message_id": "4f3c4efcd670a26290c25b5d625d4d7f5d2438f06e14bbdbbf750d4337aad55c"
+    },
+    {
+      "content_sha256": "a5bed71c554d4dcd44a0a28dbc8c49a72717501107221d912602c805fa2a6ee7",
+      "message_id": "796a69fb2332970cdf1fa6d13168a1a678d484662908aea3fe91405502e02fdc",
+      "reason": "duplicate",
+      "retained_message_id": "2d13d3e4df238a6586d4369166d8f1f725b0d21ab0258831b98c7ad72846ae03"
+    },
+    {
+      "content_sha256": "7fc3dd8900a99c4c83332d9fdcedeb8352a590656c091583cffbd2229009c1f7",
+      "message_id": "7a6a04ea88c147e68106d12897e63b7ab2202b770073c724f0b49ffe5d1fa90f",
+      "reason": "duplicate",
+      "retained_message_id": "4bb622cfe7f7cb1a6dcb78dc257ee464a7dce0e90dba4d85bef7aba1cedd375e"
+    },
+    {
+      "content_sha256": "9c9dda33d445d7a6618054a029c582e5dcedbf312cbffe1171a59109ba6655ba",
+      "message_id": "7aefdf1e43a04e767e3a62562bf149ef5ea8b52e10abdc6a02053c284db9ec12",
+      "reason": "duplicate",
+      "retained_message_id": "62b519cd87594df232b629dab49037b310eb45e797a4de06eb14db0517a1f0a6"
+    },
+    {
+      "content_sha256": "dd63878886f278590acd8ea3e667c49309b6a4ad6ab576ceac12dc68479aea66",
+      "message_id": "7bd3d53760de9cff6e64777c6fe5f7ebf90ac1459b241914e0372a856860c5ef",
+      "reason": "duplicate",
+      "retained_message_id": "3047248ec574841f338c3fd6222e3945341d5670e93cd2878facf7c8dc860364"
+    },
+    {
+      "content_sha256": "647bf36f023178e2f63146b3bac08a0e613fe2db77f353e9977fcf4df82d8a80",
+      "message_id": "7d24d1ac150dc229523b76a0f0b9ab16c931fdc0de29227d125f0e164b5adb9b",
+      "reason": "duplicate",
+      "retained_message_id": "51291d7ad20ccb6251fc497e986c1f7b5123c03eed4bcd69af622b6ce5b39d74"
+    },
+    {
+      "content_sha256": "a754f672ac87f1b24f5e9b3ec694623a664cebe0faa6f618aca5e7b2a1ca031d",
+      "message_id": "815cd4d9efa4ac1a4b870c68b6d2e311e00905cc62d4c2da67ab5baaa4d22288",
+      "reason": "duplicate",
+      "retained_message_id": "366e93fb2b267cc8e7df54a88301509110225d34111407e748d2911047c32a1f"
+    },
+    {
+      "content_sha256": "b3316bb8af0cb5d6b85a3923104d10ccbf42d7876d247a92fd022ff4eb5d73fb",
+      "message_id": "8203ba00cba33d629ca83379a28be614c8eda8412f9f8368b78f5f1c7d41200c",
+      "reason": "duplicate",
+      "retained_message_id": "774e4a0551ee5fc347cce4b50e2675f90fa5e03d82fcfcd8e71219645b16ad01"
+    },
+    {
+      "content_sha256": "1d45e797ee10276913276a588bb2be9d1f0538818b43672b7c9e543407e13198",
+      "message_id": "84a0ef0ee0793a13d3acf86c3fb781ca24609af2bcf837131e9d3bdac288de64",
+      "reason": "duplicate",
+      "retained_message_id": "37cf2b5e890005075898b69a80efe553c0636234f0881fc4129c408fc7a066e4"
+    },
+    {
+      "content_sha256": "895862c98be14f9be48fbfb45bcbc815c90626216fe8c8eba0a4075f1f2e4784",
+      "message_id": "85b85bbbe266c88e6a65c86562abdc3a267f4188a3f79c768ec36535ffd73e10",
+      "reason": "duplicate",
+      "retained_message_id": "3dba9966ecc029b978c2a203471a7ee750bf2ad9dfc59a32cf1d64026bac0532"
+    },
+    {
+      "content_sha256": "2c1ddda4cc093e0c15caab8815ac6b3f5ec425dd5c34fe1629f8f26ef966ec25",
+      "message_id": "8b33697e7a9e1ccda40bb96f3e3004e5fc4b92c632bd53ef825a08d33be0d8f1",
+      "reason": "duplicate",
+      "retained_message_id": "59febfc818e35cff0fd8588f3badb6f90962ab9c10fd4e0cdb6d8f543bd67551"
+    },
+    {
+      "content_sha256": "48d717993e73abadc0f1ef2003862523ea3ffa8a87cf9d9d04168a7c3689eb18",
+      "message_id": "8b3595e6dc38729e944618cea49ca06fb212675f13e9ca1790c40c10f4cd8d67",
+      "reason": "duplicate",
+      "retained_message_id": "85b54002d854d610408180153f9d8701620a61465218e6ccd6096c58726bfa55"
+    },
+    {
+      "content_sha256": "a5bed71c554d4dcd44a0a28dbc8c49a72717501107221d912602c805fa2a6ee7",
+      "message_id": "8b551df7ad7c921abaabf97cd73df21d2ee807fccf1e07ce1a295ec6802f9823",
+      "reason": "duplicate",
+      "retained_message_id": "2d13d3e4df238a6586d4369166d8f1f725b0d21ab0258831b98c7ad72846ae03"
+    },
+    {
+      "content_sha256": "8d27f767e084edb56eeda556770708a5e5120d43247fec5146d1c67869472cd6",
+      "message_id": "8b83e147a7571796e0d7d3515610f36b1dbe6a874418e903b185ee43ed069f33",
+      "reason": "duplicate",
+      "retained_message_id": "0c503e59af6b2a79cbf33d1e85f695e023196d7112245be3f7c742013655a063"
+    },
+    {
+      "content_sha256": "29da8f11457a0d9e6bc3f50056ed22b9cc92fd85234e93c7b0dfd48eee21ac75",
+      "message_id": "8bebc22dd57ffec5c6ac69e63d69b3b7bffc893d5e1a04001013371048fc4a50",
+      "reason": "duplicate",
+      "retained_message_id": "71fc41331fe2ca9ad6217812fe941727496c713e8abd827e3f2c6ed9569a953f"
+    },
+    {
+      "content_sha256": "8955b9e4df8709cf0d5bf94e018e124175b5067a7a29797402cc7c7f4e4ba21e",
+      "message_id": "8ceacc23dbf526e9393e5e89f07e0f7d18a39e0a68d833265c5e0ec8e589048e",
+      "reason": "duplicate",
+      "retained_message_id": "200d5463b88628a51e0b00ca911be04bf7da1bbbc5daf98e727229c8a099a6d1"
+    },
+    {
+      "content_sha256": "0d9647a1d1b5006b10552ce00e108569d9edb8703e3301ad6b0d691d8212c60f",
+      "message_id": "910c1e06716e0cf54f14430a471e11a318f12c32d521180d273f4cd4e300e966",
+      "reason": "duplicate",
+      "retained_message_id": "0920fbdbb8ac55595d12d8d8ebe4e62f8b637917275a3061f064835605dd2112"
+    },
+    {
+      "content_sha256": "332720fe733c7c52013d1845c1b27ca282ee96732571f202a99b6c150830d0db",
+      "message_id": "9371817ddc6c2afeb0e6d3cfaa4b350e154f42a6d0faa5642246409db172891c",
+      "reason": "duplicate",
+      "retained_message_id": "3a24067372ce1c71fdaca8a877548bf834f315992be90cce69682ba4d02c305e"
+    },
+    {
+      "content_sha256": "b8ee1537c26b97ace7d48a3fefa99aa0f1cb9c794dd781adc14db6ea367690e2",
+      "message_id": "941d9ba8ad503310ff6d2ecf8a61c7c052f530cd3df7584214fe88615da3e815",
+      "reason": "duplicate",
+      "retained_message_id": "1b5d59ae0f22706fa9c8f48ff6b0955b3fc121b50bd7a6f28719e48fdd257e53"
+    },
+    {
+      "content_sha256": "601b1c8f52884b98ef347ca45916f7ac32fd9e92437aa0fbbecd02bca1e99dd5",
+      "message_id": "9437e040d773e23deb59bb0ca13430df927f12d3e5a4d41b9ca80c6345284885",
+      "reason": "duplicate",
+      "retained_message_id": "6e0b75aaac8e7ea63b9b8801d6b4ce52d8b37b564de530f51fc6ead8c117ee1c"
+    },
+    {
+      "content_sha256": "9854a991f8806fd195631b92da4abb5925561ef12ef78c02b8af18144c8188b2",
+      "message_id": "977bcc30cdf2d7d375bc46a8ae3daa73b09ec455618e6685e755074b399e87fb",
+      "reason": "duplicate",
+      "retained_message_id": "94597d9d287728e3dc8234ba22802bca2ddb3e7a6e93f15707d97cad682be2eb"
+    },
+    {
+      "content_sha256": "c57c46a9e731a0c00951b0c8551e7e45576a5eabd88b376ffb2bfcbd86c8c860",
+      "message_id": "9a6ce47fc238ecc86b11e477824b6f3e157d93a49e993f55c608400ce89c677c",
+      "reason": "duplicate",
+      "retained_message_id": "93d8c16598a5e5c04e2d98a916515473f472ea5d75188943b573797624d5887f"
+    },
+    {
+      "content_sha256": "a58d2859b99760773c68b0a5e3995a75448824ba69b03e46af13223b0b73140f",
+      "message_id": "9a9b56a69e3d4303a2e58badf1389a5e9a91e6226a1676818741e542047a456d",
+      "reason": "duplicate",
+      "retained_message_id": "7e34fd41cc8247a5572cf9167f0d3b4967373956cd920ee655ff985770bfa028"
+    },
+    {
+      "content_sha256": "7753b4acad5111e641fa08dfd8159d1e76f8656c33eb89735b735bafd1ba9e01",
+      "message_id": "a03aecb93e94005acffed5901bcf6fe920e898ed79162b021a2382b4f85a20a3",
+      "reason": "duplicate",
+      "retained_message_id": "0389d9914d422e7fd2192e72dc43ed265c43c870cc35ceccba50b7c6739e2577"
+    },
+    {
+      "content_sha256": "11e5af03f9439a10316d35d562b22b0f498ce198efb8af3f56fdd15e18a1bd4d",
+      "message_id": "a0dbdd433ae90094b8923a84b7f61b3a4d257b33cf786e9a043ce2807e84e27f",
+      "reason": "duplicate",
+      "retained_message_id": "6ec7086f7fc7f5333c2bf717644caec53bea85200838dafaf809a4d9e14de26c"
+    },
+    {
+      "content_sha256": "ddca9a57e6760d266f27063c26072c168671f416b9b11762895fce04be4d98b5",
+      "message_id": "a17f0757e0003c2a853c9b66cd05531c781cf51202a724ed1e5b531baae63216",
+      "reason": "duplicate",
+      "retained_message_id": "9ac9cb3ce2fc8472d342100e8489d074e5999e13b70117bc5a6e11a0d59e37be"
+    },
+    {
+      "content_sha256": "883e246b9d3dabcdd9a6517c0ea7da33e22a1e258084db35b3783b9ae74caeae",
+      "message_id": "a2641f338e02341b0b5fa593d1f14c2789d2205227d9a3f95d56c69bf28b4e9f",
+      "reason": "duplicate",
+      "retained_message_id": "7720008c32ee1e5c9014ae99860fa51a5e1f25fce6b749201b8222774a22806a"
+    },
+    {
+      "content_sha256": "51efdfb5255b864992e922aeaf8fdaf19c5ea5f88e55bb688509728256c87fc6",
+      "message_id": "a55ab4783ad44e0eca86a9b56e1588c750633aef791c63bad23390e3b4639b4a",
+      "reason": "duplicate",
+      "retained_message_id": "425ede379db2a563023bbe3c83c4c404d3b34a2d3b0f6e14c1312e1719ae6437"
+    },
+    {
+      "content_sha256": "7a7d1b46882847f2bb129002bf414014f404e717d0e33eebe4f12901ed405b43",
+      "message_id": "aaa7abdbab3cda0bd348853c75590ed631ee8032a2c3ab79aafabc9d8e8ba480",
+      "reason": "duplicate",
+      "retained_message_id": "11907bc4a1d0dbfe856ad732dd636e04d33b6f91870b8884dcae698b4d0abe4e"
+    },
+    {
+      "content_sha256": "e8f0ac682e96f904a3b6c7ca956387703bdd09b89bf8396f0f084ee30e3d4831",
+      "message_id": "aaf741942d1896c6e7c83621b273773e32ec162e0d96b28e3948b3c172af539a",
+      "reason": "duplicate",
+      "retained_message_id": "5ce140deb8e74c213739e6260d0625a80bb282993b95782c514609c3584b15d7"
+    },
+    {
+      "content_sha256": "ea4b86325cc0d7c892e16744fbd4ec20041b654aa9bf6d500908166b941e9c3a",
+      "message_id": "ab734b1b33187530d6b69cd5a68efb03847e465424ed361088addd722f40da2f",
+      "reason": "duplicate",
+      "retained_message_id": "09ac37c0e31fcea9cf39e9e0fabb4e9fe597de4cc0c1a46baa093859d1cc9ae1"
+    },
+    {
+      "content_sha256": "ff666cde8a6e09d4f20523aa2bfc41761c4bb6f4b5341320aa82775fa805f6d1",
+      "message_id": "acb247b1bd12c9f323869c17ea2f399e945b1751253caa516530b490a6e1669a",
+      "reason": "duplicate",
+      "retained_message_id": "a43fbe649401149a7bf546339fa2d82e802b251be49d7831642dbbeb4ee1eee2"
+    },
+    {
+      "content_sha256": "29da8f11457a0d9e6bc3f50056ed22b9cc92fd85234e93c7b0dfd48eee21ac75",
+      "message_id": "ad5e121fa68fa7b581a02ffea7f92a017456133848422f2c58d5e78e74fa9ad5",
+      "reason": "duplicate",
+      "retained_message_id": "71fc41331fe2ca9ad6217812fe941727496c713e8abd827e3f2c6ed9569a953f"
+    },
+    {
+      "content_sha256": "0e925ee5747c7d87ba4904f468f4e6d08c42afa0c5a60f3a41a322eb845059bf",
+      "message_id": "ad7292c4e09f7dfe925b22b49590e4fb05015e7c83492bbc094861333b164268",
+      "reason": "duplicate",
+      "retained_message_id": "262313087f4fd8b7993a7d1fd95abf3b14a928c9335838ef86d8b705cedc03dc"
+    },
+    {
+      "content_sha256": "14f84dc909949d482d1a4f5ec6a640a1aea432397131b41148f4816bef6cb14f",
+      "message_id": "b023418099863436bffdf463b9de0f7edf39ad27372b2c31fa74711eaa9a169b",
+      "reason": "duplicate",
+      "retained_message_id": "8d09e70bb15193a5e826274e6e5344aed3f0e2d97ad9b81230df0fc69116900a"
+    },
+    {
+      "content_sha256": "0ef3289bb58664f4555f9d1244c1620ebb188d06d838f4857482ef7ed415f0fd",
+      "message_id": "b2011bf4c0ace2b949d2e4f47a643a1654158e974c5d7419beccc1194eef9436",
+      "reason": "duplicate",
+      "retained_message_id": "8c49a4bf267fb62fb71261ec6d3f99e9074bf6b0006c281f899bec7b3d2455ec"
+    },
+    {
+      "content_sha256": "f089d75d8af2631a04ec214bbe03e9d03c9d5029c084e384189722436cb2f41b",
+      "message_id": "b2f3f087e83bb2653818259a7a44a477f656f008249707619c1384877918381e",
+      "reason": "duplicate",
+      "retained_message_id": "3d0b16836fd94c3dc6621897ce51b58d1765e050a517c41263a82f45ef1ff7b8"
+    },
+    {
+      "content_sha256": "44159a77b9e1928bf1e089541a499957245063e662c2055e51602e35f438c039",
+      "message_id": "b4a8c7e12edbe9d73c405f1d387a7257ae66c5da992641907bbf138160965278",
+      "reason": "duplicate",
+      "retained_message_id": "904010562d3af880182457f5143b1e6e1feead5478581feac67077ca59e20636"
+    },
+    {
+      "content_sha256": "3fc4310665ea4ae70de3c89a016f8e618bec8962882aa38591609ab9635688da",
+      "message_id": "b6679ed6d24d28dbbcdb308291a3cdc6b84b4c621c7103fe46b8d0d075b8aa2a",
+      "reason": "duplicate",
+      "retained_message_id": "53475f4df4824d47c0f07a8912d1f539b59238eda5ea1a321aacd3945b98d15d"
+    },
+    {
+      "content_sha256": "44ebe39f6a36f3fadea0cfa3499880b2dd89bdd93463c6331ee27e0525e0b835",
+      "message_id": "b72b4059bbfe38c484f4752643b3779b8c3d4a9c8d3a0104f94647de06febee2",
+      "reason": "duplicate",
+      "retained_message_id": "000a02eabfcd00c5eb5ae54813a33f0e2d7d7d3626d856fe375ae8fc8407f73d"
+    },
+    {
+      "content_sha256": "3fc4310665ea4ae70de3c89a016f8e618bec8962882aa38591609ab9635688da",
+      "message_id": "b759bff8b23e3c25ad0521a1c47e672fb0227f45cf5ee15c53ba2ec1e0cb71b4",
+      "reason": "duplicate",
+      "retained_message_id": "53475f4df4824d47c0f07a8912d1f539b59238eda5ea1a321aacd3945b98d15d"
+    },
+    {
+      "content_sha256": "d1fa87ad27809bac6f7daf0804225306c8c08ccc8d7efcea8186dae8ef99c4f1",
+      "message_id": "b77f8f24e6a09db46771f5005fcf0f239ad5a3cdaebace9cfef8e2b701bb9729",
+      "reason": "duplicate",
+      "retained_message_id": "186bd641dadaab263b5aa6c1a443833f34ae3a44b3f25b2a4910d6ad6a38032f"
+    },
+    {
+      "content_sha256": "33ffef1b683ef410ac378b78d9c7a9550674e3e40c20ac29dbe148fd1f9f7b57",
+      "message_id": "b91e722807487102c1e1b5229a5f46d0d867c97e45d94b1f9cb99e6571f37a1f",
+      "reason": "duplicate",
+      "retained_message_id": "0c2601109fcf71041a88570ad297f35372e4cfc80c36332b324720dde762b5c5"
+    },
+    {
+      "content_sha256": "ef213b9ff1e7fce70bcc062515efcd8ed9e7617c591b7aacf65123ed6c39ee0d",
+      "message_id": "bc54e6fba91457cdd189c21186b1cdf275a4a24206bf0b9f8b5045c3f1d0d394",
+      "reason": "duplicate",
+      "retained_message_id": "2fca16ce3afa301adcc1acabec8bd923a7a0d7e2f869b10b22cec79016446253"
+    },
+    {
+      "content_sha256": "2fe6812e2e3d205c99c53232890fac2091632a33e504b9c8039d4407319db7a6",
+      "message_id": "bc9cfebc81d5b2ea6d3d4818c6f017fa14a9a947e6cb65d7f52043cf8a54bd16",
+      "reason": "duplicate",
+      "retained_message_id": "24cfe47063acf5c6272469738e4b51e5f35e131d311c9e212093b1743a6c4e38"
+    },
+    {
+      "content_sha256": "38e04ef9b28145323eae629a6a8e2140328ebbd63e6ad84e73cce7480e867e64",
+      "message_id": "be759424bc829a901df7a94fa4e9d8ab7f2af505527ec43526662b84c739bbfe",
+      "reason": "duplicate",
+      "retained_message_id": "807a635c01945d73955824316037bb8d1bf0f9b52bfba95239c4fa7026c415a6"
+    },
+    {
+      "content_sha256": "a7b2ac62f2c2d05ca5fac45e6b9a7a2266af649bb43a4f52be976066d4916d55",
+      "message_id": "bef273acfd83b88eb8349c6f7f61ac73ccb9039a52528a753290a5f56fa9907d",
+      "reason": "duplicate",
+      "retained_message_id": "20c4306e57882436f3d45ad3e479f2127593f52bb2b9564a214f288a88f4b08c"
+    },
+    {
+      "content_sha256": "ff666cde8a6e09d4f20523aa2bfc41761c4bb6f4b5341320aa82775fa805f6d1",
+      "message_id": "bef75e381ce02a016beb0dcadeaf8f40fbc928fb0b0024315939052965877ce3",
+      "reason": "duplicate",
+      "retained_message_id": "a43fbe649401149a7bf546339fa2d82e802b251be49d7831642dbbeb4ee1eee2"
+    },
+    {
+      "content_sha256": "d1fa87ad27809bac6f7daf0804225306c8c08ccc8d7efcea8186dae8ef99c4f1",
+      "message_id": "c268b7ac509e39de3167866f5f301945bbcc2d0a45520bbae3272d637d9c99af",
+      "reason": "duplicate",
+      "retained_message_id": "186bd641dadaab263b5aa6c1a443833f34ae3a44b3f25b2a4910d6ad6a38032f"
+    },
+    {
+      "content_sha256": "2510a70faf154f540c42f7674a7da7f4bb6106039b1d76fb7bfa536293797311",
+      "message_id": "c32c4a7559c733a09acb855b31aba64c87010b0716afd6f21666b1d73567f622",
+      "reason": "duplicate",
+      "retained_message_id": "854f6424223129fafb88a46c5591a48d23a0472e85b0530694efc400c50ec364"
+    },
+    {
+      "content_sha256": "4c2a1a546742ed2fa3081836900fafb8bc0e9ea04e194ced0853de7cda778d6a",
+      "message_id": "c43a523f516feddbc09db8ce3a02b899cf19165a448ddc504ea423e768082e2e",
+      "reason": "duplicate",
+      "retained_message_id": "7c4c16ec55711050c81e7a57c7e2e0df3987d2c893909e7e739848577e69cb0a"
+    },
+    {
+      "content_sha256": "534f977ff7f6dfd6748edde0ecc9b616460f274929bf2dc58515861eee06c98b",
+      "message_id": "c4a614ef8fd6f47182858ea9da37e4de6a483cdb017fc8425968d41b638e611d",
+      "reason": "duplicate",
+      "retained_message_id": "b6005b1bc41e4f8141fd4f59b5d5f14dcbaf26395967759962bab29d41c0136f"
+    },
+    {
+      "content_sha256": "4e3e3e7293c6424d890672da36fe64878d840b50a08284860a16457b640761c3",
+      "message_id": "c665e1f1b29ddc672a72cbb8d5cb3c418279cb355e7a55d1bcd0fbb76faa8f28",
+      "reason": "duplicate",
+      "retained_message_id": "3416bade9d285066e2c2569a7fb53d3488b2f4e2f8eab622052a8a511d6047c2"
+    },
+    {
+      "content_sha256": "493a6af96645f5815ec36034e33ce7d7c9dcc4a09a3970144e70be2a1baca200",
+      "message_id": "c67bf3e0b8b3b0ec1f2d0eed9a1e23bced6e8f9182d90ba1c3f512407f253052",
+      "reason": "duplicate",
+      "retained_message_id": "24bacf622ef253f805fc89f1a155f31c9b42ebca2910adfe7202c1f0690f53f6"
+    },
+    {
+      "content_sha256": "aa11959195bbfe33e32d60cebab45b4ce329c00f70188870f773d12846573d3c",
+      "message_id": "c7bab3acd285491011d653cf99c138b87eb0bed7b02e5f3667b2da1b4f0ca4c7",
+      "reason": "duplicate",
+      "retained_message_id": "126d309f9dfb5a0be82e02d41a395b1f849cb10c12a78cd3ef3990c301b78089"
+    },
+    {
+      "content_sha256": "9c9dda33d445d7a6618054a029c582e5dcedbf312cbffe1171a59109ba6655ba",
+      "message_id": "c9f629d87f441c05c1a0b7c9a603bcc5eb89a8cfe2c9d7c4079b9d1d2ef922b9",
+      "reason": "duplicate",
+      "retained_message_id": "62b519cd87594df232b629dab49037b310eb45e797a4de06eb14db0517a1f0a6"
+    },
+    {
+      "content_sha256": "a495865b5db10965232991c19e3db36a6041cfc9977c77d49a125ca37bc36b5b",
+      "message_id": "cb60ae59be2ad33c16d4cbca2646a4093378ba38eb1ee0b16e0e74bf1bf316f2",
+      "reason": "duplicate",
+      "retained_message_id": "c66809ddbf705961c202d3a3e34e55f96e10c3c85b900caef8f98c3e7851b2fd"
+    },
+    {
+      "content_sha256": "79c1c6f9710a17bc6b19b9a9ccdef984ed545afe98a67ffab53e630f5f120d58",
+      "message_id": "cc3aba89be5766ad6a6c168f4f2ad2696b347eed9b4a2db1eaaea92572aa7676",
+      "reason": "duplicate",
+      "retained_message_id": "1b4777112a940b2e00ff9c4120e4104f921adb7d0efde21cef62c7c32136592f"
+    },
+    {
+      "content_sha256": "38e04ef9b28145323eae629a6a8e2140328ebbd63e6ad84e73cce7480e867e64",
+      "message_id": "ce625110c53dc369eb39139d37f7c1aba148064eaf99c0608fa2eb991c5e877d",
+      "reason": "duplicate",
+      "retained_message_id": "807a635c01945d73955824316037bb8d1bf0f9b52bfba95239c4fa7026c415a6"
+    },
+    {
+      "content_sha256": "9854a991f8806fd195631b92da4abb5925561ef12ef78c02b8af18144c8188b2",
+      "message_id": "cf57e76508a3386b540c6171a397f0d69ae7fa39c592959994c9de6cb176ac83",
+      "reason": "duplicate",
+      "retained_message_id": "94597d9d287728e3dc8234ba22802bca2ddb3e7a6e93f15707d97cad682be2eb"
+    },
+    {
+      "content_sha256": "534f977ff7f6dfd6748edde0ecc9b616460f274929bf2dc58515861eee06c98b",
+      "message_id": "cf8ea12b76fe08156bfb8e74bdd6eb5e58c1d9b6d05e3a441e575e748e7ae9d5",
+      "reason": "duplicate",
+      "retained_message_id": "b6005b1bc41e4f8141fd4f59b5d5f14dcbaf26395967759962bab29d41c0136f"
+    },
+    {
+      "content_sha256": "af0d78c7389be787f2fdd85d943491c00821ef0a950cbc585d8411f28c1a1106",
+      "message_id": "cfc735c021ecfbc28239820d42ee627e3e4219acce50f893d2a3bea7e97e3703",
+      "reason": "duplicate",
+      "retained_message_id": "8c56e1e1016ef066f024191b8f9861721c04c2cfaf1a7cfc6982b330b4c44dd3"
+    },
+    {
+      "content_sha256": "aa11959195bbfe33e32d60cebab45b4ce329c00f70188870f773d12846573d3c",
+      "message_id": "d126a6c90bdd61da445088a3cf4ab6749c5150a071e77c7408e213ea7aba67fb",
+      "reason": "duplicate",
+      "retained_message_id": "126d309f9dfb5a0be82e02d41a395b1f849cb10c12a78cd3ef3990c301b78089"
+    },
+    {
+      "content_sha256": "f089d75d8af2631a04ec214bbe03e9d03c9d5029c084e384189722436cb2f41b",
+      "message_id": "d166ea930ef65e301767ccc0e5ade2360efb5ba1cad81c724af1dd5dd99d2582",
+      "reason": "duplicate",
+      "retained_message_id": "3d0b16836fd94c3dc6621897ce51b58d1765e050a517c41263a82f45ef1ff7b8"
+    },
+    {
+      "content_sha256": "cf167fbb50fea29aafa99cbbf842c9ba7861dd1ba57452ac9ebafef08a846084",
+      "message_id": "d296b26813b737c381b01414eb6dd2afb4a17b6101b0252da9348625e8fd4376",
+      "reason": "duplicate",
+      "retained_message_id": "24489ccd0b8496be73cdefd354adc606b4d52fe441fc19f26d03bdc27290c1fd"
+    },
+    {
+      "content_sha256": "e0edd79d416c2e1831f2f1cb185949934bd0de70dc894dfb949a0cbbeb66c79e",
+      "message_id": "d360182320fca05b0b45db924e01d19fdc9dfdad86a07e0621cd4aa5493db387",
+      "reason": "duplicate",
+      "retained_message_id": "4f4728c62d8f202286850496aacca1d5fa08aacfd59f6eeb7085e062577b1445"
+    },
+    {
+      "content_sha256": "ff613b0aae5e751131c2b239370097632b0b9ca9dc1763994adfb342bc37a6b2",
+      "message_id": "d3ec4fad5d499a51119973c1228ea4f1832e0ae47492501a24d884ff9b8eba0a",
+      "reason": "duplicate",
+      "retained_message_id": "8c3e3d1b4bbc2e6c5fadaa0026795d738fc308e796aa84978741cd61c9816151"
+    },
+    {
+      "content_sha256": "dd63878886f278590acd8ea3e667c49309b6a4ad6ab576ceac12dc68479aea66",
+      "message_id": "d4e9f1747578ed3dd52ad3bd8daa0ae08e12adcfae9b9542dfa8c20a46ba65a6",
+      "reason": "duplicate",
+      "retained_message_id": "3047248ec574841f338c3fd6222e3945341d5670e93cd2878facf7c8dc860364"
+    },
+    {
+      "content_sha256": "14f84dc909949d482d1a4f5ec6a640a1aea432397131b41148f4816bef6cb14f",
+      "message_id": "d8d2d66b772338160040bef37a3192c7481796052659c382e578b44958cc8e18",
+      "reason": "duplicate",
+      "retained_message_id": "8d09e70bb15193a5e826274e6e5344aed3f0e2d97ad9b81230df0fc69116900a"
+    },
+    {
+      "content_sha256": "87aaf07648921d94c7e0dd47d5eea9dc8a74c1b803f6b3dc86fcf6dd44397584",
+      "message_id": "da412c157b17d767a184970b34bc92197f4cf4e3a7f38bd4ac329116cc451fce",
+      "reason": "duplicate",
+      "retained_message_id": "b8f8230e6e3061650ce5f51aaa549b6df178820aa7ee437c5f43523c417da82e"
+    },
+    {
+      "content_sha256": "c37902fe35c09506cc321a6006de8ae52a9bdb403ad173c841e780d1d1013c80",
+      "message_id": "db05a1d665690e3d8f6447f5b21eb06b66596d680c2b3b01749fb6a034a27182",
+      "reason": "duplicate",
+      "retained_message_id": "7ac13549a28bd73f946ccd48eaddff3eda90905f416b9aefcc2b39a6b106ab54"
+    },
+    {
+      "content_sha256": "7efcdf6dc15cdc2848312c119a66a73e2f63711860d9159bb2c826de8cccb760",
+      "message_id": "dd4ecc8c92408e1a20b40869fe6018c49e9af31f9cfb3a6e088119834ce8c5df",
+      "reason": "duplicate",
+      "retained_message_id": "1da0ae7b9245700e9c5f1395a11623b8b41218dba3d4b1a5de0f944e34535c10"
+    },
+    {
+      "content_sha256": "5d36599d89019da24c745dfae9d0176f875c4207790b220aa2f4457f74e506a8",
+      "message_id": "dd66a37316b39b2f23b0e5b465554681967a03f3bb7f49a81de9160b84313551",
+      "reason": "duplicate",
+      "retained_message_id": "dc45f5b0574acdca1908d21baad0617fd5cc1cf4b136b767f3af9af3137d2742"
+    },
+    {
+      "content_sha256": "bd019b774b48878415551a600f6ea3e65b58afe1f22b295e0e7d78ad274ad621",
+      "message_id": "ddc764b222e9241c6b08d2cc067f786cad3ea3e60c4b47f885f6bf4204a037d4",
+      "reason": "duplicate",
+      "retained_message_id": "5d41f1464cf7e7b424dbbc4304c1b69495ba66344f3cbbe8831617d3851a81f1"
+    },
+    {
+      "content_sha256": "dd63878886f278590acd8ea3e667c49309b6a4ad6ab576ceac12dc68479aea66",
+      "message_id": "e0bc466cd0b7f13b4c362a5de9a55eec5f6de959289da4ed0add4d08164460d5",
+      "reason": "duplicate",
+      "retained_message_id": "3047248ec574841f338c3fd6222e3945341d5670e93cd2878facf7c8dc860364"
+    },
+    {
+      "content_sha256": "c37902fe35c09506cc321a6006de8ae52a9bdb403ad173c841e780d1d1013c80",
+      "message_id": "e2b33bb1f4a8859e7a96d718f9a1a520a58d7b9b56d75810f8f8903b537f30ed",
+      "reason": "duplicate",
+      "retained_message_id": "7ac13549a28bd73f946ccd48eaddff3eda90905f416b9aefcc2b39a6b106ab54"
+    },
+    {
+      "content_sha256": "77d8532187af34885973d54c82550c78be4fdb90f1afe3d798b32ee1a3ecad44",
+      "message_id": "e32203829e59d3f6b1bd0e43b8000f0358f428ec6212a160d684cfe3ab81eb5c",
+      "reason": "duplicate",
+      "retained_message_id": "ac90725914cd8722a611f1733510530d22470a925d2a3cc32d18509d4dcdb235"
+    },
+    {
+      "content_sha256": "8e77553948e9d40317c6f22730f2705713b9838d68ea15207d21829e4fe7caba",
+      "message_id": "e49a8598500530c9935490d1c79163ba7f682ab0933e9131591805888ba0a6c7",
+      "reason": "duplicate",
+      "retained_message_id": "17b6f3d9f775e721989922755fc514adfb19900fd476947a022c07418750a981"
+    },
+    {
+      "content_sha256": "72852c3d72cee357fa28bd3fd643ad004baeb7d0ef6fb5653bd9a0dbe9d2dd6d",
+      "message_id": "e70885af25917e687148d777842584a93e01161ef737c7304912aa4dcc5bd877",
+      "reason": "duplicate",
+      "retained_message_id": "0f1ee4dd9e4de9affc8e82302d2f33c3f8116583b4a446901954248983d300a5"
+    },
+    {
+      "content_sha256": "d1fa87ad27809bac6f7daf0804225306c8c08ccc8d7efcea8186dae8ef99c4f1",
+      "message_id": "e76584b14a3ffa1aa40575e54d220e86eab01ce307b3c21326ca78a46acb7814",
+      "reason": "duplicate",
+      "retained_message_id": "186bd641dadaab263b5aa6c1a443833f34ae3a44b3f25b2a4910d6ad6a38032f"
+    },
+    {
+      "content_sha256": "0ed1a9d3c942fbde7d0fb0ec9430bda7bd26baa0de4bd514a67f60cfa581def4",
+      "message_id": "e8454f9083261167b500b80f9469635810d7e00abcc409aac04104eaf901ad44",
+      "reason": "duplicate",
+      "retained_message_id": "a2529e339ec757a1959e067f8e13209988a7e543d0b3a33ba02639c459934aee"
+    },
+    {
+      "content_sha256": "0afce66e77c5e29444f35639f6521dd62bb55a73ec8d65614eccca627ef01eb4",
+      "message_id": "e8e7b13020a16fed44862b43a4db044dfe3fbb861df9eb6a32c8e3a7e0242b03",
+      "reason": "duplicate",
+      "retained_message_id": "4e8a245be22d6395096faae6e35b6ab402dd0679e7eedd9e5153d12cbbb82198"
+    },
+    {
+      "content_sha256": "ce9b9a3d6e23cf6f8db4c6ff9827fe294fe9e028d6e3a92605de27775596916d",
+      "message_id": "e8f1bb3f22f52ce74bad1b4e5837069b2b3a0c93ceb04f329a15e4e7d8c06d81",
+      "reason": "duplicate",
+      "retained_message_id": "2545623a9f96c3e57853d8ebda1a5bcb10a859ee4a62661885018da339048c56"
+    },
+    {
+      "content_sha256": "59a63228ba2e89ee8577d36a28f3579ba826196eeba5d9c584dd935a1f0a26aa",
+      "message_id": "e943bb5473716e74232335f612540ee4bdee1a215d35d053201ee7c89d499be0",
+      "reason": "duplicate",
+      "retained_message_id": "91c13a76b1b5015e2136df6683e866d14c3d00321e766361ab9a69d7153a1990"
+    },
+    {
+      "content_sha256": "f5f6c1090087e07d83a31e9b9de37a153e987a53dbe7c584978d2c759509962e",
+      "message_id": "efb7f58ee308189bc70124c6c4ba74241570c2ea22461db0ce6ae04a98a32f72",
+      "reason": "duplicate",
+      "retained_message_id": "b042471d5ca723dbc94fb4c385fd82267ef4030eea37a347ad5fe763d6b4427c"
+    },
+    {
+      "content_sha256": "dd3a9ad22e0ae09c0356c25912342b343d3cbdfa9427df870dda87a93a753c47",
+      "message_id": "f3416688587f3424171a98eb9e9e9806b7bc5761fff2f4d83b3a76db739d0026",
+      "reason": "duplicate",
+      "retained_message_id": "26ec69929c73c1873263c1ff88108f534db6c95d7aa92c9e6f9d917edae2e898"
+    },
+    {
+      "content_sha256": "9c336b324a91f46dfd9b8e510ed5b5d3861476d188e23a556f87866059568aee",
+      "message_id": "f39bb34773e4fac011770147a45475f4b2ffdf376012a0793627d74a7ee4b1e0",
+      "reason": "duplicate",
+      "retained_message_id": "a3af69409db8e8a71437829d604343dbea5f9369b66b99426ab3655b19505a72"
+    },
+    {
+      "content_sha256": "44d0109e2c7da21e6d0210e45c00c75a318c008b22b55ab978f026e712df32bb",
+      "message_id": "f404d5be67ab4a1995433a51b77a27d6c2c29f096dd544b7e17c301a79b64deb",
+      "reason": "duplicate",
+      "retained_message_id": "2158c0651309ed5f98947a2bfc574b24b7056c1c1ba31a335179706dbf3556e2"
+    },
+    {
+      "content_sha256": "eca1f831b6f164f72d88364e45877713b9bb56e1179ed0156d7c12f747e34019",
+      "message_id": "f431cc9c1972e413a20141f757ed2db433b9ef014ec82359b5894067edca7b46",
+      "reason": "duplicate",
+      "retained_message_id": "81db2998f12d881b74181189f95974015aac892071617e95c9304d8aa04b1790"
+    },
+    {
+      "content_sha256": "31d6d2f2b7d05e04f1ca08b7d4e8d93faec2739478733d638b32330a858af741",
+      "message_id": "f55ce863899e6291845ca8224941bda17d6332954df92b572da26c77c32f4431",
+      "reason": "duplicate",
+      "retained_message_id": "e075729b3a600ee8016c5e65babde57a8d0d02c5fe8ef68cf319bff8843b8847"
+    },
+    {
+      "content_sha256": "f81ba2abcf8c75e0eb51934ec9692a32ad89499de2a343330999d093871e189c",
+      "message_id": "f7934a1908a94281fa81adb6f238658b7438a51a3452c2dfb05f7e2ac24fc05a",
+      "reason": "duplicate",
+      "retained_message_id": "b5827f26b251832b89f14de24960b47123fb1116c2f55e6fc215b8852c3fe49e"
+    },
+    {
+      "content_sha256": "14f84dc909949d482d1a4f5ec6a640a1aea432397131b41148f4816bef6cb14f",
+      "message_id": "f8b9dd0eb9fee15ebaf99e722f325d5831ce94f74ce4207daca49d9a26c09210",
+      "reason": "duplicate",
+      "retained_message_id": "8d09e70bb15193a5e826274e6e5344aed3f0e2d97ad9b81230df0fc69116900a"
+    },
+    {
+      "content_sha256": "c57c46a9e731a0c00951b0c8551e7e45576a5eabd88b376ffb2bfcbd86c8c860",
+      "message_id": "fae7611c674f4b389d754618222e82d428d2666ec4ceca33a38afaebfd1e4148",
+      "reason": "duplicate",
+      "retained_message_id": "93d8c16598a5e5c04e2d98a916515473f472ea5d75188943b573797624d5887f"
+    },
+    {
+      "content_sha256": "2c4a41fa48263a4f2afb2eb09f79caef8d5a396edab8e9f192e718ddd3f56273",
+      "message_id": "fb830a0c541df2fcaba7e8dc5046b45e88d508aaa7c2ff73488d33063bcd5ab6",
+      "reason": "duplicate",
+      "retained_message_id": "301c24b22167c8549525840f7fc283f0d5e6a8756fdc43a83792c058898a3c79"
+    },
+    {
+      "content_sha256": "0d23ba2fc2a4853a2da68aee614b491f2665ff7690f04c53e2825886cb9efae6",
+      "message_id": "fc2ea6d4ad173e29cd4faa6af05ecbf3ef1a3b4724422c58c23d8e1072dac510",
+      "reason": "duplicate",
+      "retained_message_id": "535ac72aa045de60d65e93a12c1ec3960f9a854bd99c197bbc5e957f80120eac"
+    },
+    {
+      "content_sha256": "895862c98be14f9be48fbfb45bcbc815c90626216fe8c8eba0a4075f1f2e4784",
+      "message_id": "fc927c32070adb7e18948bbed805e4215179992246bbe0257aead7daf1fd5029",
+      "reason": "duplicate",
+      "retained_message_id": "3dba9966ecc029b978c2a203471a7ee750bf2ad9dfc59a32cf1d64026bac0532"
+    },
+    {
+      "content_sha256": "e8e8528cc478435313198e812f18a06345ab2b817b3d91e51f96f8187aa6bb9d",
+      "message_id": "fd1e9ce4344d03b735e700e033d6b2f66c682ab66b5502b954014ead1966c283",
+      "reason": "duplicate",
+      "retained_message_id": "55faf9df6569786d54f30fa3f11212189129daefe90338473d5c72c364515e3a"
+    },
+    {
+      "content_sha256": "488c887d4143e8f9a402f564bf88c900aee878d99080555cef2bf56a546b323e",
+      "message_id": "fd2b567af07a10f7928c4d81f6149d609fca12ad1f8725fc08d8157f67dbf5a8",
+      "reason": "duplicate",
+      "retained_message_id": "845ffcabdb4a5c5b3c16518b0f34a982d7dac402d1cf2007fc82c85a4bf3f36a"
+    },
+    {
+      "content_sha256": "5993a0cdb61f5d047b28609602a4cab7f7f83ad72301874f85557c04e42f9190",
+      "message_id": "fd43c73c45cdae955589a120ac25d89fb7e47e365bb6f39f3589f833a2712aef",
+      "reason": "duplicate",
+      "retained_message_id": "7ed4715741321da09e03e64f5a98b17894c5f0ba0e025fe516110b5243832d50"
+    },
+    {
+      "content_sha256": "af4645b4de80ed37c0945df3ce65b4f9fc65fe235b8d538703a4acdc3d886043",
+      "message_id": "fd566be4cd4f52270cffe8828f4b72156be89a6029f4ce97b6029dc8f1e7189d",
+      "reason": "duplicate",
+      "retained_message_id": "7ce20c53f7cf05f75c92b7b1069074735032bc56854abc89b7430a5fc05053fa"
+    },
+    {
+      "content_sha256": "5c80ad490e33501a5992d8f3f166603792dc40e9c98cb5e2ea9cbe614fa6e9f5",
+      "message_id": "fec72b9d1fe33c9c0aa1e6b48a1127d80038cd6d3cbe6651e08ceb7117e765e9",
+      "reason": "duplicate",
+      "retained_message_id": "4df843b63a00369f6fca77f5b25560b20d211c55794d0e0d33591a814474bd9b"
+    },
+    {
+      "content_sha256": "502546569661eb36a40b2e91416687ae908ec8cd5d3930f2de2fe87a947a336c",
+      "message_id": "ff6a1305f10155053bac543f9384ca42b39e0bedbcf40cbcf0567324c6f7eef0",
+      "reason": "duplicate",
+      "retained_message_id": "5bd9c47fb1d9dd0f5f45a7d2fc82daea3a5680c5332fe51ae1d882e9f21b428c"
+    }
+  ],
+  "input_class_counts": {
+    "ham": 4149,
+    "spam": 1843
+  },
+  "input_records": 5992,
+  "inputs": {
+    "data/processed/messages.parsed.jsonl": {
+      "sha256": "7241dcfcf5480609ed1c2c1d8e3e38d86e9394fbc512114b22a7284d4914114d",
+      "size_bytes": 25868309
+    },
+    "data/processed/parsing_report.json": {
+      "sha256": "fa7088cb2e76f53a6515001fd5af524395c1fdee59f236d4be12db2b2cb34b08",
+      "size_bytes": 11742
+    },
+    "data/processed/source_manifest.json": {
+      "sha256": "69cc91e00660b83fb60086a3a580cd53f1a81c5812a0e3bb363138f7ce2da7fa",
+      "size_bytes": 2878
+    }
+  },
+  "parse_rejections": 54,
+  "preprocessing_version": "mime-v1",
+  "python_version": "3.12.15",
+  "records_file": "data/processed/messages.csv",
+  "records_sha256": "cfb3aca92056ab548d694e0d501ba3d336202e6c42c237b069d6ad705d990d6f",
+  "records_size_bytes": 24182963,
+  "representative_policy": "smallest_message_id",
+  "retained_records": 5862,
+  "schema_version": 1,
+  "sources": [
+    {
+      "archive_name": "20030228_easy_ham.tar.bz2",
+      "conflicting_records_excluded": 0,
+      "duplicate_records_excluded": 29,
+      "input_records": 2500,
+      "label": "ham",
+      "retained_records": 2471,
+      "source_group": "easy_ham"
+    },
+    {
+      "archive_name": "20030228_easy_ham_2.tar.bz2",
+      "conflicting_records_excluded": 0,
+      "duplicate_records_excluded": 11,
+      "input_records": 1400,
+      "label": "ham",
+      "retained_records": 1389,
+      "source_group": "easy_ham_2"
+    },
+    {
+      "archive_name": "20030228_hard_ham.tar.bz2",
+      "conflicting_records_excluded": 0,
+      "duplicate_records_excluded": 2,
+      "input_records": 249,
+      "label": "ham",
+      "retained_records": 247,
+      "source_group": "hard_ham"
+    },
+    {
+      "archive_name": "20030228_spam.tar.bz2",
+      "conflicting_records_excluded": 0,
+      "duplicate_records_excluded": 19,
+      "input_records": 473,
+      "label": "spam",
+      "retained_records": 454,
+      "source_group": "spam"
+    },
+    {
+      "archive_name": "20050311_spam_2.tar.bz2",
+      "conflicting_records_excluded": 0,
+      "duplicate_records_excluded": 69,
+      "input_records": 1370,
+      "label": "spam",
+      "retained_records": 1301,
+      "source_group": "spam_2"
+    }
+  ],
+  "stage": "retained_before_split",
+  "tokenizer": {
+    "lowercase": true,
+    "ngram_range": [
+      1,
+      1
+    ],
+    "stop_words": null,
+    "strip_accents": null,
+    "token_pattern": "(?u)\\b\\w\\w+\\b",
+    "version": "unicode-word-v1"
+  }
+}
