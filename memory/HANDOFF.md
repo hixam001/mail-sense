@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-401 — Truthful FastAPI readiness and redacted shared errors**.
-Next implementation ticket: **MSE-402**.
+Latest implementation: **MSE-402 — Typed dataset summary statistics and distribution APIs**.
+Next implementation ticket: **MSE-403**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-402** — Add A02–A04 typed dataset summary/statistics/distribution routes using verified cached rows; reconcile scope/class/provenance/exclusion semantics, compare pure services and actual endpoints, ensure 422/503 safe failures, commit/push then probability/inference APIs MSE-403.
+**MSE-403** — Expose A05–A08 with typed single-word/scope/trial/significance/confidence validation, known synthetic table tests through HTTP, safe null/unsuitable cases and actual-scope comparisons, commit/push then model prediction/evaluation APIs MSE-404.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -199,9 +199,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-401 implemented:** Truthful FastAPI readiness and redacted shared errors. 319 tests passed under Gravitas; Ruff clean. Factory supports isolated roots, typed health and common error schemas. Missing/corrupt artifacts degrade safely; models can be unavailable while dataset remains usable. SHA cache catches same-size/same-time tampering and recovers without restart. Validation/404/500 responses omit request values and paths. Actual healthy dataset/model/evaluation snapshot verified; cached health averaged .033 seconds.
 
+- **MSE-402 implemented:** Typed dataset summary statistics and distribution APIs. 332 tests passed under Gravitas; Ruff clean. A02–A04 responses match pure services for all/train/test; actual totals 5862/4689/1173 and source/class counts reconcile. Histograms sum correctly and document frequencies obey filters. Exclusions are explicitly global before split (184 total, 130 duplicates, 54 parse rejects), not invented per-partition counts. Invalid queries return redacted 422; missing data 503; dataset endpoints work without models.
+
 ## Full remaining implementation inventory
 
-**21 implementation tickets are complete; 18 are Not started**. Update statuses as work is
+**22 implementation tickets are complete; 17 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -229,8 +231,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-306 | Implement faithful token/prior and absent-feature explanations | Complete — acceptance verified |
 | MSE-307 | Save evaluation evidence and document model limitations | Complete — acceptance verified |
 | MSE-401 | Implement FastAPI health/readiness and shared error envelope | Complete — acceptance verified |
-| MSE-402 | Implement dataset summary/statistics/distribution routes | Not started — next |
-| MSE-403 | Implement probability and statistical inference routes | Not started |
+| MSE-402 | Implement dataset summary/statistics/distribution routes | Complete — acceptance verified |
+| MSE-403 | Implement probability and statistical inference routes | Not started — next |
 | MSE-404 | Implement prediction, evaluation and explanation routes | Not started |
 | MSE-405 | Verify loopback binding, CORS, redacted logging and input limits | Not started |
 | MSE-406 | Implement and pass FastAPI contract tests | Not started |
@@ -249,6 +251,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-402 — Typed dataset summary statistics and distribution APIs:** 332 tests passed under Gravitas; Ruff clean. A02–A04 responses match pure services for all/train/test; actual totals 5862/4689/1173 and source/class counts reconcile. Histograms sum correctly and document frequencies obey filters. Exclusions are explicitly global before split (184 total, 130 duplicates, 54 parse rejects), not invented per-partition counts. Invalid queries return redacted 422; missing data 503; dataset endpoints work without models.
 
 - **MSE-401 — Truthful FastAPI readiness and redacted shared errors:** 319 tests passed under Gravitas; Ruff clean. Factory supports isolated roots, typed health and common error schemas. Missing/corrupt artifacts degrade safely; models can be unavailable while dataset remains usable. SHA cache catches same-size/same-time tampering and recovers without restart. Validation/404/500 responses omit request values and paths. Actual healthy dataset/model/evaluation snapshot verified; cached health averaged .033 seconds.
 

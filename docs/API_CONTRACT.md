@@ -1,6 +1,6 @@
 # MailSense — REST API Contract
 
-**Version:** 1.1 · **Date:** 2026-11-19 · **Status:** A01 readiness and shared safe errors implemented; A02–A12 integration follows
+**Version:** 1.1 · **Date:** 2026-11-19 · **Status:** A01–A04 and shared safe errors implemented; A05–A12 integration follows
 **Base URL:** `http://127.0.0.1:8000/api/v1`  
 **Frontend:** `http://localhost:5173` (allowed local origin; adjust via configuration if necessary)  
 **Access:** Local-only; no login or API tokens
@@ -75,6 +75,8 @@ MSE-401 implements this route using verified content-hash-invalidated snapshots.
   "duplicate_count": 6
 }
 ```
+MSE-402 implements A02–A04 with typed aggregate responses over verified cached rows. Summary source groups and class proportions use the selected scope. `excluded_count`, `duplicate_count`, `parse_rejected_count` and `label_conflict_count` describe the global source corpus before splitting (`exclusion_scope: source_corpus_before_split`); exclusions have no train/test assignment. `source_archives` contains public canonical acquisition metadata only. Numeric distributions disclose bin closure and units; word items are document frequencies.
+
 **Errors:** `422` bad scope; `503` dataset missing. Example counts are **synthetic**, not SpamAssassin measurements.
 
 ### A03 — `GET /dataset/statistics`
@@ -306,4 +308,4 @@ For Bernoulli, response must also disclose that absent-word effects influence cl
 
 ## 4. Implementation note
 
-This is the **design-time contract** to implement using FastAPI/Pydantic. A01 is implemented; remaining routes follow MSE-402–406. Shared errors redact input values, contexts, paths and tracebacks; validation details contain only known field names and error types. When code is written, update this document to reflect actual response schemas and keep `SRS.md`, `DATA_MODEL.md`, `APP_FLOW.md` and tests aligned. The numeric examples are synthetic and cannot be represented as real model results.
+This is the **design-time contract** to implement using FastAPI/Pydantic. A01–A04 are implemented; remaining routes follow MSE-403–406. Shared errors redact input values, contexts, paths and tracebacks; validation details contain only known field names and error types. When code is written, update this document to reflect actual response schemas and keep `SRS.md`, `DATA_MODEL.md`, `APP_FLOW.md` and tests aligned. The numeric examples are synthetic and cannot be represented as real model results.

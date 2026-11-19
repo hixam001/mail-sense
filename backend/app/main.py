@@ -4,6 +4,7 @@ from pathlib import Path
 
 from fastapi import FastAPI
 
+from app.api.dataset import router as dataset_router
 from app.api.errors import install_errors
 from app.core.state import ApplicationState
 from app.schemas.common import ErrorEnvelope, HealthResponse
@@ -18,6 +19,7 @@ def create_app(root=None):
     )
     application.state.mail_sense = ApplicationState(root or Path(__file__).resolve().parents[2])
     install_errors(application)
+    application.include_router(dataset_router)
 
     @application.get("/", summary="Scaffold greeting")
     def greeting():
