@@ -26,11 +26,13 @@ htmlcov/
 .DS_Store
 
 # Private corpus, processed email text and trained artifacts
-/data/raw/
+/data/raw/*
+!/data/raw/.gitkeep
 /data/processed/messages.csv
 /data/processed/messages.json
 /data/processed/messages.jsonl
-/artifacts/models/
+/artifacts/models/*
+!/artifacts/models/.gitkeep
 
 # Session state; keep shared graph memory and project design context tracked
 /.gravitas/sessions/

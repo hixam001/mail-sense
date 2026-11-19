@@ -1,0 +1,1 @@
+"""MailSense backend application."""

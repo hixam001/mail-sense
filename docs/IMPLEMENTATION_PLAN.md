@@ -1,7 +1,7 @@
 # MailSense — Implementation Plan and Jira-Style Backlog
 
 **Version:** 1.0 · **Date:** 2026-11-19  
-**Status:** Repository preparation documented under MSE-100 and MSE-107; all 39 implementation tickets remain not started  
+**Status:** MSE-101 scaffold verified; 38 implementation tickets remain, starting with MSE-102. See the handoff for live status.  
 **Scope:** Complete university project, local React + FastAPI, SpamAssassin, Multinomial NB + Bernoulli NB
 
 ## 1. Delivery strategy
@@ -34,7 +34,7 @@ and dependencies with a reproducible local build and freshness/integrity checks.
 Verify real Graphify query/path retrieval before committing and pushing.
 
 This tooling ticket does not change the locked product scope or complete any of
-the 39 implementation tickets below. MSE-101 remains the next application task.
+the 39 implementation tickets below. Their live status is recorded in the handoff.
 
 ### EPIC MSE-1 — Repository and data foundation (2–3 working days)
 
@@ -170,13 +170,15 @@ Dates are deliberately **not invented**. Convert to calendar milestones after co
 | API/UI contract drift | Integration failures | Schema tests and single API contract version |
 | Deadline pressure leads to UI-first development | Core mathematics unfinished | Gate 2 before polished UI |
 
-## 7. Pre-repository checklist
+## 7. Repository foundation checklist
 
-- [ ] Select repository visibility and initialize `mailsense`.
-- [ ] Add all Markdown docs in `docs/`.
-- [ ] Add `.gitignore` for `data/raw/`, `data/processed/messages.csv`, virtualenv, `node_modules`, and `artifacts/models/`.
+- [x] Initialize the local repository and configure the existing GitHub remote.
+- [x] Add all Markdown docs in `docs/`.
+- [x] Add `.gitignore` for raw emails, processed message text, virtualenv, `node_modules`, and models; allow empty directory placeholders.
 - [ ] Create reproducible dependency files and setup instructions.
-- [ ] Assign MSE-101 to the first implementation milestone.
+- [x] Complete MSE-101 as the first implementation milestone with runtime/build evidence.
 - [ ] Record exact dataset archives and checksums when downloaded.
 
-**Next task after repo creation:** `MSE-101 — Initialize React/FastAPI monorepo and project structure`. Do not claim any ticket complete yet.
+**Next task:** `MSE-102 — Pin Python/Node dependencies and document environment setup`.
+Keep status synchronized with `memory/HANDOFF.md`; later tickets remain open
+until their acceptance criteria are verified.

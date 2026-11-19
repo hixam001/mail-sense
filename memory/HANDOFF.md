@@ -2,7 +2,8 @@
 
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
-Next implementation ticket: **MSE-101**.
+Latest implementation: **MSE-101 — React/Vite and FastAPI scaffold verified**.
+Next implementation ticket: **MSE-102**.
 
 ## Read this at every task start
 
@@ -15,23 +16,22 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-101: Initialize the React/FastAPI monorepo and project structure.**
+**MSE-102: Pin Python/Node dependencies and document environment setup.**
 
-1. Analyze the complete ticket with Gravitas; record the plan, scoped changes and
-   acceptance-to-verification map before editing.
-2. Scaffold `frontend/` with React/Vite and `backend/` with Python/FastAPI, plus
-   the planned data/artifact structure. Preserve the documentation and tooling.
-3. Respect loopback-only operation and the existing sensitive-data ignore rules.
-   Do not add accounts, a database, hosted deployment or fake empirical results.
-4. Establish actual run/check commands from the scaffold. Verify the React
-   hello-world page and FastAPI hello-world endpoint separately; confirm ignore
-   rules exclude raw emails and model artifacts.
-5. Record evidence and remaining work here, rerun final checks, then commit and
-   push using `MSE-101: Initialize React and FastAPI project structure`.
+1. Analyze the complete ticket with Gravitas and inspect the existing scaffold
+   manifests, frontend lockfile, approved stack and verified runtime versions.
+2. Establish reproducible Node/Python versions and exact application dependency
+   pins. Review the approved scientific/charting stack as part of that plan.
+   Keep the Graphify environment separate from application dependencies.
+3. Replace reliance on an ephemeral Node runtime with a reproducible setup path;
+   document prerequisites, install/run/check commands and missing-data limitations.
+4. Verify documented commands in fresh isolated application environments, then
+   repeat frontend lint/build and the independent local runtime smoke checks.
+5. Update this handoff and graph, revalidate, then commit and push with MSE-102.
 
-Acceptance: both hello-world applications work separately and the monorepo
-structure/ignore rules satisfy MSE-101. Dependency pinning and full setup notes
-belong to MSE-102. Scaffold preparation alone does not complete either ticket.
+Acceptance: a fresh local machine can install the pinned application dependencies
+and run both scaffolds using documented commands. MSE-102 is not complete just
+because the current workstation already has working environments.
 
 ## Established and completed preparation
 
@@ -43,7 +43,8 @@ belong to MSE-102. Scaffold preparation alone does not complete either ticket.
 - Project skills are installed under `.agents/skills/`: `gravitas`, `impeccable`
   and `security-audit`. Their presence is tooling setup, not app functionality.
 - Impeccable installed its local engine and `.codex/hooks.json`. Product context
-  initialization is complete. There is no visual implementation or `DESIGN.md`.
+  initialization is complete. The frontend currently has a plain scaffold page;
+  no product visual identity or `DESIGN.md` has been established.
 - `AGENTS.md` persists the user's analyze → map → implement → verify → update
   handoff → final checks → commit → push workflow. Jira-style subjects use
   `MSE-<ticket>: <summary>`; no added contributor attribution or co-author/sign-off
@@ -61,22 +62,32 @@ belong to MSE-102. Scaffold preparation alone does not complete either ticket.
 
 ## Implemented application functionality
 
-**None yet.** No frontend, backend, dependency manifests, corpus, preprocessing,
-statistical services, trained models, API routes or application tests exist at
-this handoff. All six implementation release gates remain open. Synthetic
-examples in the documentation are not measured corpus/model results.
+- **MSE-101 complete:** `frontend/` contains a React 19/Vite 8 JavaScript
+  scaffold, React plugin, ESLint configuration, package manifest/lockfile,
+  HTML entry and `src/App.jsx`/`main.jsx`. The page displays an honest scaffold
+  message. It makes no API requests and requires no backend to render.
+- `backend/app/main.py` defines the FastAPI application and `GET /` greeting.
+  Runtime dependencies are declared in `backend/requirements.txt`. No
+  `/api/v1` endpoints, readiness logic or CORS integration exist yet.
+- Planned frontend directories, backend Python packages/scripts/tests,
+  `data/raw`, `data/processed`, `artifacts/models` and `artifacts/reports` exist.
+  Empty placeholders are tracked while emails, models, dependencies and builds
+  remain ignored. The README contains verified preliminary setup/run commands.
+- Corpus ingestion, all statistical/model services, the five UI modules and
+  application unit/contract test suites remain unimplemented. All six release
+  gates remain open. Synthetic examples are not measured corpus/model results.
 
 ## Full remaining implementation inventory
 
-All tickets below are **Not started**. Update individual statuses as work is
+MSE-101 is complete; the other **38 tickets are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
 
 | Ticket | Remaining work | Status |
 |---|---|---|
-| MSE-101 | Initialize React/FastAPI monorepo and project structure | Not started — next |
-| MSE-102 | Pin dependencies and document environment setup | Not started |
+| MSE-101 | Initialize React/FastAPI monorepo and project structure | Complete — runtime/build/lint verified |
+| MSE-102 | Pin dependencies and document environment setup | Not started — next |
 | MSE-103 | Obtain canonical official corpus archives and source/checksum manifest | Not started |
 | MSE-104 | Implement safe extraction and MIME text parsing | Not started |
 | MSE-105 | Deduplicate, reject label conflicts and derive summary records | Not started |
@@ -117,8 +128,26 @@ Dependencies and detailed acceptance criteria are in
 
 ## Verification and delivery evidence
 
-- Application tests, lint, builds and runtime checks: **not run; no application
-  implementation or test suite exists**. No claim of working MailSense software.
+- MSE-101: frontend `npm run lint` passed with zero warnings; `npm run build`
+  succeeded with Vite 8.3.8. Python compilation of `backend/app/` passed.
+- A clean frontend `npm ci --no-audit --no-fund` installation succeeded from
+  the lockfile, and `npm ls --depth=0` confirmed the declared dependency tree.
+  The scoped acceptance command
+  `python3 .agents/skills/gravitas/scripts/verify.py --cmd 'python3 .gravitas/sessions/MSE-101/verify.py'`
+  returned `VERDICT: PASS` using the working Node runtime on PATH and the live
+  local servers. This ignored session validator combines lint/build, Python
+  parsing, HTTP, binding, structure/ignore, graph and diff-hygiene checks.
+- Seven live HTTP checks passed: API greeting, OpenAPI containing only `/`,
+  Vite HTML and transformed React module; future `/api/v1/health`,
+  `/api/v1/dataset/summary` and `/api/v1/predict` returned 404. Listener checks
+  confirmed Uvicorn at `127.0.0.1:8000` and Vite at `[::1]:5173`.
+- Impeccable/Chromium captured and visually verified the React page at
+  1366×768 and 390×844. Text rendered and wrapped correctly. Captures are local
+  ignored artifacts at `.impeccable/review/mse101/`.
+- Structure/ignore checks passed for 14 planned directories, nine sensitive or
+  generated paths and six intended trackable paths. No application unit suite
+  exists yet; runtime/browser smoke checks are the evidence for this ticket,
+  not a claim that the statistical acceptance scenarios pass.
 - MSE-100 preparation verification passed 218 structural checks; its follow-up
   passed 83 checks. Those counts describe the earlier documentation baseline.
 - MSE-107 observed results: Graphify 0.9.112 produced **186 nodes, 315 directed
@@ -136,8 +165,9 @@ Dependencies and detailed acceptance criteria are in
   records, dependency direction, graph references, removed legacy paths and
   maintained-file diff hygiene. Results belong in the final delivery report.
 - Branch `main` tracks `origin/main` at
-  `https://github.com/hixam001/mail-sense.git`. MSE-100 was pushed successfully
-  through `c910136`; MSE-107 uses `MSE-107: Consolidate project memory with Graphify`.
+  `https://github.com/hixam001/mail-sense.git`. Preparation was pushed through
+  MSE-107 commit `adcce9a`. MSE-101 uses
+  `MSE-101: Initialize React and FastAPI project structure`.
   Observe the new commit and push result in Git. On resume, check `git log -1`,
   `git status -sb` and the upstream branch before claiming delivery.
 
@@ -147,8 +177,17 @@ Dependencies and detailed acceptance criteria are in
   `libsimdjson.so.36`. A checksum-verified official Node v22.23.5 runtime was
   unpacked under `/tmp/mail-sense-impeccable-node/`; its `node-bin-path` file
   identifies the temporary `bin` directory. It enabled Impeccable installation.
-  `/tmp` is ephemeral: confirm availability and recheck Node before MSE-101.
+  `/tmp` is ephemeral: confirm availability and recheck Node before npm commands.
   No permanent system Node repair has been performed.
+- MSE-101 used Node 22.23.5 and Python 3.12.15. Installed runtime versions
+  include React/React DOM 19.3.1, Vite 8.3.8, FastAPI 0.165.0 and Uvicorn 0.54.0.
+  `frontend/package-lock.json` records the frontend installation; Python
+  dependency ranges and full runtime pinning remain MSE-102 work. Backend
+  dependencies live in ignored `backend/.venv/`, separate from Graphify.
+- Impeccable could not autodetect the cached Chromium browser. Visual checks
+  worked with `IMPECCABLE_BROWSER` pointing to
+  `~/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome`. That path is
+  workstation-specific; inspect available browsers before reusing it.
 - Gravitas skill files and Python verification wrapper exist. No `gravitas`
   CLI was found on PATH; do not claim a full runtime or hook-enforced task
   contract is installed. Use the shipped verification runner with an explicit

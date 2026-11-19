@@ -117,9 +117,10 @@ The README and documentation describe approved requirements and planned behavior
   [implementation plan](docs/IMPLEMENTATION_PLAN.md): mathematical definitions,
   synthetic fixtures, release gates and development sequence.
 
-At initialization, the repository contains documentation and agent tooling,
-with no application implementation, corpus files, trained models or executed
-test evidence. Documentation examples are synthetic teaching fixtures unless
+Source code for the local React/Vite and FastAPI hello-world scaffolds is
+available in `frontend/` and `backend/`; the handoff records their runtime and
+build verification. Domain features, corpus files and trained models remain
+absent. Documentation examples are synthetic teaching fixtures unless
 explicitly identified as measured results. Actual retained corpus counts, model
 scores and timings must be established during implementation. No accuracy or
 calibration guarantee is approved. Historical corpus prevalence must not be

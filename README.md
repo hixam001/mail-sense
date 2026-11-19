@@ -1,7 +1,7 @@
-# MailSense — Project Documentation Pack
+# MailSense
 
 **Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** Documentation and agent workflow prepared; application implementation has not started. No application source code, dataset files or trained models are included.
+**Status:** MSE-101 complete: independent React/Vite and FastAPI scaffolds run locally. Dataset preparation, statistical analysis, classifiers and the analytical interface remain unimplemented. No corpus or trained models are included.
 
 > **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
 
@@ -40,19 +40,69 @@ a queryable Graphify graph and its interactive visualization.
 - **Storage:** Local files only; no relational database.
 - **Deployment:** Localhost-only; offline after dependencies and corpus are prepared; no authentication or real email integration.
 
-## Next implementation steps
+## Run the local scaffolds
 
-The requirements are present in `docs/`. Retain this documentation index until implementation adds actual installation/run commands. Follow:
+Use a working Node installation matching `frontend/package.json` (Node 22.13+
+within the 22.x line is supported), Python 3.12 and `uv`. Full dependency and
+runtime pinning is the next task, MSE-102. Workstation-specific Node recovery
+notes are in [the handoff](memory/HANDOFF.md).
 
-1. `MSE-101`: Create frontend (`frontend/`) and backend (`backend/`) skeletons.
-2. `MSE-102–106`: Establish local dependencies, safe corpus ingestion, content deduplication and deterministic split.
+In one terminal, from the repository root:
+
+```bash
+cd frontend
+npm ci
+npm run dev
+```
+
+Open `http://localhost:5173/`. The page identifies itself as the React scaffold
+and explains that analysis and detection are not implemented yet. Vite binds
+to localhost and fails if port 5173 is occupied.
+
+In another terminal, from the repository root:
+
+```bash
+uv venv --python 3.12 backend/.venv
+uv pip install --python backend/.venv/bin/python -r backend/requirements.txt
+cd backend
+.venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+
+Open `http://127.0.0.1:8000/` for the API greeting or
+`http://127.0.0.1:8000/openapi.json` for its schema. These scaffolds run
+independently. The `/api/v1` contract, readiness checks, corpus ingestion and
+model endpoints are scheduled in later tickets.
+
+### Scaffold checks
+
+From `frontend/`:
+
+```bash
+npm run lint
+npm run build
+```
+
+The frontend lockfile is committed; `node_modules/`, build output and Python
+virtual environments are ignored. `backend/tests/` is a placeholder, with no
+unit test suite yet. The scaffold has been checked through live HTTP requests
+and browser rendering; these checks do not establish statistical correctness
+or model performance. See [the handoff](memory/HANDOFF.md) for observed evidence.
+
+## Implementation sequence
+
+The requirements and acceptance gates are documented in `docs/`. Delivery follows
+this sequence; the handoff records current ticket status:
+
+1. `MSE-101` (complete): Create frontend (`frontend/`) and backend (`backend/`) skeletons.
+2. `MSE-102–106` (next): Pin dependencies, then implement corpus ingestion, content deduplication and deterministic split.
 3. `MSE-201–207`: Implement and verify statistics independently from ML.
 4. `MSE-301–307`: Fit/evaluate both Naive Bayes models.
 5. `MSE-401–406`: Implement versioned FastAPI contract.
 6. `MSE-501–507`: Build five frontend modules with real API results.
 7. `MSE-601–606`: Run tests, collect evidence, finalize university report/demo.
 
-**No commands for running MailSense are provided yet because no implementation exists.** Avoid copying fictitious setup steps into the final README.
+The commands above run the scaffolds only. Later tasks will add and verify
+actual corpus preparation, model training and analytical workflows.
 
 ## Authoritative change policy
 
