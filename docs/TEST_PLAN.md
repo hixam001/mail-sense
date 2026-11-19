@@ -124,7 +124,7 @@ Testing framework proposal: `pytest`, FastAPI `TestClient`, React Testing Librar
 |---|---|---|---|---|---|---|
 | T01 | Not run | N/A | See §2 | Not measured | Not run | — |
 | T02 | 2026-11-19 | Python 3.12.15, MSE-106 | See §2 | Duplicates/conflicts removed; repeated membership identical; IDs/content isolated | Pass | `backend/tests/test_corpus_split.py::test_t02_end_to_end_duplicate_conflict_removal_split_isolation_and_repeatability`; actual 4,689/1,173 membership independently reconciled |
-| T03 | Not run | N/A | See §2 | Not measured | Not run | — |
+| T03 | 2026-11-19 | Python 3.12.15, MSE-201 | See §2 | Mean/median/mode=4; sample variance=8/3; SD=sqrt(8/3) | Pass | `backend/tests/test_descriptive.py::test_t03_known_descriptive_fixture` |
 | T04 | Not run | N/A | See §2 | Not measured | Not run | — |
 | T05 | Not run | N/A | See §2 | Not measured | Not run | — |
 | T06 | Not run | N/A | See §2 | Not measured | Not run | — |

@@ -1,7 +1,7 @@
 # MailSense
 
 **Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** MSE-101–106 provide local scaffolds, reproducible environments and a verified corpus pipeline through deduplication and the stratified split. Statistics, models and the analytical interface remain pending. Raw and processed message text stay local and ignored; no trained models are included.
+**Status:** 7/39 implementation tasks verified. Latest: MSE-201 — Descriptive statistics for count metrics. Next: MSE-202. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
 
 > **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
 

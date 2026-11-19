@@ -4,6 +4,12 @@
 
 Analyze with Gravitas → map the task → implement → test → update handoff → final checks → commit → push.
 
+The user has authorized continuous delivery through the entire application
+backlog. Continue directly to the next dependency-ready task after each verified
+commit/push; do not stop after each requirement. Keep individual Jira-style
+commits and the handoff/graph current until the application and release checks
+are complete, unless the user later asks to pause or changes the scope.
+
 ## Start every task
 
 1. Read [memory/README.md](memory/README.md) for graph retrieval and maintenance.

@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-106 — Reproducible stratified split and Gate 1 verified**.
-Next implementation ticket: **MSE-201**.
+Latest implementation: **MSE-201 — Descriptive statistics for count metrics**.
+Next implementation ticket: **MSE-202**.
 
 ## Read this at every task start
 
@@ -17,30 +17,9 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-201: Descriptive statistics for text length/token count.**
+**MSE-202** — Analyze histogram/boxplot/top-word aggregation against A04; implement unit-labeled distributions and document frequencies with scope/class reconciliation, test, update memory and commit/push, then continue MSE-203.
 
-1. Analyze the complete ticket with Gravitas; read FR-06, API A03, statistical
-   definitions and T03/T14 fixtures. First run
-   `uv run --directory backend --frozen python -m scripts.split_dataset verify`.
-   A fresh clone must acquire → parse → retain → split to recreate private data.
-2. Implement pure numerical summaries for `character_count` and `token_count`:
-   mean, median, smallest tied mode plus `mode_tied`, Q1/Q3 (linear quantiles),
-   IQR, sample variance and sample SD. Keep counts/units and undefined results
-   explicit; n<2 cannot have a sample variance/SD. Reject invalid numeric input.
-3. Integrate verified `load_split_dataset(root, scope)` for all/train/test and
-   spam/ham subsets without changing frozen corpus/split artifacts. Preserve
-   `unicode-word-v1`; no vocabulary/model fitting or API/UI implementation yet.
-4. Test known fixtures `[2,4,4,6]`, unsorted/tied/all-equal/zero values,
-   empty/single-record groups and linear quartile interpolation. Independently
-   reconcile numerical results, real class/subset sizes and units. T03's math
-   must be exercised in the new domain service, not inferred from dependency tests.
-5. Document numeric behavior/evidence, update handoff/graph and full inventory,
-   run checks, then commit/push with MSE-201. MSE-202 next owns histogram/box/top
-   word aggregates; MSE-207 later consolidates formula verification.
-
-Acceptance: mean/median/mode/quartiles/sample variance/SD pass known fixtures,
-scope/class denominators reconcile with verified membership, and undefined
-empty/small-sample cases are truthful. Gate 2 remains open until MSE-201–207.
+Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
 ## Established and completed preparation
 
@@ -186,13 +165,15 @@ empty/small-sample cases are truthful. Gate 2 remains open until MSE-201–207.
   T02 is logged with observed synthetic/actual evidence in TEST_PLAN v1.1.
   DATA_MODEL v1.4, methodology/setup/architecture/README and PRODUCT document
   the implemented split/join and remaining boundaries.
-- Domain statistical/model services, five UI modules and their
-  unit/contract suites remain unimplemented. Gates 2–6 remain open.
+- The remaining inventory below records pending work. Prior milestone
+  notes describe the state at that milestone; later evidence supersedes them.
   Synthetic environment checks are not measured corpus/model results.
+
+- **MSE-201 implemented:** Descriptive statistics for count metrics. 181 tests passed; Ruff clean. Known [2,4,4,6] mean/median/mode=4, variance=8/3, Q1=3.5/Q3=4.5. Empty/singleton and mode ties verified. Actual all/train/test class sizes, means and variances independently reconciled; all=4,107 ham/1,755 spam. Continuous completion through MSE-606 is authorized and persisted in AGENTS.md.
 
 ## Full remaining implementation inventory
 
-MSE-101–106 are complete; the other **33 tickets are Not started**. Update statuses as work is
+**7 implementation tickets are complete; 32 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -205,8 +186,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-104 | Implement safe extraction and MIME text parsing | Complete — real parsing/counts/hashes verified |
 | MSE-105 | Deduplicate, reject label conflicts and derive summary records | Complete — retained uniqueness/counts/tokenizer verified |
 | MSE-106 | Verify deterministic stratified 80/20 split, seed 42 | Complete — membership/counts/hashes/Gate 1 verified |
-| MSE-201 | Implement descriptive statistics for text length and token count | Not started — next |
-| MSE-202 | Aggregate histograms, box plots and top-word data | Not started |
+| MSE-201 | Implement descriptive statistics for text length and token count | Complete — acceptance verified |
+| MSE-202 | Aggregate histograms, box plots and top-word data | Not started — next |
 | MSE-203 | Implement 2×2 word contingency and empirical probabilities | Not started |
 | MSE-204 | Implement Bernoulli/binomial calculations with assumptions | Not started |
 | MSE-205 | Implement Pearson chi-square and assumption checks | Not started |
@@ -240,6 +221,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-201 — Descriptive statistics for count metrics:** 181 tests passed; Ruff clean. Known [2,4,4,6] mean/median/mode=4, variance=8/3, Q1=3.5/Q3=4.5. Empty/singleton and mode ties verified. Actual all/train/test class sizes, means and variances independently reconciled; all=4,107 ham/1,755 spam. Continuous completion through MSE-606 is authorized and persisted in AGENTS.md.
 
 - MSE-106: **166 pytest tests passed** (39 new split cases plus 127 existing);
   Ruff passed across backend app/scripts/tests and bootstrap code. Fixtures

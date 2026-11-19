@@ -2,7 +2,7 @@
 
 **Version:** 1.2 · **Date:** 2026-11-19
 **Purpose:** Academic formulas, assumptions, verifiable examples and reproducibility rules  
-**Status:** Canonical tokenization, retained counts and stratified split implemented; statistical services and model methods remain planned
+**Status:** Canonical tokenization, retained counts and stratified split implemented; descriptive statistics implemented; remaining statistical/model methods tracked in the handoff
 
 ## 1. Statistical units and data definitions
 
@@ -249,3 +249,7 @@ Record the inputs and observed outputs in the test report. Do not mark any check
 - Apache SpamAssassin public corpus: `https://spamassassin.apache.org/old/publiccorpus/`
 - Corpus notes and reuse warning: `https://spamassassin.apache.org/old/publiccorpus/readme.html`
 - Method implementation reference: NumPy, SciPy and scikit-learn official documentation (pin package versions in project environment when implementation begins).
+
+## Executed implementation evidence
+
+- MSE-201: Pure descriptive service passes `[2,4,4,6]`: mean/median/mode 4, Q1 3.5, Q3 4.5, sample variance 8/3 and SD sqrt(8/3). Uses linear interpolation, smallest tied mode with `mode_tied`, and null empty/singleton sample dispersion with notes. 181 tests passed; actual scope/class means and variances matched independent stdlib calculations.
