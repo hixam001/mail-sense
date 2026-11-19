@@ -1,0 +1,749 @@
+{
+  "checks": [
+    {
+      "absolute_tolerance": 0,
+      "actual": 4.0,
+      "expected": 4,
+      "name": "descriptive_mean",
+      "passed": true,
+      "relative_tolerance": 1e-12
+    },
+    {
+      "absolute_tolerance": 0,
+      "actual": 2.6666666666666665,
+      "expected": 2.6666666666666665,
+      "name": "sample_variance",
+      "passed": true,
+      "relative_tolerance": 1e-12
+    },
+    {
+      "absolute_tolerance": 0,
+      "actual": 1.632993161855452,
+      "expected": 1.632993161855452,
+      "name": "sample_standard_deviation",
+      "passed": true,
+      "relative_tolerance": 1e-12
+    },
+    {
+      "absolute_tolerance": 0,
+      "actual": 3.5,
+      "expected": 3.5,
+      "name": "linear_q1",
+      "passed": true,
+      "relative_tolerance": 1e-12
+    },
+    {
+      "absolute_tolerance": 0,
+      "actual": 4.5,
+      "expected": 4.5,
+      "name": "linear_q3",
+      "passed": true,
+      "relative_tolerance": 1e-12
+    },
+    {
+      "absolute_tolerance": 0,
+      "actual": 0.3,
+      "expected": 0.3,
+      "name": "empirical_prior",
+      "passed": true,
+      "relative_tolerance": 1e-12
+    },
+    {
+      "absolute_tolerance": 0,
+      "actual": 0.25,
+      "expected": 0.25,
+      "name": "word_probability",
+      "passed": true,
+      "relative_tolerance": 1e-12
+    },
+    {
+      "absolute_tolerance": 0,
+      "actual": 0.72,
+      "expected": 0.72,
+      "name": "empirical_posterior",
+      "passed": true,
+      "relative_tolerance": 1e-12
+    },
+    {
+      "absolute_tolerance": 0,
+      "actual": 0.1877117156982422,
+      "expected": 0.1877117156982422,
+      "name": "binomial_pmf",
+      "passed": true,
+      "relative_tolerance": 1e-12
+    },
+    {
+      "absolute_tolerance": 0,
+      "actual": 280.0,
+      "expected": 280,
+      "name": "pearson_statistic",
+      "passed": true,
+      "relative_tolerance": 1e-12
+    },
+    {
+      "absolute_tolerance": 0,
+      "actual": 7.50924265373513e-63,
+      "expected": 7.50924e-63,
+      "name": "pearson_p_value",
+      "passed": true,
+      "relative_tolerance": 1e-06
+    },
+    {
+      "absolute_tolerance": 5e-05,
+      "actual": 0.2724068424770048,
+      "expected": 0.2724,
+      "name": "wilson_lower_rounded",
+      "passed": true,
+      "relative_tolerance": 0
+    },
+    {
+      "absolute_tolerance": 5e-05,
+      "actual": 0.3291238609172172,
+      "expected": 0.3291,
+      "name": "wilson_upper_rounded",
+      "passed": true,
+      "relative_tolerance": 0
+    }
+  ],
+  "measured": {
+    "dataset_id": "ccd3321b252f22aaa5e6e1e74d96140b46c088a15474e8607c6259b2467c9c7a",
+    "inputs": {
+      "data/processed/deduplication_report.json": {
+        "sha256": "c957e3f83946a374622c784cb88f6c0ba088daa009cf53d3b946595a34d03aa5",
+        "size_bytes": 44207
+      },
+      "data/processed/messages.csv": {
+        "sha256": "cfb3aca92056ab548d694e0d501ba3d336202e6c42c237b069d6ad705d990d6f",
+        "size_bytes": 24182963
+      },
+      "data/processed/messages.parsed.jsonl": {
+        "sha256": "7241dcfcf5480609ed1c2c1d8e3e38d86e9394fbc512114b22a7284d4914114d",
+        "size_bytes": 25868309
+      },
+      "data/processed/parsing_report.json": {
+        "sha256": "fa7088cb2e76f53a6515001fd5af524395c1fdee59f236d4be12db2b2cb34b08",
+        "size_bytes": 11742
+      },
+      "data/processed/source_manifest.json": {
+        "sha256": "69cc91e00660b83fb60086a3a580cd53f1a81c5812a0e3bb363138f7ce2da7fa",
+        "size_bytes": 2878
+      }
+    },
+    "scopes": {
+      "all": {
+        "character_statistics": {
+          "groups": {
+            "ham": {
+              "iqr": 1101.0,
+              "max": 163495,
+              "mean": 1788.3338203067933,
+              "median": 987,
+              "min": 42,
+              "mode": 536,
+              "mode_tied": false,
+              "n": 4107,
+              "notes": [],
+              "q1": 559.0,
+              "q3": 1660.0,
+              "sample_std": 4504.807137780186,
+              "sample_variance": 20293287.348595314
+            },
+            "spam": {
+              "iqr": 1294.5,
+              "max": 126061,
+              "mean": 2258.3207977207976,
+              "median": 1072,
+              "min": 9,
+              "mode": 638,
+              "mode_tied": false,
+              "n": 1755,
+              "notes": [],
+              "q1": 681.5,
+              "q3": 1976.0,
+              "sample_std": 5570.18205221909,
+              "sample_variance": 31026928.09486367
+            }
+          },
+          "metric": "character_count",
+          "scope": "all",
+          "unit": "characters/email"
+        },
+        "free_chi_square": {
+          "alpha": 0.05,
+          "alternative_hypothesis": "Word presence and email class are associated.",
+          "assumptions_satisfied": true,
+          "chi_square": 703.7827464379106,
+          "continuity_correction": false,
+          "degrees_of_freedom": 1,
+          "expected": [
+            [
+              415.54759467758447,
+              1339.4524053224156
+            ],
+            [
+              972.4524053224155,
+              3134.5475946775846
+            ]
+          ],
+          "limitations": "Independence is assumed, not established. Association is not causation.",
+          "null_hypothesis": "Word presence and email class are independent.",
+          "observed": [
+            [
+              811,
+              944
+            ],
+            [
+              577,
+              3530
+            ]
+          ],
+          "p_value": 4.499085288543703e-155,
+          "reject_null": true,
+          "scope": "all",
+          "test": "pearson_chi_square_independence",
+          "warnings": [],
+          "word": "free"
+        },
+        "free_word": {
+          "counts": {
+            "ham_absent": 3530,
+            "ham_present": 577,
+            "spam_absent": 944,
+            "spam_present": 811
+          },
+          "notes": [],
+          "probabilities": {
+            "p_spam": {
+              "denominator": 5862,
+              "numerator": 1755,
+              "value": 0.2993858751279427
+            },
+            "p_spam_and_word": {
+              "denominator": 5862,
+              "numerator": 811,
+              "value": 0.13834868645513476
+            },
+            "p_spam_given_word": {
+              "denominator": 1388,
+              "numerator": 811,
+              "value": 0.5842939481268011
+            },
+            "p_word": {
+              "denominator": 5862,
+              "numerator": 1388,
+              "value": 0.23677925622654383
+            },
+            "p_word_given_spam": {
+              "denominator": 1755,
+              "numerator": 811,
+              "value": 0.4621082621082621
+            }
+          },
+          "scope": "all",
+          "total": 5862,
+          "word": "free"
+        },
+        "spam_interval": {
+          "confidence": 0.95,
+          "limitations": "Historical, curated corpus; interval does not guarantee population representativeness.",
+          "lower": 0.2877962371144159,
+          "method": "wilson",
+          "notes": [],
+          "point_estimate": 0.2993858751279427,
+          "sample_size": 5862,
+          "scope": "all",
+          "spam_count": 1755,
+          "upper": 0.3112382719988152
+        },
+        "token_statistics": {
+          "groups": {
+            "ham": {
+              "iqr": 172.5,
+              "max": 23647,
+              "mean": 278.09666423179937,
+              "median": 152,
+              "min": 8,
+              "mode": 37,
+              "mode_tied": false,
+              "n": 4107,
+              "notes": [],
+              "q1": 87.0,
+              "q3": 259.5,
+              "sample_std": 677.6461456685774,
+              "sample_variance": 459204.2987394788
+            },
+            "spam": {
+              "iqr": 203.5,
+              "max": 11402,
+              "mean": 341.345868945869,
+              "median": 167,
+              "min": 1,
+              "mode": 140,
+              "mode_tied": false,
+              "n": 1755,
+              "notes": [],
+              "q1": 106.0,
+              "q3": 309.5,
+              "sample_std": 724.5469590909257,
+              "sample_variance": 524968.2959279076
+            }
+          },
+          "metric": "token_count",
+          "scope": "all",
+          "unit": "tokens/email"
+        }
+      },
+      "test": {
+        "character_statistics": {
+          "groups": {
+            "ham": {
+              "iqr": 1153.75,
+              "max": 35027,
+              "mean": 1659.1703163017032,
+              "median": 1009.5,
+              "min": 107,
+              "mode": 483,
+              "mode_tied": false,
+              "n": 822,
+              "notes": [],
+              "q1": 579.0,
+              "q3": 1732.75,
+              "sample_std": 2481.181844872984,
+              "sample_variance": 6156263.347327305
+            },
+            "spam": {
+              "iqr": 1195.5,
+              "max": 126061,
+              "mean": 2491.2735042735044,
+              "median": 1033,
+              "min": 21,
+              "mode": 638,
+              "mode_tied": true,
+              "n": 351,
+              "notes": [],
+              "q1": 681.0,
+              "q3": 1876.5,
+              "sample_std": 7883.051887570228,
+              "sample_variance": 62142507.06212454
+            }
+          },
+          "metric": "character_count",
+          "scope": "test",
+          "unit": "characters/email"
+        },
+        "free_chi_square": {
+          "alpha": 0.05,
+          "alternative_hypothesis": "Word presence and email class are associated.",
+          "assumptions_satisfied": true,
+          "chi_square": 113.65064053994777,
+          "continuity_correction": false,
+          "degrees_of_freedom": 1,
+          "expected": [
+            [
+              79.89514066496163,
+              271.1048593350384
+            ],
+            [
+              187.10485933503836,
+              634.8951406649617
+            ]
+          ],
+          "limitations": "Independence is assumed, not established. Association is not causation.",
+          "null_hypothesis": "Word presence and email class are independent.",
+          "observed": [
+            [
+              150,
+              201
+            ],
+            [
+              117,
+              705
+            ]
+          ],
+          "p_value": 1.5541409464579267e-26,
+          "reject_null": true,
+          "scope": "test",
+          "test": "pearson_chi_square_independence",
+          "warnings": [],
+          "word": "free"
+        },
+        "free_word": {
+          "counts": {
+            "ham_absent": 705,
+            "ham_present": 117,
+            "spam_absent": 201,
+            "spam_present": 150
+          },
+          "notes": [],
+          "probabilities": {
+            "p_spam": {
+              "denominator": 1173,
+              "numerator": 351,
+              "value": 0.29923273657289
+            },
+            "p_spam_and_word": {
+              "denominator": 1173,
+              "numerator": 150,
+              "value": 0.1278772378516624
+            },
+            "p_spam_given_word": {
+              "denominator": 267,
+              "numerator": 150,
+              "value": 0.5617977528089888
+            },
+            "p_word": {
+              "denominator": 1173,
+              "numerator": 267,
+              "value": 0.22762148337595908
+            },
+            "p_word_given_spam": {
+              "denominator": 351,
+              "numerator": 150,
+              "value": 0.42735042735042733
+            }
+          },
+          "scope": "test",
+          "total": 1173,
+          "word": "free"
+        },
+        "spam_interval": {
+          "confidence": 0.95,
+          "limitations": "Historical, curated corpus; interval does not guarantee population representativeness.",
+          "lower": 0.2737172968718841,
+          "method": "wilson",
+          "notes": [],
+          "point_estimate": 0.29923273657289,
+          "sample_size": 1173,
+          "scope": "test",
+          "spam_count": 351,
+          "upper": 0.32605886968840486
+        },
+        "token_statistics": {
+          "groups": {
+            "ham": {
+              "iqr": 178.5,
+              "max": 5711,
+              "mean": 259.1350364963504,
+              "median": 154.0,
+              "min": 16,
+              "mode": 175,
+              "mode_tied": false,
+              "n": 822,
+              "notes": [],
+              "q1": 89.25,
+              "q3": 267.75,
+              "sample_std": 385.86875267195467,
+              "sample_variance": 148894.6942886101
+            },
+            "spam": {
+              "iqr": 193.0,
+              "max": 5786,
+              "mean": 331.77492877492875,
+              "median": 164,
+              "min": 3,
+              "mode": 140,
+              "mode_tied": false,
+              "n": 351,
+              "notes": [],
+              "q1": 107.0,
+              "q3": 300.0,
+              "sample_std": 620.4558904993586,
+              "sample_variance": 384965.51205535204
+            }
+          },
+          "metric": "token_count",
+          "scope": "test",
+          "unit": "tokens/email"
+        }
+      },
+      "train": {
+        "character_statistics": {
+          "groups": {
+            "ham": {
+              "iqr": 1096.0,
+              "max": 163495,
+              "mean": 1820.654185692542,
+              "median": 978,
+              "min": 42,
+              "mode": 536,
+              "mode_tied": false,
+              "n": 3285,
+              "notes": [],
+              "q1": 553.0,
+              "q3": 1649.0,
+              "sample_std": 4881.444661563657,
+              "sample_variance": 23828501.983908325
+            },
+            "spam": {
+              "iqr": 1315.75,
+              "max": 72640,
+              "mean": 2200.0826210826212,
+              "median": 1077.5,
+              "min": 9,
+              "mode": 492,
+              "mode_tied": true,
+              "n": 1404,
+              "notes": [],
+              "q1": 682.25,
+              "q3": 1998.0,
+              "sample_std": 4823.879243893783,
+              "sample_variance": 23269810.959669247
+            }
+          },
+          "metric": "character_count",
+          "scope": "train",
+          "unit": "characters/email"
+        },
+        "free_chi_square": {
+          "alpha": 0.05,
+          "alternative_hypothesis": "Word presence and email class are associated.",
+          "assumptions_satisfied": true,
+          "chi_square": 591.5580087959548,
+          "continuity_correction": false,
+          "degrees_of_freedom": 1,
+          "expected": [
+            [
+              335.65451055662186,
+              1068.345489443378
+            ],
+            [
+              785.3454894433781,
+              2499.654510556622
+            ]
+          ],
+          "limitations": "Independence is assumed, not established. Association is not causation.",
+          "null_hypothesis": "Word presence and email class are independent.",
+          "observed": [
+            [
+              661,
+              743
+            ],
+            [
+              460,
+              2825
+            ]
+          ],
+          "p_value": 1.148208725343413e-130,
+          "reject_null": true,
+          "scope": "train",
+          "test": "pearson_chi_square_independence",
+          "warnings": [],
+          "word": "free"
+        },
+        "free_word": {
+          "counts": {
+            "ham_absent": 2825,
+            "ham_present": 460,
+            "spam_absent": 743,
+            "spam_present": 661
+          },
+          "notes": [],
+          "probabilities": {
+            "p_spam": {
+              "denominator": 4689,
+              "numerator": 1404,
+              "value": 0.29942418426103645
+            },
+            "p_spam_and_word": {
+              "denominator": 4689,
+              "numerator": 661,
+              "value": 0.14096822350181276
+            },
+            "p_spam_given_word": {
+              "denominator": 1121,
+              "numerator": 661,
+              "value": 0.5896520963425513
+            },
+            "p_word": {
+              "denominator": 4689,
+              "numerator": 1121,
+              "value": 0.23907016421411814
+            },
+            "p_word_given_spam": {
+              "denominator": 1404,
+              "numerator": 661,
+              "value": 0.4707977207977208
+            }
+          },
+          "scope": "train",
+          "total": 4689,
+          "word": "free"
+        },
+        "spam_interval": {
+          "confidence": 0.95,
+          "limitations": "Historical, curated corpus; interval does not guarantee population representativeness.",
+          "lower": 0.2864834250054013,
+          "method": "wilson",
+          "notes": [],
+          "point_estimate": 0.29942418426103645,
+          "sample_size": 4689,
+          "scope": "train",
+          "spam_count": 1404,
+          "upper": 0.3126933175916747
+        },
+        "token_statistics": {
+          "groups": {
+            "ham": {
+              "iqr": 172.0,
+              "max": 23647,
+              "mean": 282.841400304414,
+              "median": 152,
+              "min": 8,
+              "mode": 37,
+              "mode_tied": false,
+              "n": 3285,
+              "notes": [],
+              "q1": 86.0,
+              "q3": 258.0,
+              "sample_std": 732.672516167272,
+              "sample_variance": 536809.0159468814
+            },
+            "spam": {
+              "iqr": 207.25,
+              "max": 11402,
+              "mean": 343.738603988604,
+              "median": 168.5,
+              "min": 1,
+              "mode": 139,
+              "mode_tied": true,
+              "n": 1404,
+              "notes": [],
+              "q1": 106.0,
+              "q3": 313.25,
+              "sample_std": 748.4916031724856,
+              "sample_variance": 560239.6800197177
+            }
+          },
+          "metric": "token_count",
+          "scope": "train",
+          "unit": "tokens/email"
+        }
+      }
+    },
+    "split_id": "e10ea9f8b406c62d14a359dd864ef2a195c8c1960c2747f1feaaea313c148c31"
+  },
+  "passed": true,
+  "runtime": {
+    "numpy": "2.5.5",
+    "python": "3.12.15",
+    "scipy": "1.18.1"
+  },
+  "schema_version": 1,
+  "synthetic_examples": {
+    "binomial": {
+      "assumptions": [
+        "The repeated trials are modeled as independent with constant p.",
+        "This demonstration does not establish independence of historical emails."
+      ],
+      "bernoulli": {
+        "mean": 0.25,
+        "p_one": 0.25,
+        "p_zero": 0.75,
+        "variance": 0.1875
+      },
+      "bernoulli_p": 0.25,
+      "binomial_pmf": 0.1877117156982422,
+      "successes": 1,
+      "trials": 10
+    },
+    "chi_square": {
+      "alpha": 0.05,
+      "alternative_hypothesis": "Word presence and email class are associated.",
+      "assumptions_satisfied": true,
+      "chi_square": 280.0,
+      "continuity_correction": false,
+      "degrees_of_freedom": 1,
+      "expected": [
+        [
+          75.0,
+          225.0
+        ],
+        [
+          175.0,
+          525.0
+        ]
+      ],
+      "limitations": "Independence is assumed, not established. Association is not causation.",
+      "null_hypothesis": "Word presence and email class are independent.",
+      "observed": [
+        [
+          180,
+          120
+        ],
+        [
+          70,
+          630
+        ]
+      ],
+      "p_value": 7.50924265373513e-63,
+      "reject_null": true,
+      "test": "pearson_chi_square_independence",
+      "warnings": []
+    },
+    "contingency": {
+      "counts": {
+        "ham_absent": 630,
+        "ham_present": 70,
+        "spam_absent": 120,
+        "spam_present": 180
+      },
+      "notes": [],
+      "probabilities": {
+        "p_spam": {
+          "denominator": 1000,
+          "numerator": 300,
+          "value": 0.3
+        },
+        "p_spam_and_word": {
+          "denominator": 1000,
+          "numerator": 180,
+          "value": 0.18
+        },
+        "p_spam_given_word": {
+          "denominator": 250,
+          "numerator": 180,
+          "value": 0.72
+        },
+        "p_word": {
+          "denominator": 1000,
+          "numerator": 250,
+          "value": 0.25
+        },
+        "p_word_given_spam": {
+          "denominator": 300,
+          "numerator": 180,
+          "value": 0.6
+        }
+      },
+      "scope": "all",
+      "total": 1000,
+      "word": "free"
+    },
+    "descriptive": {
+      "iqr": 1.0,
+      "max": 6,
+      "mean": 4.0,
+      "median": 4.0,
+      "min": 2,
+      "mode": 4,
+      "mode_tied": false,
+      "n": 4,
+      "notes": [],
+      "q1": 3.5,
+      "q3": 4.5,
+      "sample_std": 1.632993161855452,
+      "sample_variance": 2.6666666666666665
+    },
+    "wilson": {
+      "confidence": 0.95,
+      "limitations": "Historical, curated corpus; interval does not guarantee population representativeness.",
+      "lower": 0.2724068424770048,
+      "method": "wilson",
+      "notes": [],
+      "point_estimate": 0.3,
+      "sample_size": 1000,
+      "spam_count": 300,
+      "upper": 0.3291238609172172
+    }
+  }
+}

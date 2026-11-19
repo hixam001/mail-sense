@@ -316,6 +316,10 @@ artifact changes, regenerate affected preparation stages in order and create
 the split again; do not edit IDs/counts/hashes by hand. A clone needs the full
 acquire → parse → retain → split sequence to restore local readiness.
 
+## Numerical verification
+
+After corpus preparation, run `uv run --directory backend --frozen python -m scripts.verify_statistics run`, then replace `run` with `verify` to rederive and check the report. The public `artifacts/reports/statistics_verification.json` distinguishes synthetic fixtures from actual all/train/test aggregates, with source/dataset/split identities and runtime pins. No model artifacts or network are required.
+
 ## Locks and intentional updates
 
 Frontend direct pins live in `frontend/package.json`; transitive versions and

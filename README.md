@@ -1,7 +1,7 @@
 # MailSense
 
 **Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** 12/39 implementation tasks verified. Latest: MSE-206 — Wilson spam-proportion confidence intervals. Next: MSE-207. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
+**Status:** 13/39 implementation tasks verified. Latest: MSE-207 — Numerical verification evidence and Gate 2 completion. Next: MSE-301. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
 
 > **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
 
@@ -165,6 +165,19 @@ IDs, class counts, configuration and hashes. Its ID join adds `split` to private
 records in memory while preserving the retained CSV. No vocabulary or model is
 fitted. See [split setup and recovery](docs/SETUP.md#create-the-split).
 
+## Verify statistical methods
+
+```bash
+uv run --directory backend --frozen python -m scripts.verify_statistics run
+uv run --directory backend --frozen python -m scripts.verify_statistics verify
+```
+
+The [verification report](artifacts/reports/statistics_verification.json) separates
+synthetic worked examples from measured corpus aggregates and pins their inputs.
+Thirteen numerical checks and the regression suite verify Gate 2 without models
+or UI. Descriptive, distribution, empirical probability, binomial, Pearson and
+Wilson services are implemented; the API and analytical screens follow later.
+
 ## Implementation sequence
 
 The requirements and acceptance gates are documented in `docs/`. Delivery follows
@@ -176,8 +189,8 @@ this sequence; the handoff records current ticket status:
 4. `MSE-104` (complete): Safely extract and parse MIME to private canonical text with verified counts.
 5. `MSE-105` (complete): Deduplicate, reject label conflicts and derive retained summary records.
 6. `MSE-106` (complete): Create a deterministic stratified split with verified disjoint IDs.
-7. `MSE-201–207` (next, starting with MSE-201): Implement and verify statistics independently from ML.
-8. `MSE-301–307`: Fit/evaluate both Naive Bayes models.
+7. `MSE-201–207` (complete): Implement and verify statistics independently from ML.
+8. `MSE-301–307` (next): Fit/evaluate both Naive Bayes models.
 9. `MSE-401–406`: Implement versioned FastAPI contract.
 10. `MSE-501–507`: Build five frontend modules with real API results.
 11. `MSE-601–606`: Run tests, collect evidence, finalize university report/demo.

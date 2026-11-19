@@ -1,7 +1,7 @@
 # MailSense — Implementation Plan and Jira-Style Backlog
 
 **Version:** 1.0 · **Date:** 2026-11-19  
-**Status:** 12 implementation tickets verified; 27 remain. Latest MSE-206; next MSE-207. See the handoff for evidence.
+**Status:** 13 implementation tickets verified; 26 remain. Latest MSE-207; next MSE-301. See the handoff for evidence.
 **Scope:** Complete university project, local React + FastAPI, SpamAssassin, Multinomial NB + Bernoulli NB
 
 ## 1. Delivery strategy
@@ -80,7 +80,7 @@ training, model result or later gate is completed by this foundation.
 | MSE-206 | Wilson proportion confidence interval | MSE-201 | Known interval matches independent calculation |
 | MSE-207 | Add unit tests and `STATISTICAL_METHODS.md` numerical verification evidence | MSE-201–206 | All formula tests pass and three worked examples documented |
 
-**Gate 2:** The academic statistics work functions without a machine-learning model or UI. This demonstrates the course's mathematical content independently.
+**Gate 2 complete:** The academic statistics services run without trained models or UI. MSE-207 records 13 golden-value numerical checks, three worked example groups and measured scoped aggregates with dataset/split provenance; 267 tests passed.
 
 ### EPIC MSE-3 — Model development (2–4 working days)
 
@@ -201,6 +201,6 @@ Dates are deliberately **not invented**. Convert to calendar milestones after co
 - [x] Deduplicate exact normalized text, exclude conflicting labels and derive retained token/character records with verified counts for MSE-105.
 - [x] Freeze/verify seed-42 stratified membership without modifying retained records for MSE-106; complete Gate 1.
 
-**Next task:** `MSE-207`.
+**Next task:** `MSE-301`.
 Keep status synchronized with `memory/HANDOFF.md`; later tickets remain open
 until their acceptance criteria are verified.

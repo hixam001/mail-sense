@@ -2,7 +2,7 @@
 
 **Version:** 1.2 · **Date:** 2026-11-19
 **Purpose:** Academic formulas, assumptions, verifiable examples and reproducibility rules  
-**Status:** Canonical tokenization, retained counts and stratified split implemented; descriptive statistics implemented; remaining statistical/model methods tracked in the handoff
+**Status:** Statistics engine and numerical verification implemented; Gate 2 complete. Models remain tracked in the handoff.
 
 ## 1. Statistical units and data definitions
 
@@ -263,3 +263,5 @@ Record the inputs and observed outputs in the test report. Do not mark any check
 - MSE-205: Pearson service uses rows spam/ham, columns present/absent, no continuity correction. The synthetic table yields 280, df 1, p≈7.50924e-63; independent [SciPy contingency reference](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.chi2_contingency.html) agrees. Any expected cell below 5 prevents an automatic conclusion; zero margins yield null statistic/p-value. Independence remains assumed and association is not causation. 240 tests passed. Actual `free` chi-square is 703.7827464379106 for all retained records.
 
 - MSE-206: Two-sided Wilson score intervals use a normal quantile and confidence .80–.99. Known 300/1000 bounds round to [.2724,.3291]; zero/all successes and empty samples are covered. Actual retained spam fraction has 95% bounds [.2877962371144159,.3112382719988152]. This describes the curated historical dataset under assumptions, not modern prevalence. 264 tests passed.
+
+- MSE-207 / Gate 2: `uv run --directory backend --frozen python -m scripts.verify_statistics run` writes [reproducible verification evidence](../artifacts/reports/statistics_verification.json). Thirteen golden-value checks cover the descriptive list, the 1000-message Bayes/binomial table, Pearson expected counts/statistic/tail and Wilson bounds. Tiny p-values use relative tolerance without a permissive absolute tolerance. Synthetic examples and measured corpus scopes are separate, with input/dataset/split identities. `verify` rederives the report and rejects staleness. 267 tests passed; statistics run without models/UI. Confusion-matrix verification follows model implementation.
