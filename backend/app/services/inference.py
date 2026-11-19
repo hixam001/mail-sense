@@ -2,10 +2,12 @@
 
 import math
 from numbers import Integral, Real
+from statistics import NormalDist
 
 import numpy as np
 from scipy.stats import chi2
 
+from app.services.analytics_data import select_records
 from app.services.corpus_split import load_split_dataset
 from app.services.probability import word_contingency
 
@@ -84,3 +86,57 @@ def hypothesis_test(rows, word, scope="all", alpha=0.05):
 def dataset_hypothesis_test(root, word, scope="all", alpha=0.05):
     rows, _ = load_split_dataset(root, scope)
     return hypothesis_test(rows, word, scope, alpha)
+
+
+def wilson_score(spam_count, sample_size, confidence=0.95):
+    if (
+        isinstance(confidence, bool)
+        or not isinstance(confidence, Real)
+        or not math.isfinite(confidence)
+        or not 0.80 <= confidence <= 0.99
+    ):
+        raise ValueError("invalid_confidence")
+    if (
+        any(
+            isinstance(value, bool) or not isinstance(value, Integral)
+            for value in (spam_count, sample_size)
+        )
+        or not 0 <= spam_count <= sample_size
+    ):
+        raise ValueError("invalid_interval_counts")
+    x, n = int(spam_count), int(sample_size)
+    result = dict(
+        method="wilson",
+        confidence=confidence,
+        sample_size=n,
+        spam_count=x,
+        point_estimate=x / n if n else None,
+        lower=None,
+        upper=None,
+        limitations="Historical, curated corpus; interval does not guarantee "
+        "population representativeness.",
+        notes=[],
+    )
+    if not n:
+        result["notes"] = ["No observations; proportion and interval are undefined."]
+        return result
+    p = x / n
+    z = NormalDist().inv_cdf((1 + confidence) / 2)
+    divisor = 1 + z * z / n
+    center = (p + z * z / (2 * n)) / divisor
+    half = z / divisor * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n))
+    result.update(lower=max(0.0, center - half), upper=min(1.0, center + half))
+    return result
+
+
+def confidence_interval(rows, scope="all", confidence=0.95):
+    selected = select_records(rows, scope)
+    return {
+        "scope": scope,
+        **wilson_score(sum(row["label"] == "spam" for row in selected), len(selected), confidence),
+    }
+
+
+def dataset_confidence_interval(root, scope="all", confidence=0.95):
+    rows, _ = load_split_dataset(root, scope)
+    return confidence_interval(rows, scope, confidence)
