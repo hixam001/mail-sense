@@ -6,6 +6,7 @@ from fastapi import FastAPI
 
 from app.api.dataset import router as dataset_router
 from app.api.errors import install_errors
+from app.api.models import router as models_router
 from app.api.probability import router as probability_router
 from app.core.state import ApplicationState
 from app.schemas.common import ErrorEnvelope, HealthResponse
@@ -22,6 +23,7 @@ def create_app(root=None):
     install_errors(application)
     application.include_router(dataset_router)
     application.include_router(probability_router)
+    application.include_router(models_router)
 
     @application.get("/", summary="Scaffold greeting")
     def greeting():

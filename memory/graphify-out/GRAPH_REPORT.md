@@ -1,7 +1,7 @@
 # Graph Report - mail-sense  (2026-11-19)
 
 ## Corpus Check
-- 17 files · ~32,042 words
+- 17 files · ~32,185 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -16,10 +16,10 @@
 - docs/STATISTICAL_METHODS.md
 - docs/IMPLEMENTATION_PLAN.md
 - docs/APP_FLOW.md
+- MSE-403
 - memory/HANDOFF.md
 - docs/DATA_MODEL.md
 - docs/PRD.md
-- MSE-403
 - docs/SRS.md
 - docs/TEST_PLAN.md
 - MSE-404
@@ -28,18 +28,18 @@
 
 ## God Nodes (most connected - your core abstractions)
 1. `MSE-601` - 13 edges
-2. `MSE-404` - 11 edges
-3. `MSE-403` - 10 edges
+2. `MSE-403` - 10 edges
+3. `MSE-404` - 10 edges
 4. `MSE-501` - 10 edges
-5. `MSE-207` - 8 edges
-6. `MSE-405` - 8 edges
+5. `MSE-405` - 9 edges
+6. `MSE-207` - 8 edges
 7. `MSE-507` - 8 edges
 8. `MSE-201` - 7 edges
 9. `MSE-203` - 7 edges
 10. `MSE-304` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Next task` --next_task--> `MSE-404`  [EXTRACTED]
+- `Next task` --next_task--> `MSE-405`  [EXTRACTED]
   memory/HANDOFF.md → docs/IMPLEMENTATION_PLAN.md
 
 ## Communities (15 total, 0 thin omitted)
@@ -68,21 +68,21 @@ Nodes (15): MSE-101, MSE-102, MSE-103, MSE-104, MSE-105, MSE-106, MSE-401, MSE-6
 Cohesion: 0.15
 Nodes (12): 6. Core flow F-04: Spam detection, 7. Core flow F-05: Model evaluation, 8. Recovery and operational flows, 9. Decision-point matrix, 10. Screen inventory, 11. UI state and data flow principles, 12. Flow acceptance walkthrough, 2. Navigation map (+4 more)
 
-### Community 6 - "memory/HANDOFF.md"
+### Community 6 - "MSE-403"
+Cohesion: 0.33
+Nodes (12): MSE-201, MSE-202, MSE-203, MSE-204, MSE-205, MSE-206, MSE-207, MSE-402 (+4 more)
+
+### Community 7 - "memory/HANDOFF.md"
 Cohesion: 0.21
 Nodes (11): MSE-603, MSE-604, MSE-605, MSE-606, Full remaining implementation inventory, Established and completed preparation, Verification and delivery evidence, Environment notes and recovery (+3 more)
 
-### Community 7 - "docs/DATA_MODEL.md"
+### Community 8 - "docs/DATA_MODEL.md"
 Cohesion: 0.17
 Nodes (11): 4. Entity `SplitManifest` (`data/processed/split_manifest.json`), 2. Entity `SourceArchive` (`data/processed/source_manifest.json`), 5. Entity `Vocabulary` (serialized with trained preprocessing pipeline), 6. Entity `TrainedModel` (`artifacts/models/{model}.joblib`, `metadata.json`), 7. Entity `ModelEvaluation` (`artifacts/reports/evaluation.json`), 8. API-view schemas (not persisted), 9. Storage layout, 10. No database / no user entity (+3 more)
 
-### Community 8 - "docs/PRD.md"
+### Community 9 - "docs/PRD.md"
 Cohesion: 0.17
 Nodes (11): 6. Explicitly out of scope, 7. User scenarios, 2. Goals and SMART objectives, 8. Non-functional requirements, 9. Dependencies and constraints, 10. Milestones and timeline, 11. Project state and change control, 3. Product success metrics (+3 more)
-
-### Community 9 - "MSE-403"
-Cohesion: 0.38
-Nodes (11): MSE-201, MSE-202, MSE-203, MSE-204, MSE-205, MSE-206, MSE-207, MSE-402 (+3 more)
 
 ### Community 10 - "docs/SRS.md"
 Cohesion: 0.20
@@ -93,8 +93,8 @@ Cohesion: 0.20
 Nodes (9): 7. Manual university demonstration acceptance, 8. Defect triage and exit criteria, 9. Test execution log template, 2. Critical release-blocking scenarios, 3. Additional numerical and edge-case tests, 4. API contract tests, 1. Test philosophy, 5. Model evaluation integrity checklist (+1 more)
 
 ### Community 12 - "MSE-404"
-Cohesion: 0.36
-Nodes (9): MSE-301, MSE-302, MSE-303, MSE-304, MSE-305, MSE-306, MSE-307, MSE-404 (+1 more)
+Cohesion: 0.43
+Nodes (8): MSE-301, MSE-302, MSE-303, MSE-304, MSE-305, MSE-306, MSE-307, MSE-404
 
 ### Community 13 - "MSE-601"
 Cohesion: 0.61

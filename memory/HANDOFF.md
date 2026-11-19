@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-403 — Typed probability and statistical inference endpoints**.
-Next implementation ticket: **MSE-404**.
+Latest implementation: **MSE-404 — Transient prediction and verified model API routes**.
+Next implementation ticket: **MSE-405**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-404** — Add A09–A12 for strict transient prediction, both model metrics/comparison and canonical word explanations; use cached verified artifacts, enforce input limits and unknown-token/absence semantics, test safe missing resources and no writes/echo, commit/push then harden local binding/CORS/logging/limits MSE-405.
+**MSE-405** — Harden local binding, explicit CORS and host/origin rules, bounded request bodies and safe logs; test no body/query leakage and blocked external origins, update memory, commit/push then continue MSE-406.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -203,9 +203,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-403 implemented:** Typed probability and statistical inference endpoints. 349 tests passed under Gravitas; Ruff clean. A05–A08 reproduce known 1000-row Bayes/binomial/Pearson/Wilson fixtures through HTTP. Unobserved words and unsuitable tables preserve null results/decisions. Token, scope, alpha, confidence and trial validation is redacted; empty/missing data gives safe 503. All actual scopes match verified domain responses exactly.
 
+- **MSE-404 implemented:** Transient prediction and verified model API routes. 362 backend tests and Ruff passed; actual cached model HTTP acceptance passed for all four routes with identical service predictions and shared 1173 test IDs. Boundary/unknown/invalid/missing cases, score decomposition, safe responses and no file writes verified.
+
 ## Full remaining implementation inventory
 
-**23 implementation tickets are complete; 16 are Not started**. Update statuses as work is
+**24 implementation tickets are complete; 15 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -235,8 +237,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-401 | Implement FastAPI health/readiness and shared error envelope | Complete — acceptance verified |
 | MSE-402 | Implement dataset summary/statistics/distribution routes | Complete — acceptance verified |
 | MSE-403 | Implement probability and statistical inference routes | Complete — acceptance verified |
-| MSE-404 | Implement prediction, evaluation and explanation routes | Not started — next |
-| MSE-405 | Verify loopback binding, CORS, redacted logging and input limits | Not started |
+| MSE-404 | Implement prediction, evaluation and explanation routes | Complete — acceptance verified |
+| MSE-405 | Verify loopback binding, CORS, redacted logging and input limits | Not started — next |
 | MSE-406 | Implement and pass FastAPI contract tests | Not started |
 | MSE-501 | Build shared React layout, router, API client and request states | Not started |
 | MSE-502 | Build Dataset Explorer and labeled charts | Not started |
@@ -253,6 +255,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-404 — Transient prediction and verified model API routes:** 362 backend tests and Ruff passed; actual cached model HTTP acceptance passed for all four routes with identical service predictions and shared 1173 test IDs. Boundary/unknown/invalid/missing cases, score decomposition, safe responses and no file writes verified.
 
 - **MSE-403 — Typed probability and statistical inference endpoints:** 349 tests passed under Gravitas; Ruff clean. A05–A08 reproduce known 1000-row Bayes/binomial/Pearson/Wilson fixtures through HTTP. Unobserved words and unsuitable tables preserve null results/decisions. Token, scope, alpha, confidence and trial validation is redacted; empty/missing data gives safe 503. All actual scopes match verified domain responses exactly.
 
