@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-204 — Bernoulli and binomial probability demonstrations**.
-Next implementation ticket: **MSE-205**.
+Latest implementation: **MSE-205 — Pearson chi-square with expected-count suitability checks**.
+Next implementation ticket: **MSE-206**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-205** — Implement uncorrected Pearson chi-square, expected-count diagnostics and null decisions for unsuitable tables; verify 280/df1/reference p and degenerate cases, then commit/push and continue Wilson intervals.
+**MSE-206** — Implement Wilson score intervals with known 300/1000 fixture, empty/all-success boundary behavior and confidence validation; reconcile actual scopes, commit/push and continue numerical evidence MSE-207.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -177,9 +177,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-204 implemented:** Bernoulli and binomial probability demonstrations. 221 tests passed under Gravitas; Ruff clean. PMF for p=.25 n=10 k=1 is .1877117156982422; p=0/1, complete mass and independent SciPy values verified. Trials/successes are bounded integers, nonfinite probabilities rejected, empty denominators remain undefined and independence assumptions are explicit. Actual corpus formula checks passed for all scopes.
 
+- **MSE-205 implemented:** Pearson chi-square with expected-count suitability checks. 240 tests passed under Gravitas; Ruff clean. Synthetic table gives chi-square 280, df=1 and p=7.50924e-63 with correction disabled. Expected counts below 5 never produce automatic decisions; zero expected counts yield null statistics. Actual free association matches independent SciPy for all/train/test (703.7827464/591.5580088/113.6506405). Independence/causation caveats are explicit.
+
 ## Full remaining implementation inventory
 
-**10 implementation tickets are complete; 29 are Not started**. Update statuses as work is
+**11 implementation tickets are complete; 28 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -196,8 +198,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-202 | Aggregate histograms, box plots and top-word data | Complete — acceptance verified |
 | MSE-203 | Implement 2×2 word contingency and empirical probabilities | Complete — acceptance verified |
 | MSE-204 | Implement Bernoulli/binomial calculations with assumptions | Complete — acceptance verified |
-| MSE-205 | Implement Pearson chi-square and assumption checks | Not started — next |
-| MSE-206 | Implement Wilson proportion confidence intervals | Not started |
+| MSE-205 | Implement Pearson chi-square and assumption checks | Complete — acceptance verified |
+| MSE-206 | Implement Wilson proportion confidence intervals | Not started — next |
 | MSE-207 | Verify formula unit tests and record numerical evidence | Not started |
 | MSE-301 | Fit a shared training-only CountVectorizer vocabulary | Not started |
 | MSE-302 | Train Multinomial Naive Bayes with alpha=1.0 | Not started |
@@ -227,6 +229,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-205 — Pearson chi-square with expected-count suitability checks:** 240 tests passed under Gravitas; Ruff clean. Synthetic table gives chi-square 280, df=1 and p=7.50924e-63 with correction disabled. Expected counts below 5 never produce automatic decisions; zero expected counts yield null statistics. Actual free association matches independent SciPy for all/train/test (703.7827464/591.5580088/113.6506405). Independence/causation caveats are explicit.
 
 - **MSE-204 — Bernoulli and binomial probability demonstrations:** 221 tests passed under Gravitas; Ruff clean. PMF for p=.25 n=10 k=1 is .1877117156982422; p=0/1, complete mass and independent SciPy values verified. Trials/successes are bounded integers, nonfinite probabilities rejected, empty denominators remain undefined and independence assumptions are explicit. Actual corpus formula checks passed for all scopes.
 
