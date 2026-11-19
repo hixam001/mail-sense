@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-11-19T17:13:07.664101+00:00",
+  "limitations": "Advisory feeds at this timestamp; absence of known advisories is not proof of security.",
+  "locks": {
+    "backend/uv.lock": "cb8234f2113afc4dee8c3f553a864f6724f4d42264f04ad2422a80eb392bbe6c",
+    "frontend/package-lock.json": "a601d53018489bcf4d1612e8b2419f08dcddac65313e89a7b887fcd1b870279a"
+  },
+  "npm_audit": {
+    "advisories": 0,
+    "reported_dependencies": 213
+  },
+  "pip_audit": {
+    "advisories": 0,
+    "packages": 33,
+    "skipped": [],
+    "version": "2.10.1"
+  },
+  "result": "pass",
+  "task": "MSE-602"
+}

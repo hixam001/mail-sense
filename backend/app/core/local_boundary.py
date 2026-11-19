@@ -27,22 +27,32 @@ class LocalBoundary:
             headers.setdefault(key.lower(), []).append(value)
         hosts = headers.get(b"host", [])
         origins = headers.get(b"origin", [])
+
+        def reply(status, code, message):
+            response = error_response(status, code, message)
+            response.headers["cache-control"] = "no-store"
+            response.headers["x-content-type-options"] = "nosniff"
+            if len(origins) == 1 and origins[0].decode("latin1") in LOCAL_ORIGINS:
+                response.headers["access-control-allow-origin"] = origins[0].decode("latin1")
+                response.headers["vary"] = "Origin"
+            return response
+
         try:
             host = urlsplit("//" + hosts[0].decode("ascii")).hostname if len(hosts) == 1 else None
         except (ValueError, UnicodeError):
             host = None
         if host not in {"localhost", "127.0.0.1", "::1"}:
-            await error_response(400, "INVALID_HOST", "Use the local loopback address.")(
+            await reply(400, "INVALID_HOST", "Use the local loopback address.")(
                 scope, receive, send
             )
             return
         if origins and (len(origins) != 1 or origins[0].decode("latin1") not in LOCAL_ORIGINS):
-            await error_response(403, "ORIGIN_REJECTED", "Use the local MailSense interface.")(
+            await reply(403, "ORIGIN_REJECTED", "Use the local MailSense interface.")(
                 scope, receive, send
             )
             return
         if len(scope.get("query_string", b"")) > 4096:
-            await error_response(414, "QUERY_TOO_LARGE", "Request query exceeds the local limit.")(
+            await reply(414, "QUERY_TOO_LARGE", "Request query exceeds the local limit.")(
                 scope, receive, send
             )
             return
@@ -52,12 +62,10 @@ class LocalBoundary:
             if len(lengths) > 1 or length < 0:
                 raise ValueError
         except ValueError:
-            await error_response(400, "INVALID_LENGTH", "Invalid request length.")(
-                scope, receive, send
-            )
+            await reply(400, "INVALID_LENGTH", "Invalid request length.")(scope, receive, send)
             return
         if length > MAX_BODY_BYTES:
-            await error_response(413, "BODY_TOO_LARGE", "Request body exceeds 512 KiB.")(
+            await reply(413, "BODY_TOO_LARGE", "Request body exceeds 512 KiB.")(
                 scope, receive, send
             )
             return
@@ -68,7 +76,7 @@ class LocalBoundary:
                 return
             body.extend(message.get("body", b""))
             if len(body) > MAX_BODY_BYTES:
-                await error_response(413, "BODY_TOO_LARGE", "Request body exceeds 512 KiB.")(
+                await reply(413, "BODY_TOO_LARGE", "Request body exceeds 512 KiB.")(
                     scope, receive, send
                 )
                 return
@@ -89,7 +97,11 @@ class LocalBoundary:
             nonlocal started, status
             if message["type"] == "http.response.start":
                 started, status = True, message["status"]
-                message["headers"] = list(message.get("headers", [])) + [
+                message["headers"] = [
+                    (key, value)
+                    for key, value in message.get("headers", [])
+                    if key.lower() not in {b"x-content-type-options", b"cache-control"}
+                ] + [
                     (b"x-content-type-options", b"nosniff"),
                     (b"cache-control", b"no-store"),
                 ]
@@ -100,7 +112,7 @@ class LocalBoundary:
         except Exception:
             # Do not let server exception logging serialize a request-bearing exception.
             if not started:
-                await error_response(500, "INTERNAL_ERROR", "An unexpected local error occurred.")(
+                await reply(500, "INTERNAL_ERROR", "An unexpected local error occurred.")(
                     scope, bounded_receive, safe_send
                 )
         finally:

@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-601 — All T01-T08 critical release scenarios executed**.
-Next implementation ticket: **MSE-602**.
+Latest implementation: **MSE-602 — Measured local privacy offline and performance verification**.
+Next implementation ticket: **MSE-603**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-602** — Run focused security/privacy/offline and performance smoke checks. Inspect local trust boundaries and dependency advisories, verify no external requests or input persistence/logging under public-network blocking, benchmark 30 warmed predictions and cached summaries on documented hardware, record limitations and fix concrete findings. Commit/push then independently verify math/provenance/model integrity MSE-603 and continue report/setup/release 604-606.
+**MSE-603** — Independently verify teaching formulas/counts and actual corpus provenance/membership/hashes, refit both models in memory from training-only features and reconcile held-out confusion metrics without tuning. Publish reproducibility checklist/report, commit/push then university report MSE-604 and final installation/demo/release605-606.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -225,9 +225,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-601 implemented:** All T01-T08 critical release scenarios executed. Gravitas consolidated acceptance passed: 397 pytest/JUnit cases, seven offline actual-artifact verifiers, eight frontend tests and production build. Real browser T07/T08 passed over a temporary private artifact copy: valid/blank/overlimit/50000 input, unchanged artifact bytes and no input logs, actual API shutdown/restart, missing Bernoulli while dataset analytics work, safe retry and complete restoration. Working corpus/models were untouched; temporary stage and owned processes cleaned. Public acceptance report records module counts, identities and observed scenarios. Harness root resolution was corrected before passing.
 
+- **MSE-602 implemented:** Measured local privacy offline and performance verification. Focused smoke passed under Gravitas: all core workflows/dual inference under browser internet denial and API socket guard, no external attempts/resource execution or input URL/storage/log retention, unchanged artifacts. Fixed observed safe-header/local-CORS inconsistency for early/500 errors; all14 boundary and401 backend tests pass, frontend lint/build clean. Thirty warmed HTTP samples each: prediction p95 0.0642s versus3s; summary0.0454s versus5s on i5-13420H Linux12-thread affinity. npm213/Python33 advisory checks report zero findings/skips at timestamp. Limits and exact guards documented, no comprehensive audit claim.
+
 ## Full remaining implementation inventory
 
-**34 implementation tickets are complete; 5 are Not started**. Update statuses as work is
+**35 implementation tickets are complete; 4 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -268,13 +270,15 @@ Dependencies and detailed acceptance criteria are in
 | MSE-506 | Build Model Evaluation and confusion matrices | Complete — acceptance verified |
 | MSE-507 | Verify responsive behavior, keyboard access and error/stale states | Complete — acceptance verified |
 | MSE-601 | Execute all critical T01–T08 scenarios with evidence | Complete — acceptance verified |
-| MSE-602 | Verify security, privacy, offline use and measured performance | Not started — next |
-| MSE-603 | Independently verify math, provenance and model integrity | Not started |
+| MSE-602 | Verify security, privacy, offline use and measured performance | Complete — acceptance verified |
+| MSE-603 | Independently verify math, provenance and model integrity | Not started — next |
 | MSE-604 | Complete university report with real screenshots and measurements | Not started |
 | MSE-605 | Finalize installation README and classroom demo script | Not started |
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-602 — Measured local privacy offline and performance verification:** Focused smoke passed under Gravitas: all core workflows/dual inference under browser internet denial and API socket guard, no external attempts/resource execution or input URL/storage/log retention, unchanged artifacts. Fixed observed safe-header/local-CORS inconsistency for early/500 errors; all14 boundary and401 backend tests pass, frontend lint/build clean. Thirty warmed HTTP samples each: prediction p95 0.0642s versus3s; summary0.0454s versus5s on i5-13420H Linux12-thread affinity. npm213/Python33 advisory checks report zero findings/skips at timestamp. Limits and exact guards documented, no comprehensive audit claim.
 
 - **MSE-601 — All T01-T08 critical release scenarios executed:** Gravitas consolidated acceptance passed: 397 pytest/JUnit cases, seven offline actual-artifact verifiers, eight frontend tests and production build. Real browser T07/T08 passed over a temporary private artifact copy: valid/blank/overlimit/50000 input, unchanged artifact bytes and no input logs, actual API shutdown/restart, missing Bernoulli while dataset analytics work, safe retry and complete restoration. Working corpus/models were untouched; temporary stage and owned processes cleaned. Public acceptance report records module counts, identities and observed scenarios. Harness root resolution was corrected before passing.
 

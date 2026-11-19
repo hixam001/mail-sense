@@ -107,3 +107,34 @@ def test_launcher_has_fixed_loopback_and_no_url_access_logs(monkeypatch):
     monkeypatch.setattr(serve.uvicorn, "run", lambda *a, **kw: calls.append((a, kw)))
     serve.main()
     assert calls[0][1] == dict(host="127.0.0.1", port=8000, access_log=False, proxy_headers=False)
+
+
+@pytest.mark.parametrize("case", ["body", "query", "length", "unexpected"])
+def test_boundary_errors_keep_safe_headers_and_local_cors(tmp_path, case):
+    app = create_app(tmp_path)
+
+    @app.post("/safe-header-probe")
+    def probe():
+        raise RuntimeError("dummy-private-probe")
+
+    origin = LOCAL_ORIGINS[0]
+    with TestClient(app, base_url="http://127.0.0.1") as client:
+        if case == "body":
+            response = client.post(
+                "/api/v1/predict", content=b"x" * (MAX_BODY_BYTES + 1), headers={"Origin": origin}
+            )
+        elif case == "query":
+            response = client.get("/api/v1/health?word=" + "x" * 4100, headers={"Origin": origin})
+        elif case == "length":
+            response = client.post(
+                "/api/v1/predict", headers={"Origin": origin, "Content-Length": "-1"}
+            )
+        else:
+            response = client.post("/safe-header-probe", headers={"Origin": origin})
+    assert (
+        response.status_code == {"body": 413, "query": 414, "length": 400, "unexpected": 500}[case]
+    )
+    assert response.headers["cache-control"] == "no-store"
+    assert response.headers["x-content-type-options"] == "nosniff"
+    assert response.headers["access-control-allow-origin"] == origin
+    assert "dummy-private-probe" not in response.text
