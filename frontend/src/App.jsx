@@ -6,6 +6,7 @@ import './styles.css'
 
 const Dataset = lazy(() => import('./pages/Dataset.jsx'))
 const Probability = lazy(() => import('./pages/Probability.jsx'))
+const Statistics = lazy(() => import('./pages/Statistics.jsx'))
 
 const routes = [
   ['/', 'Overview', 'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z'],
@@ -65,6 +66,7 @@ export default function App() {
         {path === '/' ? <Dashboard scope={scope} health={health} navigate={navigate} /> :
           path === '/dataset' ? <Dataset scope={scope} onWord={word => { setSelectedWord(word); navigate('/probability') }} /> :
           path === '/probability' ? <Probability scope={scope} word={selectedWord} setWord={setSelectedWord} onInference={() => navigate('/statistics')} /> :
+          path === '/statistics' ? <Statistics scope={scope} word={selectedWord} setWord={setSelectedWord} /> :
           route ? <><PageTitle title={route[1]}>Inspect the counts, assumptions and evidence behind the result.</PageTitle>
             <section className="panel"><h2>Analysis workspace</h2><p>This module is being connected to the verified local API.</p>{path === '/probability' && <p>Selected word: <strong>{selectedWord}</strong></p>}</section></> :
             <><PageTitle title="Page not found">Choose an analysis from the navigation to continue.</PageTitle><button onClick={() => navigate('/')}>Return to overview</button></>}

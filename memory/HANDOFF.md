@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-503 — Empirical Probability Analysis and distribution controls**.
-Next implementation ticket: **MSE-504**.
+Latest implementation: **MSE-504 — Statistical Inference with explicit decisions and Wilson bounds**.
+Next implementation ticket: **MSE-505**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-504** — Implement Statistical Inference with explicit-run Pearson test, observed/expected counts and null/suitability decisions; add scoped Wilson confidence controls and sampling caveats. Use safe POST request state, hide results after config changes, verify actual values/unknown words/mobile, commit/push then Spam Detector MSE-505.
+**MSE-505** — Build transient Spam Detector textarea with 1-50000 trimmed code-point validation and no truncation, both model estimates/agreement, faithful log-odds terms and Bernoulli absence effects. Verify no URL/storage/write retention and stale results, empty/unknown/error cases, desktop/mobile; commit/push then MSE-506. MSE-507 should also inspect mobile SVG label sizing, active navigation visibility and production preview origin alignment.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -215,9 +215,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-503 implemented:** Empirical Probability Analysis and distribution controls. Gravitas frontend verification passed: ESLint, six client/validation/format tests, production build and actual Chromium acceptance. Free-word all/test posterior fractions 811/1388 and 150/267 reconcile; invalid word and n/k inputs, undefined absent-word posterior, stale-result hiding, inference navigation and mobile bounds pass. Desktop/mobile renders inspected, with a scrollable numerical probability table and nonzero scientific notation for tiny values. Bernoulli/binomial use backend values and disclose independent constant-p assumptions.
 
+- **MSE-504 implemented:** Statistical Inference with explicit decisions and Wilson bounds. Gravitas frontend verification passed: lint, six tests, build and real Chromium inference plus Dataset/Probability regressions after shared POST hook changes. Actual free Pearson p=4.49909E-155 and Wilson 28.78%-31.12% displayed; alpha/confidence validation, explicit POST, no automatic unknown-word decision, stale configuration hiding and mobile bounds verified. Desktop/mobile views inspected. Sampling/independence/causation caveats remain explicit.
+
 ## Full remaining implementation inventory
 
-**29 implementation tickets are complete; 10 are Not started**. Update statuses as work is
+**30 implementation tickets are complete; 9 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -253,8 +255,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-501 | Build shared React layout, router, API client and request states | Complete — acceptance verified |
 | MSE-502 | Build Dataset Explorer and labeled charts | Complete — acceptance verified |
 | MSE-503 | Build Probability Analysis | Complete — acceptance verified |
-| MSE-504 | Build Statistical Inference | Not started — next |
-| MSE-505 | Build Spam Detector with dual model results | Not started |
+| MSE-504 | Build Statistical Inference | Complete — acceptance verified |
+| MSE-505 | Build Spam Detector with dual model results | Not started — next |
 | MSE-506 | Build Model Evaluation and confusion matrices | Not started |
 | MSE-507 | Verify responsive behavior, keyboard access and error/stale states | Not started |
 | MSE-601 | Execute all critical T01–T08 scenarios with evidence | Not started |
@@ -265,6 +267,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-504 — Statistical Inference with explicit decisions and Wilson bounds:** Gravitas frontend verification passed: lint, six tests, build and real Chromium inference plus Dataset/Probability regressions after shared POST hook changes. Actual free Pearson p=4.49909E-155 and Wilson 28.78%-31.12% displayed; alpha/confidence validation, explicit POST, no automatic unknown-word decision, stale configuration hiding and mobile bounds verified. Desktop/mobile views inspected. Sampling/independence/causation caveats remain explicit.
 
 - **MSE-503 — Empirical Probability Analysis and distribution controls:** Gravitas frontend verification passed: ESLint, six client/validation/format tests, production build and actual Chromium acceptance. Free-word all/test posterior fractions 811/1388 and 150/267 reconcile; invalid word and n/k inputs, undefined absent-word posterior, stale-result hiding, inference navigation and mobile bounds pass. Desktop/mobile renders inspected, with a scrollable numerical probability table and nonzero scientific notation for tiny values. Bernoulli/binomial use backend values and disclose independent constant-p assumptions.
 
