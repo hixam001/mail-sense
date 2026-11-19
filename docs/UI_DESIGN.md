@@ -1,5 +1,7 @@
 # Analytical workspace direction
 
+Durable visual rules: [DESIGN.md](../DESIGN.md). Verification: [UI checks](UI_VERIFICATION.md).
+
 ## Direction contract
 
 THESIS: A statistical atlas makes one historical corpus inspectable through

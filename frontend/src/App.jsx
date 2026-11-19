@@ -32,13 +32,24 @@ export default function App() {
   const [scope, setScope] = useState('all')
   const [selectedWord, setSelectedWord] = useState('free')
   const health = useApi('/health')
+  const refreshHealth = health.retry
+  const fixedSource = path === '/detect' ? 'Frozen training models' : path === '/evaluation' ? 'Held-out test set' : null
   useEffect(() => {
     window.scrollTo(0, 0)
+    const revealRoute = () => document.querySelector('nav a[aria-current]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' })
+    revealRoute()
+    window.addEventListener('resize', revealRoute)
+    return () => window.removeEventListener('resize', revealRoute)
   }, [path])
+  useEffect(() => {
+    const timer = setInterval(refreshHealth, 30_000)
+    window.addEventListener('focus', refreshHealth)
+    return () => { clearInterval(timer); window.removeEventListener('focus', refreshHealth) }
+  }, [refreshHealth])
   return <div className="app-shell">
     <a className="skip-link" href="#main-content">Skip to analysis</a>
     <aside className="rail">
-      <a className="brand" href="/" onClick={event => { event.preventDefault(); navigate('/') }}>
+      <a className="brand" href="/" onClick={event => { if (!event.ctrlKey && !event.metaKey && !event.shiftKey && event.button === 0) { event.preventDefault(); navigate('/') } }}>
         <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 26V14h6v12z M13 26V4h6v22z M23 26V9h6v17z" /></svg>
         <span>MailSense</span>
       </a>
@@ -57,12 +68,12 @@ export default function App() {
           <span className={`service-status ${health.error ? 'unready' : health.data?.status === 'ready' ? 'ready' : ''}`} role="status">
             {health.loading ? 'Checking API…' : health.error ? 'API unavailable' : health.data?.status === 'ready' ? 'Local API ready' : 'Preparation needed'}
           </span>
-          <label>Dataset scope <select value={scope} onChange={e => setScope(e.target.value)} disabled={path === '/detect' || path === '/evaluation'}>
-            <option value="all">All retained emails</option><option value="train">Training subset</option><option value="test">Test subset</option>
+          <label>{fixedSource ? 'Analysis source' : 'Dataset scope'} <select value={fixedSource || scope} onChange={e => setScope(e.target.value)} disabled={Boolean(fixedSource)}>
+            {fixedSource ? <option value={fixedSource}>{fixedSource}</option> : <><option value="all">All retained emails</option><option value="train">Training subset</option><option value="test">Test subset</option></>}
           </select></label>
         </div>
       </header>
-      <main id="main-content">
+      <main id="main-content" tabIndex="-1">
         <Suspense fallback={<div className="state" role="status">Opening analysis…</div>}>
         {path === '/' ? <Dashboard scope={scope} health={health} navigate={navigate} /> :
           path === '/dataset' ? <Dataset scope={scope} onWord={word => { setSelectedWord(word); navigate('/probability') }} /> :

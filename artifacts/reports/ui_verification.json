@@ -1,0 +1,100 @@
+{
+  "checked_at": "2026-11-19T16:53:24.238Z",
+  "browser": "151.0.7922.34",
+  "routes": 6,
+  "viewports": [
+    "1366x900",
+    "390x844"
+  ],
+  "checks": [
+    "routes",
+    "keyboard",
+    "stale responses",
+    "privacy",
+    "retry",
+    "404"
+  ],
+  "dataset_id": "ccd3321b252f22aaa5e6e1e74d96140b46c088a15474e8607c6259b2467c9c7a",
+  "split_id": "e10ea9f8b406c62d14a359dd864ef2a195c8c1960c2747f1feaaea313c148c31",
+  "text_contrast": [
+    {
+      "route": "/",
+      "width": 1366,
+      "samples": 54,
+      "minimum": 5.3134987865626835
+    },
+    {
+      "route": "/dataset",
+      "width": 1366,
+      "samples": 264,
+      "minimum": 5.3134987865626835
+    },
+    {
+      "route": "/probability",
+      "width": 1366,
+      "samples": 115,
+      "minimum": 5.3134987865626835
+    },
+    {
+      "route": "/statistics",
+      "width": 1366,
+      "samples": 94,
+      "minimum": 5.3134987865626835
+    },
+    {
+      "route": "/detect",
+      "width": 1366,
+      "samples": 146,
+      "minimum": 5.3134987865626835
+    },
+    {
+      "route": "/evaluation",
+      "width": 1366,
+      "samples": 116,
+      "minimum": 5.3134987865626835
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "samples": 49,
+      "minimum": 5.3134987865626835
+    },
+    {
+      "route": "/dataset",
+      "width": 390,
+      "samples": 255,
+      "minimum": 5.3134987865626835
+    },
+    {
+      "route": "/probability",
+      "width": 390,
+      "samples": 83,
+      "minimum": 5.3134987865626835
+    },
+    {
+      "route": "/statistics",
+      "width": 390,
+      "samples": 89,
+      "minimum": 5.3134987865626835
+    },
+    {
+      "route": "/detect",
+      "width": 390,
+      "samples": 141,
+      "minimum": 5.3134987865626835
+    },
+    {
+      "route": "/evaluation",
+      "width": 390,
+      "samples": 111,
+      "minimum": 5.3134987865626835
+    }
+  ],
+  "result": "pass",
+  "task": "MSE-507",
+  "mode": "production_preview",
+  "limitations": [
+    "Linux x86_64 and Chromium 151 only; emulated viewport, not a physical phone or screen-reader session.",
+    "Contrast sampled computed visible text; this is not a full accessibility conformance audit."
+  ]
+}

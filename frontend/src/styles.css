@@ -141,6 +141,8 @@ textarea { width: 100%; resize: vertical; min-height: 180px; line-height: 1.6; m
 .identity-list div { padding: 10px 0; }
 .identity-list dt { font-size: .8rem; color: var(--muted); margin-bottom: 5px; }
 .identity-list dd { overflow-wrap: anywhere; }
+.comparison-table table { table-layout: fixed; }
+.comparison-table th:first-child { width: 40%; }
 @media (max-width: 1100px) {
   main { padding: 30px; }
   .workspace-bar { padding: 18px 30px; }
@@ -160,12 +162,22 @@ textarea { width: 100%; resize: vertical; min-height: 180px; line-height: 1.6; m
   .workspace-bar { min-height: 88px; padding: 14px 20px; }
   .toolbar { gap: 10px; }
   .service-status { font-size: .7rem; }
-  .toolbar select { max-width: 180px; font-size: .8rem; }
+  .toolbar select { font-size: 1rem; max-width: 225px; }
+  .toolbar { flex-wrap: wrap; }
   main { padding: 28px 20px; }
   .page-title { margin-bottom: 24px; }
   .page-title p { font-size: .9rem; }
   .columns, .journey { grid-template-columns: 1fr; }
   .panel { padding: 22px; }
   .workspace-footer { margin: 20px; line-height: 1.6; }
+  .boxplot text, .interval-plot text { font-size: 24px; }
+  .comparison-table th, .comparison-table td { padding: 10px 5px; }
+  .comparison-table thead th { font-size: .75rem; white-space: normal; }
+  .matrix-table table { table-layout: fixed; }
+  .matrix-table th:first-child { width: 20%; }
+  .matrix-table th, .matrix-table td { padding: 10px 5px; }
+  .matrix-table thead th { font-size: .75rem; white-space: normal; }
+  .matrix-cell { padding: 10px 4px; }
+  .matrix-cell span { white-space: normal; text-align: center; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }

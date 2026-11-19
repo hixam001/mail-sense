@@ -67,7 +67,7 @@ export default function Dataset({ scope, onWord }) {
         {!data.bins.length ? <p>No observations in this selection.</p> : <>
           <figure><div className="chart" role="img" aria-label={`Histogram: ${data.unit} on x axis; emails per bin on y axis`}>
             <ResponsiveContainer width="100%" height="100%"><BarChart data={data.bins} margin={{ bottom: 24, left: 0, right: 10 }}>
-              <CartesianGrid vertical={false} stroke="#e1e8f1" /><XAxis dataKey="lower" tickFormatter={compact} label={{ value: data.unit, position: 'insideBottom', offset: -18 }} tick={{ fontSize: 11 }} />
+              <CartesianGrid vertical={false} stroke="#e1e8f1" /><XAxis dataKey="lower" tickFormatter={compact} label={{ value: data.unit, position: 'insideBottom', offset: -18, fill: '#52657c' }} tick={{ fontSize: 11 }} />
               <YAxis allowDecimals={false} width={44} tick={{ fontSize: 11 }} /><Tooltip formatter={value => [value, 'Emails']} labelFormatter={(value, payload) => payload?.[0] ? `${payload[0].payload.lower} to ${payload[0].payload.upper} ${data.unit}` : value} />
               <Bar dataKey="count" fill={classLabel === 'spam' ? '#b95328' : '#14786e'} isAnimationActive={false} />
             </BarChart></ResponsiveContainer>

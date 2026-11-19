@@ -20,3 +20,5 @@ A 232 px desktop rail sits beside a header and bounded work area. Mobile
 navigation becomes a horizontal scrolling row; paired areas stack and tables
 scroll inside labeled containers. Use skip navigation, semantic landmarks,
 active-route labels and explicit units. Future modules inherit this system.
+
+Keyboard submission focuses the result heading; token inspection focuses its new section. Active mobile navigation stays visible across route and viewport changes. Prediction labels its frozen training source; Evaluation labels its held-out test source. Mobile comparison metrics and confusion matrices fit without horizontal scrolling. General wide tables remain keyboard-scrollable.

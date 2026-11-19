@@ -1,7 +1,7 @@
 # MailSense
 
 **Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** 32/39 implementation tasks verified. Latest: MSE-506 — Held-out Model Evaluation and labeled confusion matrices. Next: MSE-507. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
+**Status:** 33/39 implementation tasks verified. Latest: MSE-507 — Responsive keyboard and failure verification with Gate 5 complete. Next: MSE-601. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
 
 > **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
 
@@ -174,7 +174,7 @@ The [verification report](artifacts/reports/statistics_verification.json) separa
 synthetic worked examples from measured corpus aggregates and pins their inputs.
 Thirteen numerical checks and the regression suite verify Gate 2 without models
 or UI. Descriptive, distribution, empirical probability, binomial, Pearson and
-Wilson services are implemented; the API and analytical screens follow later.
+Wilson services, all twelve API routes and the five analytical modules are implemented. Release checks are recorded in the handoff.
 
 ## Train local models
 
@@ -222,7 +222,7 @@ this sequence; the handoff records current ticket status:
 10. `MSE-501–507`: Build five frontend modules with real API results.
 11. `MSE-601–606`: Run tests, collect evidence, finalize university report/demo.
 
-The available commands run the scaffolds and acquire, parse, deduplicate, split and verify the corpus.
+The available commands run the complete local application and prepare/verify its corpus, models and held-out evaluation.
 Later tasks add statistics, training and analytical workflows.
 
 ## Authoritative change policy

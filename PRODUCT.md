@@ -31,7 +31,7 @@ statistical tests, then compare Multinomial and Bernoulli Naive Bayes prediction
 
 Success means a complete, mathematically verifiable local walkthrough from dataset
 exploration through both predictions and held-out evaluation. Implementation,
-accuracy, performance and acceptance tests remain unverified until measured.
+accuracy, performance and acceptance tests require measured evidence; current results are recorded below.
 
 ## Positioning
 
@@ -117,9 +117,7 @@ The README and documentation describe approved requirements and planned behavior
   [implementation plan](docs/IMPLEMENTATION_PLAN.md): mathematical definitions,
   synthetic fixtures, release gates and development sequence.
 
-Source code for the local React/Vite and FastAPI hello-world scaffolds is
-available in `frontend/` and `backend/`; the handoff records their runtime and
-build verification. Local CLI services now acquire and parse the pinned corpus,
+The React/Vite analytical workspace and FastAPI services are implemented in `frontend/` and `backend/`; the handoff records current verification. Local CLI services now acquire and parse the pinned corpus,
 deduplicate exact text, exclude label conflicts and derive summary records.
 The measured retained dataset has 5,862 records (4,107 ham, 1,755 spam); raw and
 processed mail remain private and ignored. The verified seed-42 stratified split
@@ -128,7 +126,7 @@ text. Pure statistics services and their numerical verification report now cover
 descriptive summaries, distributions, probabilities, binomial demonstrations,
 Pearson tests and Wilson intervals. Both Naive Bayes models now train on the shared frozen training features and
 reload from verified private artifacts. Identical held-out evaluation and faithful transient inference/explanations are
-verified in Python. API integration and product UI remain pending.
+verified in Python. All twelve API routes and all five module interfaces are implemented. Production Chromium checks cover six routes at desktop/mobile widths, keyboard flow, delayed responses, empty/error/retry states and transient input. Release acceptance, performance/security smoke tests and final report/setup freeze follow MSE-601–606.
 Documentation examples are synthetic
 teaching fixtures unless explicitly identified as measured results. Model
 scores and timings must be established during implementation. No accuracy or

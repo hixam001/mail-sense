@@ -20,7 +20,7 @@ VERSION = "0.9.112"
 
 
 def documents():
-    paths = ["AGENTS.md", "PRODUCT.md", "README.md", "memory/README.md", HANDOFF]
+    paths = ["AGENTS.md", "PRODUCT.md", "DESIGN.md", "README.md", "memory/README.md", HANDOFF]
     paths += [p.relative_to(ROOT).as_posix() for p in sorted((ROOT / "docs").glob("*.md"))]
     return {p: (ROOT / p).read_text(encoding="utf-8") for p in sorted(paths)}
 

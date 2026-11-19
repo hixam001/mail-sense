@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AsyncPanel, Notes, NumberValue, PageTitle } from '../components/common.jsx'
 import DataTable from '../components/DataTable.jsx'
 import { query } from '../lib/api.js'
@@ -34,8 +34,10 @@ function ModelResult({ name, result, onToken }) {
 }
 
 function TokenDetails({ selection }) {
+  const heading = useRef(null)
+  useEffect(() => { heading.current?.focus() }, [])
   const resource = useApi(query('/models/explanations', selection))
-  return <section className="panel section-gap"><h2>Vocabulary weight: “{selection.word}”</h2>
+  return <section className="panel section-gap"><h2 ref={heading} tabIndex="-1">Vocabulary weight: “{selection.word}”</h2>
     <AsyncPanel resource={resource}>{data => <>
       <p>{modelLabels[data.model]} · {data.in_vocabulary ? 'In fitted vocabulary' : 'Outside fitted vocabulary'}</p>
       <DataTable caption="General token weight · one occurrence/presence" columns={['Condition', 'Log-odds weight']}
@@ -46,6 +48,15 @@ function TokenDetails({ selection }) {
       <p className="note">{data.interpretation} Per-email effects depend on all the other features and the class prior.</p>
     </>}</AsyncPanel>
   </section>
+}
+
+function PredictionSummary({ data }) {
+  const heading = useRef(null)
+  useEffect(() => { heading.current?.focus() }, [])
+  return <div className={`conclusion ${data.agreement ? '' : 'caution'}`} role="status">
+    <h2 ref={heading} tabIndex="-1">{data.agreement ? 'Both models agree' : 'The models disagree'}</h2>
+    <p>{data.input.character_count.toLocaleString()} trimmed characters · {data.input.recognized_token_count.toLocaleString()} recognized token occurrences. Estimates depend on the training corpus and model assumptions.</p>
+  </div>
 }
 
 export default function Detect({ onEvaluation }) {
@@ -72,7 +83,7 @@ export default function Detect({ onEvaluation }) {
       <form onSubmit={submit}>
         <label htmlFor="email-text">Email subject and body</label>
         <textarea id="email-text" value={text} onChange={e => change(e.target.value)} rows="8"
-          autoComplete="off" spellCheck="false" aria-describedby="email-help email-count" aria-invalid={Boolean(text && input.error)}
+          autoComplete="off" spellCheck="false" dir="auto" aria-describedby="email-help email-count" aria-invalid={Boolean(text && input.error)}
           placeholder="Paste plain text here, or load the labeled synthetic example." />
         <div className="input-meta"><p id="email-count" className="note">{input.length.toLocaleString()} / 50,000 trimmed characters</p>
           <p className="note">No saved prediction history</p></div>
@@ -85,10 +96,7 @@ export default function Detect({ onEvaluation }) {
       </form>
     </section>
     {current && <AsyncPanel resource={prediction}>{data => <>
-      <div className={`conclusion ${data.agreement ? '' : 'caution'}`} role="status">
-        <h2>{data.agreement ? 'Both models agree' : 'The models disagree'}</h2>
-        <p>{data.input.character_count.toLocaleString()} trimmed characters · {data.input.recognized_token_count.toLocaleString()} recognized token occurrences. Estimates depend on the training corpus and model assumptions.</p>
-      </div>
+      <PredictionSummary data={data} />
       <Notes items={data.warnings} />
       <div className="columns">{Object.entries(data.models).map(([name, result]) => <ModelResult key={name} name={name} result={result} onToken={(model, word) => setSelection({ model, word })} />)}</div>
       {selection && <TokenDetails key={`${selection.model}:${selection.word}`} selection={selection} />}

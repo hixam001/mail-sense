@@ -79,6 +79,19 @@ uv run --project backend --frozen ruff check --config backend/pyproject.toml bac
 uv run --project backend --frozen pytest -c backend/pyproject.toml backend/tests scripts/tests
 ```
 
+Frontend unit tests run with `python3 scripts/node.py npm --prefix frontend test`.
+After preparing the corpus and models, run the reproducible browser checks:
+
+```bash
+python3 scripts/node.py node frontend/node_modules/playwright-core/cli.js install chromium
+python3 scripts/browser_check.py --production
+```
+
+The browser install is a one-time download. An existing trusted Chromium can be
+selected with `--browser /absolute/path/to/chromium` instead. See
+[UI_VERIFICATION.md](UI_VERIFICATION.md) for observed coverage and limitations.
+Development and production preview both use loopback port 5173; run one at a time.
+
 The environment/bootstrap tests check the pinned Python runtime, native-library numerical
 compatibility, both Naive Bayes classes and trusted synthetic artifact roundtrips,
 FastAPI test-client compatibility, and the Node installer's checksum/path/error
@@ -325,7 +338,14 @@ uv run --directory backend --frozen python -m scripts.train_models run
 uv run --directory backend --frozen python -m scripts.train_models verify
 ```
 
-After the verified corpus split, these offline commands fit one training-only vectorizer and both approved alpha=1 models, then publish and reload a consistent artifact set. Files and UTC provenance remain private under ignored `artifacts/models/`. Identical training preserves existing verified provenance. Changed inputs/config/runtime require regeneration. Loading checks all hashes before any deserialization, rejects stale metadata and unsafe paths, and validates feature/classes after loading. Only project-created local artifacts are supported; never substitute uploaded/untrusted pickle files. No training API exists. Held-out evaluation is a separate task.
+After the verified corpus split, these offline commands fit one training-only vectorizer and both approved alpha=1 models, then publish and reload a consistent artifact set. Files and UTC provenance remain private under ignored `artifacts/models/`. Identical training preserves existing verified provenance. Changed inputs/config/runtime require regeneration. Loading checks all hashes before any deserialization, rejects stale metadata and unsafe paths, and validates feature/classes after loading. Only project-created local artifacts are supported; never substitute uploaded/untrusted pickle files. No training API exists. Prepare and verify the held-out report next:
+
+```bash
+uv run --directory backend --frozen python -m scripts.evaluate_models run
+uv run --directory backend --frozen python -m scripts.evaluate_models verify
+```
+
+This produces the shareable `artifacts/reports/evaluation.json` from the same untouched test IDs for both models. Recreate the report after changing model artifacts. The API becomes fully ready only when corpus, models and matching evaluation are verified.
 
 ## Locks and intentional updates
 
@@ -361,11 +381,7 @@ commit the pins and locks together. Routine installs must not change lockfiles.
 
 ## Offline use and recovery
 
-Initial runtime/package/corpus downloads need network access. The two local
-scaffolds, current tests and corpus parsing/verification run offline after preparation.
-Full analytical use still requires statistical services and model artifacts from later
-tasks. Acquisition/environment setup supplies no cleaned dataset, trained model,
-empirical score or statistical workflow.
+Initial runtime/package/corpus downloads need network access. The application, statistical services, local inference and evaluation run offline after the complete preparation sequence above. Initial installation/acquisition needs network access. Environment setup alone does not prepare the corpus or models.
 
 If a runtime download fails verification, the helper exits before extracting
 or executing it. If a cached Node installation is damaged, remove that release's

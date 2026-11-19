@@ -16,12 +16,12 @@ function ConfusionMatrix({ name, model }) {
   const cell = (count, label, error) => <div className={`matrix-cell ${error ? 'matrix-error' : 'matrix-correct'}`}><strong>{count.toLocaleString()}</strong><span>{label}</span></div>
   return <section className="panel" aria-label={name}>
     <h2>{name}</h2>
-    <DataTable caption="Actual rows × predicted columns · spam is positive" minWidth={350}
+    <div className="matrix-table"><DataTable caption="Actual rows × predicted columns · spam is positive"
       columns={['Actual class', 'Predicted ham', 'Predicted spam']}
       rows={[
         ['Ham', cell(c.tn, 'TN: correct ham', false), cell(c.fp, 'FP: false alarm', true)],
         ['Spam', cell(c.fn, 'FN: missed spam', true), cell(c.tp, 'TP: detected spam', false)],
-      ]} />
+      ]} /></div>
     <p className="note"><strong>{c.fp} false positives:</strong> legitimate emails labeled spam. <strong>{c.fn} false negatives:</strong> spam labeled ham.</p>
     <Notes items={model.notes} />
   </section>
@@ -44,11 +44,13 @@ export default function Evaluation({ onDetect }) {
           </details>
         </section>
         <section className="panel section-gap"><h2>Held-out performance</h2>
-          <DataTable caption="Measured model metrics · positive class spam" minWidth={720}
-            columns={['Metric', 'Multinomial', 'Bernoulli', 'Definition']}
-            rows={metrics.map(([key, label, definition]) => [label,
+          <div className="comparison-table"><DataTable caption="Measured model metrics · positive class spam"
+            columns={['Metric', 'Multinomial', 'Bernoulli']}
+            rows={metrics.map(([key, label]) => [label,
               <NumberValue key="m" value={data.models.multinomial[key]} percent />,
-              <NumberValue key="b" value={data.models.bernoulli[key]} percent />, definition])} />
+              <NumberValue key="b" value={data.models.bernoulli[key]} percent />])} /></div>
+          <details><summary>Metric formulas and denominators</summary><DataTable caption="Spam-positive definitions" columns={['Metric', 'Formula']}
+            rows={metrics.map(([, label, definition]) => [label, definition])} /></details>
           <p className="note">Accuracy alone does not describe both error types. Precision describes predicted spam; recall describes actual spam. False-positive rate uses actual ham as its denominator. Undefined denominators remain undefined.</p>
         </section>
         <div className="columns section-gap">

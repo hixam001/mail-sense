@@ -1,7 +1,7 @@
 # MailSense — Test Plan and Acceptance Checklist
 
 **Version:** 1.1 · **Date:** 2026-11-19
-**Status:** Foundation suite executed through split isolation; T02 passed. Statistical/model/API/UI release scenarios remain pending.
+**Status:** Gates 1–5 verified. Domain, API and UI suites have execution evidence; MSE-601 consolidates T01–T08 release acceptance, followed by privacy/offline/performance checks.
 **Scope:** React/Vite, FastAPI, SpamAssassin ingestion, probability/statistics, Multinomial NB and Bernoulli NB.
 
 ## 1. Test philosophy

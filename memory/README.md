@@ -62,7 +62,7 @@ memory/.venv/bin/python memory/graph.py check
    and all three generated graph artifacts together using the ticket notation
    in `AGENTS.md`, then push. A source edit after generation requires a rebuild.
 
-`graph.py` extracts only an explicit allowlist: root agent/product/README
+`graph.py` extracts only an explicit allowlist: root agent/product/design/README
 documents, `docs/*.md`, this guide and the handoff. It excludes corpus messages,
 credentials, installed agent skills, session logs, virtual environments and
 generated graph outputs. It uses Graphify's builder, clustering, analysis and
