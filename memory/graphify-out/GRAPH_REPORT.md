@@ -1,11 +1,11 @@
 # Graph Report - mail-sense  (2026-11-19)
 
 ## Corpus Check
-- 16 files · ~29,693 words
+- 16 files · ~30,110 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 206 nodes · 340 edges · 15 communities
+- 208 nodes · 342 edges · 14 communities
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -24,7 +24,6 @@
 - MSE-404
 - MSE-601
 - docs/SRD.md
-- Analyze with Gravitas
 
 ## God Nodes (most connected - your core abstractions)
 1. `MSE-601` - 13 edges
@@ -32,25 +31,25 @@
 3. `MSE-404` - 10 edges
 4. `MSE-501` - 10 edges
 5. `MSE-207` - 8 edges
-6. `MSE-304` - 8 edges
-7. `MSE-405` - 8 edges
-8. `MSE-507` - 8 edges
-9. `MSE-201` - 7 edges
-10. `MSE-203` - 7 edges
+6. `MSE-405` - 8 edges
+7. `MSE-507` - 8 edges
+8. `MSE-201` - 7 edges
+9. `MSE-203` - 7 edges
+10. `MSE-304` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Next task` --next_task--> `MSE-304`  [EXTRACTED]
+- `Next task` --next_task--> `MSE-305`  [EXTRACTED]
   memory/HANDOFF.md → docs/IMPLEMENTATION_PLAN.md
 
-## Communities (15 total, 0 thin omitted)
+## Communities (14 total, 0 thin omitted)
 
 ### Community 0 - "README.md"
-Cohesion: 0.09
-Nodes (21): Start every task, Delivery sequence, Implement and verify, Handoff and persistent memory, Commit and push, Parse the corpus, Prepare retained records, Create the split (+13 more)
+Cohesion: 0.06
+Nodes (30): Start every task, Delivery sequence, Implement and verify, Handoff and persistent memory, Commit and push, Parse the corpus, Prepare retained records, Create the split (+22 more)
 
 ### Community 1 - "docs/SETUP.md"
 Cohesion: 0.08
-Nodes (22): 5. Processing pipeline, 2. Component overview, 6. API architecture, 7. Client design and state, 8. Security, privacy and data-integrity boundaries, 9. Failure handling, 10. Observability and reproducibility, 11. Architectural acceptance criteria (+14 more)
+Nodes (23): 5. Processing pipeline, 2. Component overview, 6. API architecture, 7. Client design and state, 8. Security, privacy and data-integrity boundaries, 9. Failure handling, 10. Observability and reproducibility, 11. Architectural acceptance criteria (+15 more)
 
 ### Community 2 - "docs/DATA_MODEL.md"
 Cohesion: 0.08
@@ -100,13 +99,9 @@ Nodes (8): MSE-501, MSE-502, MSE-503, MSE-504, MSE-505, MSE-506, MSE-507, MSE-60
 Cohesion: 0.25
 Nodes (7): Users, Primary end-to-end workflow, Must-have, Not in v1.0, Acceptance check, Build notes, Goal
 
-### Community 14 - "Analyze with Gravitas"
-Cohesion: 0.25
-Nodes (8): Analyze with Gravitas, map the task, implement, test, update handoff, final checks, commit, push
-
 ## Knowledge Gaps
-- **143 isolated node(s):** `Delivery sequence`, `Start every task`, `Implement and verify`, `Handoff and persistent memory`, `Commit and push` (+138 more)
-  These have ≤1 connection - possible missing edges. (Counts symbols only; 143 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **145 isolated node(s):** `Delivery sequence`, `Start every task`, `Implement and verify`, `Handoff and persistent memory`, `Commit and push` (+140 more)
+  These have ≤1 connection - possible missing edges. (Counts symbols only; 145 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -114,13 +109,13 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `MSE-601` connect `MSE-601` to `MSE-403`?**
   _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `Delivery sequence`, `Start every task`, `Implement and verify` to the rest of the system?**
-  _143 weakly-connected nodes found - possible missing edges._
+  _145 weakly-connected nodes found - possible missing edges._
 - **Should `README.md` be split into smaller, more focused modules?**
-  _Cohesion score 0.09057971014492754 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06439393939393939 - nodes in this community are weakly interconnected._
 - **Why does `MSE-603` connect `memory/HANDOFF.md` to `MSE-601`?**
   _High betweenness centrality (0.002) - this node is a cross-community bridge._
 - **Should `docs/SETUP.md` be split into smaller, more focused modules?**
-  _Cohesion score 0.08333333333333333 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `docs/DATA_MODEL.md` be split into smaller, more focused modules?**
   _Cohesion score 0.08333333333333333 - nodes in this community are weakly interconnected._
 - **Should `PRODUCT.md` be split into smaller, more focused modules?**

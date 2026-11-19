@@ -257,6 +257,8 @@ MSE-301 implements `model_features.build_features` on verified split rows. The s
 | `training_record_count` | integer | Yes | Matches split manifest |
 | `artifact_sha256` | string | Yes | Validate loaded file integrity |
 
+MSE-304 implements fixed local `vectorizer.joblib`, `multinomial.joblib`, `bernoulli.joblib` and `metadata.json` under ignored `artifacts/models/`, all owner-only. The metadata envelope carries schema/pipeline/runtime, UTC training time, dataset/split/membership/input hashes, shared feature configuration/hash and per-model descriptors. `artifact_id` hashes the full canonical payload excluding its own ID and timestamp. Identical deterministic retraining reuses the original verified artifacts and timestamp. Binary files are bounded to 64 MiB, metadata to 128 KiB; all hashes are checked before deserializing the exact verified bytes. Loaded estimator types/classes/feature dimensions/priors and vectorizer configuration must agree. Staged publication rolls back ordinary failures. Checksums detect corruption; they do not authenticate an untrusted pickle.
+
 Model files serialized using joblib/pickle must be loaded **only from project-created, trusted local artifacts**; never load uploaded/untrusted pickle files. Fail safely if expected metadata/checksum mismatch.
 
 ## 7. Entity `ModelEvaluation` (`artifacts/reports/evaluation.json`)

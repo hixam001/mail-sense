@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-303 — Bernoulli Naive Bayes on shared binary presence**.
-Next implementation ticket: **MSE-304**.
+Latest implementation: **MSE-304 — Trusted model persistence and provenance verification**.
+Next implementation ticket: **MSE-305**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-304** — Persist fixed local vectorizer and both models with checksums and split/runtime/vocabulary metadata; verify before unpickling, test tamper/staleness/rollback and repeat training, commit/push then implement held-out evaluation MSE-305.
+**MSE-305** — Evaluate both loaded models on identical frozen held-out IDs without fitting or tuning; reconcile confusion matrices and precision/recall/F1/FPR, handle zero denominators, publish aggregate evaluation with artifact/split/test hashes, commit/push and continue explanations MSE-306.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -189,9 +189,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-303 implemented:** Bernoulli Naive Bayes on shared binary presence. 279 tests passed under Gravitas; Ruff clean. Binary conversion handles sparse zeros/invalid counts and preserves original matrices. Manual Bernoulli likelihoods and full scores including absent features match predictions; repetition and held-out labels cannot alter the fit. Actual classifiers share 4689 training IDs and 60135 features with finite inference.
 
+- **MSE-304 implemented:** Trusted model persistence and provenance verification. 298 tests passed under Gravitas; Ruff clean. All three binary hashes and strict metadata are checked before any unpickling; bounded fixed local files reject links, staleness, runtime/split mismatches and corruption. Publication rollback and owner-only permissions verified. Actual cross-process deterministic training/reload preserves original provenance; artifact ID 747bb5f51c2d231140efcc17d1316be68407d07fa9f9a7adcca1b3df2ce01ca3. Models and metadata remain ignored.
+
 ## Full remaining implementation inventory
 
-**16 implementation tickets are complete; 23 are Not started**. Update statuses as work is
+**17 implementation tickets are complete; 22 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -214,8 +216,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-301 | Fit a shared training-only CountVectorizer vocabulary | Complete — acceptance verified |
 | MSE-302 | Train Multinomial Naive Bayes with alpha=1.0 | Complete — acceptance verified |
 | MSE-303 | Train Bernoulli Naive Bayes with alpha=1.0 | Complete — acceptance verified |
-| MSE-304 | Persist trusted artifacts, matching metadata and checksums | Not started — next |
-| MSE-305 | Evaluate both models on the same untouched holdout | Not started |
+| MSE-304 | Persist trusted artifacts, matching metadata and checksums | Complete — acceptance verified |
+| MSE-305 | Evaluate both models on the same untouched holdout | Not started — next |
 | MSE-306 | Implement faithful token/prior and absent-feature explanations | Not started |
 | MSE-307 | Save evaluation evidence and document model limitations | Not started |
 | MSE-401 | Implement FastAPI health/readiness and shared error envelope | Not started |
@@ -239,6 +241,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-304 — Trusted model persistence and provenance verification:** 298 tests passed under Gravitas; Ruff clean. All three binary hashes and strict metadata are checked before any unpickling; bounded fixed local files reject links, staleness, runtime/split mismatches and corruption. Publication rollback and owner-only permissions verified. Actual cross-process deterministic training/reload preserves original provenance; artifact ID 747bb5f51c2d231140efcc17d1316be68407d07fa9f9a7adcca1b3df2ce01ca3. Models and metadata remain ignored.
 
 - **MSE-303 — Bernoulli Naive Bayes on shared binary presence:** 279 tests passed under Gravitas; Ruff clean. Binary conversion handles sparse zeros/invalid counts and preserves original matrices. Manual Bernoulli likelihoods and full scores including absent features match predictions; repetition and held-out labels cannot alter the fit. Actual classifiers share 4689 training IDs and 60135 features with finite inference.
 

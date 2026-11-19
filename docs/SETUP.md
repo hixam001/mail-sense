@@ -320,6 +320,15 @@ acquire → parse → retain → split sequence to restore local readiness.
 
 After corpus preparation, run `uv run --directory backend --frozen python -m scripts.verify_statistics run`, then replace `run` with `verify` to rederive and check the report. The public `artifacts/reports/statistics_verification.json` distinguishes synthetic fixtures from actual all/train/test aggregates, with source/dataset/split identities and runtime pins. No model artifacts or network are required.
 
+## Train and verify local models
+
+```bash
+uv run --directory backend --frozen python -m scripts.train_models run
+uv run --directory backend --frozen python -m scripts.train_models verify
+```
+
+After the verified corpus split, these offline commands fit one training-only vectorizer and both approved alpha=1 models, then publish and reload a consistent artifact set. Files and UTC provenance remain private under ignored `artifacts/models/`. Identical training preserves existing verified provenance. Changed inputs/config/runtime require regeneration. Loading checks all hashes before any deserialization, rejects stale metadata and unsafe paths, and validates feature/classes after loading. Only project-created local artifacts are supported; never substitute uploaded/untrusted pickle files. No training API exists. Held-out evaluation is a separate task.
+
 ## Locks and intentional updates
 
 Frontend direct pins live in `frontend/package.json`; transitive versions and

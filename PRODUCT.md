@@ -126,8 +126,9 @@ processed mail remain private and ignored. The verified seed-42 stratified split
 has 4,689 training and 1,173 test records, joined by ID without changing retained
 text. Pure statistics services and their numerical verification report now cover
 descriptive summaries, distributions, probabilities, binomial demonstrations,
-Pearson tests and Wilson intervals. API integration, product UI and trained
-models remain pending.
+Pearson tests and Wilson intervals. Both Naive Bayes models now train on the shared frozen training features and
+reload from verified private artifacts. Held-out evaluation, API integration
+and product UI remain pending.
 Documentation examples are synthetic
 teaching fixtures unless explicitly identified as measured results. Model
 scores and timings must be established during implementation. No accuracy or

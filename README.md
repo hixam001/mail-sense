@@ -1,7 +1,7 @@
 # MailSense
 
 **Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** 16/39 implementation tasks verified. Latest: MSE-303 — Bernoulli Naive Bayes on shared binary presence. Next: MSE-304. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
+**Status:** 17/39 implementation tasks verified. Latest: MSE-304 — Trusted model persistence and provenance verification. Next: MSE-305. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
 
 > **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
 
@@ -177,6 +177,18 @@ synthetic worked examples from measured corpus aggregates and pins their inputs.
 Thirteen numerical checks and the regression suite verify Gate 2 without models
 or UI. Descriptive, distribution, empirical probability, binomial, Pearson and
 Wilson services are implemented; the API and analytical screens follow later.
+
+## Train local models
+
+```bash
+uv run --directory backend --frozen python -m scripts.train_models run
+uv run --directory backend --frozen python -m scripts.train_models verify
+```
+
+The shared vocabulary and both alpha=1 Naive Bayes models fit the frozen training
+partition. Private artifacts stay ignored under `artifacts/models/`; metadata
+and checksums tie them to the dataset, split, feature mapping and runtime.
+Only project-created artifacts are loaded. Held-out evaluation follows separately.
 
 ## Implementation sequence
 
