@@ -52,6 +52,11 @@ def classification_metrics(actual, predicted):
 def build_evaluation(root):
     loaded = load_models(root)
     rows, manifest = load_split_dataset(root, "test")
+    return evaluate_loaded(loaded, rows, manifest)
+
+
+def evaluate_loaded(loaded, rows, manifest):
+    """Evaluate an already verified model/dataset snapshot without reloading it."""
     if (
         manifest["dataset_id"] != loaded.metadata["dataset_id"]
         or manifest["split_id"] != loaded.metadata["split_id"]

@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-307 — Measured model card and Gate 3 completion**.
-Next implementation ticket: **MSE-401**.
+Latest implementation: **MSE-401 — Truthful FastAPI readiness and redacted shared errors**.
+Next implementation ticket: **MSE-402**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-401** — Implement FastAPI health/readiness and redacted shared errors with verified, hash-invalidated application state and injectable project root; test missing/corrupt/actual readiness and safe validation/errors, commit/push then continue dataset routes MSE-402.
+**MSE-402** — Add A02–A04 typed dataset summary/statistics/distribution routes using verified cached rows; reconcile scope/class/provenance/exclusion semantics, compare pure services and actual endpoints, ensure 422/503 safe failures, commit/push then probability/inference APIs MSE-403.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -197,9 +197,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-307 implemented:** Measured model card and Gate 3 completion. 314 tests passed under Gravitas; Ruff clean. Model card is generated from measured evaluation and verified against every model metric, dataset/split/test/artifact identity and actual inference. Historical sampling, near duplicates/dependence, calibration, one-split selection and false-positive limitations are explicit. Gate 3 complete without API/UI. Corrected inherited API documentation whitespace and added fail-fast final delivery checks after the earlier orchestration mistake.
 
+- **MSE-401 implemented:** Truthful FastAPI readiness and redacted shared errors. 319 tests passed under Gravitas; Ruff clean. Factory supports isolated roots, typed health and common error schemas. Missing/corrupt artifacts degrade safely; models can be unavailable while dataset remains usable. SHA cache catches same-size/same-time tampering and recovers without restart. Validation/404/500 responses omit request values and paths. Actual healthy dataset/model/evaluation snapshot verified; cached health averaged .033 seconds.
+
 ## Full remaining implementation inventory
 
-**20 implementation tickets are complete; 19 are Not started**. Update statuses as work is
+**21 implementation tickets are complete; 18 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -226,8 +228,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-305 | Evaluate both models on the same untouched holdout | Complete — acceptance verified |
 | MSE-306 | Implement faithful token/prior and absent-feature explanations | Complete — acceptance verified |
 | MSE-307 | Save evaluation evidence and document model limitations | Complete — acceptance verified |
-| MSE-401 | Implement FastAPI health/readiness and shared error envelope | Not started — next |
-| MSE-402 | Implement dataset summary/statistics/distribution routes | Not started |
+| MSE-401 | Implement FastAPI health/readiness and shared error envelope | Complete — acceptance verified |
+| MSE-402 | Implement dataset summary/statistics/distribution routes | Not started — next |
 | MSE-403 | Implement probability and statistical inference routes | Not started |
 | MSE-404 | Implement prediction, evaluation and explanation routes | Not started |
 | MSE-405 | Verify loopback binding, CORS, redacted logging and input limits | Not started |
@@ -247,6 +249,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-401 — Truthful FastAPI readiness and redacted shared errors:** 319 tests passed under Gravitas; Ruff clean. Factory supports isolated roots, typed health and common error schemas. Missing/corrupt artifacts degrade safely; models can be unavailable while dataset remains usable. SHA cache catches same-size/same-time tampering and recovers without restart. Validation/404/500 responses omit request values and paths. Actual healthy dataset/model/evaluation snapshot verified; cached health averaged .033 seconds.
 
 - **MSE-307 — Measured model card and Gate 3 completion:** 314 tests passed under Gravitas; Ruff clean. Model card is generated from measured evaluation and verified against every model metric, dataset/split/test/artifact identity and actual inference. Historical sampling, near duplicates/dependence, calibration, one-split selection and false-positive limitations are explicit. Gate 3 complete without API/UI. Corrected inherited API documentation whitespace and added fail-fast final delivery checks after the earlier orchestration mistake.
 

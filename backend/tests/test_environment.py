@@ -58,5 +58,5 @@ def test_model_dependencies_and_artifact_roundtrip(classifier, tmp_path):
 def test_fastapi_client_dependency_compatibility():
     with TestClient(app) as client:
         assert client.get("/").json() == {"message": "MailSense API scaffold is running."}
-        assert set(client.get("/openapi.json").json()["paths"]) == {"/"}
-        assert client.get("/api/v1/health").status_code == 404
+        assert {"/", "/api/v1/health"}.issubset(client.get("/openapi.json").json()["paths"])
+        assert client.get("/api/v1/health").status_code == 200

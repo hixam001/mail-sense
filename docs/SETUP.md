@@ -67,7 +67,7 @@ uv run --project backend --frozen python -m uvicorn app.main:app --app-dir backe
 
 The greeting is at `http://127.0.0.1:8000/`; its schema is at
 `http://127.0.0.1:8000/openapi.json`. These are scaffold endpoints. Corpus
-readiness, `/api/v1` analytics and prediction endpoints are not implemented yet.
+readiness is implemented at `/api/v1/health`; analytical and prediction route integration follows the handoff. Missing corpus/models/evaluation yield truthful degraded readiness.
 Stop each server with Ctrl+C.
 
 ## Verify

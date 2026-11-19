@@ -1,6 +1,6 @@
 # MailSense — REST API Contract
 
-**Version:** 1.0 · **Date:** 2026-11-19 · **Status:** Design contract; endpoints not implemented yet  
+**Version:** 1.1 · **Date:** 2026-11-19 · **Status:** A01 readiness and shared safe errors implemented; A02–A12 integration follows
 **Base URL:** `http://127.0.0.1:8000/api/v1`  
 **Frontend:** `http://localhost:5173` (allowed local origin; adjust via configuration if necessary)  
 **Access:** Local-only; no login or API tokens
@@ -52,10 +52,11 @@
   "status": "ready",
   "dataset_ready": true,
   "models_ready": {"multinomial": true, "bernoulli": true},
+  "evaluation_ready": true,
   "split_id": "split_seed42_80_20_example"
 }
 ```
-The split ID is illustrative. If the dataset or a model is missing, return `200` with `status: "degraded"` and readiness flags `false`; affected analytics/prediction endpoints return `503`.
+MSE-401 implements this route using verified content-hash-invalidated snapshots. Model flags indicate a usable consistent bundle, not file presence. Missing/stale evaluation also degrades readiness; dataset analytics remain available when only models are missing. The split ID is illustrative. If the dataset or a model is missing, return `200` with `status: "degraded"` and readiness flags `false`; affected analytics/prediction endpoints return `503`.
 
 ### A02 — `GET /dataset/summary`
 **Purpose:** Dataset counts and corpus provenance.  
@@ -305,4 +306,4 @@ For Bernoulli, response must also disclose that absent-word effects influence cl
 
 ## 4. Implementation note
 
-This is the **design-time contract** to implement using FastAPI/Pydantic. No route is claimed to exist yet. When code is written, update this document to reflect actual response schemas and keep `SRS.md`, `DATA_MODEL.md`, `APP_FLOW.md` and tests aligned. The numeric examples are synthetic and cannot be represented as real model results.
+This is the **design-time contract** to implement using FastAPI/Pydantic. A01 is implemented; remaining routes follow MSE-402–406. Shared errors redact input values, contexts, paths and tracebacks; validation details contain only known field names and error types. When code is written, update this document to reflect actual response schemas and keep `SRS.md`, `DATA_MODEL.md`, `APP_FLOW.md` and tests aligned. The numeric examples are synthetic and cannot be represented as real model results.
