@@ -1,0 +1,93 @@
+{
+  "actual_test_count": 1173,
+  "artifact_id": "747bb5f51c2d231140efcc17d1316be68407d07fa9f9a7adcca1b3df2ce01ca3",
+  "base_commit": "1e1149ff515a79b75bec9b9649c7d8d3c69330f7",
+  "browser": {
+    "T07": "pass",
+    "T08": "pass",
+    "browser": "151.0.7922.34",
+    "checked_at": "2026-11-19T17:00:47.530Z",
+    "dataset_ready_without_models": true,
+    "input_absent_from_server_logs": true,
+    "split_id": "e10ea9f8b406c62d14a359dd864ef2a195c8c1960c2747f1feaaea313c148c31",
+    "staged_artifact_bytes_unchanged": true
+  },
+  "checked_at": "2026-11-19T17:00:47.785250+00:00",
+  "dataset_id": "ccd3321b252f22aaa5e6e1e74d96140b46c088a15474e8607c6259b2467c9c7a",
+  "offline_artifact_verifiers": 7,
+  "result": "pass",
+  "scenarios": {
+    "T01": {
+      "modules": [
+        "test_corpus_sources",
+        "test_corpus_ingest",
+        "test_mail_parser"
+      ],
+      "result": "pass",
+      "unit_cases": 82
+    },
+    "T02": {
+      "modules": [
+        "test_corpus_dataset",
+        "test_corpus_split"
+      ],
+      "result": "pass",
+      "unit_cases": 75
+    },
+    "T03": {
+      "modules": [
+        "test_descriptive"
+      ],
+      "result": "pass",
+      "unit_cases": 15
+    },
+    "T04": {
+      "modules": [
+        "test_probability"
+      ],
+      "result": "pass",
+      "unit_cases": 10
+    },
+    "T05": {
+      "modules": [
+        "test_inference",
+        "test_wilson",
+        "test_numerical_verification"
+      ],
+      "result": "pass",
+      "unit_cases": 46
+    },
+    "T06": {
+      "modules": [
+        "test_model_features",
+        "test_multinomial",
+        "test_bernoulli",
+        "test_model_store",
+        "test_evaluation"
+      ],
+      "result": "pass",
+      "unit_cases": 36
+    },
+    "T07": {
+      "browser": "Valid/blank/overlimit/50000 input; private staging unchanged.",
+      "modules": [
+        "test_prediction",
+        "test_api_models"
+      ],
+      "result": "pass",
+      "unit_cases": 24
+    },
+    "T08": {
+      "browser": "Actual API stop/restart and missing model; analytics usable; retry recovers.",
+      "modules": [
+        "test_api_health",
+        "test_api_contract"
+      ],
+      "result": "pass",
+      "unit_cases": 30
+    }
+  },
+  "split_id": "e10ea9f8b406c62d14a359dd864ef2a195c8c1960c2747f1feaaea313c148c31",
+  "task": "MSE-601",
+  "unit_cases_passed": 397
+}

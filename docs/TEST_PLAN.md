@@ -1,7 +1,7 @@
 # MailSense — Test Plan and Acceptance Checklist
 
 **Version:** 1.1 · **Date:** 2026-11-19
-**Status:** Gates 1–5 verified. Domain, API and UI suites have execution evidence; MSE-601 consolidates T01–T08 release acceptance, followed by privacy/offline/performance checks.
+**Status:** Gates 1–5 and all T01–T08 critical acceptance scenarios passed. MSE-602–606 cover final privacy/offline/performance, independent math/integrity, report, installation rehearsal and release freeze.
 **Scope:** React/Vite, FastAPI, SpamAssassin ingestion, probability/statistics, Multinomial NB and Bernoulli NB.
 
 ## 1. Test philosophy
@@ -122,15 +122,19 @@ Testing framework proposal: `pytest`, FastAPI `TestClient`, React Testing Librar
 
 | Test ID | Date | Environment/commit | Expected | Actual | Pass/Fail | Evidence |
 |---|---|---|---|---|---|---|
-| T01 | Not run | N/A | See §2 | Not measured | Not run | — |
+| T01 | 2026-11-19 | MSE-601 | See §2 | Source/MIME/ingestion fixtures and actual seven-stage verification reconcile provenance and exclusions | Pass | `scripts/release_check.py`; `artifacts/reports/acceptance.json` |
 | T02 | 2026-11-19 | Python 3.12.15, MSE-106 | See §2 | Duplicates/conflicts removed; repeated membership identical; IDs/content isolated | Pass | `backend/tests/test_corpus_split.py::test_t02_end_to_end_duplicate_conflict_removal_split_isolation_and_repeatability`; actual 4,689/1,173 membership independently reconciled |
 | T03 | 2026-11-19 | Python 3.12.15, MSE-201 | See §2 | Mean/median/mode=4; sample variance=8/3; SD=sqrt(8/3) | Pass | `backend/tests/test_descriptive.py::test_t03_known_descriptive_fixture` |
 | T04 | 2026-11-19 | MSE-203 | See §2 | .3/.25/.18/.6/.72 with visible denominators | Pass | `backend/tests/test_probability.py::test_t04_known_thousand_document_table_and_bayes` |
 | T05 | 2026-11-19 | MSE-207 | See §2 | Pearson 280/df1/reference p; Wilson bounds round to .2724/.3291 | Pass | `test_numerical_verification.py` and `artifacts/reports/statistics_verification.json` |
 | T06 | 2026-11-19 | MSE-305 | See §2 | Shared training-only vocabulary and test hash; both confusion matrices reconcile | Pass | `test_model_features.py`, `test_evaluation.py`, `artifacts/reports/evaluation.json` |
-| T07 | Not run | N/A | See §2 | Not measured | Not run | — |
-| T08 | Not run | N/A | See §2 | Not measured | Not run | — |
+| T07 | 2026-11-19 | MSE-601 | Valid dual results; blank/overlimit 422; 50,000 input succeeds; staged bytes unchanged and input absent from server logs | Pass | `frontend/tests/failures.mjs`; `artifacts/reports/acceptance.json` |
+| T08 | 2026-11-19 | MSE-601 | Actual API stop/restart and missing Bernoulli in private staging; clear UI errors/retry; dataset remains usable; restoration recovers | Pass | `frontend/tests/failures.mjs`; `artifacts/reports/acceptance.json` |
 
 Tests may be marked passed **only** after actual execution. Rows marked Pass have observed domain-service and/or actual-corpus evidence.
 Rows still marked Not run remain unexecuted as full release scenarios even where individual foundation unit tests cover parts of
 their requirements; dependency compatibility tests do not prove domain math.
+
+## Consolidated critical acceptance
+
+`python3 scripts/release_check.py --browser /absolute/path/to/trusted/chromium` reruns the full 397-case backend/bootstrap suite with JUnit evidence, all seven offline artifact verifiers, eight frontend tests, a production build and real T07/T08 browser failures. The run passed on 2026-11-19. The temporary private artifact copy is removed afterward; no working corpus or model is removed. The aggregate [acceptance report](../artifacts/reports/acceptance.json) distinguishes module test counts from actual artifact/browser evidence. The checked JUnit and browser detail files are local ignored test output.

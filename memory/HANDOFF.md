@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-507 — Responsive keyboard and failure verification with Gate 5 complete**.
-Next implementation ticket: **MSE-601**.
+Latest implementation: **MSE-601 — All T01-T08 critical release scenarios executed**.
+Next implementation ticket: **MSE-602**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-601** — Execute all T01-T08 critical release scenarios with consolidated evidence. Reuse known-answer unit suites and actual corpus/model verification, test actual API stop/restart plus missing model in isolated staging through UI, validate no fake success and data remains usable. Update execution log/report, commit/push then MSE-602 privacy/offline/performance and remaining 603-606; keep going until release complete.
+**MSE-602** — Run focused security/privacy/offline and performance smoke checks. Inspect local trust boundaries and dependency advisories, verify no external requests or input persistence/logging under public-network blocking, benchmark 30 warmed predictions and cached summaries on documented hardware, record limitations and fix concrete findings. Commit/push then independently verify math/provenance/model integrity MSE-603 and continue report/setup/release 604-606.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -223,9 +223,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-507 implemented:** Responsive keyboard and failure verification with Gate 5 complete. Gate 5 complete. Committed Playwright 1.57 browser suite/managed runner passed production Chromium 151 at 1366x900 and 390x844 across all six routes, including metrics parity, readable mobile matrices, active navigation/resize, keyboard focus, delayed requests, duplicate submit, transient privacy, empty responses, network retry and 404. Final contrast covered 1490 samples, minimum 5.31:1; renders inspected. ESLint/Ruff, eight frontend tests, 397 backend/bootstrap tests and build passed. UI report records precise browser/coverage limits. Graph now includes durable DESIGN source. Test mock cleanup races were isolated; no private content or tooling is tracked.
 
+- **MSE-601 implemented:** All T01-T08 critical release scenarios executed. Gravitas consolidated acceptance passed: 397 pytest/JUnit cases, seven offline actual-artifact verifiers, eight frontend tests and production build. Real browser T07/T08 passed over a temporary private artifact copy: valid/blank/overlimit/50000 input, unchanged artifact bytes and no input logs, actual API shutdown/restart, missing Bernoulli while dataset analytics work, safe retry and complete restoration. Working corpus/models were untouched; temporary stage and owned processes cleaned. Public acceptance report records module counts, identities and observed scenarios. Harness root resolution was corrected before passing.
+
 ## Full remaining implementation inventory
 
-**33 implementation tickets are complete; 6 are Not started**. Update statuses as work is
+**34 implementation tickets are complete; 5 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -265,14 +267,16 @@ Dependencies and detailed acceptance criteria are in
 | MSE-505 | Build Spam Detector with dual model results | Complete — acceptance verified |
 | MSE-506 | Build Model Evaluation and confusion matrices | Complete — acceptance verified |
 | MSE-507 | Verify responsive behavior, keyboard access and error/stale states | Complete — acceptance verified |
-| MSE-601 | Execute all critical T01–T08 scenarios with evidence | Not started — next |
-| MSE-602 | Verify security, privacy, offline use and measured performance | Not started |
+| MSE-601 | Execute all critical T01–T08 scenarios with evidence | Complete — acceptance verified |
+| MSE-602 | Verify security, privacy, offline use and measured performance | Not started — next |
 | MSE-603 | Independently verify math, provenance and model integrity | Not started |
 | MSE-604 | Complete university report with real screenshots and measurements | Not started |
 | MSE-605 | Finalize installation README and classroom demo script | Not started |
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-601 — All T01-T08 critical release scenarios executed:** Gravitas consolidated acceptance passed: 397 pytest/JUnit cases, seven offline actual-artifact verifiers, eight frontend tests and production build. Real browser T07/T08 passed over a temporary private artifact copy: valid/blank/overlimit/50000 input, unchanged artifact bytes and no input logs, actual API shutdown/restart, missing Bernoulli while dataset analytics work, safe retry and complete restoration. Working corpus/models were untouched; temporary stage and owned processes cleaned. Public acceptance report records module counts, identities and observed scenarios. Harness root resolution was corrected before passing.
 
 - **MSE-507 — Responsive keyboard and failure verification with Gate 5 complete:** Gate 5 complete. Committed Playwright 1.57 browser suite/managed runner passed production Chromium 151 at 1366x900 and 390x844 across all six routes, including metrics parity, readable mobile matrices, active navigation/resize, keyboard focus, delayed requests, duplicate submit, transient privacy, empty responses, network retry and 404. Final contrast covered 1490 samples, minimum 5.31:1; renders inspected. ESLint/Ruff, eight frontend tests, 397 backend/bootstrap tests and build passed. UI report records precise browser/coverage limits. Graph now includes durable DESIGN source. Test mock cleanup races were isolated; no private content or tooling is tracked.
 
