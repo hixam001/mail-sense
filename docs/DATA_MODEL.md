@@ -239,7 +239,7 @@ content hashes. Dataset identity stays unchanged from MSE-105.
 | `min_df` | integer | Yes | Default `1`, documented in training config |
 | `ngram_range` | pair | Yes | v1.0 default `(1,1)` unigrams |
 
-Training fits a single `CountVectorizer` on training text; MultinomialNB consumes count vectors and BernoulliNB consumes binary presence (`counts > 0`). Both thus share feature names and train/test boundaries. BernoulliNB's score additionally accounts for absence of known features.
+MSE-301 implements `model_features.build_features` on verified split rows. The shared vectorizer has 60,135 training-derived features for this corpus; its hash and IDs are verified without committing the learned vocabulary. Training fits a single `CountVectorizer` on training text; MultinomialNB consumes count vectors and BernoulliNB consumes binary presence (`counts > 0`). Both thus share feature names and train/test boundaries. BernoulliNB's score additionally accounts for absence of known features.
 
 ## 6. Entity `TrainedModel` (`artifacts/models/{model}.joblib`, `metadata.json`)
 

@@ -1,7 +1,7 @@
 # MailSense — Implementation Plan and Jira-Style Backlog
 
 **Version:** 1.0 · **Date:** 2026-11-19  
-**Status:** 13 implementation tickets verified; 26 remain. Latest MSE-207; next MSE-301. See the handoff for evidence.
+**Status:** 14 implementation tickets verified; 25 remain. Latest MSE-301; next MSE-302. See the handoff for evidence.
 **Scope:** Complete university project, local React + FastAPI, SpamAssassin, Multinomial NB + Bernoulli NB
 
 ## 1. Delivery strategy
@@ -201,6 +201,6 @@ Dates are deliberately **not invented**. Convert to calendar milestones after co
 - [x] Deduplicate exact normalized text, exclude conflicting labels and derive retained token/character records with verified counts for MSE-105.
 - [x] Freeze/verify seed-42 stratified membership without modifying retained records for MSE-106; complete Gate 1.
 
-**Next task:** `MSE-301`.
+**Next task:** `MSE-302`.
 Keep status synchronized with `memory/HANDOFF.md`; later tickets remain open
 until their acceptance criteria are verified.

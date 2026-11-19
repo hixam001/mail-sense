@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-207 — Numerical verification evidence and Gate 2 completion**.
-Next implementation ticket: **MSE-301**.
+Latest implementation: **MSE-301 — Shared training-only vocabulary and count features**.
+Next implementation ticket: **MSE-302**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-301** — Fit one CountVectorizer only on verified train rows using unicode-word-v1; prove held-out-only tokens never enter vocabulary, freeze exact IDs and feature mapping, verify real digest, commit/push and continue MSE-302.
+**MSE-302** — Fit MultinomialNB alpha=1 only on shared training counts and labels; verify manual Laplace probabilities and holdout-label independence, actual smoke inference, commit/push and continue BernoulliNB MSE-303.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -183,9 +183,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-207 implemented:** Numerical verification evidence and Gate 2 completion. 267 tests passed under Gravitas; Ruff clean. Executable report verifies 13 independent checks across descriptive/Bayes/binomial/Pearson/Wilson examples, with strict relative tolerance for the tiny p-value. Actual aggregate scopes carry dataset/split/input provenance; report reproduces byte for byte. Statistics engine works without model artifacts or UI; Gate 2 complete.
 
+- **MSE-301 implemented:** Shared training-only vocabulary and count features. 274 tests passed under Gravitas; Ruff clean. Actual matrices are 4689x60135 and 1173x60135. All 60135 vocabulary terms come from training records; 12200 held-out-only tokens are excluded. Feature mapping hash f7ba4c18eef3aa09cacedf7f2518f4c97431a56d2f06c7f9c0c08a5af4402937 and matrices reproduce. Held-out text/labels cannot change fitted training features; no model fitting or persistence yet.
+
 ## Full remaining implementation inventory
 
-**13 implementation tickets are complete; 26 are Not started**. Update statuses as work is
+**14 implementation tickets are complete; 25 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -205,8 +207,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-205 | Implement Pearson chi-square and assumption checks | Complete — acceptance verified |
 | MSE-206 | Implement Wilson proportion confidence intervals | Complete — acceptance verified |
 | MSE-207 | Verify formula unit tests and record numerical evidence | Complete — acceptance verified |
-| MSE-301 | Fit a shared training-only CountVectorizer vocabulary | Not started — next |
-| MSE-302 | Train Multinomial Naive Bayes with alpha=1.0 | Not started |
+| MSE-301 | Fit a shared training-only CountVectorizer vocabulary | Complete — acceptance verified |
+| MSE-302 | Train Multinomial Naive Bayes with alpha=1.0 | Not started — next |
 | MSE-303 | Train Bernoulli Naive Bayes with alpha=1.0 | Not started |
 | MSE-304 | Persist trusted artifacts, matching metadata and checksums | Not started |
 | MSE-305 | Evaluate both models on the same untouched holdout | Not started |
@@ -233,6 +235,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-301 — Shared training-only vocabulary and count features:** 274 tests passed under Gravitas; Ruff clean. Actual matrices are 4689x60135 and 1173x60135. All 60135 vocabulary terms come from training records; 12200 held-out-only tokens are excluded. Feature mapping hash f7ba4c18eef3aa09cacedf7f2518f4c97431a56d2f06c7f9c0c08a5af4402937 and matrices reproduce. Held-out text/labels cannot change fitted training features; no model fitting or persistence yet.
 
 - **MSE-207 — Numerical verification evidence and Gate 2 completion:** 267 tests passed under Gravitas; Ruff clean. Executable report verifies 13 independent checks across descriptive/Bayes/binomial/Pearson/Wilson examples, with strict relative tolerance for the tiny p-value. Actual aggregate scopes carry dataset/split/input provenance; report reproduces byte for byte. Statistics engine works without model artifacts or UI; Gate 2 complete.
 
