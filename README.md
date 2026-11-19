@@ -1,7 +1,7 @@
 # MailSense
 
 **Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** MSE-101–103 provide local scaffolds, reproducible environments and verified acquisition of five official corpus archives. Extraction, parsing, deduplication, statistics, models and the analytical interface remain pending. Raw archives stay local and ignored; no trained models are included.
+**Status:** MSE-101–104 provide local scaffolds, reproducible environments, verified corpus acquisition and bounded MIME parsing. Deduplication, statistics, models and the analytical interface remain pending. Raw archives and parsed message text stay local and ignored; no trained models are included.
 
 > **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
 
@@ -16,7 +16,7 @@ a queryable Graphify graph and its interactive visualization.
 
 | File | What it contains |
 |---|---|
-| `docs/SETUP.md` | Pinned setup, run/check commands, corpus acquisition/verification, locks and recovery |
+| `docs/SETUP.md` | Pinned setup, run/check commands, corpus acquisition/parsing/verification, locks and recovery |
 | `docs/PRD.md` | Product problem, users, goals, scoped features, scenarios and success metrics |
 | `docs/SRD.md` | Short, authoritative summary of the approved build scope |
 | `docs/SRS.md` | Locked functional/non-functional requirements and acceptance gates |
@@ -71,7 +71,7 @@ uv run --project backend --frozen python -m uvicorn app.main:app --app-dir backe
 
 Open `http://localhost:5173/` for the frontend, `http://127.0.0.1:8000/` for the API greeting or
 `http://127.0.0.1:8000/openapi.json` for its schema. These scaffolds run
-independently. The `/api/v1` contract, readiness checks, corpus ingestion and
+independently. The `/api/v1` contract, readiness checks and
 model endpoints are scheduled in later tickets.
 
 ### Scaffold checks
@@ -87,7 +87,7 @@ uv run --project backend --frozen pytest -c backend/pyproject.toml backend/tests
 
 Frontend and backend locks are committed. Runtime downloads, `node_modules/`,
 build output and Python virtual environments are ignored. Environment,
-bootstrap and acquisition tests use synthetic fixtures; they do not establish correctness
+bootstrap, acquisition and parsing tests use synthetic fixtures; they do not establish correctness
 of the unimplemented domain services or empirical model performance. See
 [the setup guide](docs/SETUP.md) for lock maintenance and
 [the handoff](memory/HANDOFF.md) for observed evidence.
@@ -105,8 +105,26 @@ The five canonical archives total **6,962,803 compressed bytes**. Their source
 URLs, groups, labels, UTC acquisition times, sizes and SHA-256 values are recorded
 in [source_manifest.json](data/processed/source_manifest.json). Raw downloads stay
 under ignored `data/raw/`; verification and complete-cache reuse work offline.
-Parsing counters remain explicitly unknown until the next task. See
+The completed parsing run populates integer counters. See
 [the setup guide](docs/SETUP.md#acquire-the-corpus) for selection and recovery.
+
+## Parse the corpus
+
+After acquisition, from the repository root:
+
+```bash
+uv run --directory backend --frozen python -m scripts.ingest_corpus run
+uv run --directory backend --frozen python -m scripts.ingest_corpus verify
+```
+
+The measured run accepted **5,992 / 6,046 candidates**, rejected **54** for
+malformed MIME structure, and ignored five archive control files. These are
+**pre-deduplication counts**. The private intermediate stays in ignored
+`data/processed/messages.parsed.jsonl`; the shareable
+[parsing report](data/processed/parsing_report.json) records hashes, counts and
+reason codes. Both runs produced byte-identical outputs. See
+[setup and recovery](docs/SETUP.md#parse-the-corpus) and the
+[parsing contract](docs/DATA_MODEL.md#implemented-parsing-contract-mime-v1).
 
 ## Implementation sequence
 
@@ -116,15 +134,16 @@ this sequence; the handoff records current ticket status:
 1. `MSE-101` (complete): Create frontend (`frontend/`) and backend (`backend/`) skeletons.
 2. `MSE-102` (complete): Pin runtimes/dependencies and verify reproducible setup.
 3. `MSE-103` (complete): Acquire canonical archives and verify their provenance/checksums.
-4. `MSE-104–106` (next): Implement safe extraction/parsing, deduplication and deterministic split.
-5. `MSE-201–207`: Implement and verify statistics independently from ML.
-6. `MSE-301–307`: Fit/evaluate both Naive Bayes models.
-7. `MSE-401–406`: Implement versioned FastAPI contract.
-8. `MSE-501–507`: Build five frontend modules with real API results.
-9. `MSE-601–606`: Run tests, collect evidence, finalize university report/demo.
+4. `MSE-104` (complete): Safely extract and parse MIME to private canonical text with verified counts.
+5. `MSE-105–106` (next): Deduplicate, reject label conflicts and create a deterministic split.
+6. `MSE-201–207`: Implement and verify statistics independently from ML.
+7. `MSE-301–307`: Fit/evaluate both Naive Bayes models.
+8. `MSE-401–406`: Implement versioned FastAPI contract.
+9. `MSE-501–507`: Build five frontend modules with real API results.
+10. `MSE-601–606`: Run tests, collect evidence, finalize university report/demo.
 
-The available commands run the scaffolds and acquire/verify raw archives.
-Later tasks add safe parsing, processed data, training and analytical workflows.
+The available commands run the scaffolds and acquire, parse and verify the corpus.
+Later tasks add retained data, training and analytical workflows.
 
 ## Authoritative change policy
 

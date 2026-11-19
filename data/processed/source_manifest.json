@@ -14,10 +14,10 @@
       "sha256": "2b7b65904bcfcc31d2b5f51946f2d261370b257402cbbd62930b46ab83367438",
       "size_bytes": 1612216,
       "acquired_at": "2026-11-19T08:16:17.146043Z",
-      "processing_status": "not_started",
-      "files_seen": null,
-      "files_accepted": null,
-      "files_rejected": null
+      "processing_status": "complete",
+      "files_seen": 2500,
+      "files_accepted": 2500,
+      "files_rejected": 0
     },
     {
       "archive_name": "20030228_easy_ham_2.tar.bz2",
@@ -27,10 +27,10 @@
       "sha256": "b4bd3dc5ae5b40f38e99a0e41ad7d16b428b56e818e3a6ffa07330d62004dd38",
       "size_bytes": 1077892,
       "acquired_at": "2026-11-19T08:16:18.092958Z",
-      "processing_status": "not_started",
-      "files_seen": null,
-      "files_accepted": null,
-      "files_rejected": null
+      "processing_status": "complete",
+      "files_seen": 1400,
+      "files_accepted": 1400,
+      "files_rejected": 0
     },
     {
       "archive_name": "20030228_hard_ham.tar.bz2",
@@ -40,10 +40,10 @@
       "sha256": "ce2ce67880643dbde65ea7f85bffbfe4417349c4bd80b6b0de56262ae6b0a9c9",
       "size_bytes": 1029898,
       "acquired_at": "2026-11-19T08:16:19.034547Z",
-      "processing_status": "not_started",
-      "files_seen": null,
-      "files_accepted": null,
-      "files_rejected": null
+      "processing_status": "complete",
+      "files_seen": 250,
+      "files_accepted": 249,
+      "files_rejected": 1
     },
     {
       "archive_name": "20030228_spam.tar.bz2",
@@ -53,10 +53,10 @@
       "sha256": "c08debc32413804949a866be45ef78195cec2cbafd1da744ed76cdb860589743",
       "size_bytes": 1183768,
       "acquired_at": "2026-11-19T08:16:20.687702Z",
-      "processing_status": "not_started",
-      "files_seen": null,
-      "files_accepted": null,
-      "files_rejected": null
+      "processing_status": "complete",
+      "files_seen": 500,
+      "files_accepted": 473,
+      "files_rejected": 27
     },
     {
       "archive_name": "20050311_spam_2.tar.bz2",
@@ -66,10 +66,10 @@
       "sha256": "44280a0e28bf7645b2279e8e42659271ad82c6f40bf8d364dbda7f1df344a765",
       "size_bytes": 2059029,
       "acquired_at": "2026-11-19T08:16:22.998095Z",
-      "processing_status": "not_started",
-      "files_seen": null,
-      "files_accepted": null,
-      "files_rejected": null
+      "processing_status": "complete",
+      "files_seen": 1396,
+      "files_accepted": 1370,
+      "files_rejected": 26
     }
   ]
 }

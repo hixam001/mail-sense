@@ -151,7 +151,7 @@ def _fetch(url, path, opener):
 
 
 @contextmanager
-def _acquisition_lock(raw):
+def corpus_lock(raw):
     path = raw / ".acquisition.lock"
     try:
         stream = path.open("x")
@@ -185,7 +185,7 @@ def download_sources(root, opener=None):
     raw, path = _paths(root)
     raw.mkdir(parents=True, exist_ok=True)
     path.parent.mkdir(parents=True, exist_ok=True)
-    with _acquisition_lock(raw):
+    with corpus_lock(raw):
         existing = load_manifest(path) if path.exists() else None
         records = {r.source_group: r for r in existing.archives} if existing else {}
         missing = []

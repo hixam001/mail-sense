@@ -1,6 +1,6 @@
 # MailSense — Data Model and Local Artifact Specification
 
-**Version:** 1.1 · **Date:** 2026-11-19 · **Status:** Source acquisition implemented; processing/model artifacts remain planned  
+**Version:** 1.2 · **Date:** 2026-11-19 · **Status:** Acquisition and pre-deduplication parsing implemented; retained dataset, splits and models remain planned
 **Storage choice:** Local files (CSV + JSON metadata + trusted joblib model artifacts). **No database.**
 
 ## 1. Design principles
@@ -27,7 +27,7 @@ both models + shared test IDs ──> model_evaluation
 | `size_bytes` | integer > 0 | Yes | Downloaded compressed archive size |
 | `acquired_at` | ISO timestamp | Yes | When downloaded locally |
 | `processing_status` | enum | Yes | `not_started` after acquisition; `complete` after parsing |
-| `files_seen` | integer >= 0 or null | Yes | Null until parsing; then count before validation |
+| `files_seen` | integer >= 0 or null | Yes | Null until parsing; then regular message candidates, excluding directories and `cmds` |
 | `files_accepted` | integer >= 0 or null | Yes | Null until parsing; then count before global deduplication |
 | `files_rejected` | integer >= 0 or null | Yes | Null until parsing; then count rejected by parsing/validation |
 
@@ -38,7 +38,7 @@ exactly one entry for each approved group. URLs, filenames and labels must match
 the fixed canonical selection; timestamps are timezone-aware UTC.
 
 Acquisition records all three parsing counters as explicit `null` with
-`processing_status: "not_started"`. MSE-104 will populate integer counts and
+`processing_status: "not_started"`. MSE-104 populates integer counts and
 set `complete`; `files_seen = files_accepted + files_rejected` then applies.
 This lifecycle clarification avoids reporting fabricated zero counts before
 any message has been parsed. Archive byte sizes are measured independently of
@@ -47,6 +47,12 @@ email record counts. No cleaned/retained total is established by acquisition.
 **Archive selection rule:** Select a coherent latest collection per group. For example, `20030228_easy_ham`, `20030228_easy_ham_2`, `20030228_hard_ham`, `20030228_spam`, and `20050311_spam_2`. Older date-prefixed archives are snapshots/revisions, **not additional independent groups**. Record exact versions/checksums at ingestion and verify official source before download. Untrusted tar members must not escape the extraction directory.
 
 ## 3. Entity `ProcessedEmail` (`data/processed/messages.csv`)
+
+This is the target retained/split schema, not the current parser output.
+MSE-104 writes an ignored intermediate `messages.parsed.jsonl` with the same
+fields except `token_count` and `split`, plus sorted `parse_warnings` reason
+codes. MSE-105 owns deduplication, label conflicts and summary records; MSE-106
+owns splitting. Parsing acceptance is not a final retained count.
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
@@ -71,6 +77,48 @@ Rules:
 - If an identical normalized text appears under conflicting labels, exclude the conflicting group and log the count; do not leak duplicates across train and test or silently pick a label.
 - Do not store model predictions as a new field on `ProcessedEmail`; predictions are computed on demand.
 - The UI can inspect aggregates but should not expose complete raw source bodies as a browsing feature.
+
+### Implemented parsing contract (`mime-v1`)
+
+`message_id` is SHA-256 of the UTF-8 archive SHA-256, NUL, source group, NUL,
+safe relative member name. Distinct provenance IDs may share content hashes at
+this stage. `content_sha256` hashes the UTF-8 normalized `model_text`.
+Normalize subject and body separately with Unicode NFC, replace control and
+surrogate characters with spaces, collapse whitespace, and join nonempty
+subject/body with one LF. `character_count` includes that LF.
+
+Decode encoded subjects and MIME transfer encodings using the declared charset;
+on failure try UTF-8, then Windows-1252 with replacement and warning codes.
+Use the first subject when duplicated. Prefer nonblank plain text in
+multipart/alternative; otherwise strip HTML to text. Related MIME uses its
+declared root or first part; mixed MIME combines inline text. Ignore named
+parts, attachment dispositions and message/* parts. HTML scripts, styles,
+head/template/embedded objects and resource attributes contribute no text;
+the parser never renders, executes or fetches resources. Transport headers and
+source metadata never enter `model_text`.
+
+Severe MIME structural defects (including missing separators or multipart
+boundaries), empty text and exceeded message limits reject the whole candidate.
+Other defects and decoding fallbacks produce fixed warning codes. This
+conservative policy can exclude some partially readable historical mail.
+
+### Parsing report (`data/processed/parsing_report.json`)
+
+The shareable report pins schema version 1, stage
+`parsed_before_deduplication`, parser/runtime versions, all resource limits,
+private JSONL path, byte size and SHA-256. Per archive it records members,
+ignored directories/control files, candidates/accepted/rejected, warning and
+rejection counts, and rejected hashed IDs with reason codes. It contains no
+message text, addresses or per-message filenames. Warnings count accepted
+messages having that warning, not occurrences within a message.
+
+For each source, candidates = accepted + rejected. Archive members equal
+candidates plus ignored directories and ignored metadata files. Global totals sum the five
+sources. `verify` rechecks source hashes, private record IDs/text hashes,
+normalization, warnings, output digest and all report/manifest counts. A
+`complete` source status means parsing completed, not deduplication or readiness
+for training. Current measured totals are 6,046 candidates, 5,992 accepted,
+54 malformed-MIME rejections, five ignored directories and five ignored `cmds`.
 
 ## 4. Entity `SplitManifest` (`data/processed/split_manifest.json`)
 
@@ -155,8 +203,10 @@ These schemas must match `API_CONTRACT.md`. API responses should use aggregate d
 data/
   raw/                  # official tar.bz2 downloads; gitignored
   processed/
+    messages.parsed.jsonl # implemented private intermediate; gitignored
     messages.csv        # gitignored; includes textual email content
     source_manifest.json
+    parsing_report.json # implemented aggregate/hash diagnostics; shareable
     split_manifest.json
 artifacts/
   models/

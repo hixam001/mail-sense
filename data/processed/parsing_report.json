@@ -1,0 +1,344 @@
+{
+  "directories_ignored": 5,
+  "files_accepted": 5992,
+  "files_rejected": 54,
+  "files_seen": 6046,
+  "limits": {
+    "archive_expanded_bytes": 134217728,
+    "archive_members": 20000,
+    "header_bytes": 65536,
+    "message_bytes": 2097152,
+    "mime_depth": 20,
+    "mime_parts": 128,
+    "output_bytes": 536870912,
+    "text_characters": 1000000
+  },
+  "metadata_files_ignored": 5,
+  "preprocessing_version": "mime-v1",
+  "python_version": "3.12.15",
+  "records_file": "data/processed/messages.parsed.jsonl",
+  "records_sha256": "7241dcfcf5480609ed1c2c1d8e3e38d86e9394fbc512114b22a7284d4914114d",
+  "records_size_bytes": 25868309,
+  "schema_version": 1,
+  "sources": [
+    {
+      "archive_members": 2502,
+      "archive_name": "20030228_easy_ham.tar.bz2",
+      "archive_sha256": "2b7b65904bcfcc31d2b5f51946f2d261370b257402cbbd62930b46ab83367438",
+      "directories_ignored": 1,
+      "files_accepted": 2500,
+      "files_rejected": 0,
+      "files_seen": 2500,
+      "label": "ham",
+      "metadata_files_ignored": 1,
+      "rejection_counts": {},
+      "rejections": [],
+      "source_group": "easy_ham",
+      "warning_counts": {
+        "charset_fallback": 39
+      }
+    },
+    {
+      "archive_members": 1402,
+      "archive_name": "20030228_easy_ham_2.tar.bz2",
+      "archive_sha256": "b4bd3dc5ae5b40f38e99a0e41ad7d16b428b56e818e3a6ffa07330d62004dd38",
+      "directories_ignored": 1,
+      "files_accepted": 1400,
+      "files_rejected": 0,
+      "files_seen": 1400,
+      "label": "ham",
+      "metadata_files_ignored": 1,
+      "rejection_counts": {},
+      "rejections": [],
+      "source_group": "easy_ham_2",
+      "warning_counts": {
+        "charset_fallback": 10,
+        "html_fallback": 2
+      }
+    },
+    {
+      "archive_members": 252,
+      "archive_name": "20030228_hard_ham.tar.bz2",
+      "archive_sha256": "ce2ce67880643dbde65ea7f85bffbfe4417349c4bd80b6b0de56262ae6b0a9c9",
+      "directories_ignored": 1,
+      "files_accepted": 249,
+      "files_rejected": 1,
+      "files_seen": 250,
+      "label": "ham",
+      "metadata_files_ignored": 1,
+      "rejection_counts": {
+        "malformed_mime": 1
+      },
+      "rejections": [
+        {
+          "message_id": "89c6ba13ef07d8ee5d2e6db05a00e8ad5803d99d7559b53e4e3a40b4f8c5a5ea",
+          "reason": "malformed_mime"
+        }
+      ],
+      "source_group": "hard_ham",
+      "warning_counts": {
+        "charset_fallback": 16,
+        "html_fallback": 120
+      }
+    },
+    {
+      "archive_members": 502,
+      "archive_name": "20030228_spam.tar.bz2",
+      "archive_sha256": "c08debc32413804949a866be45ef78195cec2cbafd1da744ed76cdb860589743",
+      "directories_ignored": 1,
+      "files_accepted": 473,
+      "files_rejected": 27,
+      "files_seen": 500,
+      "label": "spam",
+      "metadata_files_ignored": 1,
+      "rejection_counts": {
+        "malformed_mime": 27
+      },
+      "rejections": [
+        {
+          "message_id": "48419b465ba571b3d0a9458b8ef0982edb309736e15962e56d2d0377fd247e25",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "67ce781af61300c1c59d9f379a4ee94c0c6563efda3553da4110c191371fc315",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "2e624e947a65bcf53758d80b5a405b8dc7e529e919ab14177848645e4facd3ea",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "4d5585cf797099d73cb7cba8ad20167752e5b748265574822a019cf11132eb80",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "cf722c19fdf9725f65d1ae37ab1125bb76c98664ea8b22ed369c2eb090c19037",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "d21169241e0bc6169de407503a997185bec46e141fc0932032a9ed3b733574f7",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "bb96b1f3357c9f868799ea39f050f37dfbcd0bf0a0b38abfd7b43a9127904939",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "e9ea82b1ab9baae2511c16467271dfbb70498ed885f4619f45002850020e9bae",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "cf3b64081779f95afd34f78a3a413b1f525fa6d97ce42491b5133c9caf6d0bd7",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "343d74e80e6f9ee7609fbad70788d521c233b163805148c2cfd0796f5656bd01",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "72a6779c20212a7c0cb83ac7ba55915bd4ed4fabffd62b09f7db556ae89da75f",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "1a46aef71651b5c6e54923ebbdb0f8e8a2ba21f9c73ad870d554b24bca254ed3",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "e56974fdc8bd83a06467eae11d990d06e4487bf79aaa3bb02d0cd0288a325ad2",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "754a787e7d2bbe5e7d2daf6045efb9c3b52edd70ed77f7938ddb6b64193cc3ad",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "5c0662e537b6a44a7732fe28c90c8b8fe42cef885245c9591cc38e4bed7601a2",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "acfc445c72a73d48d08ff3c046c4076f4672840af66d23b312b155221cb9bdeb",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "94e4fab012cc41b113ba16f09d966c2b03d6ab243d06745fa626a6d9487f8819",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "09eb1764ce26d35c8bafaaa3dd00b63e4288323d5131d66628f644a5238c6b79",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "d661a760aef44eab9c18495d4fa8dd9d4b69f13db764d8d26285e0aa78195692",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "681f61e55e0f5be06521cdc1ae11b79dbbf3e9d4e0ba799e1da0f0dacf328de6",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "0c414f4fc3de4ccb2ce395dc0b37a5e223578808b66cd6481b2d4a7bc5f4c2d9",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "64d18570cd89bd125dffdac2ac97ff9938334ddb17ffebe24bf4b22b4cae609d",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "64fe66462b39a039180d85d1210b85fdf23ce723a34d7d536e6358fff8e77154",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "94e0d2aec7344a0dafe9358397937269d8fd02d872a32cb4bb27927c3b69beab",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "9c7c84bd56125159e6f2a7393f85ae2d7942e4ca66debb9c612c57bf6acf9b3c",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "8cb93adc2cd060471837487356e4f3290560deba49ba7b194853c1b1d39390be",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "6bf65416bb5a65d6091ed000a7deda3808665e06701aabfb439ead627a82000c",
+          "reason": "malformed_mime"
+        }
+      ],
+      "source_group": "spam",
+      "warning_counts": {
+        "charset_fallback": 47,
+        "html_fallback": 198,
+        "mime_defect": 1,
+        "replacement_characters": 6
+      }
+    },
+    {
+      "archive_members": 1398,
+      "archive_name": "20050311_spam_2.tar.bz2",
+      "archive_sha256": "44280a0e28bf7645b2279e8e42659271ad82c6f40bf8d364dbda7f1df344a765",
+      "directories_ignored": 1,
+      "files_accepted": 1370,
+      "files_rejected": 26,
+      "files_seen": 1396,
+      "label": "spam",
+      "metadata_files_ignored": 1,
+      "rejection_counts": {
+        "malformed_mime": 26
+      },
+      "rejections": [
+        {
+          "message_id": "45bcbf7cd5d8556c7955c79f92e2abc1d83c3cb3339776b3bfa680012dd4dc57",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "e8191a9474393709ba5a847b6090eabd4b19847c60f1175057d552fb6666ab4e",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "f234d93a64eda06248d37f75ef973fb4aca8f12ef472590f9f7bc635b591269a",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "847968ba39c8a855b81f210ac2b6954c941acb9d3ab10b6f5080a65af0408059",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "b0809ebc1bca109e3efacae56c206d55c2fac16eb010ffd0a289afa3655d960b",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "a8b5aae05b2dbe0ff48f6630ade6e5640c3192e3d5e0191cc14c202738f13e01",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "cae94aa0c89fdc8d6421453e0666fdb1c73222e1065ba586120f2b2e08fbc32c",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "d770848f47638b8cff676f39115a5e239a6337b862695220fd84f23096f28c25",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "73c548d7cf7260bf6011b8e8657856e2693db2fd3fde8142d82ffa594b93c8ee",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "65ec17276bf94a1b04f67fac01a093b885a221dccba652e2099968cbce6e2402",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "e16264d4a9c9f708ed2d097639c962301f70b5651a34c3a3c8c20b41420e3458",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "5ae8193a4f330e959b85780a5b894c3213a4ece6fc5f8b46d115d53b83a96f4b",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "280d6a10dcda83bc3be87fa69cda30ca8c8ac27b90e0f78800df2bbb073c1e56",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "c73923c6a6f577e3f1332adeef5f3a9f44768fcadaf56eb87cd3dbb3e420884e",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "6181df9501d2f94b2fec0eba8573cb8184bcbbfef0db1e2990c44cc046f524ba",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "1742a31d981d9e6469e4c5b516956983041ae65526c0ec3b43e0db9ef2015c24",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "87af3fea08416db00508b49a29021a6dc6889d9973de708fc144688cd33a007e",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "79696459c755300ec3b81789b612fdafcfa14329c190c63bf68bef5b1af899d0",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "fda0fef25721b4dc16b916a03b44d75a3fbaa60c1bf26fbb98633d2f36af1a72",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "a16536afa45abe7cfea281c684a521053378a402e243a04cc9e04cb96b5a430f",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "443d8b685bd88e902c2ca00951a187e7a26bf5ffe497b13d5cc096a11045e398",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "8321c397a38eb3d04b1e5b31db2a9b4bbb9c591d0d6706646ebb9e1033eb2275",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "589d9d3986de29d51ddabc723379013234ec78981a2dd9de97dddf2068a97a78",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "7a73fe3f61bb11f3aa1d05c16a754f97cf1d26e39d124449760900792dcf051c",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "df814d9abc6b92bb551a7d2704eec37d556c19ae74acc1633290085003ff23fc",
+          "reason": "malformed_mime"
+        },
+        {
+          "message_id": "e58d0616cf1ce1cf1cd58679126470ff811eb02ed0bb3d71d1cd5ad5aa3819d0",
+          "reason": "malformed_mime"
+        }
+      ],
+      "source_group": "spam_2",
+      "warning_counts": {
+        "charset_fallback": 114,
+        "html_fallback": 621,
+        "mime_defect": 17,
+        "replacement_characters": 4
+      }
+    }
+  ],
+  "stage": "parsed_before_deduplication"
+}

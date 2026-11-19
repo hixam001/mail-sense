@@ -1,6 +1,6 @@
 # MailSense — System Architecture and Technical Design
 
-**Version:** 1.0 · **Date:** 2026-11-19 · **Status:** Planned architecture; no repository created yet
+**Version:** 1.1 · **Date:** 2026-11-19 · **Status:** Scaffolds, pinned environments, acquisition and parsing implemented; later components below remain planned
 
 ## 1. Architecture goals
 
@@ -124,11 +124,23 @@ mailsense/
 
 ### 5.1 Corpus acquisition and parsing
 1. Choose one latest coherent archive per corpus group from the official index, write manifest with source checksums. **Do not concatenate revisions** such as both `20021010_easy_ham` and `20030228_easy_ham` as independent records.
-2. Extract archives into a controlled staging folder. Reject absolute paths, `..` traversal and unsafe links; do not open attachments or execute MIME content.
+2. Stream verified archives with expanded-byte/member limits. Validate group-relative paths and reject traversal, links, sparse/special files and duplicates. Copy bounded candidate bytes to generated private staging names, never archive-provided filesystem paths/metadata. Ignore directory and `cmds` metadata entries. Do not execute MIME content.
 3. Parse email with Python `email` module. Decode subject and plain-text MIME parts robustly. If no useful `text/plain` part is available, convert HTML text safely without rendering or fetching external links. Prefer one canonical body, not both HTML and plain text of the same multipart/alternative message.
 4. Construct normalized subject + body `model_text`. Avoid transport headers, label signatures and SpamAssassin status fields as features.
 5. Log skipped malformed/empty messages and content checksums. Reject exact-duplicate messages across groups; exclude conflicting-label duplicate text and log it.
 6. Freeze retained records into `messages.csv`; compute `dataset_id`, class totals and explicit split manifest.
+
+Steps 1–4 and parse diagnostics from step 5 are implemented by
+`corpus_sources.py`, `corpus_ingest.py` and `mail_parser.py`, exposed through
+the `download_corpus` and `ingest_corpus` CLI modules. Current private output is
+`messages.parsed.jsonl`, before deduplication/token counts/split assignment.
+The public parsing report pins input/output hashes, parser/runtime/limits and
+candidate/accepted/rejected counts without text or raw member names.
+Publication backs up prior artifacts, rolls back ordinary failures and verifies
+the resulting record/report/source-manifest set. Acquisition and ingestion
+share a preparation lock; abrupt interruption requires verification/rerun.
+MSE-105 owns deduplication/conflicts/summary records, MSE-106 the split, and
+later tickets the training/runtime architecture. See [SETUP.md](SETUP.md).
 
 ### 5.2 Split and train
 1. Stratified `train_test_split(test_size=0.2, random_state=42)` after deduplication.

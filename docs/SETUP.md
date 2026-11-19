@@ -89,6 +89,9 @@ corpus. They do not complete the statistical algorithms, classifiers or release
 acceptance scenarios in the project backlog. Corpus-acquisition regression tests
 also cover manifest integrity, cache reuse, missing/corrupted archives, transport
 limits and failure cleanup using synthetic byte streams.
+MIME/ingestion tests use real synthetic tar/bzip2 archives to cover safe paths,
+member types, decoding, attachment exclusion, resource limits, repeatability,
+artifact verification, redacted diagnostics and publication rollback.
 
 The installed application stack includes NumPy, Pandas, SciPy, scikit-learn and
 joblib, plus Recharts and a React-matched `react-is`. Matplotlib remains optional
@@ -133,15 +136,81 @@ Corrupted local files, unmanifested existing archives and changed upstream bytes
 fail without silently replacing provenance. Move a damaged/unmanifested local
 archive aside before retrying; investigate an upstream checksum change explicitly.
 If an interrupted process leaves `data/raw/.acquisition.lock`, confirm no other
-acquisition process is active before removing that stale local lock.
+preparation process is active before removing that stale local lock. Acquisition
+and parsing share this lock.
 
 The acquisition stage records `processing_status: "not_started"` and `null`
-parsing counters. MSE-104 owns safe extraction and MIME parsing; MSE-105 owns
+parsing counters before ingestion. MSE-104 implements safe extraction and MIME parsing; MSE-105 owns
 deduplication/retained counts. The measured acquisition total is **6,962,803
 compressed bytes** across five archives, with no claim of a cleaned email count.
 Commit the manifest and code; raw archives and temporary download files stay
 ignored. Preserve the corpus README's restrictions on live-mail use and original
 message rights; do not send corpus messages through a live mail system.
+
+## Parse the corpus
+
+After acquisition, from the repository root:
+
+```bash
+uv run --directory backend --frozen python -m scripts.ingest_corpus run
+uv run --directory backend --frozen python -m scripts.ingest_corpus verify
+```
+
+Both commands run offline. Ingestion verifies pinned archives before and after
+reading them. It streams decompressed tar members, rejects unsafe paths,
+duplicates, links, sparse/special files and wrong corpus groups, and writes
+candidate bytes only under generated names in a private `data/raw/.ingest-*`
+staging directory. It never applies archive permissions/owners, executes the
+`cmds` control files or renders/fetches MIME resources. The root `cmds` in each
+group is ignored and reported separately from candidate mail.
+
+The parser decodes subject/body only, prefers plain text over its HTML
+alternative, strips HTML safely and ignores attachments. The detailed
+[normalization and diagnostics contract](DATA_MODEL.md#implemented-parsing-contract-mime-v1)
+defines `mime-v1`; no tokenization, deduplication or split runs yet.
+
+| Bound | Default |
+|---|---|
+| Expanded bytes per archive, including padding/trailer | 128 MiB |
+| Members per archive | 20,000 |
+| Raw bytes per message | 2 MiB |
+| Headers per MIME part | 64 KiB at top level; 65,536 decoded header characters per part |
+| MIME parts / maximum nesting depth (root = 0) | 128 / 20 |
+| Decoded leaf text and final normalized model text | 1,000,000 characters each |
+| Private JSONL output | 512 MiB |
+
+An unsafe archive or archive/output limit aborts publication. Malformed MIME,
+empty text or exceeded message limits reject that candidate with a reason code.
+The strict MIME structural policy may discard partially readable historical
+messages. Accepted messages with decoding fallbacks/nonfatal defects carry
+warning codes; no raw message text or member name appears in command output.
+
+Current measured results before deduplication:
+
+| Group | Candidates | Accepted | Rejected |
+|---|---:|---:|---:|
+| easy_ham | 2,500 | 2,500 | 0 |
+| easy_ham_2 | 1,400 | 1,400 | 0 |
+| hard_ham | 250 | 249 | 1 |
+| spam | 500 | 473 | 27 |
+| spam_2 | 1,396 | 1,370 | 26 |
+| Total | 6,046 | 5,992 | 54 |
+
+All 54 rejections have `malformed_mime` reason codes. Five directories and
+five control files are excluded from candidates. Outputs are private ignored
+`data/processed/messages.parsed.jsonl`, shareable `parsing_report.json` (hashes,
+versions, limits, counters and hashed rejection IDs) and updated integer parsing
+counters in `source_manifest.json`. No final retained/class prevalence is claimed.
+Two real runs produced byte-identical outputs; archive hashes and acquisition
+timestamps remained unchanged. Keep Python 3.12.15 and `mime-v1` to reproduce them.
+
+New outputs are staged and previous outputs backed up during publication.
+Ordinary exceptions restore the previous set; verification detects inconsistent
+files after abrupt termination. On interruption, confirm no preparation process
+is running, remove only the stale `.acquisition.lock`/`.ingest-*` state, and
+rerun ingestion from the verified archives. Do not edit counts/hashes to make
+verification pass. A clone has the public report but no private text: acquire
+the pinned archives and run ingestion before parsed verification can succeed.
 
 ## Locks and intentional updates
 
@@ -178,8 +247,8 @@ commit the pins and locks together. Routine installs must not change lockfiles.
 ## Offline use and recovery
 
 Initial runtime/package/corpus downloads need network access. The two local
-scaffolds, current tests and corpus verification run offline after preparation.
-Full analytical use still requires parsed data and model artifacts from later
+scaffolds, current tests and corpus parsing/verification run offline after preparation.
+Full analytical use still requires retained data and model artifacts from later
 tasks. Acquisition/environment setup supplies no cleaned dataset, trained model,
 empirical score or statistical workflow.
 

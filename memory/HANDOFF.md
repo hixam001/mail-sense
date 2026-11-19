@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-103 — Canonical official corpus acquisition and provenance verified**.
-Next implementation ticket: **MSE-104**.
+Latest implementation: **MSE-104 — Safe archive extraction and MIME text parsing verified**.
+Next implementation ticket: **MSE-105**.
 
 ## Read this at every task start
 
@@ -17,28 +17,31 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-104: Implement safe archive extraction and MIME text parsing.**
+**MSE-105: Deduplicate, reject conflicting labels and derive summary records.**
 
-1. Analyze the complete ticket with Gravitas; read FR-02/03, the data schema,
-   planned ingestion flow and parser/security fixtures. Verify the local source
-   manifest before using archives; setup/acquisition commands are in `docs/SETUP.md`.
-2. Implement bounded archive handling that rejects absolute/traversal paths,
-   symlinks/unsafe members and escapes before writing. Keep raw/extracted email
-   content local and ignored; never execute attachments or message content.
-3. Decode MIME subject/body, prefer one plain-text alternative, and safely derive
-   text from HTML when needed without rendering scripts or fetching resources.
-   Only subject/body text is a model feature; source labels come from group metadata.
-4. Record parse/exclusion counts and errors without logging message bodies.
-   Populate SourceArchive integer counters and `processing_status: "complete"`
-   only after parsing; preserve recorded archive provenance. Deduplication and
-   final retained counts belong to MSE-105; split assignment belongs to MSE-106.
-5. Test valid/malformed encodings, multipart alternatives, HTML, attachments,
-   unsafe archive paths and failure recovery. Update handoff/graph, verify,
-   then commit and push with MSE-104.
+1. Analyze the complete ticket with Gravitas; read FR-02/03, DATA_MODEL,
+   STATISTICAL_METHODS and deduplication fixtures. Run parsed verification first:
+   `uv run --directory backend --frozen python -m scripts.ingest_corpus verify`.
+   A fresh clone must acquire the pinned archives and run ingestion to recreate
+   the ignored private `data/processed/messages.parsed.jsonl`.
+2. Group canonical `model_text` by its content SHA-256, verifying actual text
+   equality. Exclude every record in a conflicting-label group, then retain one
+   deterministic representative per same-label group. Preserve provenance and
+   log exclusion counts/hashed IDs without text, addresses or member filenames.
+3. Define/reuse the canonical tokenizer from the locked statistical methods to
+   derive token counts without fitting a vocabulary. Produce private retained
+   records and a shareable summary/report with real class counts and input/output
+   hashes. Keep parsing counters distinct from deduplication/retention counters.
+4. Test duplicates within/across archives, conflicting labels, stable selection,
+   empty/Unicode text, counter reconciliation and failed publication. Measure
+   retained counts on the actual parsed corpus and verify repeatability.
+5. Update schema/setup/README and this handoff/graph, run final checks, then
+   commit and push with MSE-105. Split assignment remains MSE-106; no training
+   vocabulary or model fitting belongs in this task.
 
-Acceptance: plain-text/HTML/subject decoding works, attachments are ignored,
-unsafe extraction is prevented, and parse failures/exclusions are counted.
-No archives have been extracted or email messages parsed by MSE-103.
+Acceptance: retained normalized texts are unique, labels derive correctly from
+source metadata, all duplicates/conflicts/exclusions reconcile, and summary
+records are deterministic. Current 5,992 parsed rows are not a retained total.
 
 ## Established and completed preparation
 
@@ -107,16 +110,38 @@ No archives have been extracted or email messages parsed by MSE-103.
   failures preserve provenance and clean staging/lock files.
 - `data/processed/source_manifest.json` records official source URLs, groups,
   labels, actual UTC acquisition times, SHA-256 and compressed sizes. The five
-  local archives total **6,962,803 bytes**. All parsing counters are `null` with
-  `processing_status: "not_started"`; Data Model v1.1 documents that lifecycle.
-  Archive bytes remain ignored under `data/raw/`. No extraction has run.
-- Safe parsing/ingestion, domain statistical/model services, five UI modules and their
+  local archives total **6,962,803 bytes**. Acquisition initially wrote `null`
+  parsing counters; MSE-104 now populates them. Original byte hashes and UTC
+  acquisition times are preserved. Archive bytes remain ignored under `data/raw/`.
+- **MSE-104 complete:** `mail_parser.py` and `corpus_ingest.py` implement
+  bounded streamed extraction, strict paths/member types, private generated
+  staging names and MIME subject/body decoding with deterministic NFC/whitespace
+  normalization. Alternative MIME selects plain text then safe HTML fallback;
+  named/disposition/message attachments and HTML scripts/styles/resources are
+  excluded. No URLs are fetched, markup rendered or archive commands executed.
+- `backend/scripts/ingest_corpus.py` exposes offline `run`/`verify`. Private
+  `data/processed/messages.parsed.jsonl` stays ignored (owner-only permissions).
+  Shareable `parsing_report.json` contains only source metadata, versions/limits,
+  counts/hashes and rejected hash IDs/reason codes. Manifest parsing counters
+  are complete and reconcile; token counts, deduplication and splits remain pending.
+- The actual corpus has **6,046 candidates, 5,992 accepted and 54 rejected**
+  for malformed MIME; five directories and five `cmds` control files are counted
+  separately. Accepted by group: easy_ham 2,500; easy_ham_2 1,400; hard_ham 249;
+  spam 473; spam_2 1,370. These are explicitly before deduplication, not cleaned
+  prevalence or training-ready counts. Strict MIME structure checks can exclude
+  partially readable messages; diagnostics preserve that limitation.
+- `docs/DATA_MODEL.md` v1.2 and SETUP document intermediate records, `mime-v1`,
+  normalization, charset fallback, limits, count semantics and recovery. Archive
+  structure/resource failures abort; individual message failures are counted.
+  Ordinary publication exceptions restore prior artifacts, and verification
+  detects inconsistent sets after abrupt termination; rerun from pinned inputs.
+- Deduplication, domain statistical/model services, five UI modules and their
   unit/contract suites remain unimplemented. All six release gates remain open.
   Synthetic environment checks are not measured corpus/model results.
 
 ## Full remaining implementation inventory
 
-MSE-101–103 are complete; the other **36 tickets are Not started**. Update statuses as work is
+MSE-101–104 are complete; the other **35 tickets are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -126,8 +151,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-101 | Initialize React/FastAPI monorepo and project structure | Complete — runtime/build/lint verified |
 | MSE-102 | Pin dependencies and document environment setup | Complete — fresh install/locks/tests verified |
 | MSE-103 | Obtain canonical official corpus archives and source/checksum manifest | Complete — real downloads/hashes/offline verification |
-| MSE-104 | Implement safe extraction and MIME text parsing | Not started — next |
-| MSE-105 | Deduplicate, reject label conflicts and derive summary records | Not started |
+| MSE-104 | Implement safe extraction and MIME text parsing | Complete — real parsing/counts/hashes verified |
+| MSE-105 | Deduplicate, reject label conflicts and derive summary records | Not started — next |
 | MSE-106 | Verify deterministic stratified 80/20 split, seed 42 | Not started |
 | MSE-201 | Implement descriptive statistics for text length and token count | Not started |
 | MSE-202 | Aggregate histograms, box plots and top-word data | Not started |
@@ -165,6 +190,28 @@ Dependencies and detailed acceptance criteria are in
 
 ## Verification and delivery evidence
 
+- MSE-104: **91 pytest tests passed**, including 53 new MIME/archive/ingestion
+  cases plus the previous 38. Ruff passes across app, scripts and tests.
+  New tests cover encoded/invalid charsets, multipart/related/alternatives,
+  attachment suppression, HTML resources/scripts, structural defects, byte/
+  header/part/depth/text/expanded/member/output limits, traversal/links/sparse/
+  special/duplicate archive members, deterministic IDs, private/public separation,
+  verifier tampering and rollback at replacement/validation failures.
+- Two actual ingestion runs produced byte-identical private JSONL, report and
+  source manifest. Private output: **25,868,309 bytes**, SHA-256
+  `7241dcfcf5480609ed1c2c1d8e3e38d86e9394fbc512114b22a7284d4914114d`.
+  Independent checks reconcile row IDs, text hashes, per-class/group counts,
+  rejection IDs and metadata; archive bytes and original acquisition fields
+  remain unchanged. CLI prints aggregates only. No mail text/member name is
+  committed; frontend was unchanged, so browser/build checks were not applicable.
+- MSE-104 final command:
+  `python3 .agents/skills/gravitas/scripts/verify.py --cmd 'python3 .gravitas/sessions/MSE-104/verify.py'`.
+  It returned **VERDICT: PASS** after lint/full tests, actual ingestion/verification,
+  independent source/output checks, ignore/privacy/diff checks and graph
+  freshness/status retrieval. Graphify produced **199 nodes, 331 directed edges
+  and 16 communities**; all 39 statuses reconcile (4 complete, 35 not started),
+  with MSE-105 retrieved as next. Session files are ignored, not a full installed
+  Gravitas hook runtime. Observe the Git push result before claiming delivery.
 - MSE-103: **38 pytest tests passed**, covering 29 acquisition regressions plus
   the existing nine environment/bootstrap tests. Ruff passed for backend app,
   scripts and tests. CLI download/verify succeeded for all five actual archives;
@@ -176,8 +223,8 @@ Dependencies and detailed acceptance criteria are in
   local path/lock guards and failed manifest-write cleanup.
 - Canonical selection was checked against the official corpus index/README:
   20030228 easy_ham/easy_ham_2/hard_ham/spam and corrected 20050311 spam_2.
-  Byte hashes establish this acquisition's reproducible inputs. Parsing and
-  cleaned/retained message counts are explicitly pending, with no release gate
+  Byte hashes establish this acquisition's reproducible inputs. At that milestone,
+  parsing/retained message counts were pending, with no release gate
   or model/statistical result claimed by acquisition alone.
 - MSE-102: a source-only exported checkout started with no `.tools/`, frontend
   dependencies, backend environment or agent directories. The documented Node
@@ -244,8 +291,8 @@ Dependencies and detailed acceptance criteria are in
   maintained-file diff hygiene. Results belong in the final delivery report.
 - Branch `main` tracks `origin/main` at
   `https://github.com/hixam001/mail-sense.git`. Preparation was pushed through
-  MSE-102 commit `6079922`. MSE-103 uses
-  `MSE-103: Acquire canonical corpus archives and pin provenance`.
+  MSE-103 commit `e8dd322`. MSE-104 uses
+  `MSE-104: Parse corpus archives safely with verified MIME counts`.
   Observe the new commit and push result in Git. On resume, check `git log -1`,
   `git status -sb` and the upstream branch before claiming delivery.
 
@@ -261,6 +308,10 @@ Dependencies and detailed acceptance criteria are in
 - Initial tests exposed a Starlette deprecation for legacy httpx. The pinned
   dev client now uses httpx2, as recommended by the installed Starlette code;
   all nine tests pass without suppressing warnings.
+- MSE-104's restricted full-suite run stalled in the existing FastAPI TestClient
+  case after 66 cases. Interrupting and rerunning with authorized sandbox
+  escalation completed all tests in about one second. Use the necessary uv
+  cache/test-client permissions rather than assuming the parser has stalled.
 - Impeccable could not autodetect the cached Chromium browser. Visual checks
   worked with `IMPECCABLE_BROWSER` pointing to
   `~/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome`. That path is
