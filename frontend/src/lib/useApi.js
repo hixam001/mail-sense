@@ -6,7 +6,8 @@ export function useApi(path, body) {
   const [result, setResult] = useState(null)
   const payload = JSON.stringify(body)
   const key = JSON.stringify([path, payload, revision])
-  const generation = useMemo(() => Symbol(key), [key])
+  // Keep request identity without retaining input content in the result's identifier.
+  const generation = useMemo(() => Symbol(key ? 'request' : 'idle'), [key])
   const retry = useCallback(() => setRevision(value => value + 1), [])
   useEffect(() => {
     if (!path) return

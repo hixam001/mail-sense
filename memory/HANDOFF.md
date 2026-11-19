@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-504 — Statistical Inference with explicit decisions and Wilson bounds**.
-Next implementation ticket: **MSE-505**.
+Latest implementation: **MSE-505 — Transient dual-model Spam Detector and faithful explanations**.
+Next implementation ticket: **MSE-506**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-505** — Build transient Spam Detector textarea with 1-50000 trimmed code-point validation and no truncation, both model estimates/agreement, faithful log-odds terms and Bernoulli absence effects. Verify no URL/storage/write retention and stale results, empty/unknown/error cases, desktop/mobile; commit/push then MSE-506. MSE-507 should also inspect mobile SVG label sizing, active navigation visibility and production preview origin alignment.
+**MSE-506** — Build Model Evaluation from verified comparison only: same test identities and count, all five metrics, explicit actual/predicted confusion matrices, FP/FN consequences, formula denominators and limitations. Test artifact mismatch errors and actual report parity, mobile/keyboard; commit/push then MSE-507 full UI verification.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -217,9 +217,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-504 implemented:** Statistical Inference with explicit decisions and Wilson bounds. Gravitas frontend verification passed: lint, six tests, build and real Chromium inference plus Dataset/Probability regressions after shared POST hook changes. Actual free Pearson p=4.49909E-155 and Wilson 28.78%-31.12% displayed; alpha/confidence validation, explicit POST, no automatic unknown-word decision, stale configuration hiding and mobile bounds verified. Desktop/mobile views inspected. Sampling/independence/causation caveats remain explicit.
 
+- **MSE-505 implemented:** Transient dual-model Spam Detector and faithful explanations. Frontend lint, seven tests and production build passed; Gravitas browser acceptance passed for actual dual estimates and score decomposition, vocabulary lookup, unknown tokens, input bounds/no truncation, edit/clear/navigation discard and controlled 503 retry. Every observed browser request stayed local and synthetic private text appeared in neither URLs nor browser storage. Probability regression passed after shared validation/request changes. Desktop/mobile renders inspected; labeled synthetic example transparently shows model disagreement.
+
 ## Full remaining implementation inventory
 
-**30 implementation tickets are complete; 9 are Not started**. Update statuses as work is
+**31 implementation tickets are complete; 8 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -256,8 +258,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-502 | Build Dataset Explorer and labeled charts | Complete — acceptance verified |
 | MSE-503 | Build Probability Analysis | Complete — acceptance verified |
 | MSE-504 | Build Statistical Inference | Complete — acceptance verified |
-| MSE-505 | Build Spam Detector with dual model results | Not started — next |
-| MSE-506 | Build Model Evaluation and confusion matrices | Not started |
+| MSE-505 | Build Spam Detector with dual model results | Complete — acceptance verified |
+| MSE-506 | Build Model Evaluation and confusion matrices | Not started — next |
 | MSE-507 | Verify responsive behavior, keyboard access and error/stale states | Not started |
 | MSE-601 | Execute all critical T01–T08 scenarios with evidence | Not started |
 | MSE-602 | Verify security, privacy, offline use and measured performance | Not started |
@@ -267,6 +269,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-505 — Transient dual-model Spam Detector and faithful explanations:** Frontend lint, seven tests and production build passed; Gravitas browser acceptance passed for actual dual estimates and score decomposition, vocabulary lookup, unknown tokens, input bounds/no truncation, edit/clear/navigation discard and controlled 503 retry. Every observed browser request stayed local and synthetic private text appeared in neither URLs nor browser storage. Probability regression passed after shared validation/request changes. Desktop/mobile renders inspected; labeled synthetic example transparently shows model disagreement.
 
 - **MSE-504 — Statistical Inference with explicit decisions and Wilson bounds:** Gravitas frontend verification passed: lint, six tests, build and real Chromium inference plus Dataset/Probability regressions after shared POST hook changes. Actual free Pearson p=4.49909E-155 and Wilson 28.78%-31.12% displayed; alpha/confidence validation, explicit POST, no automatic unknown-word decision, stale configuration hiding and mobile bounds verified. Desktop/mobile views inspected. Sampling/independence/causation caveats remain explicit.
 
