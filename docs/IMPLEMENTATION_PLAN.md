@@ -36,6 +36,18 @@ Verify real Graphify query/path retrieval before committing and pushing.
 This tooling ticket does not change the locked product scope or complete any of
 the 39 implementation tickets below. Their live status is recorded in the handoff.
 
+### Maintenance follow-up — MSE-108
+
+**Keep agent tooling and generated/private files out of Git.** Ignore agent
+installations and `.codex/`, `.gravitas/` and `.impeccable/` state, untrack
+previously committed tooling without deleting local copies, and refresh the
+Python/Node/cache/build/test/data ignore rules. Preserve application source,
+lockfiles, shared memory, manifests, reports and empty directory placeholders.
+Verify ignore behavior, local-file preservation, tracked-file cleanup, graph
+freshness and shared-document usability from a clean exported checkout.
+
+This maintenance task changes no application behavior. MSE-102 remains next.
+
 ### EPIC MSE-1 — Repository and data foundation (2–3 working days)
 
 | ID | Story / task | Dependencies | Acceptance |

@@ -2,6 +2,7 @@
 
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
+Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
 Latest implementation: **MSE-101 — React/Vite and FastAPI scaffold verified**.
 Next implementation ticket: **MSE-102**.
 
@@ -40,8 +41,9 @@ because the current workstation already has working environments.
   methods, acceptance tests and all 39 implementation tickets.
 - `PRODUCT.md` records the confirmed web platform, users, approved stack, five
   modules, educational purpose, local operation and evidence limitations.
-- Project skills are installed under `.agents/skills/`: `gravitas`, `impeccable`
-  and `security-audit`. Their presence is tooling setup, not app functionality.
+- Project skills are installed locally under `.agents/skills/`: `gravitas`,
+  `impeccable` and `security-audit`. They are ignored and untracked; a fresh
+  clone needs its own skill installation. Local copies are retained.
 - Impeccable installed its local engine and `.codex/hooks.json`. Product context
   initialization is complete. The frontend currently has a plain scaffold page;
   no product visual identity or `DESIGN.md` has been established.
@@ -56,7 +58,13 @@ because the current workstation already has working environments.
   graph data includes source locations and hashes so stale memory can be detected.
 - `.gitignore` excludes local credentials, dependencies, runtime output, raw
   corpus messages, processed message text and trained model artifacts while
-  retaining shared memory, installed skills and design context.
+  retaining shared memory, application source, lockfiles, manifests and reports.
+- **MSE-108:** `.agent/`, `.agents/`, `.codex/`, `.gravitas/` and `.impeccable/`
+  are entirely local/ignored. Previously tracked `.agents/` and `.codex/` files
+  are removed from the Git index only. Shared instructions no longer link to
+  an untracked skill file as though it ships with a clone. Ignore rules also
+  cover Python/Node caches, package/build/test output and editor temporaries.
+  No application code or existing implementation-ticket status changes.
 - MSE-100 and MSE-107 cover documentation/tooling preparation only. They do not complete
   any MSE-101–606 feature ticket or any product acceptance gate.
 
@@ -128,6 +136,15 @@ Dependencies and detailed acceptance criteria are in
 
 ## Verification and delivery evidence
 
+- MSE-108 verification passed **60 ignored-path cases and 35 trackable-path
+  cases**. All **119** previously tracked tooling files remain locally with
+  unchanged SHA-256 hashes; no tooling or ignored files remain in the index.
+  Shared links and graph checks pass both locally and in an exported checkout
+  without tooling directories. Staged/unstaged diff-hygiene checks passed.
+  Command: `python3 .agents/skills/gravitas/scripts/verify.py --cmd 'python3 .gravitas/sessions/MSE-108/verify.py'`;
+  result: `VERDICT: PASS`. These are configuration/documentation checks; app
+  runtime tests were not rerun for this maintenance-only change. MSE-102 remains
+  the next application ticket. Rebuild the graph and rerun after final edits.
 - MSE-101: frontend `npm run lint` passed with zero warnings; `npm run build`
   succeeded with Vite 8.3.8. Python compilation of `backend/app/` passed.
 - A clean frontend `npm ci --no-audit --no-fund` installation succeeded from

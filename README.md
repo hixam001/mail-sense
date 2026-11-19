@@ -108,6 +108,19 @@ actual corpus preparation, model training and analytical workflows.
 
 `docs/SRS.md` is the locked technical baseline. Document intentional changes to dataset, stack, models, deployment, or scope as a new approved version and update API/data/flow/test documents together. Examples and scores in docs are **synthetic teaching fixtures unless explicitly labeled actual measured data**.
 
+## Repository hygiene
+
+Agent installations and local tooling state (`.agent/`, `.agents/`, `.codex/`,
+`.gravitas/`, `.impeccable/`) are ignored and must be installed/configured locally
+on a fresh clone. Previously tracked tooling has been untracked; local copies
+are retained. `AGENTS.md`, `memory/`, application source and lockfiles stay in Git.
+
+The ignore rules also cover credentials, environments, dependency directories,
+caches, builds, test output, raw corpus messages, processed message files and
+trained models. Source/split manifests and evaluation reports remain trackable,
+along with the empty data/model directory placeholders. Do not force-add local
+tooling or sensitive data.
+
 ## Sources and responsible data use
 
 - Official corpus index: <https://spamassassin.apache.org/old/publiccorpus/>

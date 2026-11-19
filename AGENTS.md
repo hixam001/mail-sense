@@ -13,7 +13,11 @@ Analyze with Gravitas → map the task → implement → test → update handoff
 3. Read [PRODUCT.md](PRODUCT.md), the relevant requirements and the acceptance
    criteria in [docs/IMPLEMENTATION_PLAN.md](docs/IMPLEMENTATION_PLAN.md).
    `docs/SRS.md` remains the locked technical baseline.
-4. Apply [.agents/skills/gravitas/SKILL.md](.agents/skills/gravitas/SKILL.md).
+4. Apply the locally installed Gravitas skill (for example,
+   `.agents/skills/gravitas/SKILL.md`, or its configured user-level location).
+   Agent installations are local and ignored by Git; a fresh clone needs its
+   own skill installation. If unavailable, state that limitation and use the
+   explicit planning/verification workflow here without claiming runtime gates.
    Analyze the whole requested task and map its requirements, dependencies,
    affected files, implementation steps, risks and verification before editing.
    Record the planning policy and, for complex work, a scoped task contract.
@@ -24,6 +28,9 @@ Analyze with Gravitas → map the task → implement → test → update handoff
 - Implement the mapped task, keeping unrelated work intact. Update the plan when
   evidence changes the scope or approach.
 - Use the relevant installed skills, including Impeccable for interface work.
+- Keep `.agent/`, `.agents/`, `.codex/`, `.gravitas/` and `.impeccable/` local
+  and ignored. Never force-add their contents. Share durable instructions in
+  this file and project progress/graph artifacts in `memory/` instead.
 - Run the applicable tests and checks after the final relevant edits and before
   pushing: affected unit/integration tests, lint, type checks, builds and runtime
   checks as the implemented scope requires. Discover actual project commands;

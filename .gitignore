@@ -4,43 +4,70 @@
 .env.*
 !.env.example
 !.env.*.example
+!.env.template
 *.pem
 *.key
 
+# Local agent installations, configuration and runtime state (any depth)
+.agent/
+.agents/
+.codex/
+.gravitas/
+.impeccable/
+
 # Dependency installations and generated output
 node_modules/
+.npm/
+.pnpm-store/
 .venv/
 venv/
 __pycache__/
 *.py[cod]
+.tox/
+.nox/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.hypothesis/
+.cache/
+.uv-cache/
+.ipynb_checkpoints/
+build/
+dist/
+*.egg-info/
+*.egg
+.vite/
+.vite-temp/
+.eslintcache
+*.tsbuildinfo
+
+# Test, coverage and local diagnostic output
 .coverage
 .coverage.*
 coverage/
 htmlcov/
-/frontend/dist/
-/frontend/.vite/
+.nyc_output/
+playwright-report/
+test-results/
 *.log
+
+# Workstation/editor files
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
+Thumbs.db
+Desktop.ini
 
 # Private corpus, processed email text and trained artifacts
 /data/raw/*
 !/data/raw/.gitkeep
-/data/processed/messages.csv
-/data/processed/messages.json
-/data/processed/messages.jsonl
+/data/processed/messages.*
 /artifacts/models/*
 !/artifacts/models/.gitkeep
 
-# Session state; keep shared graph memory and project design context tracked
-/.gravitas/sessions/
+# Graphify cache only; keep shared memory sources and graph exports tracked
 /memory/graphify-out/.graphify_*
 /memory/graphify-out/__graphify_snapshots/
 /memory/graphify-out/cache/
-/.impeccable/config.local.json
-/.impeccable/questions/
-/.impeccable/mocks/
-/.impeccable/review/
-/.impeccable/critique/snapshots/
