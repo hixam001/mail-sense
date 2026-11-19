@@ -1,0 +1,164 @@
+# MailSense project handoff
+
+Last updated: 2026-11-19 (Asia/Karachi).
+Preparation ticket: **MSE-100 — Project memory and delivery workflow established; structural verification passed**.
+Next implementation ticket: **MSE-101**.
+
+## Read this at every task start
+
+Read [AGENTS.md](../AGENTS.md), [Gravitas memory](../GRAVITAS_MEMORY.md),
+[PRODUCT.md](../PRODUCT.md) and this handoff before selecting or resuming work.
+Confirm progress against files and Git history. The
+[implementation plan](IMPLEMENTATION_PLAN.md) owns dependencies and ticket
+acceptance criteria; this handoff owns the live status of every ticket.
+[SRS.md](SRS.md) remains the locked technical baseline.
+
+## Next task
+
+**MSE-101: Initialize the React/FastAPI monorepo and project structure.**
+
+1. Analyze the complete ticket with Gravitas; record the plan, scoped changes and
+   acceptance-to-verification map before editing.
+2. Scaffold `frontend/` with React/Vite and `backend/` with Python/FastAPI, plus
+   the planned data/artifact structure. Preserve the documentation and tooling.
+3. Respect loopback-only operation and the existing sensitive-data ignore rules.
+   Do not add accounts, a database, hosted deployment or fake empirical results.
+4. Establish actual run/check commands from the scaffold. Verify the React
+   hello-world page and FastAPI hello-world endpoint separately; confirm ignore
+   rules exclude raw emails and model artifacts.
+5. Record evidence and remaining work here, rerun final checks, then commit and
+   push using `MSE-101: Initialize React and FastAPI project structure`.
+
+Acceptance: both hello-world applications work separately and the monorepo
+structure/ignore rules satisfy MSE-101. Dependency pinning and full setup notes
+belong to MSE-102. Scaffold preparation alone does not complete either ticket.
+
+## Established and completed preparation
+
+- The README and ten specification documents are present. They establish the
+  product, scope, API/data contracts, workflows, architecture, mathematical
+  methods, acceptance tests and all 39 implementation tickets.
+- `PRODUCT.md` records the confirmed web platform, users, approved stack, five
+  modules, educational purpose, local operation and evidence limitations.
+- Project skills are installed under `.agents/skills/`: `gravitas`, `impeccable`
+  and `security-audit`. Their presence is tooling setup, not app functionality.
+- Impeccable installed its local engine and `.codex/hooks.json`. Product context
+  initialization is complete. There is no visual implementation or `DESIGN.md`.
+- `AGENTS.md`, `GRAVITAS_MEMORY.md` and `.gravitas/memory/workflow.md` persist the
+  user's analyze → map → implement → verify → update handoff → final checks →
+  commit → push workflow. Jira-style subjects use `MSE-<ticket>: <summary>`;
+  no added contributor attribution or co-author/sign-off trailers.
+- `.gitignore` excludes local credentials, dependencies, runtime output, raw
+  corpus messages, processed message text and trained model artifacts while
+  retaining shared memory, installed skills and design context.
+- MSE-100 covers documentation/tooling preparation only. It does not complete
+  any MSE-101–606 feature ticket or any product acceptance gate.
+
+## Implemented application functionality
+
+**None yet.** No frontend, backend, dependency manifests, corpus, preprocessing,
+statistical services, trained models, API routes or application tests exist at
+this handoff. All six implementation release gates remain open. Synthetic
+examples in the documentation are not measured corpus/model results.
+
+## Full remaining implementation inventory
+
+All tickets below are **Not started**. Update individual statuses as work is
+implemented and verified; retain incomplete and blocked tickets in this table.
+Dependencies and detailed acceptance criteria are in
+[IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).
+
+| Ticket | Remaining work | Status |
+|---|---|---|
+| MSE-101 | Initialize React/FastAPI monorepo and project structure | Not started — next |
+| MSE-102 | Pin dependencies and document environment setup | Not started |
+| MSE-103 | Obtain canonical official corpus archives and source/checksum manifest | Not started |
+| MSE-104 | Implement safe extraction and MIME text parsing | Not started |
+| MSE-105 | Deduplicate, reject label conflicts and derive summary records | Not started |
+| MSE-106 | Verify deterministic stratified 80/20 split, seed 42 | Not started |
+| MSE-201 | Implement descriptive statistics for text length and token count | Not started |
+| MSE-202 | Aggregate histograms, box plots and top-word data | Not started |
+| MSE-203 | Implement 2×2 word contingency and empirical probabilities | Not started |
+| MSE-204 | Implement Bernoulli/binomial calculations with assumptions | Not started |
+| MSE-205 | Implement Pearson chi-square and assumption checks | Not started |
+| MSE-206 | Implement Wilson proportion confidence intervals | Not started |
+| MSE-207 | Verify formula unit tests and record numerical evidence | Not started |
+| MSE-301 | Fit a shared training-only CountVectorizer vocabulary | Not started |
+| MSE-302 | Train Multinomial Naive Bayes with alpha=1.0 | Not started |
+| MSE-303 | Train Bernoulli Naive Bayes with alpha=1.0 | Not started |
+| MSE-304 | Persist trusted artifacts, matching metadata and checksums | Not started |
+| MSE-305 | Evaluate both models on the same untouched holdout | Not started |
+| MSE-306 | Implement faithful token/prior and absent-feature explanations | Not started |
+| MSE-307 | Save evaluation evidence and document model limitations | Not started |
+| MSE-401 | Implement FastAPI health/readiness and shared error envelope | Not started |
+| MSE-402 | Implement dataset summary/statistics/distribution routes | Not started |
+| MSE-403 | Implement probability and statistical inference routes | Not started |
+| MSE-404 | Implement prediction, evaluation and explanation routes | Not started |
+| MSE-405 | Verify loopback binding, CORS, redacted logging and input limits | Not started |
+| MSE-406 | Implement and pass FastAPI contract tests | Not started |
+| MSE-501 | Build shared React layout, router, API client and request states | Not started |
+| MSE-502 | Build Dataset Explorer and labeled charts | Not started |
+| MSE-503 | Build Probability Analysis | Not started |
+| MSE-504 | Build Statistical Inference | Not started |
+| MSE-505 | Build Spam Detector with dual model results | Not started |
+| MSE-506 | Build Model Evaluation and confusion matrices | Not started |
+| MSE-507 | Verify responsive behavior, keyboard access and error/stale states | Not started |
+| MSE-601 | Execute all critical T01–T08 scenarios with evidence | Not started |
+| MSE-602 | Verify security, privacy, offline use and measured performance | Not started |
+| MSE-603 | Independently verify math, provenance and model integrity | Not started |
+| MSE-604 | Complete university report with real screenshots and measurements | Not started |
+| MSE-605 | Finalize installation README and classroom demo script | Not started |
+| MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
+
+## Verification and delivery evidence
+
+- Application tests, lint, builds and runtime checks: **not run; no application
+  implementation or test suite exists**. No claim of working MailSense software.
+- Preparation verification: the command
+  `python3 .agents/skills/gravitas/scripts/verify.py --cmd 'python3 /tmp/mail-sense-handoff-validation.py'`
+  produced **218 structural checks passed; 0 failed** and **VERDICT: PASS**.
+  It checks local document references, all 39 remaining ticket IDs against the
+  implementation plan, persistent instruction/memory links, sensitive-data
+  ignore behavior, hook JSON syntax, staged paths and maintained-file diff
+  hygiene. The temporary validator is session tooling, not an application test
+  suite; `/tmp` is ephemeral. Rerun it after this final handoff edit.
+- Repository discovery: branch `main`, configured origin
+  `https://github.com/hixam001/mail-sense.git`; `git ls-remote --heads origin`
+  returned successfully with no heads before this initial commit.
+- This record is prepared for `MSE-100: Establish project memory and handoff`.
+  The resulting commit ID and push outcome must be observed from Git, not
+  inferred from this document. On resume, check `git log -1`, `git status -sb`
+  and the upstream branch before claiming delivery.
+
+## Environment notes and recovery
+
+- The system `node`/`npx` failed during skill installation with missing
+  `libsimdjson.so.36`. A checksum-verified official Node v22.23.5 runtime was
+  unpacked under `/tmp/mail-sense-impeccable-node/`; its `node-bin-path` file
+  identifies the temporary `bin` directory. It enabled Impeccable installation.
+  `/tmp` is ephemeral: confirm availability and recheck Node before MSE-101.
+  No permanent system Node repair has been performed.
+- Gravitas skill files and Python verification wrapper exist. No `gravitas`
+  CLI was found on PATH; do not claim a full runtime or hook-enforced task
+  contract is installed. Use the shipped verification runner with an explicit
+  appropriate command when automatic validator discovery is unavailable.
+- Initial global whitespace validation flagged existing upstream skill Markdown
+  whitespace and the Windows CRLF launcher. Upstream snapshots are preserved;
+  maintained project files receive diff-hygiene checks with intentional Markdown
+  hard breaks allowed. All staged paths receive sensitive-path checks. The
+  corrected validator passed; this was not an application test failure.
+- GitHub access failed within the restricted network sandbox and succeeded with
+  authorized network escalation. Request the actual needed sandbox permission
+  when required; do not repeatedly retry unchanged failed commands.
+- No app process is running and no live-preview configuration exists.
+- Future landing/showcase build-path preference remains unset. Current app
+  screens use code-first. No marketing surface is in the approved v1 scope.
+
+## Resume/update checklist
+
+After each implementation: update completed work and affected ticket statuses,
+record exact commands/results and unresolved issues, name one actionable next
+ticket, and keep the remaining inventory complete. Validate the final edits,
+commit with that ticket ID and push without additional contributor credits.
+If checks or a push fail, record the failure and recovery action instead of
+marking the work verified or delivered.

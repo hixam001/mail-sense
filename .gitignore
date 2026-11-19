@@ -1,0 +1,41 @@
+# Credentials and local configuration
+.aws/
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+
+# Dependency installations and generated output
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage/
+htmlcov/
+/frontend/dist/
+/frontend/.vite/
+*.log
+.DS_Store
+
+# Private corpus, processed email text and trained artifacts
+/data/raw/
+/data/processed/messages.csv
+/data/processed/messages.json
+/data/processed/messages.jsonl
+/artifacts/models/
+
+# Session state; keep shared Gravitas memory and project design context tracked
+/.gravitas/sessions/
+/.impeccable/config.local.json
+/.impeccable/questions/
+/.impeccable/mocks/
+/.impeccable/review/
+/.impeccable/critique/snapshots/
