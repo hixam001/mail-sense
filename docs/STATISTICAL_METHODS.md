@@ -253,3 +253,5 @@ Record the inputs and observed outputs in the test report. Do not mark any check
 ## Executed implementation evidence
 
 - MSE-201: Pure descriptive service passes `[2,4,4,6]`: mean/median/mode 4, Q1 3.5, Q3 4.5, sample variance 8/3 and SD sqrt(8/3). Uses linear interpolation, smallest tied mode with `mode_tied`, and null empty/singleton sample dispersion with notes. 181 tests passed; actual scope/class means and variances matched independent stdlib calculations.
+
+- MSE-202: Numeric distributions use ten equal-width bins (one bin for constant data), left-closed/right-open except the inclusive final bin. Boxplots show the five-number summary with linear quartiles. Top words are document frequency with alphabetical ties; repeated occurrences count once per email. 191 tests passed and actual counts reconciled across all scope/class combinations.

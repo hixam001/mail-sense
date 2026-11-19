@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-201 — Descriptive statistics for count metrics**.
-Next implementation ticket: **MSE-202**.
+Latest implementation: **MSE-202 — Histogram boxplot and document-frequency aggregates**.
+Next implementation ticket: **MSE-203**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-202** — Analyze histogram/boxplot/top-word aggregation against A04; implement unit-labeled distributions and document frequencies with scope/class reconciliation, test, update memory and commit/push, then continue MSE-203.
+**MSE-203** — Implement empirical one-token contingency counts and explicit probability fractions; verify synthetic 1000-row table, null denominators and actual scopes, then commit/push and continue MSE-204.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -171,9 +171,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-201 implemented:** Descriptive statistics for count metrics. 181 tests passed; Ruff clean. Known [2,4,4,6] mean/median/mode=4, variance=8/3, Q1=3.5/Q3=4.5. Empty/singleton and mode ties verified. Actual all/train/test class sizes, means and variances independently reconciled; all=4,107 ham/1,755 spam. Continuous completion through MSE-606 is authorized and persisted in AGENTS.md.
 
+- **MSE-202 implemented:** Histogram boxplot and document-frequency aggregates. 191 tests passed under Gravitas; Ruff clean. Numeric histograms reconcile with NumPy, constants/empty subsets and linear boxplots verified; repeated words count once per document. Actual histograms and selected counts reconcile for all 9 scope/class combinations.
+
 ## Full remaining implementation inventory
 
-**7 implementation tickets are complete; 32 are Not started**. Update statuses as work is
+**8 implementation tickets are complete; 31 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -187,8 +189,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-105 | Deduplicate, reject label conflicts and derive summary records | Complete — retained uniqueness/counts/tokenizer verified |
 | MSE-106 | Verify deterministic stratified 80/20 split, seed 42 | Complete — membership/counts/hashes/Gate 1 verified |
 | MSE-201 | Implement descriptive statistics for text length and token count | Complete — acceptance verified |
-| MSE-202 | Aggregate histograms, box plots and top-word data | Not started — next |
-| MSE-203 | Implement 2×2 word contingency and empirical probabilities | Not started |
+| MSE-202 | Aggregate histograms, box plots and top-word data | Complete — acceptance verified |
+| MSE-203 | Implement 2×2 word contingency and empirical probabilities | Not started — next |
 | MSE-204 | Implement Bernoulli/binomial calculations with assumptions | Not started |
 | MSE-205 | Implement Pearson chi-square and assumption checks | Not started |
 | MSE-206 | Implement Wilson proportion confidence intervals | Not started |
@@ -221,6 +223,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-202 — Histogram boxplot and document-frequency aggregates:** 191 tests passed under Gravitas; Ruff clean. Numeric histograms reconcile with NumPy, constants/empty subsets and linear boxplots verified; repeated words count once per document. Actual histograms and selected counts reconcile for all 9 scope/class combinations.
 
 - **MSE-201 — Descriptive statistics for count metrics:** 181 tests passed; Ruff clean. Known [2,4,4,6] mean/median/mode=4, variance=8/3, Q1=3.5/Q3=4.5. Empty/singleton and mode ties verified. Actual all/train/test class sizes, means and variances independently reconciled; all=4,107 ham/1,755 spam. Continuous completion through MSE-606 is authorized and persisted in AGENTS.md.
 
