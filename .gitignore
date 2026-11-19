@@ -16,6 +16,7 @@
 .impeccable/
 
 # Dependency installations and generated output
+.tools/
 node_modules/
 .npm/
 .pnpm-store/

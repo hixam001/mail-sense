@@ -1,7 +1,7 @@
 # MailSense — Implementation Plan and Jira-Style Backlog
 
 **Version:** 1.0 · **Date:** 2026-11-19  
-**Status:** MSE-101 scaffold verified; 38 implementation tickets remain, starting with MSE-102. See the handoff for live status.  
+**Status:** MSE-101/102 scaffold and reproducible environment verified; 37 implementation tickets remain, starting with MSE-103. See the handoff for live status.  
 **Scope:** Complete university project, local React + FastAPI, SpamAssassin, Multinomial NB + Bernoulli NB
 
 ## 1. Delivery strategy
@@ -46,7 +46,7 @@ lockfiles, shared memory, manifests, reports and empty directory placeholders.
 Verify ignore behavior, local-file preservation, tracked-file cleanup, graph
 freshness and shared-document usability from a clean exported checkout.
 
-This maintenance task changes no application behavior. MSE-102 remains next.
+This maintenance task changes no application behavior. Current task status lives in the handoff.
 
 ### EPIC MSE-1 — Repository and data foundation (2–3 working days)
 
@@ -187,10 +187,10 @@ Dates are deliberately **not invented**. Convert to calendar milestones after co
 - [x] Initialize the local repository and configure the existing GitHub remote.
 - [x] Add all Markdown docs in `docs/`.
 - [x] Add `.gitignore` for raw emails, processed message text, virtualenv, `node_modules`, and models; allow empty directory placeholders.
-- [ ] Create reproducible dependency files and setup instructions.
+- [x] Create pinned runtime/dependency files and setup instructions; verify fresh installation for MSE-102.
 - [x] Complete MSE-101 as the first implementation milestone with runtime/build evidence.
 - [ ] Record exact dataset archives and checksums when downloaded.
 
-**Next task:** `MSE-102 — Pin Python/Node dependencies and document environment setup`.
+**Next task:** `MSE-103 — Obtain canonical official corpus archives and record source/checksum manifest`.
 Keep status synchronized with `memory/HANDOFF.md`; later tickets remain open
 until their acceptance criteria are verified.

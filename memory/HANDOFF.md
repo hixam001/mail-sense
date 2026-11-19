@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-101 — React/Vite and FastAPI scaffold verified**.
-Next implementation ticket: **MSE-102**.
+Latest implementation: **MSE-102 — Pinned runtimes, locked dependencies and fresh environment setup verified**.
+Next implementation ticket: **MSE-103**.
 
 ## Read this at every task start
 
@@ -17,22 +17,23 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-102: Pin Python/Node dependencies and document environment setup.**
+**MSE-103: Obtain canonical official corpus archives and record source/checksum manifest.**
 
-1. Analyze the complete ticket with Gravitas and inspect the existing scaffold
-   manifests, frontend lockfile, approved stack and verified runtime versions.
-2. Establish reproducible Node/Python versions and exact application dependency
-   pins. Review the approved scientific/charting stack as part of that plan.
-   Keep the Graphify environment separate from application dependencies.
-3. Replace reliance on an ephemeral Node runtime with a reproducible setup path;
-   document prerequisites, install/run/check commands and missing-data limitations.
-4. Verify documented commands in fresh isolated application environments, then
-   repeat frontend lint/build and the independent local runtime smoke checks.
-5. Update this handoff and graph, revalidate, then commit and push with MSE-102.
+1. Analyze the complete ticket with Gravitas; read the SRS and `SourceArchive`
+   schema in `docs/DATA_MODEL.md`. Use the pinned setup in `docs/SETUP.md`.
+2. Inspect the official SpamAssassin corpus index/README and select one canonical
+   archive for each approved group; do not count older dated revisions as extra
+   messages. Establish the exact selected archive list from upstream evidence.
+3. Download archives into ignored `data/raw/`; record actual URL, filename,
+   group/label, acquisition date and SHA-256 in `data/processed/source_manifest.json`.
+4. Verify every recorded checksum against downloaded bytes and ensure provenance
+   and group selection are complete. Keep original email text and archives out
+   of Git. Extraction/MIME parsing belongs to MSE-104; do not guess cleaned counts.
+5. Update this handoff and graph, revalidate, then commit and push with MSE-103.
 
-Acceptance: a fresh local machine can install the pinned application dependencies
-and run both scaffolds using documented commands. MSE-102 is not complete just
-because the current workstation already has working environments.
+Acceptance: the manifest identifies the exact canonical archive files and their
+verified checksums without double-counting historical revisions. No corpus
+archives have been downloaded as part of MSE-102.
 
 ## Established and completed preparation
 
@@ -75,19 +76,31 @@ because the current workstation already has working environments.
   HTML entry and `src/App.jsx`/`main.jsx`. The page displays an honest scaffold
   message. It makes no API requests and requires no backend to render.
 - `backend/app/main.py` defines the FastAPI application and `GET /` greeting.
-  Runtime dependencies are declared in `backend/requirements.txt`. No
+  Runtime pins live in `backend/pyproject.toml`/`uv.lock`;
+  `backend/requirements.txt` is the hashed runtime-only export. No
   `/api/v1` endpoints, readiness logic or CORS integration exist yet.
 - Planned frontend directories, backend Python packages/scripts/tests,
   `data/raw`, `data/processed`, `artifacts/models` and `artifacts/reports` exist.
   Empty placeholders are tracked while emails, models, dependencies and builds
   remain ignored. The README contains verified preliminary setup/run commands.
-- Corpus ingestion, all statistical/model services, the five UI modules and
-  application unit/contract test suites remain unimplemented. All six release
-  gates remain open. Synthetic examples are not measured corpus/model results.
+- **MSE-102 complete:** `.node-version`, `.python-version`, frontend engines,
+  packageManager and backend metadata pin Node 22.23.5/npm 10.9.9, Python 3.12.15
+  and uv 0.13.9. `scripts/node.py` installs checksum-verified official Node under
+  ignored `.tools/` and runs commands with its own PATH; no system Node or old
+  `/tmp` installation is needed. Direct frontend dependencies are exact pins;
+  the npm lock includes Recharts/react-is. Backend uv sync installs the frozen
+  runtime/scientific stack and the pytest/Ruff/httpx2 development tools.
+- `docs/SETUP.md` and the README provide verified install/run/check/update
+  commands and platform/offline limits. Nine environment/bootstrap tests cover
+  native scientific APIs, both NB dependency classes, synthetic artifact
+  roundtrips, API client compatibility and runtime-download failure boundaries.
+- Corpus ingestion, domain statistical/model services, five UI modules and their
+  unit/contract suites remain unimplemented. All six release gates remain open.
+  Synthetic environment checks are not measured corpus/model results.
 
 ## Full remaining implementation inventory
 
-MSE-101 is complete; the other **38 tickets are Not started**. Update statuses as work is
+MSE-101 and MSE-102 are complete; the other **37 tickets are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -95,8 +108,8 @@ Dependencies and detailed acceptance criteria are in
 | Ticket | Remaining work | Status |
 |---|---|---|
 | MSE-101 | Initialize React/FastAPI monorepo and project structure | Complete — runtime/build/lint verified |
-| MSE-102 | Pin dependencies and document environment setup | Not started — next |
-| MSE-103 | Obtain canonical official corpus archives and source/checksum manifest | Not started |
+| MSE-102 | Pin dependencies and document environment setup | Complete — fresh install/locks/tests verified |
+| MSE-103 | Obtain canonical official corpus archives and source/checksum manifest | Not started — next |
 | MSE-104 | Implement safe extraction and MIME text parsing | Not started |
 | MSE-105 | Deduplicate, reject label conflicts and derive summary records | Not started |
 | MSE-106 | Verify deterministic stratified 80/20 split, seed 42 | Not started |
@@ -136,6 +149,24 @@ Dependencies and detailed acceptance criteria are in
 
 ## Verification and delivery evidence
 
+- MSE-102: a source-only exported checkout started with no `.tools/`, frontend
+  dependencies, backend environment or agent directories. The documented Node
+  install, `npm ci`, frozen uv sync, lock check, dependency check, frontend
+  lint/build, Ruff and **9 pytest tests** all passed there. **33 development
+  packages** installed; the npm lock, uv lock and regenerated requirements
+  export remained byte-identical after setup/checks.
+- A second new Python environment installed **24 runtime-only packages** with
+  `uv pip sync --require-hashes` from the export and imported the scientific/API
+  stack successfully without pytest. Recharts imports with pinned React 19.3.1.
+  npm engine-strict rejected an isolated wrong-runtime fixture; cached Node
+  reuse verified its exact Node/npm versions without another download.
+- Seven live HTTP checks against the fresh environments passed, including
+  scaffold/API schema and absent domain endpoints. Both listeners were loopback
+  only. Chromium captures at 1366×768 and 390×844 rendered correctly; local
+  screenshots are ignored under `.impeccable/review/mse102/`.
+- Setup verification platform: Linux x86_64. macOS/arm64 archive selection is
+  present in the installer but untested; native Windows is unsupported by this
+  wrapper. No real corpus/model results or later acceptance gates were claimed.
 - MSE-108 verification passed **60 ignored-path cases and 35 trackable-path
   cases**. All **119** previously tracked tooling files remain locally with
   unchanged SHA-256 hashes; no tooling or ignored files remain in the index.
@@ -143,8 +174,8 @@ Dependencies and detailed acceptance criteria are in
   without tooling directories. Staged/unstaged diff-hygiene checks passed.
   Command: `python3 .agents/skills/gravitas/scripts/verify.py --cmd 'python3 .gravitas/sessions/MSE-108/verify.py'`;
   result: `VERDICT: PASS`. These are configuration/documentation checks; app
-  runtime tests were not rerun for this maintenance-only change. MSE-102 remains
-  the next application ticket. Rebuild the graph and rerun after final edits.
+  runtime tests were not rerun for that maintenance-only change. MSE-102 was
+  the next application ticket at that point.
 - MSE-101: frontend `npm run lint` passed with zero warnings; `npm run build`
   succeeded with Vite 8.3.8. Python compilation of `backend/app/` passed.
 - A clean frontend `npm ci --no-audit --no-fund` installation succeeded from
@@ -162,8 +193,8 @@ Dependencies and detailed acceptance criteria are in
   1366×768 and 390×844. Text rendered and wrapped correctly. Captures are local
   ignored artifacts at `.impeccable/review/mse101/`.
 - Structure/ignore checks passed for 14 planned directories, nine sensitive or
-  generated paths and six intended trackable paths. No application unit suite
-  exists yet; runtime/browser smoke checks are the evidence for this ticket,
+  generated paths and six intended trackable paths. At that milestone no unit
+  suite existed; runtime/browser smoke checks are the evidence for that ticket,
   not a claim that the statistical acceptance scenarios pass.
 - MSE-100 preparation verification passed 218 structural checks; its follow-up
   passed 83 checks. Those counts describe the earlier documentation baseline.
@@ -183,24 +214,23 @@ Dependencies and detailed acceptance criteria are in
   maintained-file diff hygiene. Results belong in the final delivery report.
 - Branch `main` tracks `origin/main` at
   `https://github.com/hixam001/mail-sense.git`. Preparation was pushed through
-  MSE-107 commit `adcce9a`. MSE-101 uses
-  `MSE-101: Initialize React and FastAPI project structure`.
+  MSE-108 commit `f22db9b`. MSE-102 uses
+  `MSE-102: Pin runtimes and verify reproducible setup`.
   Observe the new commit and push result in Git. On resume, check `git log -1`,
   `git status -sb` and the upstream branch before claiming delivery.
 
 ## Environment notes and recovery
 
-- The system `node`/`npx` failed during skill installation with missing
-  `libsimdjson.so.36`. A checksum-verified official Node v22.23.5 runtime was
-  unpacked under `/tmp/mail-sense-impeccable-node/`; its `node-bin-path` file
-  identifies the temporary `bin` directory. It enabled Impeccable installation.
-  `/tmp` is ephemeral: confirm availability and recheck Node before npm commands.
-  No permanent system Node repair has been performed.
-- MSE-101 used Node 22.23.5 and Python 3.12.15. Installed runtime versions
-  include React/React DOM 19.3.1, Vite 8.3.8, FastAPI 0.165.0 and Uvicorn 0.54.0.
-  `frontend/package-lock.json` records the frontend installation; Python
-  dependency ranges and full runtime pinning remain MSE-102 work. Backend
-  dependencies live in ignored `backend/.venv/`, separate from Graphify.
+- The distro `node`/`npx` fails with missing `libsimdjson.so.36`. MSE-102 replaces
+  the earlier ephemeral workaround with the committed Node installer/wrapper;
+  use the README/SETUP commands. No system library or global Node repair was made.
+- Authoritative runtime/dependency pins are in the version files, package
+  manifest, backend pyproject and locks. Backend dependencies live in ignored
+  `backend/.venv/`, separate from Graphify. uv writes its user cache and may need
+  authorized cache-write permissions under the agent's restricted sandbox.
+- Initial tests exposed a Starlette deprecation for legacy httpx. The pinned
+  dev client now uses httpx2, as recommended by the installed Starlette code;
+  all nine tests pass without suppressing warnings.
 - Impeccable could not autodetect the cached Chromium browser. Visual checks
   worked with `IMPECCABLE_BROWSER` pointing to
   `~/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome`. That path is

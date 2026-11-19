@@ -1,7 +1,7 @@
 # MailSense
 
 **Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** MSE-101 complete: independent React/Vite and FastAPI scaffolds run locally. Dataset preparation, statistical analysis, classifiers and the analytical interface remain unimplemented. No corpus or trained models are included.
+**Status:** MSE-101/102 provide local React/Vite and FastAPI scaffolds with pinned runtimes, locked dependencies and environment checks. Dataset preparation, statistical analysis, classifiers and the analytical interface remain unimplemented. No corpus or trained models are included.
 
 > **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
 
@@ -16,6 +16,7 @@ a queryable Graphify graph and its interactive visualization.
 
 | File | What it contains |
 |---|---|
+| `docs/SETUP.md` | Pinned runtimes, installation, run/check commands, locks, platform scope and recovery |
 | `docs/PRD.md` | Product problem, users, goals, scoped features, scenarios and success metrics |
 | `docs/SRD.md` | Short, authoritative summary of the approved build scope |
 | `docs/SRS.md` | Locked functional/non-functional requirements and acceptance gates |
@@ -42,51 +43,54 @@ a queryable Graphify graph and its interactive visualization.
 
 ## Run the local scaffolds
 
-Use a working Node installation matching `frontend/package.json` (Node 22.13+
-within the 22.x line is supported), Python 3.12 and `uv`. Full dependency and
-runtime pinning is the next task, MSE-102. Workstation-specific Node recovery
-notes are in [the handoff](memory/HANDOFF.md).
-
-In one terminal, from the repository root:
+Prerequisites: Python 3.12+ for bootstrap, **uv 0.13.9**, and initial network
+access. From the repository root, install the pinned Node 22.23.5/npm 10.9.9 and
+Python 3.12.15 application environments:
 
 ```bash
-cd frontend
-npm ci
-npm run dev
+python3 scripts/node.py install
+python3 scripts/node.py npm --prefix frontend ci
+uv sync --project backend --frozen
 ```
 
-Open `http://localhost:5173/`. The page identifies itself as the React scaffold
-and explains that analysis and detection are not implemented yet. Vite binds
-to localhost and fails if port 5173 is occupied.
+The Node helper installs a checksum-verified official binary under ignored
+`.tools/` and works without the system Node or an old `/tmp` installation.
+See [the setup guide](docs/SETUP.md) for prerequisites and platform scope.
 
-In another terminal, from the repository root:
+Start the frontend:
 
 ```bash
-uv venv --python 3.12 backend/.venv
-uv pip install --python backend/.venv/bin/python -r backend/requirements.txt
-cd backend
-.venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+python3 scripts/node.py npm --prefix frontend run dev
 ```
 
-Open `http://127.0.0.1:8000/` for the API greeting or
+In another terminal, start the backend:
+
+```bash
+uv run --project backend --frozen python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000
+```
+
+Open `http://localhost:5173/` for the frontend, `http://127.0.0.1:8000/` for the API greeting or
 `http://127.0.0.1:8000/openapi.json` for its schema. These scaffolds run
 independently. The `/api/v1` contract, readiness checks, corpus ingestion and
 model endpoints are scheduled in later tickets.
 
 ### Scaffold checks
 
-From `frontend/`:
+From the repository root:
 
 ```bash
-npm run lint
-npm run build
+python3 scripts/node.py npm --prefix frontend run lint
+python3 scripts/node.py npm --prefix frontend run build
+uv run --project backend --frozen ruff check --config backend/pyproject.toml backend/app backend/tests scripts
+uv run --project backend --frozen pytest -c backend/pyproject.toml backend/tests scripts/tests
 ```
 
-The frontend lockfile is committed; `node_modules/`, build output and Python
-virtual environments are ignored. `backend/tests/` is a placeholder, with no
-unit test suite yet. The scaffold has been checked through live HTTP requests
-and browser rendering; these checks do not establish statistical correctness
-or model performance. See [the handoff](memory/HANDOFF.md) for observed evidence.
+Frontend and backend locks are committed. Runtime downloads, `node_modules/`,
+build output and Python virtual environments are ignored. The nine environment
+and bootstrap tests use synthetic fixtures; they do not establish correctness
+of the unimplemented domain services or empirical model performance. See
+[the setup guide](docs/SETUP.md) for lock maintenance and
+[the handoff](memory/HANDOFF.md) for observed evidence.
 
 ## Implementation sequence
 
@@ -94,12 +98,13 @@ The requirements and acceptance gates are documented in `docs/`. Delivery follow
 this sequence; the handoff records current ticket status:
 
 1. `MSE-101` (complete): Create frontend (`frontend/`) and backend (`backend/`) skeletons.
-2. `MSE-102–106` (next): Pin dependencies, then implement corpus ingestion, content deduplication and deterministic split.
-3. `MSE-201–207`: Implement and verify statistics independently from ML.
-4. `MSE-301–307`: Fit/evaluate both Naive Bayes models.
-5. `MSE-401–406`: Implement versioned FastAPI contract.
-6. `MSE-501–507`: Build five frontend modules with real API results.
-7. `MSE-601–606`: Run tests, collect evidence, finalize university report/demo.
+2. `MSE-102` (complete): Pin runtimes/dependencies and verify reproducible setup.
+3. `MSE-103–106` (next): Implement corpus acquisition, ingestion, content deduplication and deterministic split.
+4. `MSE-201–207`: Implement and verify statistics independently from ML.
+5. `MSE-301–307`: Fit/evaluate both Naive Bayes models.
+6. `MSE-401–406`: Implement versioned FastAPI contract.
+7. `MSE-501–507`: Build five frontend modules with real API results.
+8. `MSE-601–606`: Run tests, collect evidence, finalize university report/demo.
 
 The commands above run the scaffolds only. Later tasks will add and verify
 actual corpus preparation, model training and analytical workflows.
