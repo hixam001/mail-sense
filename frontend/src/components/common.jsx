@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { formatNumber } from '../lib/format.js'
 
 export function PageTitle({ title, children }) {
   const heading = useRef(null)
@@ -20,7 +21,7 @@ export function Notes({ items = [] }) {
 }
 export function NumberValue({ value, percent = false }) {
   return value == null ? <span title="Undefined for this selection">Undefined</span> :
-    <>{percent ? `${(value * 100).toFixed(2)}%` : new Intl.NumberFormat('en', { maximumSignificantDigits: 6 }).format(value)}</>
+    <>{formatNumber(value, percent)}</>
 }
 export function Balance({ summary }) {
   return <div className="balance-block">
