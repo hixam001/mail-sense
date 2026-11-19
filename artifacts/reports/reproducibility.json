@@ -1,0 +1,135 @@
+{
+  "archive_hashes": [
+    {
+      "name": "20030228_easy_ham.tar.bz2",
+      "sha256": "2b7b65904bcfcc31d2b5f51946f2d261370b257402cbbd62930b46ab83367438",
+      "size_bytes": 1612216
+    },
+    {
+      "name": "20030228_easy_ham_2.tar.bz2",
+      "sha256": "b4bd3dc5ae5b40f38e99a0e41ad7d16b428b56e818e3a6ffa07330d62004dd38",
+      "size_bytes": 1077892
+    },
+    {
+      "name": "20030228_hard_ham.tar.bz2",
+      "sha256": "ce2ce67880643dbde65ea7f85bffbfe4417349c4bd80b6b0de56262ae6b0a9c9",
+      "size_bytes": 1029898
+    },
+    {
+      "name": "20030228_spam.tar.bz2",
+      "sha256": "c08debc32413804949a866be45ef78195cec2cbafd1da744ed76cdb860589743",
+      "size_bytes": 1183768
+    },
+    {
+      "name": "20050311_spam_2.tar.bz2",
+      "sha256": "44280a0e28bf7645b2279e8e42659271ad82c6f40bf8d364dbda7f1df344a765",
+      "size_bytes": 2059029
+    }
+  ],
+  "artifact_id": "747bb5f51c2d231140efcc17d1316be68407d07fa9f9a7adcca1b3df2ce01ca3",
+  "checked_at": "2026-11-19T17:28:37.369223+00:00",
+  "checks": {
+    "all_record_hashes_and_counts": true,
+    "archive_checksums": true,
+    "exact_deduplication": true,
+    "held_out_predictions_and_metrics_identical": true,
+    "independent_refit_arrays_identical": true,
+    "private_artifacts_unchanged": true,
+    "split_reproduced": true,
+    "train_test_ids_and_content_disjoint": true,
+    "training_only_vocabulary": true
+  },
+  "classes": {
+    "ham": 4107,
+    "spam": 1755
+  },
+  "dataset_id": "ccd3321b252f22aaa5e6e1e74d96140b46c088a15474e8607c6259b2467c9c7a",
+  "free_document_counts": {
+    "ham": 577,
+    "spam": 811
+  },
+  "hand_math": {
+    "binomial_pmf": 0.1877117156982422,
+    "chi_square_p": 7.509242653735255e-63,
+    "chi_square_terms": [
+      147.0,
+      49.0,
+      63.0,
+      21.0
+    ],
+    "mean": 4.0,
+    "median": 4,
+    "metric_fixture": {
+      "accuracy": 0.925,
+      "f1": 0.8695652173913043,
+      "false_positive_rate": 0.03571428571428571,
+      "precision": 0.9090909090909091,
+      "recall": 0.8333333333333334
+    },
+    "mode": 4,
+    "posterior": 0.72,
+    "q1": 3.5,
+    "q3": 4.5,
+    "sample_std": 1.632993161855452,
+    "sample_variance": 2.6666666666666665,
+    "wilson_bounds": [
+      0.2724068424770048,
+      0.3291238609172172
+    ],
+    "wilson_z": 1.9599639845400536
+  },
+  "held_out_only_tokens_excluded": 12200,
+  "models": {
+    "bernoulli": {
+      "accuracy": 0.9343563512361467,
+      "confusion_matrix": {
+        "fn": 70,
+        "fp": 7,
+        "tn": 815,
+        "tp": 281
+      },
+      "f1": 0.8794992175273866,
+      "false_positive_rate": 0.00851581508515815,
+      "precision": 0.9756944444444444,
+      "recall": 0.8005698005698005
+    },
+    "multinomial": {
+      "accuracy": 0.9812446717817562,
+      "confusion_matrix": {
+        "fn": 14,
+        "fp": 8,
+        "tn": 814,
+        "tp": 337
+      },
+      "f1": 0.9683908045977011,
+      "false_positive_rate": 0.009732360097323601,
+      "precision": 0.9768115942028985,
+      "recall": 0.9601139601139601
+    }
+  },
+  "result": "pass",
+  "retained_records": 5862,
+  "split_id": "e10ea9f8b406c62d14a359dd864ef2a195c8c1960c2747f1feaaea313c148c31",
+  "synthetic_example": {
+    "included_in_held_out_metrics": false,
+    "intended_class": "ham",
+    "kind": "authored_teaching_text",
+    "models": {
+      "bernoulli": {
+        "prediction": "ham",
+        "spam_probability": 1.6701648472268352e-12
+      },
+      "multinomial": {
+        "prediction": "spam",
+        "spam_probability": 0.6385533772800012
+      }
+    },
+    "text": "Subject: Project meeting\nHello team, please review the project notes before our meeting tomorrow. Thank you."
+  },
+  "task": "MSE-603",
+  "test_records": 1173,
+  "train_records": 4689,
+  "training_features": 60135,
+  "verification": "independent-v1",
+  "vocabulary_sha256": "f7ba4c18eef3aa09cacedf7f2518f4c97431a56d2f06c7f9c0c08a5af4402937"
+}

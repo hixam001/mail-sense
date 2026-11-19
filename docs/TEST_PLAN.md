@@ -72,16 +72,16 @@ Testing framework proposal: `pytest`, FastAPI `TestClient`, React Testing Librar
 
 ## 5. Model evaluation integrity checklist
 
-- [ ] The two models are trained with the same retained dataset.
-- [ ] Exact duplicate texts were removed before split.
-- [ ] The `train` and `test` message ID sets do not overlap.
-- [ ] The tokenizer/vocabulary was fitted using training messages only.
-- [ ] Both models use alpha=1.0 and the same training/test IDs.
-- [ ] Evaluation uses no test-derived tuning or feature selection.
-- [ ] Both models report TP, TN, FP and FN with spam as positive class.
-- [ ] Reported metrics equal independent confusion-matrix arithmetic.
-- [ ] Probability outputs are labeled estimates, not calibrated certainties.
-- [ ] Failing and disagreement examples are discussed in the report.
+- [x] The two models are trained with the same retained dataset.
+- [x] Exact duplicate texts were removed before split.
+- [x] The `train` and `test` message ID sets do not overlap.
+- [x] The tokenizer/vocabulary was fitted using training messages only.
+- [x] Both models use alpha=1.0 and the same training/test IDs.
+- [x] Evaluation uses no test-derived tuning or feature selection.
+- [x] Both models report TP, TN, FP and FN with spam as positive class.
+- [x] Reported metrics equal independent confusion-matrix arithmetic.
+- [x] Probability outputs are labeled estimates, not calibrated certainties.
+- [x] Failing and disagreement examples are discussed in the report.
 
 ## 6. Non-functional verification
 

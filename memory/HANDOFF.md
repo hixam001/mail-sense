@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-602 — Measured local privacy offline and performance verification**.
-Next implementation ticket: **MSE-603**.
+Latest implementation: **MSE-603 — Independent scientific reproducibility**.
+Next implementation ticket: **MSE-604**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-603** — Independently verify teaching formulas/counts and actual corpus provenance/membership/hashes, refit both models in memory from training-only features and reconcile held-out confusion metrics without tuning. Publish reproducibility checklist/report, commit/push then university report MSE-604 and final installation/demo/release605-606.
+**MSE-604** — Write university report with formulas, inspected production screenshots, measured corpus/model/runtime evidence and limitations. Verify citations/figures/counts, commit/push, then installation/demo605 and version freeze606 without stopping.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -227,9 +227,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-602 implemented:** Measured local privacy offline and performance verification. Focused smoke passed under Gravitas: all core workflows/dual inference under browser internet denial and API socket guard, no external attempts/resource execution or input URL/storage/log retention, unchanged artifacts. Fixed observed safe-header/local-CORS inconsistency for early/500 errors; all14 boundary and401 backend tests pass, frontend lint/build clean. Thirty warmed HTTP samples each: prediction p95 0.0642s versus3s; summary0.0454s versus5s on i5-13420H Linux12-thread affinity. npm213/Python33 advisory checks report zero findings/skips at timestamp. Limits and exact guards documented, no comprehensive audit claim.
 
+- **MSE-603 implemented:** Independent scientific reproducibility. Owned verification passed: direct hand math, five archive hashes, 5862 retained record hashes/counts, exact seed-42 membership and disjoint content, 60135 training features with 12200 held-out-only tokens excluded. Independent in-memory refits exactly match all learned arrays and held-out confusion metrics; private artifacts unchanged. Authored disagreement is separate from evaluation. Full pytest 401 passed; Ruff passed.
+
 ## Full remaining implementation inventory
 
-**35 implementation tickets are complete; 4 are Not started**. Update statuses as work is
+**36 implementation tickets are complete; 3 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -271,12 +273,14 @@ Dependencies and detailed acceptance criteria are in
 | MSE-507 | Verify responsive behavior, keyboard access and error/stale states | Complete — acceptance verified |
 | MSE-601 | Execute all critical T01–T08 scenarios with evidence | Complete — acceptance verified |
 | MSE-602 | Verify security, privacy, offline use and measured performance | Complete — acceptance verified |
-| MSE-603 | Independently verify math, provenance and model integrity | Not started — next |
-| MSE-604 | Complete university report with real screenshots and measurements | Not started |
+| MSE-603 | Independently verify math, provenance and model integrity | Complete — acceptance verified |
+| MSE-604 | Complete university report with real screenshots and measurements | Not started — next |
 | MSE-605 | Finalize installation README and classroom demo script | Not started |
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-603 — Independent scientific reproducibility:** Owned verification passed: direct hand math, five archive hashes, 5862 retained record hashes/counts, exact seed-42 membership and disjoint content, 60135 training features with 12200 held-out-only tokens excluded. Independent in-memory refits exactly match all learned arrays and held-out confusion metrics; private artifacts unchanged. Authored disagreement is separate from evaluation. Full pytest 401 passed; Ruff passed.
 
 - **MSE-602 — Measured local privacy offline and performance verification:** Focused smoke passed under Gravitas: all core workflows/dual inference under browser internet denial and API socket guard, no external attempts/resource execution or input URL/storage/log retention, unchanged artifacts. Fixed observed safe-header/local-CORS inconsistency for early/500 errors; all14 boundary and401 backend tests pass, frontend lint/build clean. Thirty warmed HTTP samples each: prediction p95 0.0642s versus3s; summary0.0454s versus5s on i5-13420H Linux12-thread affinity. npm213/Python33 advisory checks report zero findings/skips at timestamp. Limits and exact guards documented, no comprehensive audit claim.
 
