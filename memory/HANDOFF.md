@@ -1,17 +1,17 @@
 # MailSense project handoff
 
 Last updated: 2026-11-19 (Asia/Karachi).
-Preparation ticket: **MSE-100 — Project memory and delivery workflow established; structural verification passed**.
+Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Next implementation ticket: **MSE-101**.
 
 ## Read this at every task start
 
-Read [AGENTS.md](../AGENTS.md), [Gravitas memory](../GRAVITAS_MEMORY.md),
+Read [AGENTS.md](../AGENTS.md), [memory guide](README.md),
 [PRODUCT.md](../PRODUCT.md) and this handoff before selecting or resuming work.
 Confirm progress against files and Git history. The
-[implementation plan](IMPLEMENTATION_PLAN.md) owns dependencies and ticket
+[implementation plan](../docs/IMPLEMENTATION_PLAN.md) owns dependencies and ticket
 acceptance criteria; this handoff owns the live status of every ticket.
-[SRS.md](SRS.md) remains the locked technical baseline.
+[SRS.md](../docs/SRS.md) remains the locked technical baseline.
 
 ## Next task
 
@@ -44,14 +44,19 @@ belong to MSE-102. Scaffold preparation alone does not complete either ticket.
   and `security-audit`. Their presence is tooling setup, not app functionality.
 - Impeccable installed its local engine and `.codex/hooks.json`. Product context
   initialization is complete. There is no visual implementation or `DESIGN.md`.
-- `AGENTS.md`, `GRAVITAS_MEMORY.md` and `.gravitas/memory/workflow.md` persist the
-  user's analyze → map → implement → verify → update handoff → final checks →
-  commit → push workflow. Jira-style subjects use `MSE-<ticket>: <summary>`;
-  no added contributor attribution or co-author/sign-off trailers.
+- `AGENTS.md` persists the user's analyze → map → implement → verify → update
+  handoff → final checks → commit → push workflow. Jira-style subjects use
+  `MSE-<ticket>: <summary>`; no added contributor attribution or co-author/sign-off
+  trailers. The previous duplicate memory index and workflow record are removed.
+- `memory/` is the single project memory directory. This handoff owns progress;
+  `README.md` documents retrieval. `graph.py` uses pinned Graphify to build
+  `graphify-out/graph.json`, `graph.html` and `GRAPH_REPORT.md` from the actual
+  documents, ticket dependencies, statuses and standing instructions. Generated
+  graph data includes source locations and hashes so stale memory can be detected.
 - `.gitignore` excludes local credentials, dependencies, runtime output, raw
   corpus messages, processed message text and trained model artifacts while
   retaining shared memory, installed skills and design context.
-- MSE-100 covers documentation/tooling preparation only. It does not complete
+- MSE-100 and MSE-107 cover documentation/tooling preparation only. They do not complete
   any MSE-101–606 feature ticket or any product acceptance gate.
 
 ## Implemented application functionality
@@ -66,7 +71,7 @@ examples in the documentation are not measured corpus/model results.
 All tickets below are **Not started**. Update individual statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
-[IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md).
+[IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
 
 | Ticket | Remaining work | Status |
 |---|---|---|
@@ -114,21 +119,26 @@ Dependencies and detailed acceptance criteria are in
 
 - Application tests, lint, builds and runtime checks: **not run; no application
   implementation or test suite exists**. No claim of working MailSense software.
-- Preparation verification: the command
-  `python3 .agents/skills/gravitas/scripts/verify.py --cmd 'python3 /tmp/mail-sense-handoff-validation.py'`
-  produced **218 structural checks passed; 0 failed** and **VERDICT: PASS**.
-  It checks local document references, all 39 remaining ticket IDs against the
-  implementation plan, persistent instruction/memory links, sensitive-data
-  ignore behavior, hook JSON syntax, staged paths and maintained-file diff
-  hygiene. The temporary validator is session tooling, not an application test
-  suite; `/tmp` is ephemeral. Rerun it after this final handoff edit.
-- Repository discovery: branch `main`, configured origin
-  `https://github.com/hixam001/mail-sense.git`; `git ls-remote --heads origin`
-  returned successfully with no heads before this initial commit.
-- This record is prepared for `MSE-100: Establish project memory and handoff`.
-  The initial preparation commit is `e9d6270`; a follow-up under the same ticket
-  records Git authentication recovery. Push outcomes must be observed from Git,
-  not inferred from this document. On resume, check `git log -1`,
+- MSE-100 preparation verification passed 218 structural checks; its follow-up
+  passed 83 checks. Those counts describe the earlier documentation baseline.
+- MSE-107 observed results: Graphify 0.9.112 produced **186 nodes, 315 directed
+  edges and 13 communities**. Integrity/freshness checks passed for all 39
+  ticket statuses and dependencies, document links, workflow order and legacy
+  file cleanup. Real Graphify query/explain results identify MSE-101 as next;
+  `path MSE-106 MSE-101` follows four explicit prerequisite edges. Isolated
+  regression checks rejected edited, added and removed source documents; an
+  unchanged rebuild produced byte-identical JSON, HTML and report artifacts.
+- Verification commands (rerun after every final handoff edit):
+  `memory/.venv/bin/python memory/graph.py build`, then
+  `python3 .agents/skills/gravitas/scripts/verify.py --cmd 'memory/.venv/bin/python memory/graph.py check'`.
+  Exercise Graphify `query`, `explain` and directed dependency `path` against
+  `memory/graphify-out/graph.json`. Check source freshness, all 39 ticket/status
+  records, dependency direction, graph references, removed legacy paths and
+  maintained-file diff hygiene. Results belong in the final delivery report.
+- Branch `main` tracks `origin/main` at
+  `https://github.com/hixam001/mail-sense.git`. MSE-100 was pushed successfully
+  through `c910136`; MSE-107 uses `MSE-107: Consolidate project memory with Graphify`.
+  Observe the new commit and push result in Git. On resume, check `git log -1`,
   `git status -sb` and the upstream branch before claiming delivery.
 
 ## Environment notes and recovery
@@ -143,11 +153,11 @@ Dependencies and detailed acceptance criteria are in
   CLI was found on PATH; do not claim a full runtime or hook-enforced task
   contract is installed. Use the shipped verification runner with an explicit
   appropriate command when automatic validator discovery is unavailable.
-- Initial global whitespace validation flagged existing upstream skill Markdown
-  whitespace and the Windows CRLF launcher. Upstream snapshots are preserved;
-  maintained project files receive diff-hygiene checks with intentional Markdown
-  hard breaks allowed. All staged paths receive sensitive-path checks. The
-  corrected validator passed; this was not an application test failure.
+- Graphify 0.9.112 is installed in ignored `memory/.venv/` using Python 3.12.
+  Recreate it from `memory/requirements.txt` when absent. No global Graphify
+  hooks, external model APIs or cloud-memory service are required for this
+  graph. Extraction covers explicit document structure and ticket relationships;
+  it is not an exhaustive semantic understanding of every sentence.
 - GitHub access failed within the restricted network sandbox and succeeded with
   authorized network escalation. Request the actual needed sandbox permission
   when required; do not repeatedly retry unchanged failed commands.

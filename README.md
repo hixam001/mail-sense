@@ -8,10 +8,11 @@
 ## Documentation index
 
 For ongoing development, read [AGENTS.md](AGENTS.md),
-[GRAVITAS_MEMORY.md](GRAVITAS_MEMORY.md) and [docs/HANDOFF.md](docs/HANDOFF.md)
+[memory/README.md](memory/README.md) and [memory/HANDOFF.md](memory/HANDOFF.md)
 first. The handoff records completed work, the full remaining backlog,
 verification evidence and the exact next task. [PRODUCT.md](PRODUCT.md) captures
-the confirmed product context for design work.
+the confirmed product context for design work. The memory directory also contains
+a queryable Graphify graph and its interactive visualization.
 
 | File | What it contains |
 |---|---|

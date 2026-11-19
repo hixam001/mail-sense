@@ -1,7 +1,7 @@
 # MailSense — Implementation Plan and Jira-Style Backlog
 
 **Version:** 1.0 · **Date:** 2026-11-19  
-**Status:** Repository preparation documented under MSE-100; all 39 implementation tickets remain not started  
+**Status:** Repository preparation documented under MSE-100 and MSE-107; all 39 implementation tickets remain not started  
 **Scope:** Complete university project, local React + FastAPI, SpamAssassin, Multinomial NB + Bernoulli NB
 
 ## 1. Delivery strategy
@@ -22,7 +22,19 @@ the final files, then commit and push using a consistent Jira-style subject and
 the configured author identity without added contributor credits.
 
 This preparation ticket does not change product scope or complete MSE-101.
-Current implementation status is maintained in [HANDOFF.md](HANDOFF.md).
+Current implementation status is maintained in [the handoff](../memory/HANDOFF.md).
+
+### Preparation follow-up — MSE-107
+
+**Consolidate project memory with Graphify.** Put the handoff, graph usage guide
+and generated graph in `memory/`; preserve standing workflow instructions in
+`AGENTS.md`. Remove redundant memory indexes and duplicate workflow records.
+Build a source-grounded Graphify graph of documents, policies, ticket statuses
+and dependencies with a reproducible local build and freshness/integrity checks.
+Verify real Graphify query/path retrieval before committing and pushing.
+
+This tooling ticket does not change the locked product scope or complete any of
+the 39 implementation tickets below. MSE-101 remains the next application task.
 
 ### EPIC MSE-1 — Repository and data foundation (2–3 working days)
 

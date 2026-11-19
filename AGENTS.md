@@ -1,9 +1,13 @@
 # MailSense working instructions
 
+## Delivery sequence
+
+Analyze with Gravitas → map the task → implement → test → update handoff → final checks → commit → push.
+
 ## Start every task
 
-1. Read [GRAVITAS_MEMORY.md](GRAVITAS_MEMORY.md) and its relevant memory entries.
-2. Read [docs/HANDOFF.md](docs/HANDOFF.md), especially **Next task**, current
+1. Read [memory/README.md](memory/README.md) for graph retrieval and maintenance.
+2. Read [memory/HANDOFF.md](memory/HANDOFF.md), especially **Next task**, current
    progress, verification evidence and blockers. Confirm the recorded state
    against the working tree and Git history; do not rely on stale notes.
 3. Read [PRODUCT.md](PRODUCT.md), the relevant requirements and the acceptance
@@ -33,18 +37,24 @@
 
 ## Handoff and persistent memory
 
-- Update [docs/HANDOFF.md](docs/HANDOFF.md) after each implementation task and
+- Update [memory/HANDOFF.md](memory/HANDOFF.md) after each implementation task and
   before its commit. Record everything completed, everything remaining,
   in-progress work, changed files, commands/results, blockers and the exact next
   Jira-style ticket with its first action and acceptance criteria.
 - Keep the full remaining ticket inventory synchronized with
   `docs/IMPLEMENTATION_PLAN.md`. Do not lose deferred work at a session boundary.
-- Keep durable user preferences in
-  [.gravitas/memory/workflow.md](.gravitas/memory/workflow.md), indexed by
-  `GRAVITAS_MEMORY.md`. The handoff owns changing progress; avoid conflicting
-  copies in memory files. Record failed approaches and useful recovery details.
-- Revalidate the final files after the handoff update. Future sessions must read
-  the handoff before selecting their next task.
+- Keep durable user preferences here in `AGENTS.md`; the handoff owns changing
+  progress and recovery notes. Keep project memory together under `memory/`.
+  Do not recreate separate workflow copies or root-level memory indexes.
+- Use the Graphify graph in `memory/graphify-out/graph.json` to retrieve relevant
+  documents, policies, ticket dependencies and the next task. Verify facts
+  against their cited source; the generated graph does not override source files.
+- After changing graph inputs, update the handoff, rebuild with
+  `memory/.venv/bin/python memory/graph.py build`, then verify with
+  `memory/.venv/bin/python memory/graph.py check` and the applicable project
+  checks before committing. Setup and query commands are in `memory/README.md`.
+  Never commit a stale graph. Future sessions must read the handoff before
+  selecting their next task.
 
 ## Commit and push
 

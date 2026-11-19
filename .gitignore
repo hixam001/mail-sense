@@ -32,8 +32,11 @@ htmlcov/
 /data/processed/messages.jsonl
 /artifacts/models/
 
-# Session state; keep shared Gravitas memory and project design context tracked
+# Session state; keep shared graph memory and project design context tracked
 /.gravitas/sessions/
+/memory/graphify-out/.graphify_*
+/memory/graphify-out/__graphify_snapshots/
+/memory/graphify-out/cache/
 /.impeccable/config.local.json
 /.impeccable/questions/
 /.impeccable/mocks/
