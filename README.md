@@ -1,7 +1,7 @@
 # MailSense
 
 **Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** 14/39 implementation tasks verified. Latest: MSE-301 — Shared training-only vocabulary and count features. Next: MSE-302. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
+**Status:** 15/39 implementation tasks verified. Latest: MSE-302 — Multinomial Naive Bayes on shared count vectors. Next: MSE-303. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
 
 > **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
 
