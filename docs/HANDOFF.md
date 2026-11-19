@@ -126,9 +126,10 @@ Dependencies and detailed acceptance criteria are in
   `https://github.com/hixam001/mail-sense.git`; `git ls-remote --heads origin`
   returned successfully with no heads before this initial commit.
 - This record is prepared for `MSE-100: Establish project memory and handoff`.
-  The resulting commit ID and push outcome must be observed from Git, not
-  inferred from this document. On resume, check `git log -1`, `git status -sb`
-  and the upstream branch before claiming delivery.
+  The initial preparation commit is `e9d6270`; a follow-up under the same ticket
+  records Git authentication recovery. Push outcomes must be observed from Git,
+  not inferred from this document. On resume, check `git log -1`,
+  `git status -sb` and the upstream branch before claiming delivery.
 
 ## Environment notes and recovery
 
@@ -150,6 +151,13 @@ Dependencies and detailed acceptance criteria are in
 - GitHub access failed within the restricted network sandbox and succeeded with
   authorized network escalation. Request the actual needed sandbox permission
   when required; do not repeatedly retry unchanged failed commands.
+- The first HTTPS push failed with `could not read Username`: Git has no
+  configured credential helper. `gh auth status --hostname github.com` confirmed
+  an active `hixam001` login in the keyring, with repository access. Use that
+  existing login without changing global settings:
+  `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push -u origin main`.
+  Verify the remote commit after pushing. Do not print tokens or create another
+  account/login merely to repair the missing helper.
 - No app process is running and no live-preview configuration exists.
 - Future landing/showcase build-path preference remains unset. Current app
   screens use code-first. No marketing surface is in the approved v1 scope.
