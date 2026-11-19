@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-505 — Transient dual-model Spam Detector and faithful explanations**.
-Next implementation ticket: **MSE-506**.
+Latest implementation: **MSE-506 — Held-out Model Evaluation and labeled confusion matrices**.
+Next implementation ticket: **MSE-507**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-506** — Build Model Evaluation from verified comparison only: same test identities and count, all five metrics, explicit actual/predicted confusion matrices, FP/FN consequences, formula denominators and limitations. Test artifact mismatch errors and actual report parity, mobile/keyboard; commit/push then MSE-507 full UI verification.
+**MSE-507** — Complete full UI verification across six routes: responsive keyboard/focus, readable chart labels, visible active mobile navigation, accurate fixed prediction/evaluation source labels, delayed/stale request and error/empty states, production preview on allowed port 5173. Add reproducible browser evidence and Gate 5, then commit/push and execute MSE-601 T01-T08.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -219,9 +219,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-505 implemented:** Transient dual-model Spam Detector and faithful explanations. Frontend lint, seven tests and production build passed; Gravitas browser acceptance passed for actual dual estimates and score decomposition, vocabulary lookup, unknown tokens, input bounds/no truncation, edit/clear/navigation discard and controlled 503 retry. Every observed browser request stayed local and synthetic private text appeared in neither URLs nor browser storage. Probability regression passed after shared validation/request changes. Desktop/mobile renders inspected; labeled synthetic example transparently shows model disagreement.
 
+- **MSE-506 implemented:** Held-out Model Evaluation and labeled confusion matrices. Lint, eight frontend tests and production build passed. Gravitas browser acceptance matched all five metrics and both confusion matrices to the saved measured report, inspected exact test-membership identity, blocked controlled mismatched identities/503 and recovered by retry. Mobile bounds and route navigation passed; desktop/mobile renders inspected. UI guard requires same split/test IDs, positive class and consistent confusion totals; no automatic winner. GET failure mocks were corrected for canceled StrictMode requests.
+
 ## Full remaining implementation inventory
 
-**31 implementation tickets are complete; 8 are Not started**. Update statuses as work is
+**32 implementation tickets are complete; 7 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -259,8 +261,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-503 | Build Probability Analysis | Complete — acceptance verified |
 | MSE-504 | Build Statistical Inference | Complete — acceptance verified |
 | MSE-505 | Build Spam Detector with dual model results | Complete — acceptance verified |
-| MSE-506 | Build Model Evaluation and confusion matrices | Not started — next |
-| MSE-507 | Verify responsive behavior, keyboard access and error/stale states | Not started |
+| MSE-506 | Build Model Evaluation and confusion matrices | Complete — acceptance verified |
+| MSE-507 | Verify responsive behavior, keyboard access and error/stale states | Not started — next |
 | MSE-601 | Execute all critical T01–T08 scenarios with evidence | Not started |
 | MSE-602 | Verify security, privacy, offline use and measured performance | Not started |
 | MSE-603 | Independently verify math, provenance and model integrity | Not started |
@@ -269,6 +271,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
 
 ## Verification and delivery evidence
+
+- **MSE-506 — Held-out Model Evaluation and labeled confusion matrices:** Lint, eight frontend tests and production build passed. Gravitas browser acceptance matched all five metrics and both confusion matrices to the saved measured report, inspected exact test-membership identity, blocked controlled mismatched identities/503 and recovered by retry. Mobile bounds and route navigation passed; desktop/mobile renders inspected. UI guard requires same split/test IDs, positive class and consistent confusion totals; no automatic winner. GET failure mocks were corrected for canceled StrictMode requests.
 
 - **MSE-505 — Transient dual-model Spam Detector and faithful explanations:** Frontend lint, seven tests and production build passed; Gravitas browser acceptance passed for actual dual estimates and score decomposition, vocabulary lookup, unknown tokens, input bounds/no truncation, edit/clear/navigation discard and controlled 503 retry. Every observed browser request stayed local and synthetic private text appeared in neither URLs nor browser storage. Probability regression passed after shared validation/request changes. Desktop/mobile renders inspected; labeled synthetic example transparently shows model disagreement.
 
