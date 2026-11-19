@@ -1,6 +1,6 @@
 # MailSense — Data Model and Local Artifact Specification
 
-**Version:** 1.4 · **Date:** 2026-11-19 · **Status:** Acquisition, parsing, retained records and split implemented; models remain planned
+**Version:** 1.5 · **Date:** 2026-11-19 · **Status:** Acquisition, parsing, retained records and split and trusted models/evaluation implemented; API/UI follow
 **Storage choice:** Local files (CSV + JSON metadata + trusted joblib model artifacts). **No database.**
 
 ## 1. Design principles
@@ -265,17 +265,19 @@ Model files serialized using joblib/pickle must be loaded **only from project-cr
 
 | Field | Type | Required | Notes |
 |---|---|---|---|
-| `model_id` | enum | Yes | `multinomial` / `bernoulli` |
+| `model` | enum | Yes | `multinomial` / `bernoulli` |
 | `dataset_id` | string | Yes | Same source for both models |
 | `split_id` | string | Yes | Same held-out test IDs |
 | `positive_class` | string | Yes | Always `spam` |
 | `test_count` | integer | Yes | Number of evaluated test messages |
-| `tp`, `tn`, `fp`, `fn` | integer >= 0 | Yes | Confusion matrix cells |
+| `confusion_matrix{tp,tn,fp,fn}` | integer >= 0 | Yes | Confusion matrix cells |
 | `accuracy`, `precision`, `recall`, `f1`, `false_positive_rate` | float | Yes | Rates in [0,1] |
 | `zero_division_policy` | string | Yes | Set undefined precision/recall conventions explicitly |
-| `test_ids_hash` | string | Yes | Same for both models |
+| `test_ids_sha256` | string | Yes | Same for both models |
 
 Rules: `tp+tn+fp+fn=test_count`; `accuracy=(tp+tn)/test_count`; and all saved model metrics reconcile against confusion counts (with documented zero-denominator policy). The evaluation file contains results **only after real training**, not fabricated scores.
+
+MSE-305 writes the aggregate evaluation envelope with dataset/split/artifact/test-set identity, explicit positive class and a `models` map of per-model metrics. Ratios with zero denominators are `null` plus notes. Verification rederives predictions without fitting/tuning, uses the same sorted held-out IDs for both models and rejects stale/mismatched reports. No per-message predictions or text are published.
 
 ## 8. API-view schemas (not persisted)
 

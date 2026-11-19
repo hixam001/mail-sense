@@ -1,7 +1,7 @@
 # MailSense
 
 **Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** 17/39 implementation tasks verified. Latest: MSE-304 — Trusted model persistence and provenance verification. Next: MSE-305. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
+**Status:** 18/39 implementation tasks verified. Latest: MSE-305 — Identical held-out model evaluation with reconciled metrics. Next: MSE-306. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
 
 > **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
 
@@ -189,6 +189,19 @@ The shared vocabulary and both alpha=1 Naive Bayes models fit the frozen trainin
 partition. Private artifacts stay ignored under `artifacts/models/`; metadata
 and checksums tie them to the dataset, split, feature mapping and runtime.
 Only project-created artifacts are loaded. Held-out evaluation follows separately.
+
+## Evaluate the frozen models
+
+```bash
+uv run --directory backend --frozen python -m scripts.evaluate_models run
+uv run --directory backend --frozen python -m scripts.evaluate_models verify
+```
+
+The [measured evaluation](artifacts/reports/evaluation.json) uses identical 1,173
+held-out IDs for both models. Accuracy is 98.12% for Multinomial and 93.44% for
+Bernoulli on this historical split; confusion matrices and all metrics are
+recorded with provenance. These results do not establish modern robustness or
+calibrated probability. Evaluation never fits or tunes a model.
 
 ## Implementation sequence
 

@@ -127,11 +127,10 @@ Testing framework proposal: `pytest`, FastAPI `TestClient`, React Testing Librar
 | T03 | 2026-11-19 | Python 3.12.15, MSE-201 | See §2 | Mean/median/mode=4; sample variance=8/3; SD=sqrt(8/3) | Pass | `backend/tests/test_descriptive.py::test_t03_known_descriptive_fixture` |
 | T04 | 2026-11-19 | MSE-203 | See §2 | .3/.25/.18/.6/.72 with visible denominators | Pass | `backend/tests/test_probability.py::test_t04_known_thousand_document_table_and_bayes` |
 | T05 | 2026-11-19 | MSE-207 | See §2 | Pearson 280/df1/reference p; Wilson bounds round to .2724/.3291 | Pass | `test_numerical_verification.py` and `artifacts/reports/statistics_verification.json` |
-| T06 | Not run | N/A | See §2 | Not measured | Not run | — |
+| T06 | 2026-11-19 | MSE-305 | See §2 | Shared training-only vocabulary and test hash; both confusion matrices reconcile | Pass | `test_model_features.py`, `test_evaluation.py`, `artifacts/reports/evaluation.json` |
 | T07 | Not run | N/A | See §2 | Not measured | Not run | — |
 | T08 | Not run | N/A | See §2 | Not measured | Not run | — |
 
-Tests may be marked passed **only** after actual execution. T02 has observed
-synthetic and actual-corpus evidence. The other rows remain unexecuted as full
-release scenarios even where individual foundation unit tests cover parts of
+Tests may be marked passed **only** after actual execution. Rows marked Pass have observed domain-service and/or actual-corpus evidence.
+Rows still marked Not run remain unexecuted as full release scenarios even where individual foundation unit tests cover parts of
 their requirements; dependency compatibility tests do not prove domain math.

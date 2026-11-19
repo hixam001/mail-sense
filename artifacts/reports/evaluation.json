@@ -1,0 +1,57 @@
+{
+  "artifact_id": "747bb5f51c2d231140efcc17d1316be68407d07fa9f9a7adcca1b3df2ce01ca3",
+  "dataset_id": "ccd3321b252f22aaa5e6e1e74d96140b46c088a15474e8607c6259b2467c9c7a",
+  "limitations": [
+    "Historical curated corpus; scores do not establish modern robustness.",
+    "Fixed alpha=1 and training-only vocabulary; no held-out tuning.",
+    "Model probabilities are estimates, not calibrated certainty."
+  ],
+  "models": {
+    "bernoulli": {
+      "accuracy": 0.9343563512361467,
+      "confusion_matrix": {
+        "fn": 70,
+        "fp": 7,
+        "tn": 815,
+        "tp": 281
+      },
+      "f1": 0.8794992175273866,
+      "false_positive_rate": 0.00851581508515815,
+      "model": "bernoulli",
+      "notes": [],
+      "positive_class": "spam",
+      "precision": 0.9756944444444444,
+      "recall": 0.8005698005698005,
+      "split_id": "e10ea9f8b406c62d14a359dd864ef2a195c8c1960c2747f1feaaea313c148c31",
+      "test_count": 1173,
+      "test_ids_sha256": "64aef20395f55f37509281df5bf20a90846bf0e7b8b1a4842013df44b02a2629",
+      "zero_division_policy": "null_with_note"
+    },
+    "multinomial": {
+      "accuracy": 0.9812446717817562,
+      "confusion_matrix": {
+        "fn": 14,
+        "fp": 8,
+        "tn": 814,
+        "tp": 337
+      },
+      "f1": 0.9683908045977011,
+      "false_positive_rate": 0.009732360097323601,
+      "model": "multinomial",
+      "notes": [],
+      "positive_class": "spam",
+      "precision": 0.9768115942028985,
+      "recall": 0.9601139601139601,
+      "split_id": "e10ea9f8b406c62d14a359dd864ef2a195c8c1960c2747f1feaaea313c148c31",
+      "test_count": 1173,
+      "test_ids_sha256": "64aef20395f55f37509281df5bf20a90846bf0e7b8b1a4842013df44b02a2629",
+      "zero_division_policy": "null_with_note"
+    }
+  },
+  "positive_class": "spam",
+  "same_test_ids": true,
+  "schema_version": 1,
+  "split_id": "e10ea9f8b406c62d14a359dd864ef2a195c8c1960c2747f1feaaea313c148c31",
+  "test_count": 1173,
+  "test_ids_sha256": "64aef20395f55f37509281df5bf20a90846bf0e7b8b1a4842013df44b02a2629"
+}
