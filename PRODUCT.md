@@ -122,8 +122,10 @@ available in `frontend/` and `backend/`; the handoff records their runtime and
 build verification. Local CLI services now acquire and parse the pinned corpus,
 deduplicate exact text, exclude label conflicts and derive summary records.
 The measured retained dataset has 5,862 records (4,107 ham, 1,755 spam); raw and
-processed mail remain private and ignored. Splits, analytical services, product
-UI and trained models remain pending. Documentation examples are synthetic
+processed mail remain private and ignored. The verified seed-42 stratified split
+has 4,689 training and 1,173 test records, joined by ID without changing retained
+text. Analytical services, product UI and trained models remain pending.
+Documentation examples are synthetic
 teaching fixtures unless explicitly identified as measured results. Model
 scores and timings must be established during implementation. No accuracy or
 calibration guarantee is approved. Historical corpus prevalence must not be

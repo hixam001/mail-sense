@@ -1,7 +1,7 @@
 # MailSense — Implementation Plan and Jira-Style Backlog
 
 **Version:** 1.0 · **Date:** 2026-11-19  
-**Status:** MSE-101–105 scaffold, environment, acquisition, parsing and deduplication verified; 34 implementation tickets remain, starting with MSE-106. See the handoff for live status.
+**Status:** MSE-101–106 foundation verified through the stratified split; Gate 1 complete. 33 implementation tickets remain, starting with MSE-201. See the handoff for live status.
 **Scope:** Complete university project, local React + FastAPI, SpamAssassin, Multinomial NB + Bernoulli NB
 
 ## 1. Delivery strategy
@@ -60,6 +60,13 @@ This maintenance task changes no application behavior. Current task status lives
 | MSE-106 | Create reproducible stratified 80/20 split, seed 42 | MSE-105 | Split manifest hashes and disjoint IDs verified in tests |
 
 **Gate 1:** Source manifest, processed data and train/test split are reproducible. Actual class counts reported; no training leakage through duplicates.
+
+Gate 1 evidence: five verified canonical sources, 5,992 parsed rows, 5,862
+retained records after exact-text deduplication, and seed-42 stratified membership
+of 4,689 train / 1,173 test. Tests and independent checks establish disjoint IDs,
+complete union coverage, no shared exact content and repeated artifact hashes.
+Near duplicates/dependence and historical sampling limitations remain; no
+training, model result or later gate is completed by this foundation.
 
 ### EPIC MSE-2 — Statistics engine (3–5 working days)
 
@@ -192,7 +199,8 @@ Dates are deliberately **not invented**. Convert to calendar milestones after co
 - [x] Record five canonical official archives, real acquisition metadata and verified SHA-256 values for MSE-103.
 - [x] Safely parse the pinned archives to private canonical text with measured counts, diagnostics and reproducible hashes for MSE-104.
 - [x] Deduplicate exact normalized text, exclude conflicting labels and derive retained token/character records with verified counts for MSE-105.
+- [x] Freeze/verify seed-42 stratified membership without modifying retained records for MSE-106; complete Gate 1.
 
-**Next task:** `MSE-106 — Create reproducible stratified 80/20 split, seed 42`.
+**Next task:** `MSE-201 — Descriptive statistics for text length/token count`.
 Keep status synchronized with `memory/HANDOFF.md`; later tickets remain open
 until their acceptance criteria are verified.

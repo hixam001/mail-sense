@@ -1,6 +1,6 @@
 # MailSense — System Architecture and Technical Design
 
-**Version:** 1.2 · **Date:** 2026-11-19 · **Status:** Scaffolds, pinned environments, acquisition, parsing and deduplication implemented; later components below remain planned
+**Version:** 1.3 · **Date:** 2026-11-19 · **Status:** Scaffolds, pinned environments and corpus pipeline through split implemented; later components below remain planned
 
 ## 1. Architecture goals
 
@@ -148,7 +148,7 @@ split. The public deduplication report pins input/output hashes, dataset identit
 versions/configuration, per-class/source counts and hash-only exclusion mappings.
 Offline verification rederives the complete dataset/report. This stage shares
 the lock/publication rollback helper with ingestion and leaves parser artifacts
-unchanged. MSE-106 owns the split; later tickets own training and runtime
+unchanged. MSE-106 implements the split; later tickets own training and runtime
 analytics. See [SETUP.md](SETUP.md).
 
 ### 5.2 Split and train
@@ -159,6 +159,16 @@ analytics. See [SETUP.md](SETUP.md).
 5. Fit `BernoulliNB(alpha=1.0)` using binary count presence. The Bernoulli model's full scoring includes absent terms.
 6. Produce held-out predictions and confusion matrices for each model on **identical** test IDs, without adjusting settings based on test outcomes.
 7. Save vectorizer, both trusted model artifacts, training metadata, split IDs and evaluation JSON.
+
+Step 1 is implemented in `corpus_split.py` with the `split_dataset` CLI.
+`load_dataset` rederives and verifies typed retained rows and their frozen CSV;
+split preparation canonicalizes ID ordering, stratifies with seed 42 and writes
+one shareable `split_manifest.json`. Its ID join supplies `split` in memory,
+preserving upstream bytes and avoiding duplicate private CSVs. Membership and
+input hashes, runtime/configuration and class counts verify by full rederivation.
+Both labels must occur in both partitions; unsupported small/imbalanced inputs
+fail explicitly. Steps 2–7 remain planned and must consume the verified train
+scope without fitting on held-out rows.
 
 ### 5.3 Runtime classification
 1. React validates pasted text, calls `POST /api/v1/predict`.

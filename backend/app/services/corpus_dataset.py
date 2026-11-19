@@ -231,9 +231,10 @@ def prepare_dataset(root):
             )
 
 
-def verify_dataset(root):
+def load_dataset(root):
+    """Return typed canonical rows after rederiving and verifying their CSV/report."""
     root, (records_path, report_path) = _paths(root)
-    _, expected = _expected(root)
+    retained, expected = _expected(root)
     actual = json.loads(report_path.read_text(encoding="utf-8"))
     # Compare canonical JSON as well as values: reject bool/int and extra fields.
     if json.dumps(actual, sort_keys=True) != json.dumps(expected, sort_keys=True):
@@ -243,4 +244,8 @@ def verify_dataset(root):
         "size_bytes": expected["records_size_bytes"],
     }:
         raise DatasetError("dataset_records_mismatch")
-    return expected
+    return retained, expected
+
+
+def verify_dataset(root):
+    return load_dataset(root)[1]

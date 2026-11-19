@@ -1,7 +1,7 @@
 # MailSense — Test Plan and Acceptance Checklist
 
-**Version:** 1.0 · **Date:** 2026-11-19  
-**Status:** Planned tests. **No implementation exists and no tests have been executed.**  
+**Version:** 1.1 · **Date:** 2026-11-19
+**Status:** Foundation suite executed through split isolation; T02 passed. Statistical/model/API/UI release scenarios remain pending.
 **Scope:** React/Vite, FastAPI, SpamAssassin ingestion, probability/statistics, Multinomial NB and Bernoulli NB.
 
 ## 1. Test philosophy
@@ -123,7 +123,7 @@ Testing framework proposal: `pytest`, FastAPI `TestClient`, React Testing Librar
 | Test ID | Date | Environment/commit | Expected | Actual | Pass/Fail | Evidence |
 |---|---|---|---|---|---|---|
 | T01 | Not run | N/A | See §2 | Not measured | Not run | — |
-| T02 | Not run | N/A | See §2 | Not measured | Not run | — |
+| T02 | 2026-11-19 | Python 3.12.15, MSE-106 | See §2 | Duplicates/conflicts removed; repeated membership identical; IDs/content isolated | Pass | `backend/tests/test_corpus_split.py::test_t02_end_to_end_duplicate_conflict_removal_split_isolation_and_repeatability`; actual 4,689/1,173 membership independently reconciled |
 | T03 | Not run | N/A | See §2 | Not measured | Not run | — |
 | T04 | Not run | N/A | See §2 | Not measured | Not run | — |
 | T05 | Not run | N/A | See §2 | Not measured | Not run | — |
@@ -131,4 +131,7 @@ Testing framework proposal: `pytest`, FastAPI `TestClient`, React Testing Librar
 | T07 | Not run | N/A | See §2 | Not measured | Not run | — |
 | T08 | Not run | N/A | See §2 | Not measured | Not run | — |
 
-Tests may be marked passed **only** after actual execution; the above rows are intentionally untested.
+Tests may be marked passed **only** after actual execution. T02 has observed
+synthetic and actual-corpus evidence. The other rows remain unexecuted as full
+release scenarios even where individual foundation unit tests cover parts of
+their requirements; dependency compatibility tests do not prove domain math.

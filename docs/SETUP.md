@@ -273,8 +273,48 @@ change, rerun downstream preparation in order. After abrupt termination, check
 no preparation process is active, remove stale lock/staging state, rerun from
 verified parsed inputs and verify again. Do not manually repair hashes/counts.
 A clone must acquire, parse and prepare locally to recreate private files.
-MSE-106 will assign the stratified 80/20 split; no vocabulary or model is fitted
+The next stage assigns the stratified 80/20 split; no vocabulary or model is fitted
 by any current corpus preparation command.
+
+## Create the split
+
+After retained-record preparation, from the repository root:
+
+```bash
+uv run --directory backend --frozen python -m scripts.split_dataset run
+uv run --directory backend --frozen python -m scripts.split_dataset verify
+```
+
+These offline commands verify the upstream pipeline before splitting canonical
+ID-sorted rows with test_size=0.2, random_state=42 and label stratification.
+Test size rounds up to `ceil(0.2*N)`, with train taking the remainder. The
+measured split is **4,689 train / 1,173 test**: training has 3,285 ham and
+1,404 spam; test has 822 ham and 351 spam. Integer allocation explains the
+fraction rounding. The same inputs/config/runtime produce byte-identical output.
+
+`data/processed/split_manifest.json` is shareable and contains only metadata,
+hashed IDs, counts, versions/configuration and input/membership hashes.
+Runtime pins are Python 3.12.15, NumPy 2.5.5 and sklearn 1.9.1. Both labels must
+appear in both partitions; empty/single-class/too-small or severely imbalanced
+inputs fail explicitly without adjusting the seed or fractions. No corpus-fitted
+vocabulary or model is produced.
+
+The retained CSV stays frozen so MSE-105 verification remains valid. For local
+Python consumers, use `load_split_dataset(root, scope="train")` from
+`app.services.corpus_split`, choosing `all`, `train` or `test`. It returns fresh typed private rows with
+membership joined by ID, and the verified manifest. Run from the backend project
+or use its Python environment/module path. The loader rejects stale or tampered
+artifacts before exposing rows. Plain retained rows are available through
+`corpus_dataset.load_dataset(root)`; the split-aware loader is required when
+selecting training data. These are local service functions, not API endpoints.
+
+Manifest reads/writes have a 16 MiB bound. Preparation stages one manifest under
+private `data/raw/.split-*`, shares `.acquisition.lock` and rolls back ordinary
+publication failures. After abrupt termination, confirm no preparation process
+is active, clear only stale lock/staging state, rerun and verify. If any upstream
+artifact changes, regenerate affected preparation stages in order and create
+the split again; do not edit IDs/counts/hashes by hand. A clone needs the full
+acquire → parse → retain → split sequence to restore local readiness.
 
 ## Locks and intentional updates
 
@@ -312,7 +352,7 @@ commit the pins and locks together. Routine installs must not change lockfiles.
 
 Initial runtime/package/corpus downloads need network access. The two local
 scaffolds, current tests and corpus parsing/verification run offline after preparation.
-Full analytical use still requires split metadata and model artifacts from later
+Full analytical use still requires statistical services and model artifacts from later
 tasks. Acquisition/environment setup supplies no cleaned dataset, trained model,
 empirical score or statistical workflow.
 

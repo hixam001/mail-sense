@@ -1,7 +1,7 @@
 # MailSense
 
 **Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** MSE-101–105 provide local scaffolds, reproducible environments, verified corpus acquisition, MIME parsing and deduplicated records with token counts. Train/test splitting, statistics, models and the analytical interface remain pending. Raw and processed message text stay local and ignored; no trained models are included.
+**Status:** MSE-101–106 provide local scaffolds, reproducible environments and a verified corpus pipeline through deduplication and the stratified split. Statistics, models and the analytical interface remain pending. Raw and processed message text stay local and ignored; no trained models are included.
 
 > **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
 
@@ -141,8 +141,29 @@ no conflicting-label groups were observed. Conflicting groups are excluded in
 full when present, as verified by synthetic fixtures. The ignored, owner-only
 `data/processed/messages.csv` includes fixed token counts and preserved
 provenance. The public [deduplication report](data/processed/deduplication_report.json)
-records counts, versions, hashes and every excluded ID/reason. Train/test
-assignment is still pending. See [setup](docs/SETUP.md#prepare-retained-records).
+records counts, versions, hashes and every excluded ID/reason. Split membership
+is stored separately. See [setup](docs/SETUP.md#prepare-retained-records).
+
+## Create the split
+
+After retained-record preparation, from the repository root:
+
+```bash
+uv run --directory backend --frozen python -m scripts.split_dataset run
+uv run --directory backend --frozen python -m scripts.split_dataset verify
+```
+
+The reproducible stratified 80/20 split uses seed 42:
+
+| Partition | Ham | Spam | Total |
+|---|---:|---:|---:|
+| Train | 3,285 | 1,404 | 4,689 |
+| Test | 822 | 351 | 1,173 |
+
+The public [split manifest](data/processed/split_manifest.json) records sorted
+IDs, class counts, configuration and hashes. Its ID join adds `split` to private
+records in memory while preserving the retained CSV. No vocabulary or model is
+fitted. See [split setup and recovery](docs/SETUP.md#create-the-split).
 
 ## Implementation sequence
 
@@ -154,15 +175,15 @@ this sequence; the handoff records current ticket status:
 3. `MSE-103` (complete): Acquire canonical archives and verify their provenance/checksums.
 4. `MSE-104` (complete): Safely extract and parse MIME to private canonical text with verified counts.
 5. `MSE-105` (complete): Deduplicate, reject label conflicts and derive retained summary records.
-6. `MSE-106` (next): Create a deterministic stratified split with verified disjoint IDs.
-7. `MSE-201–207`: Implement and verify statistics independently from ML.
+6. `MSE-106` (complete): Create a deterministic stratified split with verified disjoint IDs.
+7. `MSE-201–207` (next, starting with MSE-201): Implement and verify statistics independently from ML.
 8. `MSE-301–307`: Fit/evaluate both Naive Bayes models.
 9. `MSE-401–406`: Implement versioned FastAPI contract.
 10. `MSE-501–507`: Build five frontend modules with real API results.
 11. `MSE-601–606`: Run tests, collect evidence, finalize university report/demo.
 
-The available commands run the scaffolds and acquire, parse, deduplicate and verify the corpus.
-Later tasks add splits, training and analytical workflows.
+The available commands run the scaffolds and acquire, parse, deduplicate, split and verify the corpus.
+Later tasks add statistics, training and analytical workflows.
 
 ## Authoritative change policy
 

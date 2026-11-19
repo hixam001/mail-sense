@@ -29,7 +29,7 @@ def main():
     )
     print(
         f"Retained classes: {report['class_counts']['ham']:,} ham / "
-        f"{report['class_counts']['spam']:,} spam. Split assignment remains pending."
+        f"{report['class_counts']['spam']:,} spam. Retained stage precedes split assignment."
     )
     print("Private records: data/processed/messages.csv (ignored).")
     print("Report: data/processed/deduplication_report.json.")

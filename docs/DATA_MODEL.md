@@ -1,6 +1,6 @@
 # MailSense — Data Model and Local Artifact Specification
 
-**Version:** 1.3 · **Date:** 2026-11-19 · **Status:** Acquisition, parsing and retained records implemented; splits and models remain planned
+**Version:** 1.4 · **Date:** 2026-11-19 · **Status:** Acquisition, parsing, retained records and split implemented; models remain planned
 **Storage choice:** Local files (CSV + JSON metadata + trusted joblib model artifacts). **No database.**
 
 ## 1. Design principles
@@ -48,8 +48,9 @@ email record counts. No cleaned/retained total is established by acquisition.
 
 ## 3. Entity `ProcessedEmail` (`data/processed/messages.csv`)
 
-MSE-105 implements this retained schema except for `split`, which belongs to
-MSE-106. MSE-104's ignored `messages.parsed.jsonl` contains the same provenance
+MSE-105 implements the frozen retained CSV without a split column. MSE-106's
+verified ID join adds `split` to records in memory. MSE-104's ignored
+`messages.parsed.jsonl` contains the same provenance
 and text before deduplication, without token counts or splits. Both stages keep
 sorted `parse_warnings`; JSONL stores an array and CSV a JSON-encoded array cell.
 Parsing acceptance and post-deduplication retention are separate counts.
@@ -68,7 +69,7 @@ Parsing acceptance and post-deduplication retention are separate counts.
 | `token_count` | integer >= 0 | Yes | Count after the canonical tokenizer |
 | `content_sha256` | string | Yes | Hash of normalized model text for deduplication |
 | `parse_warnings` | array of reason codes | Yes | Preserved from the selected parsed row; JSON array string in CSV |
-| `split` | `train`/`test` | After MSE-106 | Not assigned or present in the current retained CSV |
+| `split` | `train`/`test` | In joined records | Loaded from SplitManifest by ID; frozen CSV stays unchanged |
 
 Rules:
 - `model_text` cannot be blank after normalization; a blank-message record is rejected.
@@ -184,6 +185,49 @@ requires verification/rerun. Current measured retention is 5,862 of 5,992 rows:
 | `preprocessing_version` | string | Yes | Stable version identifier |
 
 Invariants: `train_ids ∩ test_ids = ∅`; union equals the retained dataset IDs; the same corpus/config/seed yields identical membership. Perform split prior to fitting CountVectorizer vocabulary; do not re-fit it using the test set.
+
+### Implemented split contract (`stratified-v1`)
+
+Sort verified retained records by `message_id`, then call
+`train_test_split(test_size=0.2, random_state=42, stratify=labels, shuffle=True)`.
+Sort each resulting ID list before persistence. Test size is `ceil(0.2 × N)`
+and train takes the remainder; class allocation uses the pinned sklearn
+stratifier's integer allocation. Both classes must have at least two records
+and appear in both resulting partitions. Empty, single-class, too-small or
+extremely imbalanced inputs fail with `insufficient_class_support`; fractions
+and seed are never silently changed. Ordering at the caller does not change
+membership after canonical sorting.
+
+The manifest additionally records `schema_version: 1`, `split_version`,
+algorithm, shuffle/order/rounding policies, Python/NumPy/sklearn runtime versions,
+tokenizer configuration, every upstream input file's SHA-256/size,
+`total_records`, `train_records`, `test_records` and `total_counts`.
+`train_ids_sha256`/`test_ids_sha256` hash sorted IDs encoded as UTF-8, one per
+line, each including a trailing LF. `split_id` hashes compact sorted-key JSON
+of schema/split/dataset/configuration/runtime/parser/tokenizer fields plus both
+sorted membership lists; it excludes input provenance hashes and derived
+counts/list digests. The identity keys are `schema_version`, `split_version`,
+`dataset_id`, `seed`, `train_fraction`, `test_fraction`, `stratified_by`,
+`shuffle`, `canonical_order`, `algorithm`, `rounding_policy`, `runtime`,
+`preprocessing_version`, `tokenizer`, `train_ids` and `test_ids`.
+
+Publication uses the shared preparation lock and rollback helper. Manifest
+reads/writes are bounded to 16 MiB; unknown fields, wrong types/config/runtime,
+altered membership/counts/hash or stale inputs fail complete rederivation.
+The artifact contains only metadata and hashed IDs, never text or per-message
+filenames. A standalone manifest does not prove readiness without local verified
+upstream files.
+
+`corpus_dataset.load_dataset(root)` returns freshly rederived typed retained
+rows and their verified report, after checking the exact CSV hash against those
+rows. `corpus_split.load_split_dataset(root, scope="all")` returns fresh rows
+with split joined by ID and the verified manifest; `train`/`test` scopes filter
+membership. This avoids rewriting the frozen CSV or duplicating private text.
+All consumers must use the verified split join before fitting training features.
+
+Observed counts: train 4,689 (3,285 ham, 1,404 spam), test 1,173 (822 ham,
+351 spam). IDs are disjoint with complete retained coverage and no shared exact
+content hashes. Dataset identity stays unchanged from MSE-105.
 
 ## 5. Entity `Vocabulary` (serialized with trained preprocessing pipeline)
 

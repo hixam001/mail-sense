@@ -1,8 +1,8 @@
 # MailSense — Statistical and Probabilistic Methodology
 
-**Version:** 1.1 · **Date:** 2026-11-19
+**Version:** 1.2 · **Date:** 2026-11-19
 **Purpose:** Academic formulas, assumptions, verifiable examples and reproducibility rules  
-**Status:** Canonical tokenization and retained-record counts implemented; statistical services and model methods remain planned
+**Status:** Canonical tokenization, retained counts and stratified split implemented; statistical services and model methods remain planned
 
 ## 1. Statistical units and data definitions
 
@@ -151,6 +151,17 @@ Fit a single `CountVectorizer` vocabulary on the training set only (unigrams, do
 - **Bernoulli NB:** feature `bj=1[xj>0]` is presence/absence of token `j`.
 
 Two models use the same 80/20 stratified split, random seed 42, initial Laplace parameter `α=1.0`, and are evaluated on identical test IDs.
+
+The implemented `stratified-v1` split sorts verified retained IDs before
+calling the pinned
+[sklearn split function](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
+with `test_size=0.2`, `random_state=42`, `stratify=labels` and `shuffle=True`.
+Test size rounds up, train is the complement and integer class allocation is
+recorded explicitly. Observed membership is 4,689 train (3,285 ham, 1,404 spam)
+and 1,173 test (822 ham, 351 spam). Sorted ID lists, membership hashes and full
+runtime/configuration are frozen in the split manifest; no vocabulary has been
+fitted. Training code must consume only the verified `train` scope. Exact-text
+isolation does not prove independence or eliminate near-duplicate content.
 
 ### 6.2 Multinomial Naive Bayes
 

@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-105 — Deterministic deduplication and retained summary records verified**.
-Next implementation ticket: **MSE-106**.
+Latest implementation: **MSE-106 — Reproducible stratified split and Gate 1 verified**.
+Next implementation ticket: **MSE-201**.
 
 ## Read this at every task start
 
@@ -17,33 +17,30 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-106: Create reproducible stratified 80/20 split, seed 42.**
+**MSE-201: Descriptive statistics for text length/token count.**
 
-1. Analyze the complete ticket with Gravitas; read SRS split/leakage rules,
-   DATA_MODEL SplitManifest, STATISTICAL_METHODS and split fixtures. First run
-   `uv run --directory backend --frozen python -m scripts.prepare_dataset verify`.
-   A fresh clone must acquire, parse and prepare locally to recreate ignored
-   `messages.parsed.jsonl` and `messages.csv`; see SETUP commands.
-2. Consume the verified 5,862 retained rows in their canonical order. Assign
-   stratified train/test membership with test_size=0.2 and random_state=42,
-   recording the exact rounding/class counts and library/runtime configuration.
-   Reuse the existing dataset ID and `unicode-word-v1`; fit no vocabulary/model.
-3. Write a reproducible split manifest containing the seed/fractions, dataset
-   identity, disjoint unique train/test IDs, class counts, source/output hashes
-   and preprocessing version. Decide/document how current retained CSV gets its
-   planned split field without breaking MSE-105 verification; prefer a separate
-   derived artifact or join by ID rather than changing frozen retained bytes.
-4. Test deterministic repeat runs, input-order handling, disjointness, full
-   union coverage, class stratification, small/empty/single-class edge cases,
-   stale hashes and failed publication/recovery. Independently reconcile actual
-   split membership/counts; do not claim Gate 1 until all its evidence passes.
-5. Update data/setup/README and this handoff/graph, run checks, then commit/push
-   with MSE-106. The next epic starts with MSE-201 descriptive statistics; MSE-301
-   later owns training-only vocabulary fitting.
+1. Analyze the complete ticket with Gravitas; read FR-06, API A03, statistical
+   definitions and T03/T14 fixtures. First run
+   `uv run --directory backend --frozen python -m scripts.split_dataset verify`.
+   A fresh clone must acquire → parse → retain → split to recreate private data.
+2. Implement pure numerical summaries for `character_count` and `token_count`:
+   mean, median, smallest tied mode plus `mode_tied`, Q1/Q3 (linear quantiles),
+   IQR, sample variance and sample SD. Keep counts/units and undefined results
+   explicit; n<2 cannot have a sample variance/SD. Reject invalid numeric input.
+3. Integrate verified `load_split_dataset(root, scope)` for all/train/test and
+   spam/ham subsets without changing frozen corpus/split artifacts. Preserve
+   `unicode-word-v1`; no vocabulary/model fitting or API/UI implementation yet.
+4. Test known fixtures `[2,4,4,6]`, unsorted/tied/all-equal/zero values,
+   empty/single-record groups and linear quartile interpolation. Independently
+   reconcile numerical results, real class/subset sizes and units. T03's math
+   must be exercised in the new domain service, not inferred from dependency tests.
+5. Document numeric behavior/evidence, update handoff/graph and full inventory,
+   run checks, then commit/push with MSE-201. MSE-202 next owns histogram/box/top
+   word aggregates; MSE-207 later consolidates formula verification.
 
-Acceptance: identical verified corpus/config/seed yields identical split IDs
-and membership, train/test IDs are unique and disjoint, their union is exactly
-the retained dataset, and recorded class counts/hashes reconcile.
+Acceptance: mean/median/mode/quartiles/sample variance/SD pass known fixtures,
+scope/class denominators reconcile with verified membership, and undefined
+empty/small-sample cases are truthful. Gate 2 remains open until MSE-201–207.
 
 ## Established and completed preparation
 
@@ -126,7 +123,7 @@ the retained dataset, and recorded class counts/hashes reconcile.
   Shareable `parsing_report.json` contains only source metadata, versions/limits,
   counts/hashes and rejected hash IDs/reason codes. Manifest parsing counters
   are complete and reconcile. This parser stage precedes deduplication/token
-  counts; MSE-105 implements those downstream and splits remain pending.
+  counts; MSE-105 implements those downstream and MSE-106 adds the split.
 - The actual corpus has **6,046 candidates, 5,992 accepted and 54 rejected**
   for malformed MIME; five directories and five `cmds` control files are counted
   separately. Accepted by group: easy_ham 2,500; easy_ham_2 1,400; hard_ham 249;
@@ -147,7 +144,8 @@ the retained dataset, and recorded class counts/hashes reconcile.
   for content deduplication, and nonblank zero-token rows remain valid.
 - `backend/scripts/prepare_dataset.py` exposes offline `run`/`verify`. Ignored,
   owner-only `messages.csv` keeps representative provenance/text/character
-  counts/warnings and adds token counts; rows sort by ID and have no split yet.
+  counts/warnings and adds token counts; rows sort by ID. MSE-106 joins split
+  membership in memory while preserving this CSV's bytes.
   Shared `publish_artifacts` rolls back ordinary publication failures; verifier
   rederives exact CSV/report bytes from verified parser inputs. No upstream
   input, raw archive, acquisition field or SourceArchive count changes.
@@ -162,15 +160,39 @@ the retained dataset, and recorded class counts/hashes reconcile.
   spam_2 1,301. The earlier 54 MIME rejections are separate. Exact-text dedup
   does not remove near duplicates or guarantee independence/modern prevalence.
 - DATA_MODEL v1.3, STATISTICAL_METHODS token rules, SETUP/README/architecture
-  and PRODUCT evidence reflect the implemented lifecycle; split/readiness,
-  statistics, training and product UI remain pending.
-- Split assignment, domain statistical/model services, five UI modules and their
-  unit/contract suites remain unimplemented. All six release gates remain open.
+  and PRODUCT evidence reflect the implemented lifecycle.
+- **MSE-106 complete:** `corpus_split.py` and `scripts/split_dataset.py`
+  implement canonical-ID sorted, label-stratified splitting with test_size=0.2,
+  seed 42 and shuffle enabled. Test size rounds up, train is the complement;
+  both labels must occur in both subsets. Empty/single/unsupported small or
+  imbalanced inputs fail with safe codes; the policy is never silently changed.
+- `data/processed/split_manifest.json` pins sorted train/test ID lists and their
+  hashes, dataset/split identity, all upstream file hashes, runtime/configuration,
+  exact counts and rounding. No message text or member names enter the manifest
+  or CLI. Lock/staging/publication guards preserve previous outputs on ordinary
+  failures; complete rederivation detects stale/tampered input/membership.
+- `corpus_dataset.load_dataset` returns verified typed rows/report;
+  `corpus_split.load_split_dataset(root, scope="all")` joins `split` by ID in
+  fresh private rows and returns the verified manifest. `train`/`test` scopes
+  filter membership. This fulfills the split field without rewriting retained
+  CSV or duplicating text. No vocabulary/model is fitted.
+- Actual split: **4,689 train (3,285 ham, 1,404 spam)** and **1,173 test
+  (822 ham, 351 spam)**. IDs are unique/disjoint, cover all 5,862 retained rows,
+  and have no shared exact content hashes. Dataset ID and all upstream bytes,
+  original raw hashes and acquisition metadata remain unchanged.
+- **Gate 1 complete:** provenance, parsed/retained data and stratified split
+  reproduce from the pinned corpus. Exact duplicates cannot span partitions;
+  near duplicates/dependence and historical sampling limitations remain.
+  T02 is logged with observed synthetic/actual evidence in TEST_PLAN v1.1.
+  DATA_MODEL v1.4, methodology/setup/architecture/README and PRODUCT document
+  the implemented split/join and remaining boundaries.
+- Domain statistical/model services, five UI modules and their
+  unit/contract suites remain unimplemented. Gates 2–6 remain open.
   Synthetic environment checks are not measured corpus/model results.
 
 ## Full remaining implementation inventory
 
-MSE-101–105 are complete; the other **34 tickets are Not started**. Update statuses as work is
+MSE-101–106 are complete; the other **33 tickets are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -182,8 +204,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-103 | Obtain canonical official corpus archives and source/checksum manifest | Complete — real downloads/hashes/offline verification |
 | MSE-104 | Implement safe extraction and MIME text parsing | Complete — real parsing/counts/hashes verified |
 | MSE-105 | Deduplicate, reject label conflicts and derive summary records | Complete — retained uniqueness/counts/tokenizer verified |
-| MSE-106 | Verify deterministic stratified 80/20 split, seed 42 | Not started — next |
-| MSE-201 | Implement descriptive statistics for text length and token count | Not started |
+| MSE-106 | Verify deterministic stratified 80/20 split, seed 42 | Complete — membership/counts/hashes/Gate 1 verified |
+| MSE-201 | Implement descriptive statistics for text length and token count | Not started — next |
 | MSE-202 | Aggregate histograms, box plots and top-word data | Not started |
 | MSE-203 | Implement 2×2 word contingency and empirical probabilities | Not started |
 | MSE-204 | Implement Bernoulli/binomial calculations with assumptions | Not started |
@@ -219,6 +241,33 @@ Dependencies and detailed acceptance criteria are in
 
 ## Verification and delivery evidence
 
+- MSE-106: **166 pytest tests passed** (39 new split cases plus 127 existing);
+  Ruff passed across backend app/scripts/tests and bootstrap code. Fixtures
+  cover known allocation/rounding, canonical input order, unsupported class
+  support, duplicate IDs, full ingestion/dedup/conflict/split isolation and repeat
+  runs, joined scopes and caller mutation, missing/forged/stale artifacts,
+  recomputed forged membership hashes, bounds/locks/symlinks and rollback.
+- Actual split ID:
+  `e10ea9f8b406c62d14a359dd864ef2a195c8c1960c2747f1feaaea313c148c31`.
+  Train membership SHA-256:
+  `ebdc9c2d96e190b73037a5291087592ad00ab167309bdea1c6aaae037e038700`;
+  test membership SHA-256:
+  `64aef20395f55f37509281df5bf20a90846bf0e7b8b1a4842013df44b02a2629`.
+  Two actual split runs produced byte-identical manifests. Independent CSV
+  reading checked exact coverage/labels/counts/content isolation/rounding and
+  matched a direct StratifiedShuffleSplit invocation. All five upstream file
+  hashes and original raw checksums are unchanged; dataset identity is preserved.
+- MSE-106 final command:
+  `python3 .agents/skills/gravitas/scripts/verify.py --cmd 'python3 .gravitas/sessions/MSE-106/verify.py'`.
+  It returned **VERDICT: PASS** after full suite/lint, real parse → retain →
+  split reproduction, independent checks and staged privacy/ignore/diff checks.
+  All upstream hashes stayed unchanged, and the split manifest matched the
+  first real run byte for byte. Graphify produced **203 nodes, 337 directed
+  edges and 14 communities**; all 39 statuses reconcile (6 complete, 33 not
+  started) and MSE-201 retrieves as next. Verify the Git push result before
+  claiming delivery. No frontend changes or browser/build checks belong to
+  this backend task. Ignored session files are not a full installed Gravitas
+  CLI/hook runtime.
 - MSE-105: **127 pytest tests passed** (36 new dataset/tokenizer cases plus the
   previous 91); Ruff passed across backend app/scripts/tests and bootstrap code.
   Fixtures cover within/across-group duplicates, full conflicting-label groups,
@@ -343,8 +392,8 @@ Dependencies and detailed acceptance criteria are in
   maintained-file diff hygiene. Results belong in the final delivery report.
 - Branch `main` tracks `origin/main` at
   `https://github.com/hixam001/mail-sense.git`. Preparation was pushed through
-  MSE-104 commit `ee4acdf`. MSE-105 uses
-  `MSE-105: Deduplicate corpus and derive verified summary records`.
+  MSE-105 commit `53576d9`. MSE-106 uses
+  `MSE-106: Freeze reproducible stratified corpus split`.
   Observe the new commit and push result in Git. On resume, check `git log -1`,
   `git status -sb` and the upstream branch before claiming delivery.
 
