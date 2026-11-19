@@ -96,8 +96,8 @@ The environment/bootstrap tests check the pinned Python runtime, native-library 
 compatibility, both Naive Bayes classes and trusted synthetic artifact roundtrips,
 FastAPI test-client compatibility, and the Node installer's checksum/path/error
 boundaries. They use synthetic data and temporary files, not the SpamAssassin
-corpus. They do not complete the statistical algorithms, classifiers or release
-acceptance scenarios in the project backlog. Corpus-acquisition regression tests
+corpus. Separate statistical/model/API tests and the release runners cover the domain
+algorithms and critical acceptance scenarios; see the test plan for actual evidence. Corpus-acquisition regression tests
 also cover manifest integrity, cache reuse, missing/corrupted archives, transport
 limits and failure cleanup using synthetic byte streams.
 MIME/ingestion tests use real synthetic tar/bzip2 archives to cover safe paths,
@@ -106,7 +106,7 @@ artifact verification, redacted diagnostics and publication rollback.
 
 The installed application stack includes NumPy, Pandas, SciPy, scikit-learn and
 joblib, plus Recharts and a React-matched `react-is`. Matplotlib remains optional
-for later static report work and is not installed by this baseline.
+for static report work and is not installed by this baseline.
 
 ## Acquire the corpus
 
@@ -150,9 +150,9 @@ If an interrupted process leaves `data/raw/.acquisition.lock`, confirm no other
 preparation process is active before removing that stale local lock. Acquisition
 and parsing share this lock.
 
-The acquisition stage records `processing_status: "not_started"` and `null`
-parsing counters before ingestion. MSE-104 implements safe extraction and MIME parsing; MSE-105 owns
-deduplication/retained counts. The measured acquisition total is **6,962,803
+Before ingestion, a newly created manifest records `processing_status: "not_started"`
+and `null` parsing counters. Ingestion fills them; preparation computes retained
+and excluded counts. The measured acquisition total is **6,962,803
 compressed bytes** across five archives, with no claim of a cleaned email count.
 Commit the manifest and code; raw archives and temporary download files stay
 ignored. Preserve the corpus README's restrictions on live-mail use and original
@@ -262,7 +262,7 @@ dataset and exact-text policy, not modern email prevalence or model accuracy.
 
 Private `data/processed/messages.csv` is ignored and owner-only. It preserves
 the representative's provenance, text, content hash, character count and parse
-warnings and adds `token_count`; it has no `split` column yet. Standard CSV
+warnings and adds `token_count`; split membership is joined separately by ID rather than duplicating it in CSV. Standard CSV
 quoting preserves embedded model-text newlines; warning cells contain JSON
 arrays. A CSV reader needs a field limit of 1,000,000 characters for this schema.
 The CSV output limit is 512 MiB. Empty parsed input yields a header-only CSV
@@ -381,7 +381,7 @@ commit the pins and locks together. Routine installs must not change lockfiles.
 
 ## Offline use and recovery
 
-Initial runtime/package/corpus downloads need network access. The application, statistical services, local inference and evaluation run offline after the complete preparation sequence above. Initial installation/acquisition needs network access. Environment setup alone does not prepare the corpus or models.
+Initial runtime/package/corpus downloads need network access. The application, statistical services, local inference and evaluation run offline after the complete preparation sequence above. Environment setup alone does not prepare the corpus or models.
 
 If a runtime download fails verification, the helper exits before extracting
 or executing it. If a cached Node installation is damaged, remove that release's
@@ -392,3 +392,42 @@ local process; keep the documented loopback bindings and ports.
 Commit source, pins, locks and shared memory. Keep `.tools/`, virtual
 environments, dependency directories, builds, raw mail, model files and all
 local agent/tooling directories ignored as specified in `.gitignore`.
+
+
+## Independent scientific verification
+
+After evaluation, reconcile hand calculations, source hashes, retained records,
+exact split membership, training-only vocabulary, in-memory reference fits and
+held-out metrics:
+
+```bash
+uv run --directory backend --frozen python -m scripts.verify_science run
+uv run --directory backend --frozen python -m scripts.verify_science verify
+```
+
+The report includes explicitly authored teaching text, not original corpus mail.
+See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for what is checked independently.
+For a complete offline artifact check, use `verify` with each of
+`download_corpus`, `ingest_corpus`, `prepare_dataset`, `split_dataset`,
+`verify_statistics`, `train_models`, `evaluate_models` and `verify_science` in
+that order. Each exits nonzero on a mismatch; resolve it before proceeding.
+
+## Fresh-clone identities and classroom use
+
+A clone has no private archives, processed text or models. Run every preparation
+stage in README order before expecting full health readiness. Missing artifacts
+are an explicit degraded state, not a zero-sized dataset or invented prediction.
+
+New official downloads preserve the pinned archive hashes but record the new
+actual acquisition UTC time. Model training records its actual UTC time too.
+These can change provenance file hashes and model artifact identity even when
+CSV content, split membership, vocabulary, learned arrays and held-out results
+match. Regenerate downstream reports in order; do not copy old identities or
+edit hashes/timestamps to force a match. The verified original experiment is
+still recorded in the committed aggregate reports.
+
+The [eight-step demo](DEMO.md) covers all five modules, hand calculations,
+empty-input validation, real backend recovery and limitations. Browser/release
+checks generate ignored output under `frontend/test-results/` and `test-results/`.
+The [fresh-install evidence](../artifacts/reports/fresh_install.json) records the
+source-only rehearsal, separate environments and scientific comparisons.

@@ -1,252 +1,173 @@
 # MailSense
 
-**Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** 37/39 implementation tasks verified. Latest: MSE-604 — University report with measured evidence. Next: MSE-605. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
+**Statistical Analysis and Probabilistic Email Spam Detection**
 
-> **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
+**Status:** 38/39 implementation tasks verified. Latest: MSE-605 — Fresh installation and eight-step classroom rehearsal. Next: MSE-606. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
 
-## Documentation index
+Explore a historical email corpus, verify probabilities and statistical tests,
+and compare Multinomial and Bernoulli Naive Bayes in one local workspace.
+Counts, denominators, assumptions and errors accompany the results.
 
-For ongoing development, read [AGENTS.md](AGENTS.md),
-[memory/README.md](memory/README.md) and [memory/HANDOFF.md](memory/HANDOFF.md)
-first. The handoff records completed work, the full remaining backlog,
-verification evidence and the exact next task. [PRODUCT.md](PRODUCT.md) captures
-the confirmed product context for design work. The memory directory also contains
-a queryable Graphify graph and its interactive visualization.
+- **Dataset Explorer:** provenance, exclusions, class balance, summaries,
+  histograms, five-number plots and document frequencies.
+- **Probability:** contingency counts, Bayes' theorem, Bernoulli and binomial
+  demonstrations with explicit all/train/test scope.
+- **Statistical Inference:** Pearson chi-square and Wilson confidence intervals.
+- **Spam Detector:** transient subject/body input, both frozen models,
+  disagreement and faithful log-odds explanations.
+- **Model Evaluation:** identical held-out IDs, five metrics and labeled
+  confusion matrices.
 
-| File | What it contains |
-|---|---|
-| `docs/UNIVERSITY_REPORT.md` | Academic report with formulas, inspected UI figures, measured results and limitations |
-| `docs/REPRODUCIBILITY.md` | Independent hand math, corpus/hash/split and model refit checklist |
-| `docs/SETUP.md` | Pinned setup, run/check commands, corpus acquisition/parsing/verification, locks and recovery |
-| `docs/PRD.md` | Product problem, users, goals, scoped features, scenarios and success metrics |
-| `docs/SRD.md` | Short, authoritative summary of the approved build scope |
-| `docs/SRS.md` | Locked functional/non-functional requirements and acceptance gates |
-| `docs/API_CONTRACT.md` | FastAPI endpoints, parameter rules, sample JSON, response/errors |
-| `docs/DATA_MODEL.md` | Local CSV/JSON/joblib artifact records and consistency rules; no database |
-| `docs/APP_FLOW.md` | Screen inventory, navigation, user journeys, error and edge cases |
-| `docs/ARCHITECTURE.md` | Module boundaries, processing/training/inference flows, repository layout |
-| `docs/STATISTICAL_METHODS.md` | Formulas, manual examples, inference assumptions, both NB models and metrics |
-| `docs/TEST_PLAN.md` | Critical/edge-case tests, numerical fixtures and demo acceptance checklist |
-| `docs/IMPLEMENTATION_PLAN.md` | Phased development, dependencies, Jira-style MSE tickets and release gates |
+![Model evaluation with actual held-out counts and errors](docs/report/figures/evaluation.png)
 
-## Locked decisions
+## Install and prepare
 
-- **Name:** MailSense
-- **Primary academic focus:** Probability and statistics; machine learning is the applied demonstration.
-- **Dataset:** Official historical Apache SpamAssassin Public Corpus. Select one canonical archive per group and record provenance; do not add outdated revisions as new messages.
-- **Frontend:** React with Vite.
-- **Backend:** Python with FastAPI.
-- **Analysis:** NumPy, Pandas, SciPy; Recharts and optional Matplotlib for reports.
-- **Classifiers:** Multinomial and Bernoulli Naive Bayes via scikit-learn, both mandatory.
-- **Baseline evaluation:** Deduplicate first; stratified 80/20 train/test, random seed 42, `alpha=1.0`, shared training-fitted vocabulary and identical held-out test IDs.
-- **Storage:** Local files only; no relational database.
-- **Deployment:** Localhost-only; offline after dependencies and corpus are prepared; no authentication or real email integration.
-
-## Run locally
-
-Prerequisites: Python 3.12+ for bootstrap, **uv 0.13.9**, and initial network
-access. From the repository root, install the pinned Node 22.23.5/npm 10.9.9 and
-Python 3.12.15 application environments:
+Verified baseline: **Linux x86_64**, Git, a Python 3.12+ bootstrap interpreter,
+**uv 0.13.9** and initial internet access. The helper installs checksum-verified
+**Node 22.23.5/npm 10.9.9** locally; uv installs **Python 3.12.15** and frozen
+backend dependencies. No working system Node is required.
 
 ```bash
+git clone https://github.com/hixam001/mail-sense.git
+cd mail-sense
 python3 scripts/node.py install
 python3 scripts/node.py npm --prefix frontend ci
 uv sync --project backend --frozen
 ```
 
-The Node helper installs a checksum-verified official binary under ignored
-`.tools/` and works without the system Node or an old `/tmp` installation.
-See [the setup guide](docs/SETUP.md) for prerequisites and platform scope.
-
-Start the frontend:
+From the repository root, prepare the private corpus and models in this order:
 
 ```bash
-python3 scripts/node.py npm --prefix frontend run dev
+uv run --directory backend --frozen python -m scripts.download_corpus download
+uv run --directory backend --frozen python -m scripts.ingest_corpus run
+uv run --directory backend --frozen python -m scripts.prepare_dataset run
+uv run --directory backend --frozen python -m scripts.split_dataset run
+uv run --directory backend --frozen python -m scripts.verify_statistics run
+uv run --directory backend --frozen python -m scripts.train_models run
+uv run --directory backend --frozen python -m scripts.evaluate_models run
+uv run --directory backend --frozen python -m scripts.verify_science run
 ```
 
-In another terminal, start the backend:
+A clone contains shareable manifests and aggregate reports, **not original mail
+or trained models**. Installation alone therefore reports degraded readiness.
+Preparation downloads five pinned official archives and regenerates the local
+artifacts. Subsequent analytical use works offline. New acquisition/training
+UTC timestamps and provenance-dependent report hashes may differ; scientific
+counts, split membership, vocabulary and predictions reproduce with these pins.
+See [setup and recovery](docs/SETUP.md) for verification commands and platform limits.
+
+## Run
+
+In one terminal, from the repository root:
 
 ```bash
 uv run --directory backend --frozen python -m scripts.serve
 ```
 
-Open `http://localhost:5173/` for the frontend, `http://127.0.0.1:8000/` for the API greeting or
-`http://127.0.0.1:8000/openapi.json` for its schema. The shared React workspace shows real readiness and scoped corpus totals. All twelve API endpoints are implemented; the five module interfaces follow in the remaining frontend tickets. Prepare the corpus and models using the setup guide before analytical use.
+In another:
 
-### Checks
+```bash
+python3 scripts/node.py npm --prefix frontend run dev
+```
 
-From the repository root:
+Open **http://localhost:5173/**. The overview should show ready dataset, both
+models and held-out evaluation. The backend binds to **127.0.0.1:8000**;
+[health](http://127.0.0.1:8000/api/v1/health) and
+[OpenAPI JSON](http://127.0.0.1:8000/openapi.json) are local endpoints.
+
+For a production UI build, stop the development UI, then run:
+
+```bash
+python3 scripts/node.py npm --prefix frontend run build
+python3 scripts/node.py npm --prefix frontend run preview
+```
+
+Development and preview share loopback port 5173; run one at a time. The API
+remains required. Follow the [eight-step classroom demo](docs/DEMO.md).
+
+## Verify
 
 ```bash
 python3 scripts/node.py npm --prefix frontend run lint
+python3 scripts/node.py npm --prefix frontend test
 python3 scripts/node.py npm --prefix frontend run build
 uv run --project backend --frozen ruff check --config backend/pyproject.toml backend/app backend/tests backend/scripts scripts
 uv run --project backend --frozen pytest -c backend/pyproject.toml backend/tests scripts/tests
 ```
 
-Frontend and backend locks are committed. Runtime downloads, `node_modules/`,
-build output and Python virtual environments are ignored. Environment,
-bootstrap, acquisition and parsing tests use synthetic fixtures; they do not establish correctness
-of the unimplemented domain services or empirical model performance. See
-[the setup guide](docs/SETUP.md) for lock maintenance and
-[the handoff](memory/HANDOFF.md) for observed evidence.
-
-## Corpus acquisition
-
-From the repository root, after backend setup:
+For production browser acceptance, install the optional test browser once:
 
 ```bash
-uv run --directory backend --frozen python -m scripts.download_corpus download
-uv run --directory backend --frozen python -m scripts.download_corpus verify
+python3 scripts/node.py node frontend/node_modules/playwright-core/cli.js install chromium
+python3 scripts/browser_check.py --production
+python3 scripts/release_check.py
+python3 scripts/smoke_check.py
 ```
 
-The five canonical archives total **6,962,803 compressed bytes**. Their source
-URLs, groups, labels, UTC acquisition times, sizes and SHA-256 values are recorded
-in [source_manifest.json](data/processed/source_manifest.json). Raw downloads stay
-under ignored `data/raw/`; verification and complete-cache reuse work offline.
-The completed parsing run populates integer counters. See
-[the setup guide](docs/SETUP.md#acquire-the-corpus) for selection and recovery.
+These runners start and stop their own missing local servers. Stop existing
+app servers before release/failure/offline checks to keep the test environment
+unambiguous. A trusted existing Chromium can be selected with
+`--browser /absolute/path/to/chromium`. Initial browser installation needs
+network access. [UI coverage](docs/UI_VERIFICATION.md),
+[runtime method](docs/RUNTIME_VERIFICATION.md) and the
+[test plan](docs/TEST_PLAN.md) describe the observed scope and limitations.
 
-## Parse the corpus
+## Measured experiment
 
-After acquisition, from the repository root:
+Five canonical Apache SpamAssassin archives yielded **5,862 retained emails**:
+4,107 ham and 1,755 spam. Parsing excluded 54 malformed-MIME candidates;
+deduplication excluded 130 same-label duplicates. A seed-42 stratified 80/20 split
+contains **4,689 train / 1,173 test** records. Both models use the same 60,135
+training-only features, test IDs and α=1 smoothing.
 
-```bash
-uv run --directory backend --frozen python -m scripts.ingest_corpus run
-uv run --directory backend --frozen python -m scripts.ingest_corpus verify
-```
+| Model | TN | FP | FN | TP | Accuracy | Spam recall |
+|---|---:|---:|---:|---:|---:|---:|
+| Multinomial | 814 | 8 | 14 | 337 | 98.12% | 96.01% |
+| Bernoulli | 815 | 7 | 70 | 281 | 93.44% | 80.06% |
 
-The measured run accepted **5,992 / 6,046 candidates**, rejected **54** for
-malformed MIME structure, and ignored five archive control files. These are
-**pre-deduplication counts**. The private intermediate stays in ignored
-`data/processed/messages.parsed.jsonl`; the shareable
-[parsing report](data/processed/parsing_report.json) records hashes, counts and
-reason codes. Both runs produced byte-identical outputs. See
-[setup and recovery](docs/SETUP.md#parse-the-corpus) and the
-[parsing contract](docs/DATA_MODEL.md#implemented-parsing-contract-mime-v1).
+These are measured results on one historical holdout. They do not establish
+modern robustness, population prevalence or calibrated probabilities. Exact
+values and identities are in the [model card](docs/MODEL_CARD.md) and
+[evaluation JSON](artifacts/reports/evaluation.json). The
+[university report](docs/UNIVERSITY_REPORT.md) includes formulas, inspected
+screenshots, runtime measurements, an authored failure example and limitations.
 
-## Prepare retained records
+## Documentation and project memory
 
-After parsing, from the repository root:
+| Document | Purpose |
+|---|---|
+| [Setup](docs/SETUP.md) | Full preparation, locks, verification and recovery |
+| [Demo](docs/DEMO.md) | Eight-step classroom walkthrough and evidence mapping |
+| [University report](docs/UNIVERSITY_REPORT.md) | Academic methods, figures, results and limitations |
+| [Reproducibility](docs/REPRODUCIBILITY.md) | Independent arithmetic, hashes, split and reference refits |
+| [Model card](docs/MODEL_CARD.md) | Model identities, results and explanation semantics |
+| [SRS](docs/SRS.md), [PRD](docs/PRD.md), [SRD](docs/SRD.md) | Locked scope and requirements |
+| [Architecture](docs/ARCHITECTURE.md), [API](docs/API_CONTRACT.md), [data model](docs/DATA_MODEL.md) | Implementation boundaries and contracts |
+| [Statistical methods](docs/STATISTICAL_METHODS.md), [app flow](docs/APP_FLOW.md) | Formulas and user journeys |
+| [Test plan](docs/TEST_PLAN.md), [implementation plan](docs/IMPLEMENTATION_PLAN.md) | Acceptance and full 39-ticket backlog |
+| [Design system](DESIGN.md), [UI verification](docs/UI_VERIFICATION.md) | Interface conventions and browser checks |
+| [Handoff](memory/HANDOFF.md), [memory guide](memory/README.md) | Current progress, next task and Graphify retrieval |
 
-```bash
-uv run --directory backend --frozen python -m scripts.prepare_dataset run
-uv run --directory backend --frozen python -m scripts.prepare_dataset verify
-```
+For development, read [AGENTS.md](AGENTS.md) and the handoff first. The workflow
+is Gravitas analysis → implementation → verification → handoff/graph update →
+Jira-style commit → push. Agent installations under `.agent/`, `.agents/`,
+`.codex/`, `.gravitas/` and `.impeccable/` remain local and ignored. No agent skill
+or Graphify installation is required to run MailSense.
 
-The measured result is **5,862 retained records: 4,107 ham and 1,755 spam**.
-From 5,992 parsed rows, 130 same-label duplicates were excluded across 96 groups;
-no conflicting-label groups were observed. Conflicting groups are excluded in
-full when present, as verified by synthetic fixtures. The ignored, owner-only
-`data/processed/messages.csv` includes fixed token counts and preserved
-provenance. The public [deduplication report](data/processed/deduplication_report.json)
-records counts, versions, hashes and every excluded ID/reason. Split membership
-is stored separately. See [setup](docs/SETUP.md#prepare-retained-records).
+## Local data and scope
 
-## Create the split
+Pasted text is processed on this computer and is discarded when cleared or when
+leaving the detector; it is absent from persistent history, URLs and normal
+server logs. HTML, attachments and message-linked resources are never executed
+or fetched. Files remain local; normal use does not train models.
 
-After retained-record preparation, from the repository root:
+This educational application has no accounts, live mailbox connection, mail
+sending, quarantine, external inference or hosted deployment. Only trusted
+project-created joblib files are supported. Keep raw mail, processed text,
+models, credentials, runtime environments and agent files ignored; share only
+source, lockfiles, manifests and aggregate reports.
 
-```bash
-uv run --directory backend --frozen python -m scripts.split_dataset run
-uv run --directory backend --frozen python -m scripts.split_dataset verify
-```
-
-The reproducible stratified 80/20 split uses seed 42:
-
-| Partition | Ham | Spam | Total |
-|---|---:|---:|---:|
-| Train | 3,285 | 1,404 | 4,689 |
-| Test | 822 | 351 | 1,173 |
-
-The public [split manifest](data/processed/split_manifest.json) records sorted
-IDs, class counts, configuration and hashes. Its ID join adds `split` to private
-records in memory while preserving the retained CSV. No vocabulary or model is
-fitted. See [split setup and recovery](docs/SETUP.md#create-the-split).
-
-## Verify statistical methods
-
-```bash
-uv run --directory backend --frozen python -m scripts.verify_statistics run
-uv run --directory backend --frozen python -m scripts.verify_statistics verify
-```
-
-The [verification report](artifacts/reports/statistics_verification.json) separates
-synthetic worked examples from measured corpus aggregates and pins their inputs.
-Thirteen numerical checks and the regression suite verify Gate 2 without models
-or UI. Descriptive, distribution, empirical probability, binomial, Pearson and
-Wilson services, all twelve API routes and the five analytical modules are implemented. Release checks are recorded in the handoff.
-
-## Train local models
-
-```bash
-uv run --directory backend --frozen python -m scripts.train_models run
-uv run --directory backend --frozen python -m scripts.train_models verify
-```
-
-The shared vocabulary and both alpha=1 Naive Bayes models fit the frozen training
-partition. Private artifacts stay ignored under `artifacts/models/`; metadata
-and checksums tie them to the dataset, split, feature mapping and runtime.
-Only project-created artifacts are loaded. Held-out evaluation follows separately.
-
-## Evaluate the frozen models
-
-```bash
-uv run --directory backend --frozen python -m scripts.evaluate_models run
-uv run --directory backend --frozen python -m scripts.evaluate_models verify
-```
-
-The [measured evaluation](artifacts/reports/evaluation.json) uses identical 1,173
-held-out IDs for both models. Accuracy is 98.12% for Multinomial and 93.44% for
-Bernoulli on this historical split; confusion matrices and all metrics are
-recorded with provenance. These results do not establish modern robustness or
-calibrated probability. Evaluation never fits or tunes a model.
-
-See the [model card](docs/MODEL_CARD.md) for measured metrics, complete provenance,
-explanation semantics and limitations. Gate 3 is verified in Python; API/UI
-integration follows.
-
-## Implementation sequence
-
-The requirements and acceptance gates are documented in `docs/`. Delivery follows
-this sequence; the handoff records current ticket status:
-
-1. `MSE-101` (complete): Create frontend (`frontend/`) and backend (`backend/`) skeletons.
-2. `MSE-102` (complete): Pin runtimes/dependencies and verify reproducible setup.
-3. `MSE-103` (complete): Acquire canonical archives and verify their provenance/checksums.
-4. `MSE-104` (complete): Safely extract and parse MIME to private canonical text with verified counts.
-5. `MSE-105` (complete): Deduplicate, reject label conflicts and derive retained summary records.
-6. `MSE-106` (complete): Create a deterministic stratified split with verified disjoint IDs.
-7. `MSE-201–207` (complete): Implement and verify statistics independently from ML.
-8. `MSE-301–307` (complete): Fit/evaluate both Naive Bayes models.
-9. `MSE-401–406` (next): Implement versioned FastAPI contract.
-10. `MSE-501–507`: Build five frontend modules with real API results.
-11. `MSE-601–606`: Run tests, collect evidence, finalize university report/demo.
-
-The available commands run the complete local application and prepare/verify its corpus, models and held-out evaluation.
-Later tasks add statistics, training and analytical workflows.
-
-## Authoritative change policy
-
-`docs/SRS.md` is the locked technical baseline. Document intentional changes to dataset, stack, models, deployment, or scope as a new approved version and update API/data/flow/test documents together. Examples and scores in docs are **synthetic teaching fixtures unless explicitly labeled actual measured data**.
-
-## Repository hygiene
-
-Agent installations and local tooling state (`.agent/`, `.agents/`, `.codex/`,
-`.gravitas/`, `.impeccable/`) are ignored and must be installed/configured locally
-on a fresh clone. Previously tracked tooling has been untracked; local copies
-are retained. `AGENTS.md`, `memory/`, application source and lockfiles stay in Git.
-
-The ignore rules also cover credentials, environments, dependency directories,
-caches, builds, test output, raw corpus messages, processed message files and
-trained models. Source/split manifests and evaluation reports remain trackable,
-along with the empty data/model directory placeholders. Do not force-add local
-tooling or sensitive data.
-
-## Sources and responsible data use
-
-- Official corpus index: <https://spamassassin.apache.org/old/publiccorpus/>
-- Official corpus README: <https://spamassassin.apache.org/old/publiccorpus/readme.html>
-
-The upstream corpus README cautions against sending the supplied messages into a live mail system and states that original message text rights remain with the original senders. Keep source emails local and exclude them from a public repo. Never present the historical corpus's class prevalence as a modern general-population estimate.
+The official [corpus index](https://spamassassin.apache.org/old/publiccorpus/)
+and [README](https://spamassassin.apache.org/old/publiccorpus/readme.html)
+document provenance and restrictions. Original message rights remain with their
+senders. Do not send corpus messages through a live mail system.

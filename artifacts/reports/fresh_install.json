@@ -1,0 +1,121 @@
+{
+  "checked_at": "2026-11-19T17:50:10.851368+00:00",
+  "checkout_method": "git clone --no-local from the source repository; no private files or environments copied",
+  "demo_steps": {
+    "1": "Ready actual fresh artifacts; production overview",
+    "2": "Actual token and character controls; independent descriptive fixture",
+    "3": "Actual word counts and Bayes in production UI; direct recount",
+    "4": "Bernoulli/binomial production page; independent known-answer fixture",
+    "5": "Pearson and Wilson actual UI and independently verified examples",
+    "6": "Authored text classified by both models; explanation and privacy tests",
+    "7": "Exact held-out metrics and identities checked against UI",
+    "8": "Blank/maximum input plus actual API stop/restart and missing-model recovery; limitations in demo guide"
+  },
+  "environment": {
+    "backend_python": "3.12.15",
+    "browser": "143.0.7499.4",
+    "machine": "x86_64",
+    "node": "22.23.5",
+    "npm": "10.9.9",
+    "os": "Linux",
+    "uv": "0.13.9"
+  },
+  "initial_private_inputs_and_environments_absent": true,
+  "limitations": [
+    "Fresh application environments/data, with downloads allowed to reuse external package/runtime caches.",
+    "Local source clone rather than a new GitHub network clone; exact source commit is recorded.",
+    "Linux x86_64 and recorded Chromium only; no attended classroom presentation or examiner signoff.",
+    "New real acquisition/training times change provenance identities; old reports were not copied to force a match."
+  ],
+  "preparation": {
+    "fresh_artifact_id": "30ef8853a9b9730600c12256ea519887426291b6fd07b09497663cab8edd35af",
+    "modules": [
+      "download_corpus",
+      "ingest_corpus",
+      "prepare_dataset",
+      "split_dataset",
+      "verify_statistics",
+      "train_models",
+      "evaluate_models",
+      "verify_science"
+    ],
+    "official_archives_downloaded": 5,
+    "original_artifact_id": "747bb5f51c2d231140efcc17d1316be68407d07fa9f9a7adcca1b3df2ce01ca3",
+    "private_parsed_and_retained_bytes_match_original": true,
+    "provenance_identity_differs": true,
+    "run_and_verify_passed": true,
+    "science_fields_identical": [
+      "archive_hashes",
+      "dataset_id",
+      "split_id",
+      "classes",
+      "retained_records",
+      "train_records",
+      "test_records",
+      "training_features",
+      "held_out_only_tokens_excluded",
+      "vocabulary_sha256",
+      "models",
+      "synthetic_example"
+    ]
+  },
+  "recipe_sha256": "7b078265eb1e46b5fbd09eed17b497561bb38b5ecb8f002dcd2beced2c771e43",
+  "result": "pass",
+  "scientific_counts": {
+    "classes": {
+      "ham": 4107,
+      "spam": 1755
+    },
+    "dataset_id": "ccd3321b252f22aaa5e6e1e74d96140b46c088a15474e8607c6259b2467c9c7a",
+    "held_out_only_tokens_excluded": 12200,
+    "retained_records": 5862,
+    "split_id": "e10ea9f8b406c62d14a359dd864ef2a195c8c1960c2747f1feaaea313c148c31",
+    "test_records": 1173,
+    "train_records": 4689,
+    "training_features": 60135,
+    "vocabulary_sha256": "f7ba4c18eef3aa09cacedf7f2518f4c97431a56d2f06c7f9c0c08a5af4402937"
+  },
+  "source_commit": "ffb8d4bffffa764947707f3fcc0334f163cadbeb",
+  "task": "MSE-605",
+  "unchanged_locks": {
+    ".node-version": "b2afc67902c3f2fda89443fd46f58866d10ae3313e6b23257ecf6d4b322cfc90",
+    ".python-version": "845c494b4a7e1a741db19fd42eda239d3ee03b65f08276008943349a3055c9cc",
+    "backend/requirements.txt": "5200c53a478411014afd28437d5131d1c783fe010af74fa067020e8b96c391f4",
+    "backend/uv.lock": "cb8234f2113afc4dee8c3f553a864f6724f4d42264f04ad2422a80eb392bbe6c",
+    "frontend/package-lock.json": "a601d53018489bcf4d1612e8b2419f08dcddac65313e89a7b887fcd1b870279a"
+  },
+  "verification": {
+    "critical_scenarios": {
+      "T01": "pass",
+      "T02": "pass",
+      "T03": "pass",
+      "T04": "pass",
+      "T05": "pass",
+      "T06": "pass",
+      "T07": "pass",
+      "T08": "pass"
+    },
+    "eslint": "pass",
+    "fresh_health_and_two_distribution_controls": "pass",
+    "frontend_tests_passed": 8,
+    "production_build": "pass",
+    "production_ui": {
+      "browser": "143.0.7499.4",
+      "checks": [
+        "routes",
+        "keyboard",
+        "stale responses",
+        "privacy",
+        "retry",
+        "404"
+      ],
+      "routes": 6,
+      "viewports": [
+        "1366x900",
+        "390x844"
+      ]
+    },
+    "python_tests_passed": 401,
+    "ruff": "pass"
+  }
+}

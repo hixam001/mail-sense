@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-604 — University report with measured evidence**.
-Next implementation ticket: **MSE-605**.
+Latest implementation: **MSE-605 — Fresh installation and eight-step classroom rehearsal**.
+Next implementation ticket: **MSE-606**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-605** — Rehearse source-only fresh local installation, regenerate corpus/models and prove full readiness; finish README/SETUP and eight-step classroom script with observed evidence, commit/push then final freeze606.
+**MSE-606** — Freeze v1.0.0 consistently, document known limits and release checklist, teach graph memory the completed/no-next state, run final release/science/privacy/browser/dependency checks, update all39 statuses and Gate6, commit/push and verify clean remote delivery.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -231,9 +231,11 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-604 implemented:** University report with measured evidence. Academic report includes descriptive probability Pearson Wilson and both NB formulas, five inspected production screenshots with hashes, actual exclusions split metrics timings and authored disagreement. Owned validator reconciles all displayed metrics/descriptives/timings against JSON, image bytes/dimensions and local references. Primary Apache/scikit-learn/SciPy/Wilson references checked. Documentation-only task; application unchanged.
 
+- **MSE-605 implemented:** Fresh installation and eight-step classroom rehearsal. Source-only local clone began without runtime environments corpus text archives or models. Pinned Node/npm, frozen Python environment and matching Chromium143 installed; five official archives downloaded. Eight preparation stages and all verifiers pass. Fresh CSV/text bytes, exact split/vocabulary and both model results reproduce; new actual provenance changes artifact identity honestly. Fresh401 Python tests,8 frontend tests,Ruff,ESLint,production build,six desktop/mobile routes,keyboard,privacy and real API/missing-model recovery all pass. Fresh health and token/character UI controls verified. README/SETUP/DEMO and aggregate fresh-install report finalized.
+
 ## Full remaining implementation inventory
 
-**37 implementation tickets are complete; 2 are Not started**. Update statuses as work is
+**38 implementation tickets are complete; 1 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -277,10 +279,12 @@ Dependencies and detailed acceptance criteria are in
 | MSE-602 | Verify security, privacy, offline use and measured performance | Complete — acceptance verified |
 | MSE-603 | Independently verify math, provenance and model integrity | Complete — acceptance verified |
 | MSE-604 | Complete university report with real screenshots and measurements | Complete — acceptance verified |
-| MSE-605 | Finalize installation README and classroom demo script | Not started — next |
-| MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started |
+| MSE-605 | Finalize installation README and classroom demo script | Complete — acceptance verified |
+| MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Not started — next |
 
 ## Verification and delivery evidence
+
+- **MSE-605 — Fresh installation and eight-step classroom rehearsal:** Source-only local clone began without runtime environments corpus text archives or models. Pinned Node/npm, frozen Python environment and matching Chromium143 installed; five official archives downloaded. Eight preparation stages and all verifiers pass. Fresh CSV/text bytes, exact split/vocabulary and both model results reproduce; new actual provenance changes artifact identity honestly. Fresh401 Python tests,8 frontend tests,Ruff,ESLint,production build,six desktop/mobile routes,keyboard,privacy and real API/missing-model recovery all pass. Fresh health and token/character UI controls verified. README/SETUP/DEMO and aggregate fresh-install report finalized.
 
 - **MSE-604 — University report with measured evidence:** Academic report includes descriptive probability Pearson Wilson and both NB formulas, five inspected production screenshots with hashes, actual exclusions split metrics timings and authored disagreement. Owned validator reconciles all displayed metrics/descriptives/timings against JSON, image bytes/dimensions and local references. Primary Apache/scikit-learn/SciPy/Wilson references checked. Documentation-only task; application unchanged.
 

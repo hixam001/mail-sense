@@ -11,7 +11,7 @@ Prioritize mathematical correctness, scientific reproducibility and honest failu
 - **Synthetic, known-answer fixtures:** Small constructed datasets with exactly checkable results.
 - **Actual SpamAssassin corpus:** Real historical email inputs whose retained record counts and model accuracy must be **measured after preprocessing**; never substitute synthetic numbers.
 
-Testing framework proposal: `pytest`, FastAPI `TestClient`, React Testing Library with Vitest, and optional Playwright for one end-to-end smoke path. No heavy infrastructure or cloud test services required.
+Implemented checks use `pytest`, FastAPI `TestClient`, Node's built-in test runner for frontend helpers, and Playwright for production browser workflows. No cloud test service is required.
 
 ## 2. Critical release-blocking scenarios
 
@@ -99,15 +99,17 @@ Testing framework proposal: `pytest`, FastAPI `TestClient`, React Testing Librar
 
 ## 7. Manual university demonstration acceptance
 
-1. Start the two local processes and show backend `ready`.
-2. Explore spam/ham class proportions and two descriptive distributions.
-3. Check a manually computed mean, variance and quartile example.
-4. Select `free`, show its empirical 2×2 table, Bayes' theorem, and Bernoulli/binomial explanation.
-5. Run Pearson chi-square, inspect expected counts, assumptions and a Wilson 95% confidence interval.
-6. Paste an example email; obtain Multinomial and Bernoulli predictions and model-faithful explanations.
-7. Compare the classifiers on identical test IDs and interpret false positives/negatives.
-8. Demonstrate empty text rejection and loss-of-backend recovery.
-9. Explain corpus age, lack of random sampling and non-calibrated model probabilities.
+The [eight-step demo](DEMO.md) supplies exact actions, expected counts and
+recovery commands:
+
+1. Start the two local processes and confirm all readiness checks.
+2. Explore class proportions, token/character summaries and distributions; hand-check descriptive math.
+3. Analyze `free`, its empirical 2×2 table and Bayes' theorem.
+4. Explain Bernoulli and binomial variables and their assumptions.
+5. Run Pearson chi-square and inspect a Wilson 95% confidence interval.
+6. Classify the authored example with both models and inspect explanations.
+7. Compare identical held-out IDs and interpret false positives/negatives.
+8. Demonstrate empty input, real backend recovery and explain dataset/model limitations.
 
 ## 8. Defect triage and exit criteria
 
