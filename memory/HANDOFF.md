@@ -3,8 +3,8 @@
 Last updated: 2026-11-19 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-305 — Identical held-out model evaluation with reconciled metrics**.
-Next implementation ticket: **MSE-306**.
+Latest implementation: **MSE-306 — Transient dual-model inference and faithful log-odds explanations**.
+Next implementation ticket: **MSE-307**.
 
 ## Read this at every task start
 
@@ -17,7 +17,7 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-306** — Implement transient prediction and faithful token log-odds explanations including Bernoulli absent-feature aggregate, input limits, class-index lookup and unknown-token warnings; verify score decomposition and no writes, commit/push then document model limitations MSE-307.
+**MSE-307** — Produce a measured model card from the evaluation report, documenting exact shared split/test identities, fixed parameters, calibration/historical/near-duplicate limitations and tradeoffs. Verify Gate 3, commit/push, then begin FastAPI readiness and shared errors MSE-401.
 
 Continue the application backlog autonomously after each verified commit/push. Analyze each task with Gravitas, preserve all remaining tickets, verify acceptance, update this handoff and graph, then commit/push without contributor trailers.
 
@@ -191,11 +191,13 @@ Continue the application backlog autonomously after each verified commit/push. A
 
 - **MSE-304 implemented:** Trusted model persistence and provenance verification. 298 tests passed under Gravitas; Ruff clean. All three binary hashes and strict metadata are checked before any unpickling; bounded fixed local files reject links, staleness, runtime/split mismatches and corruption. Publication rollback and owner-only permissions verified. Actual cross-process deterministic training/reload preserves original provenance; artifact ID 747bb5f51c2d231140efcc17d1316be68407d07fa9f9a7adcca1b3df2ce01ca3. Models and metadata remain ignored.
 
-- **MSE-305 implemented:** Identical held-out model evaluation with reconciled metrics. 303 tests passed under Gravitas; Ruff clean. Both models use the same 1173 test IDs/hash; sklearn independently matches all confusion counts and accuracy/precision/recall/F1. Actual Multinomial TN814 FP8 FN14 TP337, accuracy .9812446717817562; Bernoulli TN815 FP7 FN70 TP281, accuracy .9343563512361466. Report is byte-repeatable, zero denominators are null with notes, no fitting/tuning occurs in evaluation.
+- **MSE-305 implemented:** Identical held-out model evaluation with reconciled metrics. 303 tests passed under Gravitas; Ruff clean. Both models use the same 1173 test IDs/hash; sklearn independently matches all confusion counts and accuracy/precision/recall/F1. Actual Multinomial TN814 FP8 FN14 TP337, accuracy .9812446717817562; Bernoulli TN815 FP7 FN70 TP281, accuracy .9343563512361467. Report is byte-repeatable, zero denominators are null with notes, no fitting/tuning occurs in evaluation.
+
+- **MSE-306 implemented:** Transient dual-model inference and faithful log-odds explanations. 314 tests passed under Gravitas; Ruff clean. Per-token contributions plus class prior, omitted-present remainder and Bernoulli absent-feature aggregate reconcile with public model log-probabilities on fixtures and actual models. Repetitions, class-column lookup, unknown tokens, blank/control-only text and 50000-character bounds verified. Predictions do not echo or persist submitted text; model file hashes remain unchanged.
 
 ## Full remaining implementation inventory
 
-**18 implementation tickets are complete; 21 are Not started**. Update statuses as work is
+**19 implementation tickets are complete; 20 are Not started**. Update statuses as work is
 implemented and verified; retain incomplete and blocked tickets in this table.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -220,8 +222,8 @@ Dependencies and detailed acceptance criteria are in
 | MSE-303 | Train Bernoulli Naive Bayes with alpha=1.0 | Complete — acceptance verified |
 | MSE-304 | Persist trusted artifacts, matching metadata and checksums | Complete — acceptance verified |
 | MSE-305 | Evaluate both models on the same untouched holdout | Complete — acceptance verified |
-| MSE-306 | Implement faithful token/prior and absent-feature explanations | Not started — next |
-| MSE-307 | Save evaluation evidence and document model limitations | Not started |
+| MSE-306 | Implement faithful token/prior and absent-feature explanations | Complete — acceptance verified |
+| MSE-307 | Save evaluation evidence and document model limitations | Not started — next |
 | MSE-401 | Implement FastAPI health/readiness and shared error envelope | Not started |
 | MSE-402 | Implement dataset summary/statistics/distribution routes | Not started |
 | MSE-403 | Implement probability and statistical inference routes | Not started |
@@ -244,7 +246,9 @@ Dependencies and detailed acceptance criteria are in
 
 ## Verification and delivery evidence
 
-- **MSE-305 — Identical held-out model evaluation with reconciled metrics:** 303 tests passed under Gravitas; Ruff clean. Both models use the same 1173 test IDs/hash; sklearn independently matches all confusion counts and accuracy/precision/recall/F1. Actual Multinomial TN814 FP8 FN14 TP337, accuracy .9812446717817562; Bernoulli TN815 FP7 FN70 TP281, accuracy .9343563512361466. Report is byte-repeatable, zero denominators are null with notes, no fitting/tuning occurs in evaluation.
+- **MSE-306 — Transient dual-model inference and faithful log-odds explanations:** 314 tests passed under Gravitas; Ruff clean. Per-token contributions plus class prior, omitted-present remainder and Bernoulli absent-feature aggregate reconcile with public model log-probabilities on fixtures and actual models. Repetitions, class-column lookup, unknown tokens, blank/control-only text and 50000-character bounds verified. Predictions do not echo or persist submitted text; model file hashes remain unchanged.
+
+- **MSE-305 — Identical held-out model evaluation with reconciled metrics:** 303 tests passed under Gravitas; Ruff clean. Both models use the same 1173 test IDs/hash; sklearn independently matches all confusion counts and accuracy/precision/recall/F1. Actual Multinomial TN814 FP8 FN14 TP337, accuracy .9812446717817562; Bernoulli TN815 FP7 FN70 TP281, accuracy .9343563512361467. Report is byte-repeatable, zero denominators are null with notes, no fitting/tuning occurs in evaluation.
 
 - **MSE-304 — Trusted model persistence and provenance verification:** 298 tests passed under Gravitas; Ruff clean. All three binary hashes and strict metadata are checked before any unpickling; bounded fixed local files reject links, staleness, runtime/split mismatches and corruption. Publication rollback and owner-only permissions verified. Actual cross-process deterministic training/reload preserves original provenance; artifact ID 747bb5f51c2d231140efcc17d1316be68407d07fa9f9a7adcca1b3df2ce01ca3. Models and metadata remain ignored.
 

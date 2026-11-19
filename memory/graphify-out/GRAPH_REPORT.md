@@ -1,7 +1,7 @@
 # Graph Report - mail-sense  (2026-11-19)
 
 ## Corpus Check
-- 16 files · ~30,432 words
+- 16 files · ~30,668 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -38,7 +38,7 @@
 10. `MSE-304` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Next task` --next_task--> `MSE-306`  [EXTRACTED]
+- `Next task` --next_task--> `MSE-307`  [EXTRACTED]
   memory/HANDOFF.md → docs/IMPLEMENTATION_PLAN.md
 
 ## Communities (14 total, 0 thin omitted)
