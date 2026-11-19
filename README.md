@@ -1,7 +1,7 @@
 # MailSense
 
 **Version:** 1.0 · **Requirements locked:** November 19, 2026  
-**Status:** 36/39 implementation tasks verified. Latest: MSE-603 — Independent scientific reproducibility. Next: MSE-604. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
+**Status:** 37/39 implementation tasks verified. Latest: MSE-604 — University report with measured evidence. Next: MSE-605. See [handoff](memory/HANDOFF.md) for current functionality and evidence.
 
 > **MailSense — Statistical Analysis and Probabilistic Email Spam Detection** is a university probability-and-statistics application with two Naive Bayes classifiers. React + Vite frontend, Python + FastAPI backend, Apache SpamAssassin Public Corpus, and local deployment are the approved baseline.
 
@@ -16,6 +16,8 @@ a queryable Graphify graph and its interactive visualization.
 
 | File | What it contains |
 |---|---|
+| `docs/UNIVERSITY_REPORT.md` | Academic report with formulas, inspected UI figures, measured results and limitations |
+| `docs/REPRODUCIBILITY.md` | Independent hand math, corpus/hash/split and model refit checklist |
 | `docs/SETUP.md` | Pinned setup, run/check commands, corpus acquisition/parsing/verification, locks and recovery |
 | `docs/PRD.md` | Product problem, users, goals, scoped features, scenarios and success metrics |
 | `docs/SRD.md` | Short, authoritative summary of the approved build scope |

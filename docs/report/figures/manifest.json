@@ -1,0 +1,44 @@
+{
+  "capture_task": "MSE-507",
+  "capture_commit": "1e1149f",
+  "source": "Production UI Chromium 151.0.7922.34; viewport 1366x900; full page",
+  "capture_date": "2026-11-19",
+  "content": "Corpus aggregates and authored synthetic teaching text only",
+  "figures": [
+    {
+      "file": "dataset.png",
+      "route": "/dataset",
+      "sha256": "37613ef0a94b4d75d6b6af240c6042108b1bc132554e9e4398da449cf2777684",
+      "width": 1366,
+      "height": 3024
+    },
+    {
+      "file": "probability.png",
+      "route": "/probability",
+      "sha256": "f22bb9eebaf32fa754b68a330b7d43cd88950b0d15cb40368ffb92b59456b454",
+      "width": 1366,
+      "height": 2187
+    },
+    {
+      "file": "statistics.png",
+      "route": "/statistics",
+      "sha256": "02a0bfb03eea6bf8d59f79870e0c402a95fcdee44a025747086cc6ff19518a74",
+      "width": 1366,
+      "height": 2037
+    },
+    {
+      "file": "detect.png",
+      "route": "/detect",
+      "sha256": "40041ba0699df4c4c59f368385e19c7b66756c5c73ab2c8fcbbc451fc5cb389d",
+      "width": 1366,
+      "height": 1346
+    },
+    {
+      "file": "evaluation.png",
+      "route": "/evaluation",
+      "sha256": "dc1b3c2628da98e6797268865d50a5355fac81d5d18c9c58d40eea8899aac5c5",
+      "width": 1366,
+      "height": 1881
+    }
+  ]
+}
