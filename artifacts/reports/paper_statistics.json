@@ -1,0 +1,188 @@
+{
+  "analysis_version": "paper-secondary-v1",
+  "artifact_id": "747bb5f51c2d231140efcc17d1316be68407d07fa9f9a7adcca1b3df2ce01ca3",
+  "cost_sensitivity": {
+    "examples": {
+      "1": {
+        "bernoulli": 77,
+        "multinomial": 22
+      },
+      "10": {
+        "bernoulli": 140,
+        "multinomial": 94
+      },
+      "100": {
+        "bernoulli": 770,
+        "multinomial": 814
+      },
+      "56": {
+        "bernoulli": 462,
+        "multinomial": 462
+      }
+    },
+    "false_negative_unit_cost": 1,
+    "interpretation": "Post-hoc empirical sensitivity; no estimated user costs or tuning.",
+    "loss_difference_multinomial_minus_bernoulli": "lambda - 56",
+    "observed_break_even_false_positive_cost": 56
+  },
+  "dataset_id": "ccd3321b252f22aaa5e6e1e74d96140b46c088a15474e8607c6259b2467c9c7a",
+  "evaluation_sha256": "8faefc79665fb15c5a0a3ad5cab37cbf2d1fb92bd4bf3ac2b3628f8dd533422c",
+  "limitations": [
+    "Intervals/test assume independent messages; threads/near duplicates may violate this.",
+    "Bootstrap conditions on trained models and class counts; no training or temporal variance.",
+    "Word and comparison analyses are exploratory, with no modern population inference."
+  ],
+  "models": {
+    "bernoulli": {
+      "accuracy": {
+        "estimate": 0.9343563512361467,
+        "lower": 0.9187181410982934,
+        "upper": 0.9471588998254126
+      },
+      "confusion_matrix": {
+        "fn": 70,
+        "fp": 7,
+        "tn": 815,
+        "tp": 281
+      },
+      "f1": 0.8794992175273866,
+      "false_positive_rate": {
+        "estimate": 0.00851581508515815,
+        "lower": 0.004131068673304538,
+        "upper": 0.017472907041564293
+      },
+      "precision": {
+        "estimate": 0.9756944444444444,
+        "lower": 0.9506883626367333,
+        "upper": 0.9881775582889984
+      },
+      "recall": {
+        "estimate": 0.8005698005698005,
+        "lower": 0.755614335968395,
+        "upper": 0.8390174207075377
+      }
+    },
+    "multinomial": {
+      "accuracy": {
+        "estimate": 0.9812446717817562,
+        "lower": 0.9717655135539263,
+        "upper": 0.987582061718757
+      },
+      "confusion_matrix": {
+        "fn": 14,
+        "fp": 8,
+        "tn": 814,
+        "tp": 337
+      },
+      "f1": 0.9683908045977011,
+      "false_positive_rate": {
+        "estimate": 0.009732360097323601,
+        "lower": 0.004939621554705304,
+        "upper": 0.019086126497502964
+      },
+      "precision": {
+        "estimate": 0.9768115942028985,
+        "lower": 0.9549175994969801,
+        "upper": 0.9882042447706969
+      },
+      "recall": {
+        "estimate": 0.9601139601139601,
+        "lower": 0.9341712322391674,
+        "upper": 0.9760944426723316
+      }
+    }
+  },
+  "paired": {
+    "bootstrap": {
+      "confidence": 0.95,
+      "differences": {
+        "accuracy": {
+          "estimate": 0.04688832054560955,
+          "lower": 0.03495311167945439,
+          "upper": 0.059676044330775786
+        },
+        "false_positive_rate": {
+          "estimate": 0.0012165450121654502,
+          "lower": -0.0036496350364963502,
+          "upper": 0.0072992700729927005
+        },
+        "recall": {
+          "estimate": 0.15954415954415954,
+          "lower": 0.1225071225071225,
+          "upper": 0.19943019943019943
+        }
+      },
+      "direction": "multinomial_minus_bernoulli",
+      "equivalence": "Multinomial counts over paired correctness cells resample message pairs.",
+      "method": "class-stratified paired nonparametric percentile",
+      "quantile_method": "linear",
+      "replicates": 10000,
+      "seed": 20261122
+    },
+    "by_actual_class": {
+      "ham": {
+        "bernoulli_only": 3,
+        "both_correct": 812,
+        "both_wrong": 5,
+        "multinomial_only": 2
+      },
+      "spam": {
+        "bernoulli_only": 1,
+        "both_correct": 280,
+        "both_wrong": 13,
+        "multinomial_only": 57
+      }
+    },
+    "discordant_pairs": 63,
+    "exact_mcnemar_p": 1.3821257506541063e-13,
+    "overall": {
+      "bernoulli_only": 4,
+      "both_correct": 1092,
+      "both_wrong": 18,
+      "multinomial_only": 59
+    }
+  },
+  "private_artifacts_unchanged": true,
+  "protocol": "Exploratory extension of inspected v1.0 holdout; no fitting or tuning.",
+  "result": "pass",
+  "split_id": "e10ea9f8b406c62d14a359dd864ef2a195c8c1960c2747f1feaaea313c148c31",
+  "task": "MSE-607",
+  "test_count": 1173,
+  "test_counts": {
+    "ham": 822,
+    "spam": 351
+  },
+  "test_ids_sha256": "64aef20395f55f37509281df5bf20a90846bf0e7b8b1a4842013df44b02a2629",
+  "word_association": {
+    "chi_square": 703.7827464379106,
+    "degrees_of_freedom": 1,
+    "expected": [
+      415.54759467758447,
+      1339.4524053224156,
+      972.4524053224155,
+      3134.5475946775846
+    ],
+    "interval_method": "95% normal approximation on log odds ratio",
+    "observed": [
+      [
+        811,
+        944
+      ],
+      [
+        577,
+        3530
+      ]
+    ],
+    "odds_ratio": 5.2559079693329025,
+    "odds_ratio_interval": [
+      4.621403973680299,
+      5.9775273357239165
+    ],
+    "p_spam_given_absent": 0.21099687080911936,
+    "p_spam_given_present": 0.5842939481268011,
+    "p_value": 4.4990852885434765e-155,
+    "phi": 0.34649454425411874,
+    "scope": "all",
+    "word": "free"
+  }
+}

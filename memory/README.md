@@ -71,7 +71,7 @@ exporters; it does not run an LLM extraction pass. When new kinds of memory
 relationships are needed, update the extractor and its checks together.
 
 
-When all 39 implementation tickets are complete, the handoff records
+When all assigned tickets are complete, the handoff records
 `Next implementation ticket: **None**`. The extractor rejects this terminal
 state if any task is unfinished. Do not invent a next ticket after release;
 record and analyze a new user-requested task before changing the completed scope.

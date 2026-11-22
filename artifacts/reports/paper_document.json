@@ -1,0 +1,88 @@
+{
+  "application_baseline": "v1.0.0",
+  "blank_author_fields": 5,
+  "cover_pages": 1,
+  "files": {
+    "artifacts/reports/paper_statistics.json": "95d2121efb3cb07f7e86327142d6ff4cf018e60921479b8551702991a0f92158",
+    "docs/paper/MailSense_Research_Paper.docx": "8b897ecebfa142836d386c4ee7c7c4006f64bae16c77ef325716b7eb2df593a2",
+    "docs/paper/MailSense_Research_Paper.pdf": "f5fd4fb3acf44b837687eae428d1ce3c28e5b1e73ecaf6c5c89d64c0408f7555",
+    "docs/paper/build.py": "e716b34b7fd37678229e3323438433d8025c86ca5fe164bad4c75b846709efaf",
+    "docs/paper/figures/differences.png": "bb9c3e7479dfb7eabba79f5275506891762059ba2786e2a0e46cec4fc80fbed1",
+    "docs/paper/figures/differences.svg": "b4e5c424965516a2298fd76feded16710d548e1e02655b8e55a7a924edc24acf",
+    "docs/paper/figures/pipeline.png": "ca49801b4860b14d5f55a1a2edb06ecf54ea04a15ebd18735528895e7b532c41",
+    "docs/paper/figures/pipeline.svg": "786595747a8996e2bf14f6352ab79505fe8d7fc5f5565e31025f2837c5e1fbfc",
+    "docs/paper/manuscript.json": "af30271bb0bfd355cc07fb46e089e0deb3ba876e5ca3acb35460d32a026a927d",
+    "docs/paper/references.json": "1ad305b206fef97357be31eadfeef3ef48c4cd5ce9342c59b544a1babfe22009",
+    "docs/paper/requirements.txt": "d0940a04af3b2f8c968a6af729cc72bfff268a47632b85248d0272ce386dad70",
+    "docs/paper/verify.py": "887e52c3fad9170391795e26429bfbf3559e0fb0c0b31be0762da9b1a2ec2b66"
+  },
+  "instructor_blank": true,
+  "originality": "Original manuscript with citations; similarity percentage not measured by an institutional checker.",
+  "page_observations": [
+    {
+      "figure_rectangles": [],
+      "page": 1,
+      "words": 41
+    },
+    {
+      "figure_rectangles": [],
+      "page": 2,
+      "words": 586
+    },
+    {
+      "figure_rectangles": [],
+      "page": 3,
+      "words": 617
+    },
+    {
+      "figure_rectangles": [
+        [
+          316.8,
+          62.95,
+          537.9,
+          231.8
+        ]
+      ],
+      "page": 4,
+      "words": 499
+    },
+    {
+      "figure_rectangles": [],
+      "page": 5,
+      "words": 618
+    },
+    {
+      "figure_rectangles": [],
+      "page": 6,
+      "words": 601
+    },
+    {
+      "figure_rectangles": [
+        [
+          57.45,
+          150.95,
+          278.55,
+          326.5
+        ]
+      ],
+      "page": 7,
+      "words": 502
+    },
+    {
+      "figure_rectangles": [],
+      "page": 8,
+      "words": 643
+    }
+  ],
+  "pages": 8,
+  "python_tests_after_extension": 418,
+  "references": 10,
+  "rendering": "LibreOffice PDF export; A4; Times New Roman with Linux-compatible serif fallback",
+  "result": "pass",
+  "scientific_figures": 2,
+  "scope": "Secondary exploratory analysis; models, thresholds and private artifacts unchanged.",
+  "submission_date_field": false,
+  "tables": 5,
+  "task": "MSE-607",
+  "two_column_pages": 7
+}

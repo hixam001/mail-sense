@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "text": "M. Sahami, S. Dumais, D. Heckerman, and E. Horvitz, ‘A Bayesian Approach to Filtering Junk E-Mail,’ in Learning for Text Categorization, AAAI Technical Report WS-98-05, 1998.",
+    "url": "https://cdn.aaai.org/Workshops/1998/WS-98-05/WS98-05-009.pdf"
+  },
+  {
+    "id": 2,
+    "text": "A. McCallum and K. Nigam, ‘A Comparison of Event Models for Naive Bayes Text Classification,’ in Learning for Text Categorization, AAAI Technical Report WS-98-05, 1998.",
+    "url": "https://cdn.aaai.org/Workshops/1998/WS-98-05/WS98-05-007.pdf"
+  },
+  {
+    "id": 3,
+    "text": "V. Metsis, I. Androutsopoulos, and G. Paliouras, ‘Spam Filtering with Naive Bayes: Which Naive Bayes?,’ Third Conference on Email and Anti-Spam (CEAS), 2006.",
+    "url": "https://userweb.cs.txstate.edu/~v_m137/assets/pdf/Metsis2006-Spam_filtering.pdf"
+  },
+  {
+    "id": 4,
+    "text": "MailSense project, ‘Statistical Analysis and Probabilistic Email Spam Detection,’ application v1.0.0 and accompanying reproducible secondary paper analysis, 2026. Source and setup instructions.",
+    "url": "https://github.com/hixam001/mail-sense"
+  },
+  {
+    "id": 5,
+    "text": "T. G. Dietterich, ‘Approximate Statistical Tests for Comparing Supervised Classification Learning Algorithms,’ Neural Computation, vol. 10, no. 7, pp. 1895–1923, 1998. doi: 10.1162/089976698300017197.",
+    "url": "https://doi.org/10.1162/089976698300017197"
+  },
+  {
+    "id": 6,
+    "text": "E. B. Wilson, ‘Probable Inference, the Law of Succession, and Statistical Inference,’ Journal of the American Statistical Association, vol. 22, no. 158, pp. 209–212, 1927. doi: 10.1080/01621459.1927.10502953.",
+    "url": "https://doi.org/10.1080/01621459.1927.10502953"
+  },
+  {
+    "id": 7,
+    "text": "B. Efron, ‘Bootstrap Methods: Another Look at the Jackknife,’ The Annals of Statistics, vol. 7, no. 1, pp. 1–26, 1979. doi: 10.1214/aos/1176344552.",
+    "url": "https://doi.org/10.1214/aos/1176344552"
+  },
+  {
+    "id": 8,
+    "text": "Apache Software Foundation, ‘SpamAssassin Public Mail Corpus: README and Revision History,’ historical corpus documentation. Accessed Nov. 22, 2026.",
+    "url": "https://spamassassin.apache.org/old/publiccorpus/readme.html"
+  },
+  {
+    "id": 9,
+    "text": "scikit-learn contributors, ‘Naive Bayes,’ scikit-learn 1.9.1 User Guide. Accessed Nov. 22, 2026.",
+    "url": "https://scikit-learn.org/stable/modules/naive_bayes.html"
+  },
+  {
+    "id": 10,
+    "text": "National Institute of Standards and Technology, ‘Odds Ratio Independence Test,’ Dataplot Reference Manual. Uncorrected log-odds inference and confidence limits. Accessed Nov. 22, 2026.",
+    "url": "https://www.itl.nist.gov/div898/software/dataplot/refman1/auxillar/oddrtest.htm"
+  }
+]

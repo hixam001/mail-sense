@@ -2,7 +2,7 @@
 
 **Version 1.0.0** · **Statistical Analysis and Probabilistic Email Spam Detection**
 
-**Status:** **39/39 tasks complete · v1.0.0**. All six release gates verified. No pending v1 ticket. See the [release checklist](docs/RELEASE.md) and [handoff](memory/HANDOFF.md).
+**Status:** **39/39 core tasks complete · v1.0.0**. Post-release MSE-607 conference paper delivered in [PDF and DOCX](docs/PAPER.md). No pending assigned ticket. See the [handoff](memory/HANDOFF.md).
 
 Explore a historical email corpus, verify probabilities and statistical tests,
 and compare Multinomial and Bernoulli Naive Bayes in one local workspace.
@@ -141,6 +141,7 @@ screenshots, runtime measurements, an authored failure example and limitations.
 | [Release and known limits](docs/RELEASE.md) | v1.0.0 checklist, evidence and supported scope |
 | [Setup](docs/SETUP.md) | Full preparation, locks, verification and recovery |
 | [Demo](docs/DEMO.md) | Eight-step classroom walkthrough and evidence mapping |
+| [Conference paper: PDF and DOCX](docs/PAPER.md) | Eight-page paper with new paired analysis and editable author fields |
 | [University report](docs/UNIVERSITY_REPORT.md) | Academic methods, figures, results and limitations |
 | [Reproducibility](docs/REPRODUCIBILITY.md) | Independent arithmetic, hashes, split and reference refits |
 | [Model card](docs/MODEL_CARD.md) | Model identities, results and explanation semantics |

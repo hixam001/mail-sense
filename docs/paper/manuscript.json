@@ -1,0 +1,472 @@
+{
+  "title": "MailSense: Paired Error Analysis and Probabilistic Evidence for Email Spam Classification",
+  "authors": 5,
+  "instructor_blank": true,
+  "affiliations": false,
+  "submission_date": false,
+  "pages": [
+    {
+      "left": [
+        {
+          "type": "paper_title",
+          "text": "MailSense: Paired Error Analysis and Probabilistic Evidence for Email Spam Classification"
+        },
+        {
+          "type": "abstract",
+          "text": "A spam classifier can achieve high accuracy while still hiding an important error tradeoff. This paper examines two frozen Naive Bayes models in MailSense, a local probability and statistics application. Five canonical Apache SpamAssassin archives produce 5,862 emails after strict MIME parsing and exact-text deduplication. Both classifiers use the same training-only vocabulary and the same 1,173 held-out messages. We extend the existing application with a paired correctness analysis, an exact McNemar test, 10,000 class-stratified paired bootstrap samples, Wilson intervals and a word-association effect analysis. Multinomial accuracy is 98.12%, compared with 93.44% for Bernoulli. The paired accuracy difference is 4.69 percentage points, with a 95% bootstrap interval of 3.50–5.97. Spam recall improves by 15.95 points, but the false-positive-rate difference has an interval spanning zero. For the word free, the observed spam odds ratio is 5.26 and the association coefficient is 0.346. These findings describe a historical, curated benchmark under explicit sampling assumptions. They do not establish modern inbox performance, calibrated probabilities or a universal choice of classifier."
+        },
+        {
+          "type": "keywords",
+          "text": "Naive Bayes; spam classification; paired comparison; bootstrap; McNemar test; statistical inference"
+        },
+        {
+          "type": "heading",
+          "text": "I. INTRODUCTION AND BACKGROUND"
+        },
+        {
+          "type": "paragraph",
+          "text": "The practical question in spam classification is not simply whether a model is usually correct. A missed spam message and a legitimate message incorrectly blocked have different consequences. Sahami et al. treated this distinction as a decision problem in early Bayesian email filtering [1]. Reporting only one aggregate accuracy can make the more consequential error difficult to see."
+        }
+      ],
+      "right": [
+        {
+          "type": "paragraph",
+          "text": "Naive Bayes offers a useful setting for examining this problem because its assumptions can be written down and its predictions can be traced to estimated probabilities. The Multinomial form uses word occurrences, whereas the Bernoulli form models word presence and absence. Earlier work distinguishes these event models and shows why the representation matters [2], [3]. Calling both models Naive Bayes does not tell us how they will disagree."
+        },
+        {
+          "type": "paragraph",
+          "text": "MailSense already implements data preparation, descriptive statistics, empirical probabilities, inference, two classifiers and local evaluation [4]. The present paper is a secondary research extension of that system. It does not introduce a new training algorithm. The extension adds four analyses to the released application: paired error counts, uncertainty in between-model differences, word-association effect sizes, and a cost sensitivity calculation. The original point estimates are retained so that readers can see exactly what the extra analysis contributes."
+        },
+        {
+          "type": "paragraph",
+          "text": "The study addresses three questions. First, how do the two models differ when judged on exactly the same messages? Second, is the apparent advantage concentrated in spam detection or in avoiding false alarms? Third, what can an empirical word probability show, and what would be an unjustified interpretation of that probability? The methods are selected to answer these questions rather than to add unrelated calculations."
+        },
+        {
+          "type": "subheading",
+          "text": "A. Scope of the claims"
+        },
+        {
+          "type": "paragraph",
+          "text": "The unit of analysis is one retained email. Spam is the positive class; ham means legitimate mail. We analyze a fixed historical benchmark, not a random sample of current email traffic. The models, vocabulary, smoothing and classification rule are held fixed. Because this holdout was inspected during the application project, the additional comparisons are exploratory secondary analyses. No new independent validation set is claimed."
+        },
+        {
+          "type": "paragraph",
+          "text": "A narrow interval answers a limited question: how much might this comparison vary when similar benchmark messages are resampled? It says little about a new writing style, a different sender population or a later attack strategy. Reproducible counts and generalizable conclusions are separate claims throughout the paper."
+        }
+      ]
+    },
+    {
+      "left": [
+        {
+          "type": "heading",
+          "text": "II. LITERATURE REVIEW"
+        },
+        {
+          "type": "subheading",
+          "text": "A. Probabilistic email filtering"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sahami et al. [1] frame junk-mail filtering around learned probabilities and unequal misclassification costs. Their work motivates reporting legitimate-message errors separately from missed spam. MailSense uses this insight as an evaluation principle, but does not reproduce their complete feature set or deployment experiment. Its comparison is deliberately limited to two transparent text models and a fixed local corpus."
+        },
+        {
+          "type": "paragraph",
+          "text": "McCallum and Nigam [2] distinguish the multivariate Bernoulli and Multinomial event models for text classification. The distinction concerns what an observed document contributes to a likelihood: binary feature outcomes in one case and token counts in the other. This provides the methodological basis for keeping preprocessing and vocabulary shared while changing the probabilistic event model."
+        },
+        {
+          "type": "paragraph",
+          "text": "Metsis, Androutsopoulos and Paliouras [3] compare several Naive Bayes variants in spam filtering and consider email collections that preserve temporal order. Their study makes two points relevant here: the particular variant must be specified, and a benchmark design is part of the experiment. Our shuffled historical split is easier to reproduce, but it cannot support claims about chronological adaptation to a user mailbox."
+        },
+        {
+          "type": "subheading",
+          "text": "B. Comparing predictions and uncertainty"
+        },
+        {
+          "type": "paragraph",
+          "text": "Dietterich [5] examines statistical tests for classifier comparisons. The concern is relevant whenever predictions share test examples: the resulting errors are paired. Treating two accuracies as independent discards that pairing. We therefore count the messages on which only one model is correct and use an exact conditional test on those discordant pairs."
+        },
+        {
+          "type": "paragraph",
+          "text": "Wilson [6] provides the score-based construction used here for intervals around binomial rates. The interval responds to both the number of successes and the relevant denominator. This is especially useful for false-positive rates, where only seven or eight observed errors would make a bare percentage look more precise than the evidence warrants."
+        },
+        {
+          "type": "paragraph",
+          "text": "Efron [7] introduces bootstrap resampling as a way to approximate sampling variation from observed data. Our implementation preserves the pairing of predictions and the test set’s ham/spam counts. It estimates conditional variability for this fitted comparison, rather than variability from fitting new models or collecting a different corpus."
+        }
+      ],
+      "right": [
+        {
+          "type": "subheading",
+          "text": "C. Position of this study"
+        },
+        {
+          "type": "paragraph",
+          "text": "This study brings those evaluation ideas into one reproducible comparison. Earlier papers use different datasets and protocols, so their published accuracy scores would be an unsuitable league table for MailSense. We compare the reasoning instead: specify the event model, match the test messages, separate the errors, and state what the uncertainty calculation assumes."
+        },
+        {
+          "type": "heading",
+          "text": "III. METHODOLOGY"
+        },
+        {
+          "type": "subheading",
+          "text": "A. Sources and record accounting"
+        },
+        {
+          "type": "paragraph",
+          "text": "The data come from the official historical Apache SpamAssassin Public Corpus [8]. We select one canonical archive for each group: the 20030228 easy_ham, easy_ham_2, hard_ham and spam archives, plus the corrected 20050311 spam_2 archive. Older revisions are not treated as additional independent sources. Recorded URLs, byte sizes and SHA-256 values pin the acquisition."
+        },
+        {
+          "type": "table",
+          "name": "accounting"
+        },
+        {
+          "type": "paragraph",
+          "text": "The selected archives contain 6,046 candidate messages. Strict MIME parsing rejects 54 malformed candidates and accepts 5,992. Exact-text deduplication removes 130 repeated records; no conflicting-label group is observed. The resulting 5,862 emails contain 4,107 ham and 1,755 spam. Directory entries and five archive control files are counted separately from messages."
+        },
+        {
+          "type": "paragraph",
+          "text": "These counts are measured outputs of the chosen preparation policy. They need not equal a total quoted in the upstream corpus description. Apache also warns against sending the supplied messages through a live mail system and retains original senders’ text rights [8]. The public paper and repository contain aggregates, code and hashes, not original email bodies."
+        }
+      ]
+    },
+    {
+      "left": [
+        {
+          "type": "subheading",
+          "text": "B. Text preparation and isolation"
+        },
+        {
+          "type": "paragraph",
+          "text": "The parser decodes subject and body text, prefers plain text in MIME alternatives, and uses a safe HTML-to-text fallback when necessary. Attachments, scripts, styles and remote resources are excluded. Unicode NFC and whitespace normalization produce the model text. Resource bounds and archive-path checks prevent arbitrary extraction or execution. Strict parsing is reproducible, but can exclude partly readable messages."
+        },
+        {
+          "type": "paragraph",
+          "text": "Exact normalized-text hashes define duplicate groups before splitting. A same-label group retains one stable representative; a conflicting group would be excluded in full. This blocks exact copies from crossing the training/test boundary. It does not remove near duplicates, repeated topics or shared threads, which remain potential sources of dependence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Records are sorted by stable identifier and assigned through a shuffled, label-stratified 80/20 split with seed 42. The training set has 4,689 emails: 3,285 ham and 1,404 spam. The test set has 1,173: 822 ham and 351 spam. IDs and exact content hashes are disjoint. Both classifiers are evaluated on the same sorted test IDs."
+        },
+        {
+          "type": "paragraph",
+          "text": "A single CountVectorizer is fitted only to training text. It lowercases Unicode unigrams, retains tokens matching the expression \\b\\w\\w+\\b, and applies no stop-word removal or accent stripping. The vocabulary contains 60,135 features. The 12,200 tokens seen only in test text do not enter the fitted feature map. Both count and binary representations use this same map."
+        },
+        {
+          "type": "paragraph",
+          "text": "The code uses Python 3.12.15 and scikit-learn 1.9.1 [9], with pinned numerical dependencies. Trusted local artifacts are checked against metadata and hashes before loading. The secondary analysis snapshots the private CSV and model files and confirms their bytes are unchanged afterward. It predicts with existing models; it never calls a fit routine."
+        }
+      ],
+      "right": [
+        {
+          "type": "figure",
+          "name": "pipeline",
+          "caption": "Fig. 1. Preparation and evaluation boundary. The vocabulary and both models see training text only. Secondary inference operates on matched predictions from the frozen test set."
+        },
+        {
+          "type": "subheading",
+          "text": "C. Fixed probabilistic models"
+        },
+        {
+          "type": "paragraph",
+          "text": "For class c, the learned prior is πc = Nc/N. Let xj denote a document’s count for feature j, and Tcj the total occurrences of that feature in training class c. Multinomial uses Laplace smoothing with α = 1:"
+        },
+        {
+          "type": "equation",
+          "text": "θcj = (Tcj + 1) / (Σk Tck + V)"
+        },
+        {
+          "type": "equation",
+          "text": "scoreM(c, x) = log πc + Σj xj log θcj"
+        },
+        {
+          "type": "paragraph",
+          "text": "Here V is vocabulary size. Repeating a recognized word repeats its contribution to the score. Bernoulli instead uses bj = 1 when a word occurs and 0 otherwise. If Dcj is the number of training documents of class c containing that word, its smoothed estimate is:"
+        },
+        {
+          "type": "equation",
+          "text": "qcj = (Dcj + 1) / (Nc + 2)"
+        },
+        {
+          "type": "equation",
+          "text": "scoreB(c, b) = log πc + Σj [bj log qcj"
+        },
+        {
+          "type": "equation",
+          "text": "                  + (1 − bj) log(1 − qcj)]"
+        },
+        {
+          "type": "paragraph",
+          "text": "Every absent fitted feature contributes to the Bernoulli score. Both models select the class with the larger score and normalize scores to obtain model probabilities. Those estimates are not assumed calibrated. The shared split and feature map make this an event-model comparison; they do not make the conditional-independence assumption true."
+        }
+      ]
+    },
+    {
+      "left": [
+        {
+          "type": "subheading",
+          "text": "D. Empirical probability and association"
+        },
+        {
+          "type": "paragraph",
+          "text": "For a chosen word, document presence is counted once per email, regardless of repetition. Let S denote spam and W denote word presence. Bayes’ rule relates directly observable fractions:"
+        },
+        {
+          "type": "equation",
+          "text": "P(S|W) = P(W|S) P(S) / P(W)"
+        },
+        {
+          "type": "paragraph",
+          "text": "The token “free” is the application’s established teaching example. We use the all-record scope for this descriptive association, separately from held-out model evaluation. The word was not selected by a new significance search. Even so, this is exploratory evidence: the example was already known and no multiple-testing adjustment is claimed."
+        },
+        {
+          "type": "table",
+          "name": "word"
+        },
+        {
+          "type": "paragraph",
+          "text": "The table gives P(S) = 1755/5862 and P(S|W) = 811/1388. A word’s empirical posterior is therefore different from a classifier’s estimate for a whole message. It uses one presence event and no smoothing. A never-observed word has an undefined empirical posterior because its denominator is zero."
+        },
+        {
+          "type": "paragraph",
+          "text": "For the association test, the null hypothesis is independence between word presence and email class. Expected counts are row total × column total / n. Pearson’s statistic sums (O − E)²/E over the four cells, with one degree of freedom and no Yates correction. Every expected count here exceeds five, so the usual expected-count check is met. Independence between messages is still an assumption."
+        },
+        {
+          "type": "paragraph",
+          "text": "A p-value alone does not describe the size of the association. We also calculate φ = √(χ²/n) and the cross-product odds ratio OR = ad/(bc), using rows spam/ham and columns present/absent. We use the uncorrected cross-product estimate and a large-sample 95% interval on the log scale, with standard error √(1/a + 1/b + 1/c + 1/d) [10]. All four cells are positive and large enough for this approximation to be useful."
+        }
+      ],
+      "right": [
+        {
+          "type": "subheading",
+          "text": "E. Rates and interval denominators"
+        },
+        {
+          "type": "paragraph",
+          "text": "A true positive (TP) is detected spam, a true negative (TN) correctly recognized ham, a false positive (FP) ham labeled spam, and a false negative (FN) missed spam. We report five measures because each answers a different question:"
+        },
+        {
+          "type": "equation",
+          "text": "Accuracy = (TP + TN) / n"
+        },
+        {
+          "type": "equation",
+          "text": "Precision = TP / (TP + FP)"
+        },
+        {
+          "type": "equation",
+          "text": "Recall = TP / (TP + FN)"
+        },
+        {
+          "type": "equation",
+          "text": "F1 = 2TP / (2TP + FP + FN)"
+        },
+        {
+          "type": "equation",
+          "text": "FPR = FP / (FP + TN)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Accuracy summarizes all decisions at this test composition. Recall asks how much actual spam is found. Precision describes messages predicted spam, while FPR asks how often legitimate mail is incorrectly flagged. F1 combines precision and recall but does not directly describe the legitimate-mail denominator. Undefined denominators remain undefined rather than becoming zero."
+        },
+        {
+          "type": "paragraph",
+          "text": "For accuracy, precision, recall and FPR we report Wilson 95% intervals [6]. Given k successes in n trials, p̂ = k/n, z = 1.959964 and d = 1 + z²/n, the center and half-width are:"
+        },
+        {
+          "type": "equation",
+          "text": "center = (p̂ + z²/(2n)) / d"
+        },
+        {
+          "type": "equation",
+          "text": "half = z √[p̂(1 − p̂)/n + z²/(4n²)] / d"
+        },
+        {
+          "type": "paragraph",
+          "text": "The lower and upper limits are center ± half. Their denominators differ: accuracy uses 1,173 emails, recall uses 351 spam, FPR uses 822 ham, and precision uses the model’s predicted-spam count. These marginal intervals use a binomial working model, even though the test composition was fixed by stratification. They should be read alongside the paired stratified analysis. We do not infer a between-model difference from whether these marginal intervals overlap."
+        },
+        {
+          "type": "paragraph",
+          "text": "The corpus spam fraction is known for the retained data. Its Wilson interval, approximately [0.2878, 0.3112], illustrates what repeated-sampling uncertainty would mean under a model; it does not estimate modern inbox prevalence from this curated collection. The same qualification applies to the classifier-rate intervals."
+        }
+      ]
+    },
+    {
+      "left": [
+        {
+          "type": "subheading",
+          "text": "F. Paired hypothesis test"
+        },
+        {
+          "type": "paragraph",
+          "text": "Each test email produces two correctness indicators. We count four joint outcomes: both models correct, only Multinomial correct, only Bernoulli correct, and both wrong. This retains information that separate confusion matrices cannot recover. With two classes, different predicted labels mean that exactly one classifier is correct."
+        },
+        {
+          "type": "paragraph",
+          "text": "Let b count Multinomial-only successes and c Bernoulli-only successes. Under equal marginal error probabilities and independent message pairs, conditioning on b + c gives B ~ Binomial(b + c, 0.5). We use the exact two-sided binomial probability, equivalent to the exact McNemar test, rather than an asymptotic chi-square approximation [5]. This comparison concerns these frozen fitted classifiers. It is not a test over all models that could result from future training."
+        },
+        {
+          "type": "subheading",
+          "text": "G. Paired stratified bootstrap"
+        },
+        {
+          "type": "paragraph",
+          "text": "We draw 10,000 bootstrap samples with seed 20261122. Within each actual class, the sampling unit is a message together with both correctness indicators. Every replicate keeps 822 ham and 351 spam. An efficient equivalent implementation samples multinomial counts from the four observed paired-correctness cells in each class. The two model outcomes are never sampled independently."
+        },
+        {
+          "type": "paragraph",
+          "text": "For each replicate we calculate Multinomial minus Bernoulli differences in accuracy, spam recall and FPR. The 2.5th and 97.5th percentiles, using linear interpolation, form the reported 95% intervals. Differences are displayed in percentage points, not relative percent improvement. Zero is the reference for no observed advantage."
+        },
+        {
+          "type": "paragraph",
+          "text": "The resampling design is suitable for a matched comparison at fixed class composition. It conditions on the fitted models and does not include training-set variability. It also treats messages as exchangeable within class. Residual threads or near duplicates can make that assumption optimistic. Consequently, the intervals describe an explicit benchmark model and cannot repair nonrandom historical sampling."
+        }
+      ],
+      "right": [
+        {
+          "type": "heading",
+          "text": "IV. RESULTS AND DISCUSSION"
+        },
+        {
+          "type": "subheading",
+          "text": "A. Marginal performance"
+        },
+        {
+          "type": "table",
+          "name": "metrics"
+        },
+        {
+          "type": "paragraph",
+          "text": "Multinomial correctly classifies 1,151 of 1,173 test messages. Bernoulli correctly classifies 1,096. Their confusion counts are TN = 814, FP = 8, FN = 14, TP = 337 for Multinomial, and TN = 815, FP = 7, FN = 70, TP = 281 for Bernoulli. Every metric in Table III follows from these counts, rather than from rounded display values."
+        },
+        {
+          "type": "paragraph",
+          "text": "The strongest contrast is recall: Multinomial finds 337 of 351 spam messages, while Bernoulli finds 281. Their F1 scores are 96.84% and 87.95%, respectively. Precision is similar, 97.68% versus 97.57%, but similar precision does not imply similar recall. Both models make few false alarms in this test, which leaves limited information for distinguishing their FPRs."
+        },
+        {
+          "type": "subheading",
+          "text": "B. Which messages account for the difference?"
+        },
+        {
+          "type": "table",
+          "name": "paired"
+        },
+        {
+          "type": "paragraph",
+          "text": "There are 63 discordant pairs: Multinomial is correct on 59 and Bernoulli on four. The exact McNemar p-value is 1.3821 × 10⁻¹³. Under the test assumptions, the imbalance is difficult to reconcile with equal error probabilities for these fixed classifiers on this benchmark. The p-value describes the discordant-pair imbalance under the null; it does not measure the probability that one classifier is better on future email."
+        },
+        {
+          "type": "paragraph",
+          "text": "The class-specific counts explain where the difference comes from. Among spam, 57 messages are detected only by Multinomial and one only by Bernoulli. Among ham, Multinomial alone is correct twice and Bernoulli alone three times. Thus the net accuracy advantage comes from 56 additional spam detections, offset by one additional false alarm."
+        }
+      ]
+    },
+    {
+      "left": [
+        {
+          "type": "subheading",
+          "text": "C. Size and uncertainty of the advantage"
+        },
+        {
+          "type": "table",
+          "name": "differences"
+        },
+        {
+          "type": "figure",
+          "name": "differences",
+          "caption": "Fig. 2. Multinomial minus Bernoulli differences with 95% class-stratified paired bootstrap intervals. Axes use percentage points and different scales; the dashed line marks zero."
+        },
+        {
+          "type": "paragraph",
+          "text": "The accuracy interval lies above zero, as does the recall interval. The FPR interval extends from a small advantage for Multinomial to a small advantage for Bernoulli. Multinomial made one more false alarm here. With so few ham errors, that observation is a poor basis for predicting which model will flag more legitimate mail next time. The paired interval is more informative than declaring the two models equivalent because their percentages look close."
+        },
+        {
+          "type": "paragraph",
+          "text": "Accuracy improves by 4.69 points, while recall improves by 15.95 points because recall uses only the 351 spam messages as its denominator. These are complementary descriptions of the same decisions. The overall accuracy difference is smaller because spam accounts for only 351 of the 1,173 test messages."
+        }
+      ],
+      "right": [
+        {
+          "type": "subheading",
+          "text": "D. Word evidence and its interpretation"
+        },
+        {
+          "type": "paragraph",
+          "text": "For free, the empirical spam probability is 58.43% when the word is present, compared with 21.10% when it is absent. The Pearson statistic is 703.783, with p ≈ 4.4991 × 10⁻¹⁵⁵. The odds ratio is 5.26, with an exponentiated log-scale 95% interval of [4.62, 5.98], and φ = 0.346. These effect estimates describe the association in a way the extremely small p-value cannot."
+        },
+        {
+          "type": "paragraph",
+          "text": "The odds ratio is not a probability ratio, and it does not mean that a message containing free has 5.26 times the posterior spam probability. More directly, 811 of the 1,388 messages containing the word are spam. Many legitimate messages also contain it. A one-word association is therefore evidence to interpret, not a rule that can safely replace a whole-message classifier."
+        },
+        {
+          "type": "paragraph",
+          "text": "The independence hypothesis in this test concerns a word and the class label. Naive Bayes assumes conditional independence among features after conditioning on the class. These are different statements. Finding word/class association does not test the model’s feature-independence assumption, nor does it establish that the word causes spam."
+        },
+        {
+          "type": "subheading",
+          "text": "E. What if false alarms cost more?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Let λ be the cost of one false positive relative to one missed spam. At the existing decisions, total observed losses are LM = 8λ + 14 and LB = 7λ + 70. Their difference is λ − 56. Multinomial has lower observed loss for λ < 56, and Bernoulli for λ > 56. At λ = 56 the losses are equal."
+        },
+        {
+          "type": "paragraph",
+          "text": "This is a sensitivity calculation, not a recommended operating threshold. The application supplies no measured user cost, and the break-even value depends on only one net false-positive difference. At equal costs, the models make 22 and 77 errors. With a false-positive cost of 100, observed losses become 814 and 770 cost units. The preferred ordering can change even though accuracy does not. No classifier was retuned using this calculation."
+        }
+      ]
+    },
+    {
+      "left": [
+        {
+          "type": "subheading",
+          "text": "F. Reliability, limits and external validity"
+        },
+        {
+          "type": "paragraph",
+          "text": "The experiment has two kinds of evidence. Deterministic checks establish that the corpus accounting, split identities, vocabulary, saved-model predictions and displayed formulas agree. Sampling-based intervals then describe uncertainty under assumptions. Passing a software test does not validate those sampling assumptions. In particular, exact-text deduplication alone cannot establish independent observations."
+        },
+        {
+          "type": "paragraph",
+          "text": "The single split is historical and curated. Near duplicates, shared threads and source-group differences may produce optimistic conditional intervals. There is no temporal holdout, external corpus, calibration study or measured language-specific performance. The new paired questions are asked after the original holdout results were visible, so their p-values are exploratory rather than preregistered confirmatory evidence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Model probabilities can also be misleading for an individual input. An authored project-meeting example, intended as ham, receives a Multinomial spam estimate of 0.6386 and a Bernoulli estimate near 1.67 × 10⁻¹². This disagreement is not included in held-out metrics. It illustrates why a high aggregate accuracy and an extreme probability should not be presented as certainty about a new message."
+        },
+        {
+          "type": "heading",
+          "text": "V. CONCLUSION"
+        },
+        {
+          "type": "paragraph",
+          "text": "On the fixed MailSense benchmark, Multinomial detects substantially more spam than Bernoulli while their false-positive-rate difference remains uncertain. Paired evaluation shows where the accuracy gap comes from: 59 Multinomial-only correct decisions versus four Bernoulli-only decisions. Bootstrap intervals quantify the size of the gap, and the word example separates association strength from a tiny p-value."
+        },
+        {
+          "type": "paragraph",
+          "text": "The statistical analysis changes how the result should be read. Counts define the probabilities, matching defines the comparison, assumptions define the intervals, and error costs define what an advantage means. A next study should use independent temporal or thread-grouped data and a stated cost policy before making claims about present-day mail filtering."
+        }
+      ],
+      "right": [
+        {
+          "type": "heading",
+          "text": "REFERENCES"
+        },
+        {
+          "type": "references"
+        },
+        {
+          "type": "subheading",
+          "text": "Code and reproducibility"
+        },
+        {
+          "type": "paragraph",
+          "text": "Organized source, setup instructions and frozen application artifacts are documented in the repository [4]. The additional analysis is reproduced with: python -m scripts.analyze_paper verify, run from the backend project after setup. The public paper_statistics.json contains paired counts, interval definitions, seed, membership hashes and effect estimates. It contains no original email text."
+        },
+        {
+          "type": "paragraph",
+          "text": "The application baseline passed 413 Python tests and eight frontend tests at release. Five additional known-answer tests cover the paper analysis. All new statistical results are derived from the existing fixed models. The manuscript, figure generator and editable document source accompany the DOCX and PDF."
+        }
+      ]
+    }
+  ]
+}

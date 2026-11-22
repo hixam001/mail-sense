@@ -1,10 +1,10 @@
 # MailSense project handoff
 
-Last updated: 2026-11-19 (Asia/Karachi).
+Last updated: 2026-11-22 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-606 — v1.0.0 verified release freeze**.
-Next implementation ticket: **None** — v1.0 complete.
+Latest implementation: **MSE-607 — Conference-style research paper, DOCX and PDF**.
+Next implementation ticket: **None** — all assigned work complete.
 
 ## Read this at every task start
 
@@ -17,10 +17,38 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**None — the complete v1.0.0 backlog is finished.** All 39 implementation
-requirements and Gates 1–6 have observed evidence. There is no required work left
-or automatic next ticket. Analyze and assign any new user-requested work with
-Gravitas before implementing; keep the standing commit/test/handoff workflow.
+**None.** The original 39-ticket application backlog and post-release MSE-607
+paper are complete. Analyze and assign any new user-requested work with Gravitas
+before implementing; maintain the standing test/handoff/commit/push workflow.
+
+## Latest academic deliverable
+
+- [Conference paper guide](../docs/PAPER.md) links the eight-page PDF and editable
+  DOCX under `docs/paper/`. One cover plus seven two-column pages include abstract,
+  keywords, introduction/background, literature, methodology, results/discussion,
+  conclusion and ten references. Five tables and two scientific figures directly
+  explain the study.
+- User-specific cover instructions: five blank author fields, blank instructor,
+  no affiliations and no submission-date field. Author identities are not invented.
+- New frozen-model secondary analysis: paired exact McNemar, 10,000 class-stratified
+  paired bootstrap samples (seed 20261122), Wilson intervals, word association
+  odds ratio/phi and conditional error-cost sensitivity. Paired cells are
+  1092/59/4/18; exact p=1.38212575e−13. Accuracy difference 4.69pp has 95% interval
+  [3.50,5.97], recall 15.95pp [12.25,19.94], FPR 0.12pp [−0.36,0.73]. No fitting,
+  tuning or new independent-test claim; private model/CSV bytes unchanged.
+- `backend/scripts/analyze_paper.py` run/verify reproduces the aggregate
+  `artifacts/reports/paper_statistics.json`. Five new known-answer tests pass;
+  the complete backend/bootstrap/memory suite passes 418 and Ruff passes.
+- Separate ignored `.tools/paper-venv` holds document/plot dependencies from
+  `docs/paper/requirements.txt`; app dependencies and frozen release tag unchanged.
+  Structured manuscript/references and build/verification scripts are committed.
+- Five substantive editing passes completed. All eight final PDF pages inspected;
+  title/figure clipping and figure-column bounds corrected. Owned document check
+  reconciles metadata, references, two-column body, all tables, paired test and
+  data-derived figures. Receipt: `artifacts/reports/paper_document.json`.
+- Similarity percentage is not measured; the 15% threshold needs the institution's
+  checker. No fabricated similarity score or detector guarantee. Frontend/runtime
+  unchanged, so their reruns were not applicable to this academic deliverable.
 
 ## Current release snapshot
 
@@ -268,7 +296,7 @@ Their early scaffold/no-API states are superseded by this completed snapshot.
 
 ## Full implementation inventory
 
-**39 implementation tickets are complete; 0 remain.** Preserve the full verified
+**39 core implementation tickets plus MSE-607 are complete (40 tracked); 0 remain.** Preserve the full verified
 inventory below. New scope needs a newly assigned ticket rather than an invented next task.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -314,8 +342,11 @@ Dependencies and detailed acceptance criteria are in
 | MSE-604 | Complete university report with real screenshots and measurements | Complete — acceptance verified |
 | MSE-605 | Finalize installation README and classroom demo script | Complete — acceptance verified |
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Complete — v1.0.0 release verified |
+| MSE-607 | Conference-style paper with new paired probability/statistics analysis, DOCX and PDF | Complete — analysis and eight-page documents verified |
 
 ## Verification and delivery evidence
+
+- **MSE-607:** Owned full verification passed 418 Python tests, Ruff, actual secondary-analysis run/verify and private-artifact preservation. Independent document validator passed 8 pages (1 cover+7 two-column), 5 blank author spaces/instructor, 10 cited sources, 5 reconciled tables and 2 data-derived scientific figures. Exact paired p independently checked by a direct binomial sum; class cells reconcile with frozen confusion matrices and cost sensitivity. Five editing passes and all 8 final pages visually reviewed. Final graph/reference/diff gates run before Jira commit/push; verify actual Git delivery after it. No frontend/runtime changes.
 
 - **MSE-606 — v1.0.0 freeze:** Frontend/backend/API and generated locks agree at1.0.0. Final owned release validator passed 413 Python tests including 11 terminal-memory and 1 version-consistency cases,8 frontend tests, all seven pipeline verifiers, independent science/refit verification, production browser desktop/mobile/keyboard/stale/privacy/recovery checks, Ruff/ESLint/lock/compatibility checks. Separate owned OS namespace smoke passed all six routes and both models; external connection failed ENETUNREACH while parent network stayed unchanged. Warmed p95 prediction .065836191s and cached summary .045253527s. Refreshed npm/Python advisories zero with zero skips. Academic report and runtime/test docs reconciled to latest evidence; all 39 tickets complete and graph has no next edge. Source/data/model scope unchanged; known limitations in RELEASE.md. Root greeting now identifies the completed API. Final graph/status/reference/diff gates must pass before commit/push; observe Git refs afterward.
 
