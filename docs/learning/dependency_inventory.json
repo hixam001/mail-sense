@@ -1,0 +1,2074 @@
+[
+  {
+    "environment": "backend-lock",
+    "name": "annotated-doc",
+    "version": "0.0.7",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "annotated-types",
+    "version": "0.8.0",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "anyio",
+    "version": "4.16.0",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "click",
+    "version": "8.5.1",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "cloudpickle",
+    "version": "3.1.3",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "colorama",
+    "version": "0.4.6",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "fastapi",
+    "version": "0.165.0",
+    "status": "direct",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "h11",
+    "version": "0.16.0",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "httpcore2",
+    "version": "2.16.2",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "httpx2",
+    "version": "2.16.2",
+    "status": "direct",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "httpx2-jsfetch",
+    "version": "1.0",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "idna",
+    "version": "3.20",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "iniconfig",
+    "version": "2.3.1",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "joblib",
+    "version": "1.6.0",
+    "status": "direct",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "narwhals",
+    "version": "2.29.0",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "numpy",
+    "version": "2.5.5",
+    "status": "direct",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "opentelemetry-api",
+    "version": "1.45.2",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "packaging",
+    "version": "26.3",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "pandas",
+    "version": "3.1.1",
+    "status": "direct",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "pluggy",
+    "version": "1.7.0",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "pydantic",
+    "version": "2.14.3",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "pydantic-core",
+    "version": "2.50.4",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "pygments",
+    "version": "2.21.0",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "pytest",
+    "version": "9.2.0",
+    "status": "direct",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "python-dateutil",
+    "version": "4.0.0",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "ruff",
+    "version": "0.17.5",
+    "status": "direct",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "scikit-learn",
+    "version": "1.9.1",
+    "status": "direct",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "scipy",
+    "version": "1.18.1",
+    "status": "direct",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "starlette",
+    "version": "1.10.0",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "threadpoolctl",
+    "version": "3.8.0",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "truststore",
+    "version": "0.10.5",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "typing-extensions",
+    "version": "4.16.0",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "typing-inspection",
+    "version": "0.4.5",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "tzdata",
+    "version": "2026.6",
+    "status": "transitive",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "backend-lock",
+    "name": "uvicorn",
+    "version": "0.54.0",
+    "status": "direct",
+    "source": "backend/uv.lock"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/code-frame",
+    "version": "7.29.7",
+    "status": "dev",
+    "source": "node_modules/@babel/code-frame"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/compat-data",
+    "version": "7.29.7",
+    "status": "dev",
+    "source": "node_modules/@babel/compat-data"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/core",
+    "version": "7.29.13",
+    "status": "dev",
+    "source": "node_modules/@babel/core"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/generator",
+    "version": "7.29.14",
+    "status": "dev",
+    "source": "node_modules/@babel/generator"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/helper-compilation-targets",
+    "version": "7.29.13",
+    "status": "dev",
+    "source": "node_modules/@babel/helper-compilation-targets"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/helper-globals",
+    "version": "7.29.7",
+    "status": "dev",
+    "source": "node_modules/@babel/helper-globals"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/helper-module-imports",
+    "version": "7.29.7",
+    "status": "dev",
+    "source": "node_modules/@babel/helper-module-imports"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/helper-module-transforms",
+    "version": "7.29.14",
+    "status": "dev",
+    "source": "node_modules/@babel/helper-module-transforms"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/helper-string-parser",
+    "version": "7.29.14",
+    "status": "dev",
+    "source": "node_modules/@babel/helper-string-parser"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/helper-validator-identifier",
+    "version": "7.29.7",
+    "status": "dev",
+    "source": "node_modules/@babel/helper-validator-identifier"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/helper-validator-option",
+    "version": "7.29.7",
+    "status": "dev",
+    "source": "node_modules/@babel/helper-validator-option"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/helpers",
+    "version": "7.29.14",
+    "status": "dev",
+    "source": "node_modules/@babel/helpers"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/parser",
+    "version": "7.29.14",
+    "status": "dev",
+    "source": "node_modules/@babel/parser"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/template",
+    "version": "7.29.7",
+    "status": "dev",
+    "source": "node_modules/@babel/template"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/traverse",
+    "version": "7.29.14",
+    "status": "dev",
+    "source": "node_modules/@babel/traverse"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@babel/types",
+    "version": "7.29.14",
+    "status": "dev",
+    "source": "node_modules/@babel/types"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@cacheable/memory",
+    "version": "2.2.0",
+    "status": "dev",
+    "source": "node_modules/@cacheable/memory"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@cacheable/utils",
+    "version": "2.5.0",
+    "status": "dev",
+    "source": "node_modules/@cacheable/utils"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@emnapi/core",
+    "version": "2.0.0-beta.2",
+    "status": "dev;optional",
+    "source": "node_modules/@emnapi/core"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@emnapi/runtime",
+    "version": "2.0.0-beta.2",
+    "status": "dev;optional",
+    "source": "node_modules/@emnapi/runtime"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@emnapi/wasi-threads",
+    "version": "2.2.0",
+    "status": "dev;optional",
+    "source": "node_modules/@emnapi/wasi-threads"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@eslint-community/eslint-utils",
+    "version": "4.10.1",
+    "status": "dev",
+    "source": "node_modules/@eslint-community/eslint-utils"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@eslint-community/regexpp",
+    "version": "4.12.3",
+    "status": "dev",
+    "source": "node_modules/@eslint-community/regexpp"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@eslint/config-array",
+    "version": "0.23.6",
+    "status": "dev",
+    "source": "node_modules/@eslint/config-array"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@eslint/config-helpers",
+    "version": "0.7.0",
+    "status": "dev",
+    "source": "node_modules/@eslint/config-helpers"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@eslint/core",
+    "version": "1.2.1",
+    "status": "dev",
+    "source": "node_modules/@eslint/core"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@eslint/js",
+    "version": "10.0.1",
+    "status": "dev",
+    "source": "node_modules/@eslint/js"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@eslint/object-schema",
+    "version": "3.0.5",
+    "status": "dev",
+    "source": "node_modules/@eslint/object-schema"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@eslint/plugin-kit",
+    "version": "0.7.3",
+    "status": "dev",
+    "source": "node_modules/@eslint/plugin-kit"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@humanfs/core",
+    "version": "0.19.2",
+    "status": "dev",
+    "source": "node_modules/@humanfs/core"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@humanfs/node",
+    "version": "0.16.8",
+    "status": "dev",
+    "source": "node_modules/@humanfs/node"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@humanfs/types",
+    "version": "0.15.0",
+    "status": "dev",
+    "source": "node_modules/@humanfs/types"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@humanwhocodes/module-importer",
+    "version": "1.0.1",
+    "status": "dev",
+    "source": "node_modules/@humanwhocodes/module-importer"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@humanwhocodes/retry",
+    "version": "0.4.3",
+    "status": "dev",
+    "source": "node_modules/@humanwhocodes/retry"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@isaacs/nonrecursive-glob-match",
+    "version": "1.1.0",
+    "status": "dev",
+    "source": "node_modules/@isaacs/nonrecursive-glob-match"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@jridgewell/gen-mapping",
+    "version": "0.3.13",
+    "status": "dev",
+    "source": "node_modules/@jridgewell/gen-mapping"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@jridgewell/remapping",
+    "version": "2.3.5",
+    "status": "dev",
+    "source": "node_modules/@jridgewell/remapping"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@jridgewell/resolve-uri",
+    "version": "3.1.3",
+    "status": "dev",
+    "source": "node_modules/@jridgewell/resolve-uri"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@jridgewell/sourcemap-codec",
+    "version": "1.6.0",
+    "status": "dev",
+    "source": "node_modules/@jridgewell/sourcemap-codec"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@jridgewell/trace-mapping",
+    "version": "0.3.31",
+    "status": "dev",
+    "source": "node_modules/@jridgewell/trace-mapping"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@keyv/bigmap",
+    "version": "1.3.1",
+    "status": "dev",
+    "source": "node_modules/@keyv/bigmap"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@keyv/serialize",
+    "version": "1.1.1",
+    "status": "dev",
+    "source": "node_modules/@keyv/serialize"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@napi-rs/wasm-runtime",
+    "version": "1.2.6",
+    "status": "dev;optional",
+    "source": "node_modules/@napi-rs/wasm-runtime"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@oxc-project/types",
+    "version": "0.156.0",
+    "status": "dev",
+    "source": "node_modules/@oxc-project/types"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@reduxjs/toolkit",
+    "version": "2.15.0",
+    "status": "runtime",
+    "source": "node_modules/@reduxjs/toolkit"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-android-arm-eabi",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-android-arm-eabi"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-android-arm64",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-android-arm64"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-darwin-arm64",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-darwin-arm64"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-darwin-x64",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-darwin-x64"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-freebsd-x64",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-freebsd-x64"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-linux-arm-gnueabihf",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-linux-arm-gnueabihf"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-linux-arm64-gnu",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-linux-arm64-gnu"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-linux-arm64-musl",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-linux-arm64-musl"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-linux-ppc64-gnu",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-linux-ppc64-gnu"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-linux-s390x-gnu",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-linux-s390x-gnu"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-linux-x64-gnu",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-linux-x64-gnu"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-linux-x64-musl",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-linux-x64-musl"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-openharmony-arm64",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-openharmony-arm64"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-wasm32-wasi",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-wasm32-wasi"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-win32-arm64-msvc",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-win32-arm64-msvc"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/binding-win32-x64-msvc",
+    "version": "1.2.19",
+    "status": "dev;optional",
+    "source": "node_modules/@rolldown/binding-win32-x64-msvc"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@rolldown/pluginutils",
+    "version": "1.1.1",
+    "status": "dev",
+    "source": "node_modules/@rolldown/pluginutils"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@standard-schema/spec",
+    "version": "1.1.0",
+    "status": "runtime",
+    "source": "node_modules/@standard-schema/spec"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@standard-schema/utils",
+    "version": "0.3.0",
+    "status": "runtime",
+    "source": "node_modules/@standard-schema/utils"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@tybys/wasm-util",
+    "version": "0.10.5",
+    "status": "dev;optional",
+    "source": "node_modules/@tybys/wasm-util"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@types/d3-array",
+    "version": "3.2.2",
+    "status": "runtime",
+    "source": "node_modules/@types/d3-array"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@types/d3-color",
+    "version": "3.1.3",
+    "status": "runtime",
+    "source": "node_modules/@types/d3-color"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@types/d3-ease",
+    "version": "3.0.2",
+    "status": "runtime",
+    "source": "node_modules/@types/d3-ease"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@types/d3-interpolate",
+    "version": "3.0.4",
+    "status": "runtime",
+    "source": "node_modules/@types/d3-interpolate"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@types/d3-path",
+    "version": "3.1.1",
+    "status": "runtime",
+    "source": "node_modules/@types/d3-path"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@types/d3-scale",
+    "version": "4.0.9",
+    "status": "runtime",
+    "source": "node_modules/@types/d3-scale"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@types/d3-shape",
+    "version": "3.2.0",
+    "status": "runtime",
+    "source": "node_modules/@types/d3-shape"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@types/d3-time",
+    "version": "3.0.4",
+    "status": "runtime",
+    "source": "node_modules/@types/d3-time"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@types/d3-timer",
+    "version": "3.0.2",
+    "status": "runtime",
+    "source": "node_modules/@types/d3-timer"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@types/esrecurse",
+    "version": "4.3.1",
+    "status": "dev",
+    "source": "node_modules/@types/esrecurse"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@types/estree",
+    "version": "1.0.10",
+    "status": "dev",
+    "source": "node_modules/@types/estree"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@types/json-schema",
+    "version": "7.0.15",
+    "status": "dev",
+    "source": "node_modules/@types/json-schema"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@types/use-sync-external-store",
+    "version": "0.0.6",
+    "status": "runtime",
+    "source": "node_modules/@types/use-sync-external-store"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "@vitejs/plugin-react",
+    "version": "6.3.0",
+    "status": "dev",
+    "source": "node_modules/@vitejs/plugin-react"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "acorn",
+    "version": "8.19.0",
+    "status": "dev",
+    "source": "node_modules/acorn"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "acorn-jsx",
+    "version": "5.3.2",
+    "status": "dev",
+    "source": "node_modules/acorn-jsx"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "ajv",
+    "version": "6.15.0",
+    "status": "dev",
+    "source": "node_modules/ajv"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "balanced-match",
+    "version": "4.0.4",
+    "status": "dev",
+    "source": "node_modules/balanced-match"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "baseline-browser-mapping",
+    "version": "2.11.38",
+    "status": "dev",
+    "source": "node_modules/baseline-browser-mapping"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "brace-expansion",
+    "version": "5.0.13",
+    "status": "dev",
+    "source": "node_modules/brace-expansion"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "browserslist",
+    "version": "4.29.6",
+    "status": "dev",
+    "source": "node_modules/browserslist"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "cacheable",
+    "version": "2.5.0",
+    "status": "dev",
+    "source": "node_modules/cacheable"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "caniuse-lite",
+    "version": "1.0.30001826",
+    "status": "dev",
+    "source": "node_modules/caniuse-lite"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "clsx",
+    "version": "2.1.1",
+    "status": "runtime",
+    "source": "node_modules/clsx"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "convert-source-map",
+    "version": "2.0.0",
+    "status": "dev",
+    "source": "node_modules/convert-source-map"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "cross-spawn",
+    "version": "7.0.6",
+    "status": "dev",
+    "source": "node_modules/cross-spawn"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "d3-array",
+    "version": "3.2.5",
+    "status": "runtime",
+    "source": "node_modules/d3-array"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "d3-color",
+    "version": "3.1.1",
+    "status": "runtime",
+    "source": "node_modules/d3-color"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "d3-ease",
+    "version": "3.0.2",
+    "status": "runtime",
+    "source": "node_modules/d3-ease"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "d3-format",
+    "version": "3.1.3",
+    "status": "runtime",
+    "source": "node_modules/d3-format"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "d3-interpolate",
+    "version": "3.0.2",
+    "status": "runtime",
+    "source": "node_modules/d3-interpolate"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "d3-path",
+    "version": "3.1.1",
+    "status": "runtime",
+    "source": "node_modules/d3-path"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "d3-scale",
+    "version": "4.0.3",
+    "status": "runtime",
+    "source": "node_modules/d3-scale"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "d3-shape",
+    "version": "3.2.1",
+    "status": "runtime",
+    "source": "node_modules/d3-shape"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "d3-time",
+    "version": "3.1.1",
+    "status": "runtime",
+    "source": "node_modules/d3-time"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "d3-time-format",
+    "version": "4.1.1",
+    "status": "runtime",
+    "source": "node_modules/d3-time-format"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "d3-timer",
+    "version": "3.0.2",
+    "status": "runtime",
+    "source": "node_modules/d3-timer"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "debug",
+    "version": "4.4.3",
+    "status": "dev",
+    "source": "node_modules/debug"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "decimal.js-light",
+    "version": "2.5.1",
+    "status": "runtime",
+    "source": "node_modules/decimal.js-light"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "deep-is",
+    "version": "0.1.4",
+    "status": "dev",
+    "source": "node_modules/deep-is"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "detect-libc",
+    "version": "2.1.2",
+    "status": "dev",
+    "source": "node_modules/detect-libc"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "electron-to-chromium",
+    "version": "1.5.491",
+    "status": "dev",
+    "source": "node_modules/electron-to-chromium"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "es-toolkit",
+    "version": "1.53.2",
+    "status": "runtime",
+    "source": "node_modules/es-toolkit"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "escalade",
+    "version": "3.2.0",
+    "status": "dev",
+    "source": "node_modules/escalade"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "escape-string-regexp",
+    "version": "4.0.0",
+    "status": "dev",
+    "source": "node_modules/escape-string-regexp"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "eslint",
+    "version": "10.15.0",
+    "status": "dev",
+    "source": "node_modules/eslint"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "eslint-plugin-react-hooks",
+    "version": "7.1.1",
+    "status": "dev",
+    "source": "node_modules/eslint-plugin-react-hooks"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "eslint-plugin-react-refresh",
+    "version": "0.5.8",
+    "status": "dev",
+    "source": "node_modules/eslint-plugin-react-refresh"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "eslint-scope",
+    "version": "9.1.2",
+    "status": "dev",
+    "source": "node_modules/eslint-scope"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "eslint-visitor-keys",
+    "version": "3.4.3",
+    "status": "dev",
+    "source": "node_modules/@eslint-community/eslint-utils/node_modules/eslint-visitor-keys"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "eslint-visitor-keys",
+    "version": "5.0.1",
+    "status": "dev",
+    "source": "node_modules/eslint-visitor-keys"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "espree",
+    "version": "11.2.0",
+    "status": "dev",
+    "source": "node_modules/espree"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "esquery",
+    "version": "1.7.0",
+    "status": "dev",
+    "source": "node_modules/esquery"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "esrecurse",
+    "version": "4.3.0",
+    "status": "dev",
+    "source": "node_modules/esrecurse"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "estraverse",
+    "version": "5.3.0",
+    "status": "dev",
+    "source": "node_modules/estraverse"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "esutils",
+    "version": "2.0.3",
+    "status": "dev",
+    "source": "node_modules/esutils"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "eventemitter3",
+    "version": "5.0.4",
+    "status": "runtime",
+    "source": "node_modules/eventemitter3"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "fast-deep-equal",
+    "version": "3.1.3",
+    "status": "dev",
+    "source": "node_modules/fast-deep-equal"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "fast-json-stable-stringify",
+    "version": "2.1.0",
+    "status": "dev",
+    "source": "node_modules/fast-json-stable-stringify"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "fast-levenshtein",
+    "version": "2.0.6",
+    "status": "dev",
+    "source": "node_modules/fast-levenshtein"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "fdir",
+    "version": "6.5.0",
+    "status": "dev",
+    "source": "node_modules/fdir"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "file-entry-cache",
+    "version": "11.1.5",
+    "status": "dev",
+    "source": "node_modules/file-entry-cache"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "find-up",
+    "version": "5.0.0",
+    "status": "dev",
+    "source": "node_modules/find-up"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "flat-cache",
+    "version": "6.1.23",
+    "status": "dev",
+    "source": "node_modules/flat-cache"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "flatted",
+    "version": "3.4.4",
+    "status": "dev",
+    "source": "node_modules/flatted"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "fsevents",
+    "version": "2.3.3",
+    "status": "dev;optional",
+    "source": "node_modules/fsevents"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "gensync",
+    "version": "1.0.0-beta.2",
+    "status": "dev",
+    "source": "node_modules/gensync"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "glob-parent",
+    "version": "6.0.2",
+    "status": "dev",
+    "source": "node_modules/glob-parent"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "globals",
+    "version": "17.14.0",
+    "status": "dev",
+    "source": "node_modules/globals"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "hashery",
+    "version": "1.5.1",
+    "status": "dev",
+    "source": "node_modules/hashery"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "hermes-estree",
+    "version": "0.25.1",
+    "status": "dev",
+    "source": "node_modules/hermes-estree"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "hermes-parser",
+    "version": "0.25.1",
+    "status": "dev",
+    "source": "node_modules/hermes-parser"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "hookified",
+    "version": "1.15.1",
+    "status": "dev",
+    "source": "node_modules/hookified"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "hookified",
+    "version": "2.2.0",
+    "status": "dev",
+    "source": "node_modules/qified/node_modules/hookified"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "ignore",
+    "version": "5.3.2",
+    "status": "dev",
+    "source": "node_modules/ignore"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "immer",
+    "version": "11.2.10",
+    "status": "runtime",
+    "source": "node_modules/immer"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "imurmurhash",
+    "version": "0.1.4",
+    "status": "dev",
+    "source": "node_modules/imurmurhash"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "internmap",
+    "version": "2.0.3",
+    "status": "runtime",
+    "source": "node_modules/internmap"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "is-extglob",
+    "version": "2.1.1",
+    "status": "dev",
+    "source": "node_modules/is-extglob"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "is-glob",
+    "version": "4.0.3",
+    "status": "dev",
+    "source": "node_modules/is-glob"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "isexe",
+    "version": "2.0.0",
+    "status": "dev",
+    "source": "node_modules/isexe"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "js-tokens",
+    "version": "4.0.0",
+    "status": "dev",
+    "source": "node_modules/js-tokens"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "jsesc",
+    "version": "3.1.0",
+    "status": "dev",
+    "source": "node_modules/jsesc"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "json-schema-traverse",
+    "version": "0.4.1",
+    "status": "dev",
+    "source": "node_modules/json-schema-traverse"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "json-stable-stringify-without-jsonify",
+    "version": "1.0.1",
+    "status": "dev",
+    "source": "node_modules/json-stable-stringify-without-jsonify"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "json5",
+    "version": "2.2.3",
+    "status": "dev",
+    "source": "node_modules/json5"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "keyv",
+    "version": "5.6.0",
+    "status": "dev",
+    "source": "node_modules/keyv"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "levn",
+    "version": "0.4.1",
+    "status": "dev",
+    "source": "node_modules/levn"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "lightningcss",
+    "version": "1.33.0",
+    "status": "dev",
+    "source": "node_modules/lightningcss"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "lightningcss-android-arm64",
+    "version": "1.33.0",
+    "status": "dev;optional",
+    "source": "node_modules/lightningcss-android-arm64"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "lightningcss-darwin-arm64",
+    "version": "1.33.0",
+    "status": "dev;optional",
+    "source": "node_modules/lightningcss-darwin-arm64"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "lightningcss-darwin-x64",
+    "version": "1.33.0",
+    "status": "dev;optional",
+    "source": "node_modules/lightningcss-darwin-x64"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "lightningcss-freebsd-x64",
+    "version": "1.33.0",
+    "status": "dev;optional",
+    "source": "node_modules/lightningcss-freebsd-x64"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "lightningcss-linux-arm-gnueabihf",
+    "version": "1.33.0",
+    "status": "dev;optional",
+    "source": "node_modules/lightningcss-linux-arm-gnueabihf"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "lightningcss-linux-arm64-gnu",
+    "version": "1.33.0",
+    "status": "dev;optional",
+    "source": "node_modules/lightningcss-linux-arm64-gnu"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "lightningcss-linux-arm64-musl",
+    "version": "1.33.0",
+    "status": "dev;optional",
+    "source": "node_modules/lightningcss-linux-arm64-musl"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "lightningcss-linux-x64-gnu",
+    "version": "1.33.0",
+    "status": "dev;optional",
+    "source": "node_modules/lightningcss-linux-x64-gnu"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "lightningcss-linux-x64-musl",
+    "version": "1.33.0",
+    "status": "dev;optional",
+    "source": "node_modules/lightningcss-linux-x64-musl"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "lightningcss-win32-arm64-msvc",
+    "version": "1.33.0",
+    "status": "dev;optional",
+    "source": "node_modules/lightningcss-win32-arm64-msvc"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "lightningcss-win32-x64-msvc",
+    "version": "1.33.0",
+    "status": "dev;optional",
+    "source": "node_modules/lightningcss-win32-x64-msvc"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "locate-path",
+    "version": "6.0.0",
+    "status": "dev",
+    "source": "node_modules/locate-path"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "lru-cache",
+    "version": "5.1.1",
+    "status": "dev",
+    "source": "node_modules/lru-cache"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "minimatch",
+    "version": "11.0.9",
+    "status": "dev",
+    "source": "node_modules/minimatch"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "ms",
+    "version": "2.1.3",
+    "status": "dev",
+    "source": "node_modules/ms"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "nanoid",
+    "version": "3.3.20",
+    "status": "dev",
+    "source": "node_modules/nanoid"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "natural-compare",
+    "version": "1.4.0",
+    "status": "dev",
+    "source": "node_modules/natural-compare"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "node-releases",
+    "version": "2.0.65",
+    "status": "dev",
+    "source": "node_modules/node-releases"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "optionator",
+    "version": "0.9.4",
+    "status": "dev",
+    "source": "node_modules/optionator"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "p-limit",
+    "version": "3.1.0",
+    "status": "dev",
+    "source": "node_modules/p-limit"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "p-locate",
+    "version": "5.0.0",
+    "status": "dev",
+    "source": "node_modules/p-locate"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "path-exists",
+    "version": "4.0.0",
+    "status": "dev",
+    "source": "node_modules/path-exists"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "path-key",
+    "version": "3.1.1",
+    "status": "dev",
+    "source": "node_modules/path-key"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "picocolors",
+    "version": "1.1.1",
+    "status": "dev",
+    "source": "node_modules/picocolors"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "picomatch",
+    "version": "4.0.7",
+    "status": "dev",
+    "source": "node_modules/picomatch"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "playwright-core",
+    "version": "1.57.0",
+    "status": "dev",
+    "source": "node_modules/playwright-core"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "postcss",
+    "version": "8.5.33",
+    "status": "dev",
+    "source": "node_modules/postcss"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "prelude-ls",
+    "version": "1.2.1",
+    "status": "dev",
+    "source": "node_modules/prelude-ls"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "punycode",
+    "version": "2.3.1",
+    "status": "dev",
+    "source": "node_modules/punycode"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "qified",
+    "version": "0.10.1",
+    "status": "dev",
+    "source": "node_modules/qified"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "react",
+    "version": "19.3.1",
+    "status": "runtime",
+    "source": "node_modules/react"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "react-dom",
+    "version": "19.3.1",
+    "status": "runtime",
+    "source": "node_modules/react-dom"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "react-is",
+    "version": "19.3.1",
+    "status": "runtime",
+    "source": "node_modules/react-is"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "react-redux",
+    "version": "9.3.1",
+    "status": "runtime",
+    "source": "node_modules/react-redux"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "recharts",
+    "version": "3.11.0",
+    "status": "runtime",
+    "source": "node_modules/recharts"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "redux",
+    "version": "5.0.1",
+    "status": "runtime",
+    "source": "node_modules/redux"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "redux-thunk",
+    "version": "3.1.0",
+    "status": "runtime",
+    "source": "node_modules/redux-thunk"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "reselect",
+    "version": "5.2.0",
+    "status": "runtime",
+    "source": "node_modules/reselect"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "rolldown",
+    "version": "1.2.19",
+    "status": "dev",
+    "source": "node_modules/rolldown"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "scheduler",
+    "version": "0.28.0",
+    "status": "runtime",
+    "source": "node_modules/scheduler"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "semver",
+    "version": "6.3.2",
+    "status": "dev",
+    "source": "node_modules/semver"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "shebang-command",
+    "version": "2.0.0",
+    "status": "dev",
+    "source": "node_modules/shebang-command"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "shebang-regex",
+    "version": "3.0.0",
+    "status": "dev",
+    "source": "node_modules/shebang-regex"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "source-map-js",
+    "version": "1.2.3",
+    "status": "dev",
+    "source": "node_modules/source-map-js"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "tiny-invariant",
+    "version": "1.3.3",
+    "status": "runtime",
+    "source": "node_modules/tiny-invariant"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "tinyglobby",
+    "version": "0.2.17",
+    "status": "dev",
+    "source": "node_modules/tinyglobby"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "tslib",
+    "version": "2.9.1",
+    "status": "dev;optional",
+    "source": "node_modules/tslib"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "type-check",
+    "version": "0.4.0",
+    "status": "dev",
+    "source": "node_modules/type-check"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "update-browserslist-db",
+    "version": "1.4.0",
+    "status": "dev",
+    "source": "node_modules/update-browserslist-db"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "uri-js",
+    "version": "4.4.1",
+    "status": "dev",
+    "source": "node_modules/uri-js"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "use-sync-external-store",
+    "version": "1.7.0",
+    "status": "runtime",
+    "source": "node_modules/use-sync-external-store"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "victory-vendor",
+    "version": "37.4.1",
+    "status": "runtime",
+    "source": "node_modules/victory-vendor"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "vite",
+    "version": "8.3.8",
+    "status": "dev",
+    "source": "node_modules/vite"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "which",
+    "version": "2.0.2",
+    "status": "dev",
+    "source": "node_modules/which"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "word-wrap",
+    "version": "1.2.5",
+    "status": "dev",
+    "source": "node_modules/word-wrap"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "yallist",
+    "version": "3.1.1",
+    "status": "dev",
+    "source": "node_modules/yallist"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "yocto-queue",
+    "version": "0.1.0",
+    "status": "dev",
+    "source": "node_modules/yocto-queue"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "zod",
+    "version": "4.6.7",
+    "status": "dev",
+    "source": "node_modules/zod"
+  },
+  {
+    "environment": "frontend-lock",
+    "name": "zod-validation-error",
+    "version": "4.0.2",
+    "status": "dev",
+    "source": "node_modules/zod-validation-error"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "graphifyy",
+    "version": "0.9.112",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "networkx",
+    "version": "3.7",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "numpy",
+    "version": "2.5.5",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "PyYAML",
+    "version": "6.0.3",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "RapidFuzz",
+    "version": "3.14.6",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter",
+    "version": "0.25.2",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-bash",
+    "version": "0.25.1",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-c",
+    "version": "0.24.2",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-c-sharp",
+    "version": "0.24.0",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-cpp",
+    "version": "0.23.4",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-elixir",
+    "version": "0.3.5",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-fortran",
+    "version": "0.6.0",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-go",
+    "version": "0.25.0",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-groovy",
+    "version": "0.1.2",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-java",
+    "version": "0.23.5",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-javascript",
+    "version": "0.25.0",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-json",
+    "version": "0.24.8",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-julia",
+    "version": "0.23.1",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-kotlin",
+    "version": "1.1.0",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-lua",
+    "version": "0.5.0",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-objc",
+    "version": "3.0.2",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-php",
+    "version": "0.24.1",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-powershell",
+    "version": "0.26.4",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-python",
+    "version": "0.25.0",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-ruby",
+    "version": "0.23.1",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-rust",
+    "version": "0.24.2",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-scala",
+    "version": "0.26.13",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-swift",
+    "version": "0.7.4",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-typescript",
+    "version": "0.23.2",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-verilog",
+    "version": "1.0.3",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "graph-memory",
+    "name": "tree-sitter-zig",
+    "version": "1.1.2",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "contourpy",
+    "version": "1.4.0",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "cycler",
+    "version": "0.12.1",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "fonttools",
+    "version": "4.68.0",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "kiwisolver",
+    "version": "1.5.1",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "lxml",
+    "version": "6.1.3",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "matplotlib",
+    "version": "3.10.7",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "numpy",
+    "version": "2.5.5",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "packaging",
+    "version": "26.4",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "pillow",
+    "version": "13.0.0",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "PyMuPDF",
+    "version": "1.26.6",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "pyparsing",
+    "version": "3.3.3",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "python-dateutil",
+    "version": "4.0.0",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "python-docx",
+    "version": "1.2.0",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "python-pptx",
+    "version": "1.0.2",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "typing_extensions",
+    "version": "4.16.0",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "tzdata",
+    "version": "2026.6",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  },
+  {
+    "environment": "publication-tools",
+    "name": "xlsxwriter",
+    "version": "3.3.4",
+    "status": "installed supporting dependency",
+    "source": "isolated ignored environment metadata"
+  }
+]

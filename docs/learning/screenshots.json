@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-11-24T04:43:31.939Z",
+  "browser": "158.0.8127.42",
+  "viewport": "1366x900",
+  "routes": [
+    "/",
+    "/dataset",
+    "/probability",
+    "/statistics",
+    "/detect",
+    "/evaluation"
+  ],
+  "result": "pass",
+  "content": "Public aggregates and explicitly authored synthetic meeting text only; production preview."
+}

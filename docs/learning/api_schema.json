@@ -1,0 +1,3043 @@
+{
+  "components": {
+    "schemas": {
+      "BinomialResponse": {
+        "properties": {
+          "assumptions": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Assumptions",
+            "type": "array"
+          },
+          "bernoulli": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Bernoulli",
+            "type": "object"
+          },
+          "bernoulli_p": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bernoulli P"
+          },
+          "binomial_pmf": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Binomial Pmf"
+          },
+          "notes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Notes",
+            "type": "array"
+          },
+          "scope": {
+            "enum": [
+              "all",
+              "train",
+              "test"
+            ],
+            "title": "Scope",
+            "type": "string"
+          },
+          "successes": {
+            "title": "Successes",
+            "type": "integer"
+          },
+          "trials": {
+            "title": "Trials",
+            "type": "integer"
+          },
+          "word": {
+            "title": "Word",
+            "type": "string"
+          }
+        },
+        "required": [
+          "word",
+          "scope",
+          "bernoulli_p",
+          "bernoulli",
+          "trials",
+          "successes",
+          "binomial_pmf",
+          "assumptions",
+          "notes"
+        ],
+        "title": "BinomialResponse",
+        "type": "object"
+      },
+      "ComparisonResponse": {
+        "properties": {
+          "artifact_id": {
+            "title": "Artifact Id",
+            "type": "string"
+          },
+          "dataset_id": {
+            "title": "Dataset Id",
+            "type": "string"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Limitations",
+            "type": "array"
+          },
+          "models": {
+            "$ref": "#/components/schemas/DualMetrics"
+          },
+          "same_test_ids": {
+            "title": "Same Test Ids",
+            "type": "boolean"
+          },
+          "split_id": {
+            "title": "Split Id",
+            "type": "string"
+          },
+          "test_count": {
+            "title": "Test Count",
+            "type": "integer"
+          },
+          "test_ids_sha256": {
+            "title": "Test Ids Sha256",
+            "type": "string"
+          }
+        },
+        "required": [
+          "dataset_id",
+          "split_id",
+          "artifact_id",
+          "test_count",
+          "test_ids_sha256",
+          "same_test_ids",
+          "models",
+          "limitations"
+        ],
+        "title": "ComparisonResponse",
+        "type": "object"
+      },
+      "ConfidenceResponse": {
+        "properties": {
+          "confidence": {
+            "title": "Confidence",
+            "type": "number"
+          },
+          "limitations": {
+            "title": "Limitations",
+            "type": "string"
+          },
+          "lower": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lower"
+          },
+          "method": {
+            "const": "wilson",
+            "title": "Method",
+            "type": "string"
+          },
+          "notes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Notes",
+            "type": "array"
+          },
+          "point_estimate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Point Estimate"
+          },
+          "sample_size": {
+            "title": "Sample Size",
+            "type": "integer"
+          },
+          "scope": {
+            "enum": [
+              "all",
+              "train",
+              "test"
+            ],
+            "title": "Scope",
+            "type": "string"
+          },
+          "spam_count": {
+            "title": "Spam Count",
+            "type": "integer"
+          },
+          "upper": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Upper"
+          }
+        },
+        "required": [
+          "scope",
+          "method",
+          "confidence",
+          "sample_size",
+          "spam_count",
+          "point_estimate",
+          "lower",
+          "upper",
+          "limitations",
+          "notes"
+        ],
+        "title": "ConfidenceResponse",
+        "type": "object"
+      },
+      "DatasetSummary": {
+        "properties": {
+          "class_counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Class Counts",
+            "type": "object"
+          },
+          "class_proportions": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "title": "Class Proportions",
+            "type": "object"
+          },
+          "dataset_id": {
+            "title": "Dataset Id",
+            "type": "string"
+          },
+          "duplicate_count": {
+            "title": "Duplicate Count",
+            "type": "integer"
+          },
+          "excluded_count": {
+            "title": "Excluded Count",
+            "type": "integer"
+          },
+          "exclusion_scope": {
+            "const": "source_corpus_before_split",
+            "title": "Exclusion Scope",
+            "type": "string"
+          },
+          "historical_notice": {
+            "title": "Historical Notice",
+            "type": "string"
+          },
+          "label_conflict_count": {
+            "title": "Label Conflict Count",
+            "type": "integer"
+          },
+          "parse_rejected_count": {
+            "title": "Parse Rejected Count",
+            "type": "integer"
+          },
+          "scope": {
+            "enum": [
+              "all",
+              "train",
+              "test"
+            ],
+            "title": "Scope",
+            "type": "string"
+          },
+          "source_archives": {
+            "items": {
+              "$ref": "#/components/schemas/PublicArchive"
+            },
+            "title": "Source Archives",
+            "type": "array"
+          },
+          "source_groups": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Source Groups",
+            "type": "object"
+          },
+          "split_id": {
+            "title": "Split Id",
+            "type": "string"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "scope",
+          "dataset_id",
+          "split_id",
+          "total",
+          "class_counts",
+          "class_proportions",
+          "source_groups",
+          "excluded_count",
+          "duplicate_count",
+          "parse_rejected_count",
+          "label_conflict_count",
+          "exclusion_scope",
+          "source_archives",
+          "historical_notice"
+        ],
+        "title": "DatasetSummary",
+        "type": "object"
+      },
+      "DescriptiveGroup": {
+        "properties": {
+          "iqr": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Iqr"
+          },
+          "max": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max"
+          },
+          "mean": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mean"
+          },
+          "median": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Median"
+          },
+          "min": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Min"
+          },
+          "mode": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mode"
+          },
+          "mode_tied": {
+            "title": "Mode Tied",
+            "type": "boolean"
+          },
+          "n": {
+            "title": "N",
+            "type": "integer"
+          },
+          "notes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Notes",
+            "type": "array"
+          },
+          "q1": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Q1"
+          },
+          "q3": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Q3"
+          },
+          "sample_std": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sample Std"
+          },
+          "sample_variance": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sample Variance"
+          }
+        },
+        "required": [
+          "n",
+          "mean",
+          "median",
+          "mode",
+          "mode_tied",
+          "min",
+          "max",
+          "q1",
+          "q3",
+          "iqr",
+          "sample_variance",
+          "sample_std",
+          "notes"
+        ],
+        "title": "DescriptiveGroup",
+        "type": "object"
+      },
+      "DistributionResponse": {
+        "properties": {
+          "bin_closure": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Bin Closure"
+          },
+          "bins": {
+            "items": {
+              "$ref": "#/components/schemas/HistogramBin"
+            },
+            "title": "Bins",
+            "type": "array"
+          },
+          "boxplot": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "number"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Boxplot"
+          },
+          "class_label": {
+            "enum": [
+              "all",
+              "ham",
+              "spam"
+            ],
+            "title": "Class Label",
+            "type": "string"
+          },
+          "frequency_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Frequency Type"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/WordFrequency"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "metric": {
+            "enum": [
+              "character_count",
+              "token_count",
+              "top_words"
+            ],
+            "title": "Metric",
+            "type": "string"
+          },
+          "scope": {
+            "enum": [
+              "all",
+              "train",
+              "test"
+            ],
+            "title": "Scope",
+            "type": "string"
+          },
+          "selected_records": {
+            "title": "Selected Records",
+            "type": "integer"
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "scope",
+          "metric",
+          "class_label",
+          "selected_records",
+          "frequency_type",
+          "unit",
+          "items",
+          "bins",
+          "boxplot"
+        ],
+        "title": "DistributionResponse",
+        "type": "object"
+      },
+      "DualMetrics": {
+        "properties": {
+          "bernoulli": {
+            "$ref": "#/components/schemas/ModelMetrics"
+          },
+          "multinomial": {
+            "$ref": "#/components/schemas/ModelMetrics"
+          }
+        },
+        "required": [
+          "multinomial",
+          "bernoulli"
+        ],
+        "title": "DualMetrics",
+        "type": "object"
+      },
+      "DualPredictions": {
+        "properties": {
+          "bernoulli": {
+            "$ref": "#/components/schemas/ModelPrediction"
+          },
+          "multinomial": {
+            "$ref": "#/components/schemas/ModelPrediction"
+          }
+        },
+        "required": [
+          "multinomial",
+          "bernoulli"
+        ],
+        "title": "DualPredictions",
+        "type": "object"
+      },
+      "ErrorBody": {
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "details": {
+            "additionalProperties": true,
+            "title": "Details",
+            "type": "object"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "ErrorBody",
+        "type": "object"
+      },
+      "ErrorEnvelope": {
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorBody"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "title": "ErrorEnvelope",
+        "type": "object"
+      },
+      "FractionResponse": {
+        "properties": {
+          "denominator": {
+            "title": "Denominator",
+            "type": "integer"
+          },
+          "numerator": {
+            "title": "Numerator",
+            "type": "integer"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "numerator",
+          "denominator",
+          "value"
+        ],
+        "title": "FractionResponse",
+        "type": "object"
+      },
+      "HealthResponse": {
+        "properties": {
+          "dataset_ready": {
+            "title": "Dataset Ready",
+            "type": "boolean"
+          },
+          "evaluation_ready": {
+            "title": "Evaluation Ready",
+            "type": "boolean"
+          },
+          "models_ready": {
+            "$ref": "#/components/schemas/ModelReadiness"
+          },
+          "split_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Split Id"
+          },
+          "status": {
+            "enum": [
+              "ready",
+              "degraded"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "dataset_ready",
+          "models_ready",
+          "evaluation_ready",
+          "split_id"
+        ],
+        "title": "HealthResponse",
+        "type": "object"
+      },
+      "HistogramBin": {
+        "properties": {
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "lower": {
+            "title": "Lower",
+            "type": "number"
+          },
+          "upper": {
+            "title": "Upper",
+            "type": "number"
+          }
+        },
+        "required": [
+          "lower",
+          "upper",
+          "count"
+        ],
+        "title": "HistogramBin",
+        "type": "object"
+      },
+      "HypothesisRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "alpha": {
+            "default": 0.05,
+            "exclusiveMaximum": 1.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Alpha",
+            "type": "number"
+          },
+          "scope": {
+            "default": "all",
+            "enum": [
+              "all",
+              "train",
+              "test"
+            ],
+            "title": "Scope",
+            "type": "string"
+          },
+          "word": {
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Word",
+            "type": "string"
+          }
+        },
+        "required": [
+          "word"
+        ],
+        "title": "HypothesisRequest",
+        "type": "object"
+      },
+      "HypothesisResponse": {
+        "properties": {
+          "alpha": {
+            "title": "Alpha",
+            "type": "number"
+          },
+          "alternative_hypothesis": {
+            "title": "Alternative Hypothesis",
+            "type": "string"
+          },
+          "assumptions_satisfied": {
+            "title": "Assumptions Satisfied",
+            "type": "boolean"
+          },
+          "chi_square": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chi Square"
+          },
+          "continuity_correction": {
+            "title": "Continuity Correction",
+            "type": "boolean"
+          },
+          "degrees_of_freedom": {
+            "title": "Degrees Of Freedom",
+            "type": "integer"
+          },
+          "expected": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "title": "Expected",
+            "type": "array"
+          },
+          "limitations": {
+            "title": "Limitations",
+            "type": "string"
+          },
+          "null_hypothesis": {
+            "title": "Null Hypothesis",
+            "type": "string"
+          },
+          "observed": {
+            "items": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "title": "Observed",
+            "type": "array"
+          },
+          "p_value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P Value"
+          },
+          "reject_null": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reject Null"
+          },
+          "scope": {
+            "enum": [
+              "all",
+              "train",
+              "test"
+            ],
+            "title": "Scope",
+            "type": "string"
+          },
+          "test": {
+            "const": "pearson_chi_square_independence",
+            "title": "Test",
+            "type": "string"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Warnings",
+            "type": "array"
+          },
+          "word": {
+            "title": "Word",
+            "type": "string"
+          }
+        },
+        "required": [
+          "word",
+          "scope",
+          "test",
+          "null_hypothesis",
+          "alternative_hypothesis",
+          "observed",
+          "expected",
+          "chi_square",
+          "degrees_of_freedom",
+          "p_value",
+          "alpha",
+          "continuity_correction",
+          "assumptions_satisfied",
+          "warnings",
+          "reject_null",
+          "limitations"
+        ],
+        "title": "HypothesisResponse",
+        "type": "object"
+      },
+      "InputStatistics": {
+        "properties": {
+          "character_count": {
+            "title": "Character Count",
+            "type": "integer"
+          },
+          "recognized_token_count": {
+            "title": "Recognized Token Count",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "character_count",
+          "recognized_token_count"
+        ],
+        "title": "InputStatistics",
+        "type": "object"
+      },
+      "ModelMetrics": {
+        "properties": {
+          "accuracy": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Accuracy"
+          },
+          "confusion_matrix": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Confusion Matrix",
+            "type": "object"
+          },
+          "f1": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "F1"
+          },
+          "false_positive_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "False Positive Rate"
+          },
+          "model": {
+            "enum": [
+              "multinomial",
+              "bernoulli"
+            ],
+            "title": "Model",
+            "type": "string"
+          },
+          "notes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Notes",
+            "type": "array"
+          },
+          "positive_class": {
+            "const": "spam",
+            "title": "Positive Class",
+            "type": "string"
+          },
+          "precision": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Precision"
+          },
+          "recall": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recall"
+          },
+          "split_id": {
+            "title": "Split Id",
+            "type": "string"
+          },
+          "test_count": {
+            "title": "Test Count",
+            "type": "integer"
+          },
+          "test_ids_sha256": {
+            "title": "Test Ids Sha256",
+            "type": "string"
+          },
+          "zero_division_policy": {
+            "title": "Zero Division Policy",
+            "type": "string"
+          }
+        },
+        "required": [
+          "model",
+          "split_id",
+          "positive_class",
+          "test_count",
+          "test_ids_sha256",
+          "confusion_matrix",
+          "accuracy",
+          "precision",
+          "recall",
+          "f1",
+          "false_positive_rate",
+          "zero_division_policy",
+          "notes"
+        ],
+        "title": "ModelMetrics",
+        "type": "object"
+      },
+      "ModelPrediction": {
+        "properties": {
+          "absence_log_odds_contribution": {
+            "title": "Absence Log Odds Contribution",
+            "type": "number"
+          },
+          "absence_terms_included": {
+            "title": "Absence Terms Included",
+            "type": "boolean"
+          },
+          "class_prior_log_odds": {
+            "title": "Class Prior Log Odds",
+            "type": "number"
+          },
+          "log_odds": {
+            "title": "Log Odds",
+            "type": "number"
+          },
+          "other_present_log_odds": {
+            "title": "Other Present Log Odds",
+            "type": "number"
+          },
+          "prediction": {
+            "enum": [
+              "ham",
+              "spam"
+            ],
+            "title": "Prediction",
+            "type": "string"
+          },
+          "spam_probability": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Spam Probability",
+            "type": "number"
+          },
+          "top_contributions": {
+            "items": {
+              "$ref": "#/components/schemas/TermContribution"
+            },
+            "title": "Top Contributions",
+            "type": "array"
+          }
+        },
+        "required": [
+          "prediction",
+          "spam_probability",
+          "top_contributions",
+          "class_prior_log_odds",
+          "absence_terms_included",
+          "absence_log_odds_contribution",
+          "other_present_log_odds",
+          "log_odds"
+        ],
+        "title": "ModelPrediction",
+        "type": "object"
+      },
+      "ModelReadiness": {
+        "properties": {
+          "bernoulli": {
+            "title": "Bernoulli",
+            "type": "boolean"
+          },
+          "multinomial": {
+            "title": "Multinomial",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "multinomial",
+          "bernoulli"
+        ],
+        "title": "ModelReadiness",
+        "type": "object"
+      },
+      "PredictionRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "maxLength": 50000,
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "title": "PredictionRequest",
+        "type": "object"
+      },
+      "PredictionResponse": {
+        "properties": {
+          "agreement": {
+            "title": "Agreement",
+            "type": "boolean"
+          },
+          "input": {
+            "$ref": "#/components/schemas/InputStatistics"
+          },
+          "models": {
+            "$ref": "#/components/schemas/DualPredictions"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Warnings",
+            "type": "array"
+          }
+        },
+        "required": [
+          "input",
+          "models",
+          "agreement",
+          "warnings"
+        ],
+        "title": "PredictionResponse",
+        "type": "object"
+      },
+      "PublicArchive": {
+        "properties": {
+          "acquired_at": {
+            "title": "Acquired At",
+            "type": "string"
+          },
+          "archive_name": {
+            "title": "Archive Name",
+            "type": "string"
+          },
+          "files_accepted": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Files Accepted"
+          },
+          "files_rejected": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Files Rejected"
+          },
+          "files_seen": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Files Seen"
+          },
+          "label": {
+            "enum": [
+              "ham",
+              "spam"
+            ],
+            "title": "Label",
+            "type": "string"
+          },
+          "processing_status": {
+            "title": "Processing Status",
+            "type": "string"
+          },
+          "sha256": {
+            "title": "Sha256",
+            "type": "string"
+          },
+          "size_bytes": {
+            "title": "Size Bytes",
+            "type": "integer"
+          },
+          "source_group": {
+            "title": "Source Group",
+            "type": "string"
+          },
+          "source_url": {
+            "title": "Source Url",
+            "type": "string"
+          }
+        },
+        "required": [
+          "archive_name",
+          "source_url",
+          "source_group",
+          "label",
+          "sha256",
+          "size_bytes",
+          "acquired_at",
+          "processing_status",
+          "files_seen",
+          "files_accepted",
+          "files_rejected"
+        ],
+        "title": "PublicArchive",
+        "type": "object"
+      },
+      "StatisticsResponse": {
+        "properties": {
+          "groups": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/DescriptiveGroup"
+            },
+            "title": "Groups",
+            "type": "object"
+          },
+          "metric": {
+            "enum": [
+              "character_count",
+              "token_count"
+            ],
+            "title": "Metric",
+            "type": "string"
+          },
+          "scope": {
+            "enum": [
+              "all",
+              "train",
+              "test"
+            ],
+            "title": "Scope",
+            "type": "string"
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string"
+          }
+        },
+        "required": [
+          "scope",
+          "metric",
+          "unit",
+          "groups"
+        ],
+        "title": "StatisticsResponse",
+        "type": "object"
+      },
+      "TermContribution": {
+        "properties": {
+          "direction": {
+            "enum": [
+              "ham",
+              "spam",
+              "neutral"
+            ],
+            "title": "Direction",
+            "type": "string"
+          },
+          "log_odds_contribution": {
+            "title": "Log Odds Contribution",
+            "type": "number"
+          },
+          "presence": {
+            "const": "present",
+            "title": "Presence",
+            "type": "string"
+          },
+          "token": {
+            "title": "Token",
+            "type": "string"
+          }
+        },
+        "required": [
+          "token",
+          "presence",
+          "log_odds_contribution",
+          "direction"
+        ],
+        "title": "TermContribution",
+        "type": "object"
+      },
+      "WordExplanation": {
+        "properties": {
+          "absence_terms_included": {
+            "default": false,
+            "title": "Absence Terms Included",
+            "type": "boolean"
+          },
+          "in_vocabulary": {
+            "title": "In Vocabulary",
+            "type": "boolean"
+          },
+          "interpretation": {
+            "title": "Interpretation",
+            "type": "string"
+          },
+          "log_odds_when_absent": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Log Odds When Absent"
+          },
+          "log_odds_when_present": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Log Odds When Present"
+          },
+          "model": {
+            "enum": [
+              "multinomial",
+              "bernoulli"
+            ],
+            "title": "Model",
+            "type": "string"
+          },
+          "word": {
+            "title": "Word",
+            "type": "string"
+          }
+        },
+        "required": [
+          "model",
+          "word",
+          "in_vocabulary",
+          "log_odds_when_present",
+          "interpretation"
+        ],
+        "title": "WordExplanation",
+        "type": "object"
+      },
+      "WordFrequency": {
+        "properties": {
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "word": {
+            "title": "Word",
+            "type": "string"
+          }
+        },
+        "required": [
+          "word",
+          "count"
+        ],
+        "title": "WordFrequency",
+        "type": "object"
+      },
+      "WordProbabilityResponse": {
+        "properties": {
+          "counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "title": "Counts",
+            "type": "object"
+          },
+          "notes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Notes",
+            "type": "array"
+          },
+          "probabilities": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/FractionResponse"
+            },
+            "title": "Probabilities",
+            "type": "object"
+          },
+          "scope": {
+            "enum": [
+              "all",
+              "train",
+              "test"
+            ],
+            "title": "Scope",
+            "type": "string"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          },
+          "word": {
+            "title": "Word",
+            "type": "string"
+          }
+        },
+        "required": [
+          "word",
+          "scope",
+          "total",
+          "counts",
+          "probabilities",
+          "notes"
+        ],
+        "title": "WordProbabilityResponse",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "description": "Local probability and statistics service.",
+    "title": "MailSense API",
+    "version": "1.0.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "greeting__get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request Entity Too Large"
+          },
+          "414": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request-URI Too Long"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "API greeting"
+      }
+    },
+    "/api/v1/dataset/distributions": {
+      "get": {
+        "operationId": "distribution_api_v1_dataset_distributions_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "metric",
+            "required": true,
+            "schema": {
+              "enum": [
+                "character_count",
+                "token_count",
+                "top_words"
+              ],
+              "title": "Metric",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "scope",
+            "required": false,
+            "schema": {
+              "default": "all",
+              "enum": [
+                "all",
+                "train",
+                "test"
+              ],
+              "title": "Scope",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "class_label",
+            "required": false,
+            "schema": {
+              "default": "all",
+              "enum": [
+                "all",
+                "ham",
+                "spam"
+              ],
+              "title": "Class Label",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "top_n",
+            "required": false,
+            "schema": {
+              "default": 15,
+              "maximum": 30,
+              "minimum": 1,
+              "title": "Top N",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DistributionResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request Entity Too Large"
+          },
+          "414": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request-URI Too Long"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Distribution",
+        "tags": [
+          "Dataset"
+        ]
+      }
+    },
+    "/api/v1/dataset/statistics": {
+      "get": {
+        "operationId": "statistics_api_v1_dataset_statistics_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "scope",
+            "required": false,
+            "schema": {
+              "default": "all",
+              "enum": [
+                "all",
+                "train",
+                "test"
+              ],
+              "title": "Scope",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "metric",
+            "required": false,
+            "schema": {
+              "default": "token_count",
+              "enum": [
+                "character_count",
+                "token_count"
+              ],
+              "title": "Metric",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatisticsResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request Entity Too Large"
+          },
+          "414": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request-URI Too Long"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Statistics",
+        "tags": [
+          "Dataset"
+        ]
+      }
+    },
+    "/api/v1/dataset/summary": {
+      "get": {
+        "operationId": "summary_api_v1_dataset_summary_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "scope",
+            "required": false,
+            "schema": {
+              "default": "all",
+              "enum": [
+                "all",
+                "train",
+                "test"
+              ],
+              "title": "Scope",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetSummary"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request Entity Too Large"
+          },
+          "414": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request-URI Too Long"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Summary",
+        "tags": [
+          "Dataset"
+        ]
+      }
+    },
+    "/api/v1/health": {
+      "get": {
+        "operationId": "health_api_v1_health_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request Entity Too Large"
+          },
+          "414": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request-URI Too Long"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Health",
+        "tags": [
+          "Readiness"
+        ]
+      }
+    },
+    "/api/v1/models/comparison": {
+      "get": {
+        "operationId": "comparison_api_v1_models_comparison_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComparisonResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request Entity Too Large"
+          },
+          "414": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request-URI Too Long"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Comparison",
+        "tags": [
+          "Models"
+        ]
+      }
+    },
+    "/api/v1/models/explanations": {
+      "get": {
+        "operationId": "explanation_api_v1_models_explanations_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "model",
+            "required": true,
+            "schema": {
+              "enum": [
+                "multinomial",
+                "bernoulli"
+              ],
+              "title": "Model",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "word",
+            "required": true,
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Word",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WordExplanation"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request Entity Too Large"
+          },
+          "414": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request-URI Too Long"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Explanation",
+        "tags": [
+          "Models"
+        ]
+      }
+    },
+    "/api/v1/models/metrics": {
+      "get": {
+        "operationId": "metrics_api_v1_models_metrics_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "model",
+            "required": true,
+            "schema": {
+              "enum": [
+                "multinomial",
+                "bernoulli"
+              ],
+              "title": "Model",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelMetrics"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request Entity Too Large"
+          },
+          "414": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request-URI Too Long"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Metrics",
+        "tags": [
+          "Models"
+        ]
+      }
+    },
+    "/api/v1/predict": {
+      "post": {
+        "operationId": "prediction_api_v1_predict_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PredictionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PredictionResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request Entity Too Large"
+          },
+          "414": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request-URI Too Long"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Prediction",
+        "tags": [
+          "Models"
+        ]
+      }
+    },
+    "/api/v1/probability/distributions": {
+      "get": {
+        "operationId": "binomial_api_v1_probability_distributions_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "word",
+            "required": true,
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Word",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "scope",
+            "required": false,
+            "schema": {
+              "default": "all",
+              "enum": [
+                "all",
+                "train",
+                "test"
+              ],
+              "title": "Scope",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "trials",
+            "required": false,
+            "schema": {
+              "default": 10,
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Trials",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "successes",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "maximum": 100,
+              "minimum": 0,
+              "title": "Successes",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BinomialResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request Entity Too Large"
+          },
+          "414": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request-URI Too Long"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Binomial",
+        "tags": [
+          "Probability and inference"
+        ]
+      }
+    },
+    "/api/v1/probability/word": {
+      "get": {
+        "operationId": "word_probability_api_v1_probability_word_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "word",
+            "required": true,
+            "schema": {
+              "maxLength": 64,
+              "minLength": 1,
+              "title": "Word",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "scope",
+            "required": false,
+            "schema": {
+              "default": "all",
+              "enum": [
+                "all",
+                "train",
+                "test"
+              ],
+              "title": "Scope",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WordProbabilityResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request Entity Too Large"
+          },
+          "414": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request-URI Too Long"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Word Probability",
+        "tags": [
+          "Probability and inference"
+        ]
+      }
+    },
+    "/api/v1/statistics/confidence-interval": {
+      "get": {
+        "operationId": "interval_api_v1_statistics_confidence_interval_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "scope",
+            "required": false,
+            "schema": {
+              "default": "all",
+              "enum": [
+                "all",
+                "train",
+                "test"
+              ],
+              "title": "Scope",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "confidence",
+            "required": false,
+            "schema": {
+              "default": 0.95,
+              "maximum": 0.99,
+              "minimum": 0.8,
+              "title": "Confidence",
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConfidenceResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request Entity Too Large"
+          },
+          "414": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request-URI Too Long"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Interval",
+        "tags": [
+          "Probability and inference"
+        ]
+      }
+    },
+    "/api/v1/statistics/hypothesis-test": {
+      "post": {
+        "operationId": "hypothesis_api_v1_statistics_hypothesis_test_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HypothesisRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HypothesisResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request Entity Too Large"
+          },
+          "414": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Request-URI Too Long"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "summary": "Hypothesis",
+        "tags": [
+          "Probability and inference"
+        ]
+      }
+    }
+  }
+}

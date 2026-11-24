@@ -25,8 +25,34 @@ native chart values, references, screenshot bytes and source identities.
 
 ## Complete platform guide
 
-MSE-609 follows immediately: a full tutorial and project reference handbook in
-editable DOCX, PDF and searchable source. The handoff records its progress.
+- [Complete guide: PDF](learning/MailSense_Complete_Guide.pdf)
+- [Editable Word guide](learning/MailSense_Complete_Guide.docx)
+- [Searchable guide](learning/MailSense_Complete_Guide.md)
+
+The checked handbook has **58 pages and 55 chapters**, with a blank five-author
+cover, two contents pages, clickable chapter navigation and PDF bookmarks.
+It covers prerequisites, exact preparation/start/stop commands, every control on
+all six screens, worked statistical examples, model explanations, fair evaluation
+and the research extension. The technical reference explains the frontend/backend
+source map, every API route, artifacts, privacy/offline boundaries, tests,
+performance, maintenance, troubleshooting, demo, glossary, exercises and viva.
+
+Appendices retain all 42 delivery tickets, CLI entry points and **296 dependency
+entries**: backend lock 35, frontend lock 213, publication environment 17 and graph
+environment 31. These are environment-specific entries, including development,
+optional and platform packages. They are not 296 distinct runtime libraries.
+The complete [CSV](learning/dependency_inventory.csv) and
+[JSON](learning/dependency_inventory.json) preserve versions and source paths;
+the [OpenAPI snapshot](learning/api_schema.json) supplies complete response schemas.
+
+Six new production screenshots show real readiness/results and only public
+aggregates or the authored meeting example. Native Word cropping preserves the
+original PNG bytes. The capture used Chromium 158.0.8127.42 at 1366 × 900.
+It checks visible results; the handbook dates historical release/paper evidence
+separately and does not claim fresh full-suite or performance runs. All 58 final
+pages were visually reviewed, with detailed checks of dense tables, commands and
+references. The [guide receipt](../artifacts/reports/platform_guide.json) pins
+checked outputs and their data sources.
 
 ## Rebuild the presentation
 
@@ -45,3 +71,39 @@ Omit `--record` to compare against the saved
 [slide source](learning/slides.json), [builder](learning/build_slides.py) and
 [verifier](learning/verify_slides.py) are included. LibreOffice is used only for
 local export. App dependencies, models and the frozen v1.0.0 tag are unchanged.
+
+## Rebuild the handbook
+
+Use the same isolated publication environment above. The saved screenshots and
+snapshots are inputs; rebuilding documents alone does not start the app.
+
+```bash
+.tools/learning-venv/bin/python docs/learning/build_guide.py
+libreoffice -env:UserInstallation=file:///tmp/mailsense-guide-lo-609 --headless --convert-to pdf --outdir docs/learning docs/learning/MailSense_Complete_Guide.docx
+.tools/learning-venv/bin/python docs/learning/verify_guide.py --record
+.tools/learning-venv/bin/python docs/learning/verify_guide.py
+```
+
+The [structured source](learning/guide.json), [builder](learning/build_guide.py),
+[page map](learning/guide_navigation.json) and [verifier](learning/verify_guide.py)
+are included. The validator independently compares all native text with the PDF,
+contents/bookmark targets and page bounds; reconciles metrics, counts, bootstrap
+intervals and timings; compares inventories with actual locks/environments and the
+schema with the backend; and checks references, screenshot bytes and receipt hashes.
+Prepare the backend and graph environments before running that full reconciliation.
+Omit `--record` to verify an existing receipt. After editing, correct any overflow
+and update the page map to the observed export before recording new evidence.
+Other Word/font installations can repaginate; the supplied PDF is the checked copy.
+
+Optional screenshot refresh, after data/models and the production build are ready:
+
+```bash
+python3 docs/learning/capture_screens.py
+```
+
+Install the pinned Playwright test browser as described in [setup](SETUP.md), or
+pass `--browser /absolute/path/to/trusted-chromium`. The runner owns/cleans only
+servers it starts and refuses a development server when production is expected.
+Rebuild and verify the guide after replacing screenshots. Review changed
+dependency/API snapshots and related handbook text intentionally; do not edit
+receipt hashes to conceal drift.

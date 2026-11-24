@@ -1,0 +1,337 @@
+{
+  "api_routes": 12,
+  "chapters": 55,
+  "delivery_tickets": 42,
+  "inventory": {
+    "backend-lock": 35,
+    "frontend-lock": 213,
+    "graph-memory": 31,
+    "publication-tools": 17
+  },
+  "observations": [
+    {
+      "chapter": "G01",
+      "page": 4,
+      "words": 238
+    },
+    {
+      "chapter": "G02",
+      "page": 5,
+      "words": 276
+    },
+    {
+      "chapter": "G03",
+      "page": 6,
+      "words": 221
+    },
+    {
+      "chapter": "G04",
+      "page": 7,
+      "words": 267
+    },
+    {
+      "chapter": "G05",
+      "page": 8,
+      "words": 255
+    },
+    {
+      "chapter": "G06",
+      "page": 9,
+      "words": 231
+    },
+    {
+      "chapter": "G07",
+      "page": 10,
+      "words": 168
+    },
+    {
+      "chapter": "G08",
+      "page": 11,
+      "words": 184
+    },
+    {
+      "chapter": "G09",
+      "page": 12,
+      "words": 201
+    },
+    {
+      "chapter": "G10",
+      "page": 13,
+      "words": 160
+    },
+    {
+      "chapter": "G11",
+      "page": 14,
+      "words": 179
+    },
+    {
+      "chapter": "G12",
+      "page": 15,
+      "words": 160
+    },
+    {
+      "chapter": "G13",
+      "page": 16,
+      "words": 234
+    },
+    {
+      "chapter": "G14",
+      "page": 17,
+      "words": 161
+    },
+    {
+      "chapter": "G15",
+      "page": 18,
+      "words": 193
+    },
+    {
+      "chapter": "G16",
+      "page": 19,
+      "words": 158
+    },
+    {
+      "chapter": "G17",
+      "page": 20,
+      "words": 182
+    },
+    {
+      "chapter": "G18",
+      "page": 21,
+      "words": 249
+    },
+    {
+      "chapter": "G19",
+      "page": 22,
+      "words": 224
+    },
+    {
+      "chapter": "G20",
+      "page": 23,
+      "words": 250
+    },
+    {
+      "chapter": "G21",
+      "page": 24,
+      "words": 222
+    },
+    {
+      "chapter": "G22",
+      "page": 25,
+      "words": 239
+    },
+    {
+      "chapter": "G23",
+      "page": 26,
+      "words": 248
+    },
+    {
+      "chapter": "G24",
+      "page": 27,
+      "words": 190
+    },
+    {
+      "chapter": "G25",
+      "page": 28,
+      "words": 209
+    },
+    {
+      "chapter": "G26",
+      "page": 29,
+      "words": 247
+    },
+    {
+      "chapter": "G27",
+      "page": 30,
+      "words": 283
+    },
+    {
+      "chapter": "G28",
+      "page": 31,
+      "words": 267
+    },
+    {
+      "chapter": "G29",
+      "page": 32,
+      "words": 252
+    },
+    {
+      "chapter": "G30",
+      "page": 33,
+      "words": 224
+    },
+    {
+      "chapter": "G31",
+      "page": 34,
+      "words": 217
+    },
+    {
+      "chapter": "G32",
+      "page": 35,
+      "words": 248
+    },
+    {
+      "chapter": "G33",
+      "page": 36,
+      "words": 302
+    },
+    {
+      "chapter": "G34",
+      "page": 37,
+      "words": 252
+    },
+    {
+      "chapter": "G35",
+      "page": 38,
+      "words": 210
+    },
+    {
+      "chapter": "G36",
+      "page": 39,
+      "words": 243
+    },
+    {
+      "chapter": "G37",
+      "page": 40,
+      "words": 242
+    },
+    {
+      "chapter": "G38",
+      "page": 41,
+      "words": 268
+    },
+    {
+      "chapter": "G39",
+      "page": 42,
+      "words": 247
+    },
+    {
+      "chapter": "G40",
+      "page": 43,
+      "words": 262
+    },
+    {
+      "chapter": "G41",
+      "page": 44,
+      "words": 147
+    },
+    {
+      "chapter": "G42",
+      "page": 45,
+      "words": 96
+    },
+    {
+      "chapter": "G43",
+      "page": 46,
+      "words": 165
+    },
+    {
+      "chapter": "G44",
+      "page": 47,
+      "words": 165
+    },
+    {
+      "chapter": "G45",
+      "page": 48,
+      "words": 165
+    },
+    {
+      "chapter": "G46",
+      "page": 49,
+      "words": 165
+    },
+    {
+      "chapter": "G47",
+      "page": 50,
+      "words": 165
+    },
+    {
+      "chapter": "G48",
+      "page": 51,
+      "words": 165
+    },
+    {
+      "chapter": "G49",
+      "page": 52,
+      "words": 132
+    },
+    {
+      "chapter": "G50",
+      "page": 53,
+      "words": 155
+    },
+    {
+      "chapter": "G51",
+      "page": 54,
+      "words": 199
+    },
+    {
+      "chapter": "G52",
+      "page": 55,
+      "words": 94
+    },
+    {
+      "chapter": "G53",
+      "page": 56,
+      "words": 244
+    },
+    {
+      "chapter": "G54",
+      "page": 57,
+      "words": 233
+    },
+    {
+      "chapter": "G55",
+      "page": 58,
+      "words": 230
+    }
+  ],
+  "pages": 58,
+  "result": "pass",
+  "scope": "Documentation exports, exact inventories/API snapshot, reconciled facts/navigation, original screenshot bytes and current six-screen capture only. Application suites and performance were not rerun.",
+  "screenshots": {
+    "browser": "158.0.8127.42",
+    "captured_at": "2026-11-24T04:43:31.939Z",
+    "content": "Public aggregates and explicitly authored synthetic meeting text only; production preview.",
+    "result": "pass",
+    "routes": [
+      "/",
+      "/dataset",
+      "/probability",
+      "/statistics",
+      "/detect",
+      "/evaluation"
+    ],
+    "viewport": "1366x900"
+  },
+  "sha256": {
+    "artifacts/reports/evaluation.json": "8faefc79665fb15c5a0a3ad5cab37cbf2d1fb92bd4bf3ac2b3628f8dd533422c",
+    "artifacts/reports/paper_statistics.json": "95d2121efb3cb07f7e86327142d6ff4cf018e60921479b8551702991a0f92158",
+    "artifacts/reports/runtime_smoke.json": "d7a3c12e67ba2e03e4dc16364fba028caa51c163881a708d11caaaec343bfa3c",
+    "artifacts/reports/statistics_verification.json": "0595b0970342c616cc6fb90b12d8a1292f2ad019a2020dc0a72d63b7d526e080",
+    "backend/uv.lock": "8e037ba6b6dbc900be5b9210de3c26ac26261b0347fd718b23bcf2f5c62505fd",
+    "docs/learning/MailSense_Complete_Guide.docx": "3d88eb6094082aff82348ac766ae0f8910f8c691c0555f3e40df68265f350629",
+    "docs/learning/MailSense_Complete_Guide.md": "418d7a5f04b78df8f3e3e1386e7398e1bbfdb2cb364ae888a03f2938f396fb19",
+    "docs/learning/MailSense_Complete_Guide.pdf": "44b53db93a4043ac527d12a423eda096ff9f5f3040bf736c4dd820e75221fa0a",
+    "docs/learning/api_schema.json": "681a50419234eabdc17639d287bec85568bb29adc6b1cf3522eb52b5bc7be8cf",
+    "docs/learning/build_guide.py": "0f3c85c016efd6065696f022a84785ce80db0824050827818fa510092f57ab2a",
+    "docs/learning/capture_screens.mjs": "785cba9f940e366623e08ca5ba7b3f47fe4dd379a6f8483cfe9aa303faf60fc2",
+    "docs/learning/capture_screens.py": "4c1f9b1dbaf0550a584dae0fff8220a148512363e396b5aa097bec4c12990367",
+    "docs/learning/dependency_inventory.csv": "8c313c1ac328bf558946a28697e162dc715d01902c18a24490dd905b8d181199",
+    "docs/learning/dependency_inventory.json": "996b9c59b238bc6115410fbf1d5cf450d46612419965b65979d2539924e4043f",
+    "docs/learning/figures/dataset.png": "d626dc549d176b278894beac69c931ab5dd82a355190a74faa20b4bb48c81b9b",
+    "docs/learning/figures/detect.png": "3289444811d5fdd905db0031003fde9d9d09b02388c4a960606400bb3b36aafc",
+    "docs/learning/figures/evaluation.png": "ab8a02787f4f983cdbcd3321569e70b8d1e985c588786cfb944cc28af72821fa",
+    "docs/learning/figures/overview.png": "b8446016bad7be26af2fee848d67536101956eb66bec6f90ea6bb633b0a77b8d",
+    "docs/learning/figures/probability.png": "ee0df438166d4443158b5e27a6eb7bcbb80d023eb3da4f89a97211188408a9f0",
+    "docs/learning/figures/statistics.png": "02a0bfb03eea6bf8d59f79870e0c402a95fcdee44a025747086cc6ff19518a74",
+    "docs/learning/guide.json": "fc34a431a67238a123ef2615895b671f97965cbda80d94173051a28bea135edb",
+    "docs/learning/guide_navigation.json": "7e14ec04fe952e07e35b88c4b206c19d7fadf114f3d5c78c72d878a64036a5ba",
+    "docs/learning/requirements.txt": "1ef433b1934e61f1be63270a61cde47d32a0c890a8638754fd028b9e4398f287",
+    "docs/learning/screenshots.json": "7c8ec32ca3c5ae9780f9a57801388d5f44968a02d9eb0d324be51fa5e9c1bbcd",
+    "docs/learning/verify_guide.py": "800129b3b0a3be8ae99ec91871beaf22f5f044be918ba3ae74152df4237dc3f7",
+    "docs/paper/references.json": "1ad305b206fef97357be31eadfeef3ef48c4cd5ce9342c59b544a1babfe22009",
+    "frontend/package-lock.json": "2e50ac973cffe51b0e9dd63103669bbe9cb2908f487a8b223eb63bbb6e791dae"
+  },
+  "task": "MSE-609",
+  "verified_at": "2026-11-24T04:51:18.454444+00:00"
+}

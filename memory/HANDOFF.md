@@ -3,8 +3,8 @@
 Last updated: 2026-11-24 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-608 — Project presentation with notes and PDF**.
-Next implementation ticket: **MSE-609**.
+Latest implementation: **MSE-609 — Complete platform tutorial and project guide**.
+Next implementation ticket: **None**.
 
 ## Read this at every task start
 
@@ -17,14 +17,38 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**MSE-609** — Continue directly to the full platform tutorial/project guide in
-DOCX/PDF/searchable source. Cover setup/preparation, all six routes with exact
-controls and expected results, equations and examples, architecture/source maps,
-APIs/artifacts, every library/tool/dependency, testing/privacy/performance,
-research extension, troubleshooting, demo/viva and delivery history. Render and
-verify all pages/navigation/data/inventories; update handoff/graph, commit/push.
+All 42 assigned tickets are complete: 39 core application tasks and the paper,
+presentation and full guide. No implementation ticket remains. Preserve the
+frozen v1.0.0 tag. For new user-requested work, assign a new MSE ticket and analyze
+its requirements/dependencies before editing. Do not invent a next feature.
 
 ## Latest academic deliverable
+
+- **MSE-609:** [Complete platform guide](../docs/LEARNING_KIT.md) delivers a
+  58-page PDF, editable DOCX and searchable Markdown from 55 structured chapters.
+  One cover and two clickable contents pages precede setup/preparation/start/stop,
+  all six screen tutorials, worked mathematics, model scores, fair evaluation,
+  paired paper analysis, demo, architecture/source maps, twelve APIs, artifacts,
+  privacy/offline, testing/performance, maintenance, recovery, workflow, glossary,
+  exercises/answers, viva, ten references, all 42 delivery tickets and CLI entries.
+- Full inventories include 296 environment-specific entries: backend lock 35,
+  frontend lock 213, publication environment 17 and graph environment 31. CSV/JSON
+  preserve exact versions and source paths; an OpenAPI snapshot preserves response
+  schemas. Optional/platform and supporting packages are labeled distinctly.
+- Six current production screenshots use Chromium 158.0.8127.42 at 1366 × 900,
+  actual readiness/results and the authored synthetic example. The tracked capture
+  runner was executed successfully and cleaned its servers. Word cropping retains
+  original PNG bytes. Five author fields/instructor remain blank; no date field.
+- `verify_guide.py` passed all native-text PDF round trips, 55 contents/bookmark
+  targets, bounds, references, exact inventories against locks/prepared environments,
+  current backend schema, 42 tickets, metrics/descriptives/counts/bootstrap/timings
+  against source reports, screenshot bytes and receipt hashes. All 58 final pages
+  visually reviewed. Receipt: `artifacts/reports/platform_guide.json`.
+- New publication scripts pass Ruff syntax/import checks. Final owned documentation
+  gate checks both publication receipts, graph freshness/status and staged/unstaged
+  diff hygiene. App unit/integration/build/performance reruns are not applicable:
+  no runtime/code/lock/model/corpus changes. Recorded Nov 19 release and Nov 22
+  paper results are dated explicitly; screenshot capture is not a full-suite rerun.
 
 - **MSE-608:** [Project presentation](../docs/LEARNING_KIT.md) provides editable
   PowerPoint, PDF handout and presenter notes. Thirty 16:9 slides cover all
@@ -311,7 +335,7 @@ Their early scaffold/no-API states are superseded by this completed snapshot.
 
 ## Full implementation inventory
 
-**41 of 42 assigned tickets are complete (39 core plus MSE-607/608); MSE-609 remains.** Preserve the full verified
+**All 42 assigned tickets are complete (39 core plus MSE-607/608/609).** Preserve the full verified
 inventory below. New scope needs a newly assigned ticket rather than an invented next task.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -359,9 +383,18 @@ Dependencies and detailed acceptance criteria are in
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Complete — v1.0.0 release verified |
 | MSE-607 | Conference-style paper with new paired probability/statistics analysis, DOCX and PDF | Complete — analysis and eight-page documents verified |
 | MSE-608 | Project presentation with editable visuals, notes and PDF | Complete — 30 slides and notes verified |
-| MSE-609 | Complete platform tutorial and project reference guide | Not started — next |
+| MSE-609 | Complete platform tutorial and project reference guide | Complete — 58 pages, full tutorial/reference and inventories verified |
 
 ## Verification and delivery evidence
+
+- **MSE-609:** Owned handbook validation passed 58 pages/55 chapters, complete
+  Word/PDF/Markdown text, clickable navigation/bookmarks, six original screenshots,
+  296 dependency entries, exact current API schema, 42 tickets, numerical evidence
+  and receipt fingerprints. All pages visually reviewed; final dense tables/code/
+  references inspected at readable scale. Tracked production capture passed all six
+  visible ready/result states and cleaned owned servers. Publication-script Ruff
+  checks pass. Final graph/receipt/diff gate runs before commit/push; verify actual
+  Git refs afterward. No app test or performance rerun is claimed.
 
 - **MSE-608:** Thirty editable widescreen slides and PDF pages, all with speaker
   notes/source locations. Owned `verify_slides.py` passed data/chart/reference/

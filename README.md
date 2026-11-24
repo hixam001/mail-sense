@@ -2,7 +2,7 @@
 
 **Version 1.0.0** · **Statistical Analysis and Probabilistic Email Spam Detection**
 
-**Status:** **39/39 core tasks complete · v1.0.0**. Post-release MSE-607 conference paper delivered in [PDF and DOCX](docs/PAPER.md). No pending assigned ticket. See the [handoff](memory/HANDOFF.md).
+**Status:** **39/39 core tasks complete · v1.0.0**. The [conference paper](docs/PAPER.md), [30-slide PowerPoint and complete 58-page platform guide](docs/LEARNING_KIT.md) are delivered. All 42 assigned tickets are complete. See the [handoff](memory/HANDOFF.md).
 
 Explore a historical email corpus, verify probabilities and statistical tests,
 and compare Multinomial and Bernoulli Naive Bayes in one local workspace.
@@ -149,7 +149,7 @@ screenshots, runtime measurements, an authored failure example and limitations.
 | [SRS](docs/SRS.md), [PRD](docs/PRD.md), [SRD](docs/SRD.md) | Locked scope and requirements |
 | [Architecture](docs/ARCHITECTURE.md), [API](docs/API_CONTRACT.md), [data model](docs/DATA_MODEL.md) | Implementation boundaries and contracts |
 | [Statistical methods](docs/STATISTICAL_METHODS.md), [app flow](docs/APP_FLOW.md) | Formulas and user journeys |
-| [Test plan](docs/TEST_PLAN.md), [implementation plan](docs/IMPLEMENTATION_PLAN.md) | Acceptance and full 39-ticket backlog |
+| [Test plan](docs/TEST_PLAN.md), [implementation plan](docs/IMPLEMENTATION_PLAN.md) | Acceptance, 39 core tasks and three academic deliverables |
 | [Design system](DESIGN.md), [UI verification](docs/UI_VERIFICATION.md) | Interface conventions and browser checks |
 | [Handoff](memory/HANDOFF.md), [memory guide](memory/README.md) | Current progress, next task and Graphify retrieval |
 

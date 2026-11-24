@@ -1,0 +1,297 @@
+environment,name,version,status,source
+backend-lock,annotated-doc,0.0.7,transitive,backend/uv.lock
+backend-lock,annotated-types,0.8.0,transitive,backend/uv.lock
+backend-lock,anyio,4.16.0,transitive,backend/uv.lock
+backend-lock,click,8.5.1,transitive,backend/uv.lock
+backend-lock,cloudpickle,3.1.3,transitive,backend/uv.lock
+backend-lock,colorama,0.4.6,transitive,backend/uv.lock
+backend-lock,fastapi,0.165.0,direct,backend/uv.lock
+backend-lock,h11,0.16.0,transitive,backend/uv.lock
+backend-lock,httpcore2,2.16.2,transitive,backend/uv.lock
+backend-lock,httpx2,2.16.2,direct,backend/uv.lock
+backend-lock,httpx2-jsfetch,1.0,transitive,backend/uv.lock
+backend-lock,idna,3.20,transitive,backend/uv.lock
+backend-lock,iniconfig,2.3.1,transitive,backend/uv.lock
+backend-lock,joblib,1.6.0,direct,backend/uv.lock
+backend-lock,narwhals,2.29.0,transitive,backend/uv.lock
+backend-lock,numpy,2.5.5,direct,backend/uv.lock
+backend-lock,opentelemetry-api,1.45.2,transitive,backend/uv.lock
+backend-lock,packaging,26.3,transitive,backend/uv.lock
+backend-lock,pandas,3.1.1,direct,backend/uv.lock
+backend-lock,pluggy,1.7.0,transitive,backend/uv.lock
+backend-lock,pydantic,2.14.3,transitive,backend/uv.lock
+backend-lock,pydantic-core,2.50.4,transitive,backend/uv.lock
+backend-lock,pygments,2.21.0,transitive,backend/uv.lock
+backend-lock,pytest,9.2.0,direct,backend/uv.lock
+backend-lock,python-dateutil,4.0.0,transitive,backend/uv.lock
+backend-lock,ruff,0.17.5,direct,backend/uv.lock
+backend-lock,scikit-learn,1.9.1,direct,backend/uv.lock
+backend-lock,scipy,1.18.1,direct,backend/uv.lock
+backend-lock,starlette,1.10.0,transitive,backend/uv.lock
+backend-lock,threadpoolctl,3.8.0,transitive,backend/uv.lock
+backend-lock,truststore,0.10.5,transitive,backend/uv.lock
+backend-lock,typing-extensions,4.16.0,transitive,backend/uv.lock
+backend-lock,typing-inspection,0.4.5,transitive,backend/uv.lock
+backend-lock,tzdata,2026.6,transitive,backend/uv.lock
+backend-lock,uvicorn,0.54.0,direct,backend/uv.lock
+frontend-lock,@babel/code-frame,7.29.7,dev,node_modules/@babel/code-frame
+frontend-lock,@babel/compat-data,7.29.7,dev,node_modules/@babel/compat-data
+frontend-lock,@babel/core,7.29.13,dev,node_modules/@babel/core
+frontend-lock,@babel/generator,7.29.14,dev,node_modules/@babel/generator
+frontend-lock,@babel/helper-compilation-targets,7.29.13,dev,node_modules/@babel/helper-compilation-targets
+frontend-lock,@babel/helper-globals,7.29.7,dev,node_modules/@babel/helper-globals
+frontend-lock,@babel/helper-module-imports,7.29.7,dev,node_modules/@babel/helper-module-imports
+frontend-lock,@babel/helper-module-transforms,7.29.14,dev,node_modules/@babel/helper-module-transforms
+frontend-lock,@babel/helper-string-parser,7.29.14,dev,node_modules/@babel/helper-string-parser
+frontend-lock,@babel/helper-validator-identifier,7.29.7,dev,node_modules/@babel/helper-validator-identifier
+frontend-lock,@babel/helper-validator-option,7.29.7,dev,node_modules/@babel/helper-validator-option
+frontend-lock,@babel/helpers,7.29.14,dev,node_modules/@babel/helpers
+frontend-lock,@babel/parser,7.29.14,dev,node_modules/@babel/parser
+frontend-lock,@babel/template,7.29.7,dev,node_modules/@babel/template
+frontend-lock,@babel/traverse,7.29.14,dev,node_modules/@babel/traverse
+frontend-lock,@babel/types,7.29.14,dev,node_modules/@babel/types
+frontend-lock,@cacheable/memory,2.2.0,dev,node_modules/@cacheable/memory
+frontend-lock,@cacheable/utils,2.5.0,dev,node_modules/@cacheable/utils
+frontend-lock,@emnapi/core,2.0.0-beta.2,dev;optional,node_modules/@emnapi/core
+frontend-lock,@emnapi/runtime,2.0.0-beta.2,dev;optional,node_modules/@emnapi/runtime
+frontend-lock,@emnapi/wasi-threads,2.2.0,dev;optional,node_modules/@emnapi/wasi-threads
+frontend-lock,@eslint-community/eslint-utils,4.10.1,dev,node_modules/@eslint-community/eslint-utils
+frontend-lock,@eslint-community/regexpp,4.12.3,dev,node_modules/@eslint-community/regexpp
+frontend-lock,@eslint/config-array,0.23.6,dev,node_modules/@eslint/config-array
+frontend-lock,@eslint/config-helpers,0.7.0,dev,node_modules/@eslint/config-helpers
+frontend-lock,@eslint/core,1.2.1,dev,node_modules/@eslint/core
+frontend-lock,@eslint/js,10.0.1,dev,node_modules/@eslint/js
+frontend-lock,@eslint/object-schema,3.0.5,dev,node_modules/@eslint/object-schema
+frontend-lock,@eslint/plugin-kit,0.7.3,dev,node_modules/@eslint/plugin-kit
+frontend-lock,@humanfs/core,0.19.2,dev,node_modules/@humanfs/core
+frontend-lock,@humanfs/node,0.16.8,dev,node_modules/@humanfs/node
+frontend-lock,@humanfs/types,0.15.0,dev,node_modules/@humanfs/types
+frontend-lock,@humanwhocodes/module-importer,1.0.1,dev,node_modules/@humanwhocodes/module-importer
+frontend-lock,@humanwhocodes/retry,0.4.3,dev,node_modules/@humanwhocodes/retry
+frontend-lock,@isaacs/nonrecursive-glob-match,1.1.0,dev,node_modules/@isaacs/nonrecursive-glob-match
+frontend-lock,@jridgewell/gen-mapping,0.3.13,dev,node_modules/@jridgewell/gen-mapping
+frontend-lock,@jridgewell/remapping,2.3.5,dev,node_modules/@jridgewell/remapping
+frontend-lock,@jridgewell/resolve-uri,3.1.3,dev,node_modules/@jridgewell/resolve-uri
+frontend-lock,@jridgewell/sourcemap-codec,1.6.0,dev,node_modules/@jridgewell/sourcemap-codec
+frontend-lock,@jridgewell/trace-mapping,0.3.31,dev,node_modules/@jridgewell/trace-mapping
+frontend-lock,@keyv/bigmap,1.3.1,dev,node_modules/@keyv/bigmap
+frontend-lock,@keyv/serialize,1.1.1,dev,node_modules/@keyv/serialize
+frontend-lock,@napi-rs/wasm-runtime,1.2.6,dev;optional,node_modules/@napi-rs/wasm-runtime
+frontend-lock,@oxc-project/types,0.156.0,dev,node_modules/@oxc-project/types
+frontend-lock,@reduxjs/toolkit,2.15.0,runtime,node_modules/@reduxjs/toolkit
+frontend-lock,@rolldown/binding-android-arm-eabi,1.2.19,dev;optional,node_modules/@rolldown/binding-android-arm-eabi
+frontend-lock,@rolldown/binding-android-arm64,1.2.19,dev;optional,node_modules/@rolldown/binding-android-arm64
+frontend-lock,@rolldown/binding-darwin-arm64,1.2.19,dev;optional,node_modules/@rolldown/binding-darwin-arm64
+frontend-lock,@rolldown/binding-darwin-x64,1.2.19,dev;optional,node_modules/@rolldown/binding-darwin-x64
+frontend-lock,@rolldown/binding-freebsd-x64,1.2.19,dev;optional,node_modules/@rolldown/binding-freebsd-x64
+frontend-lock,@rolldown/binding-linux-arm-gnueabihf,1.2.19,dev;optional,node_modules/@rolldown/binding-linux-arm-gnueabihf
+frontend-lock,@rolldown/binding-linux-arm64-gnu,1.2.19,dev;optional,node_modules/@rolldown/binding-linux-arm64-gnu
+frontend-lock,@rolldown/binding-linux-arm64-musl,1.2.19,dev;optional,node_modules/@rolldown/binding-linux-arm64-musl
+frontend-lock,@rolldown/binding-linux-ppc64-gnu,1.2.19,dev;optional,node_modules/@rolldown/binding-linux-ppc64-gnu
+frontend-lock,@rolldown/binding-linux-s390x-gnu,1.2.19,dev;optional,node_modules/@rolldown/binding-linux-s390x-gnu
+frontend-lock,@rolldown/binding-linux-x64-gnu,1.2.19,dev;optional,node_modules/@rolldown/binding-linux-x64-gnu
+frontend-lock,@rolldown/binding-linux-x64-musl,1.2.19,dev;optional,node_modules/@rolldown/binding-linux-x64-musl
+frontend-lock,@rolldown/binding-openharmony-arm64,1.2.19,dev;optional,node_modules/@rolldown/binding-openharmony-arm64
+frontend-lock,@rolldown/binding-wasm32-wasi,1.2.19,dev;optional,node_modules/@rolldown/binding-wasm32-wasi
+frontend-lock,@rolldown/binding-win32-arm64-msvc,1.2.19,dev;optional,node_modules/@rolldown/binding-win32-arm64-msvc
+frontend-lock,@rolldown/binding-win32-x64-msvc,1.2.19,dev;optional,node_modules/@rolldown/binding-win32-x64-msvc
+frontend-lock,@rolldown/pluginutils,1.1.1,dev,node_modules/@rolldown/pluginutils
+frontend-lock,@standard-schema/spec,1.1.0,runtime,node_modules/@standard-schema/spec
+frontend-lock,@standard-schema/utils,0.3.0,runtime,node_modules/@standard-schema/utils
+frontend-lock,@tybys/wasm-util,0.10.5,dev;optional,node_modules/@tybys/wasm-util
+frontend-lock,@types/d3-array,3.2.2,runtime,node_modules/@types/d3-array
+frontend-lock,@types/d3-color,3.1.3,runtime,node_modules/@types/d3-color
+frontend-lock,@types/d3-ease,3.0.2,runtime,node_modules/@types/d3-ease
+frontend-lock,@types/d3-interpolate,3.0.4,runtime,node_modules/@types/d3-interpolate
+frontend-lock,@types/d3-path,3.1.1,runtime,node_modules/@types/d3-path
+frontend-lock,@types/d3-scale,4.0.9,runtime,node_modules/@types/d3-scale
+frontend-lock,@types/d3-shape,3.2.0,runtime,node_modules/@types/d3-shape
+frontend-lock,@types/d3-time,3.0.4,runtime,node_modules/@types/d3-time
+frontend-lock,@types/d3-timer,3.0.2,runtime,node_modules/@types/d3-timer
+frontend-lock,@types/esrecurse,4.3.1,dev,node_modules/@types/esrecurse
+frontend-lock,@types/estree,1.0.10,dev,node_modules/@types/estree
+frontend-lock,@types/json-schema,7.0.15,dev,node_modules/@types/json-schema
+frontend-lock,@types/use-sync-external-store,0.0.6,runtime,node_modules/@types/use-sync-external-store
+frontend-lock,@vitejs/plugin-react,6.3.0,dev,node_modules/@vitejs/plugin-react
+frontend-lock,acorn,8.19.0,dev,node_modules/acorn
+frontend-lock,acorn-jsx,5.3.2,dev,node_modules/acorn-jsx
+frontend-lock,ajv,6.15.0,dev,node_modules/ajv
+frontend-lock,balanced-match,4.0.4,dev,node_modules/balanced-match
+frontend-lock,baseline-browser-mapping,2.11.38,dev,node_modules/baseline-browser-mapping
+frontend-lock,brace-expansion,5.0.13,dev,node_modules/brace-expansion
+frontend-lock,browserslist,4.29.6,dev,node_modules/browserslist
+frontend-lock,cacheable,2.5.0,dev,node_modules/cacheable
+frontend-lock,caniuse-lite,1.0.30001826,dev,node_modules/caniuse-lite
+frontend-lock,clsx,2.1.1,runtime,node_modules/clsx
+frontend-lock,convert-source-map,2.0.0,dev,node_modules/convert-source-map
+frontend-lock,cross-spawn,7.0.6,dev,node_modules/cross-spawn
+frontend-lock,d3-array,3.2.5,runtime,node_modules/d3-array
+frontend-lock,d3-color,3.1.1,runtime,node_modules/d3-color
+frontend-lock,d3-ease,3.0.2,runtime,node_modules/d3-ease
+frontend-lock,d3-format,3.1.3,runtime,node_modules/d3-format
+frontend-lock,d3-interpolate,3.0.2,runtime,node_modules/d3-interpolate
+frontend-lock,d3-path,3.1.1,runtime,node_modules/d3-path
+frontend-lock,d3-scale,4.0.3,runtime,node_modules/d3-scale
+frontend-lock,d3-shape,3.2.1,runtime,node_modules/d3-shape
+frontend-lock,d3-time,3.1.1,runtime,node_modules/d3-time
+frontend-lock,d3-time-format,4.1.1,runtime,node_modules/d3-time-format
+frontend-lock,d3-timer,3.0.2,runtime,node_modules/d3-timer
+frontend-lock,debug,4.4.3,dev,node_modules/debug
+frontend-lock,decimal.js-light,2.5.1,runtime,node_modules/decimal.js-light
+frontend-lock,deep-is,0.1.4,dev,node_modules/deep-is
+frontend-lock,detect-libc,2.1.2,dev,node_modules/detect-libc
+frontend-lock,electron-to-chromium,1.5.491,dev,node_modules/electron-to-chromium
+frontend-lock,es-toolkit,1.53.2,runtime,node_modules/es-toolkit
+frontend-lock,escalade,3.2.0,dev,node_modules/escalade
+frontend-lock,escape-string-regexp,4.0.0,dev,node_modules/escape-string-regexp
+frontend-lock,eslint,10.15.0,dev,node_modules/eslint
+frontend-lock,eslint-plugin-react-hooks,7.1.1,dev,node_modules/eslint-plugin-react-hooks
+frontend-lock,eslint-plugin-react-refresh,0.5.8,dev,node_modules/eslint-plugin-react-refresh
+frontend-lock,eslint-scope,9.1.2,dev,node_modules/eslint-scope
+frontend-lock,eslint-visitor-keys,3.4.3,dev,node_modules/@eslint-community/eslint-utils/node_modules/eslint-visitor-keys
+frontend-lock,eslint-visitor-keys,5.0.1,dev,node_modules/eslint-visitor-keys
+frontend-lock,espree,11.2.0,dev,node_modules/espree
+frontend-lock,esquery,1.7.0,dev,node_modules/esquery
+frontend-lock,esrecurse,4.3.0,dev,node_modules/esrecurse
+frontend-lock,estraverse,5.3.0,dev,node_modules/estraverse
+frontend-lock,esutils,2.0.3,dev,node_modules/esutils
+frontend-lock,eventemitter3,5.0.4,runtime,node_modules/eventemitter3
+frontend-lock,fast-deep-equal,3.1.3,dev,node_modules/fast-deep-equal
+frontend-lock,fast-json-stable-stringify,2.1.0,dev,node_modules/fast-json-stable-stringify
+frontend-lock,fast-levenshtein,2.0.6,dev,node_modules/fast-levenshtein
+frontend-lock,fdir,6.5.0,dev,node_modules/fdir
+frontend-lock,file-entry-cache,11.1.5,dev,node_modules/file-entry-cache
+frontend-lock,find-up,5.0.0,dev,node_modules/find-up
+frontend-lock,flat-cache,6.1.23,dev,node_modules/flat-cache
+frontend-lock,flatted,3.4.4,dev,node_modules/flatted
+frontend-lock,fsevents,2.3.3,dev;optional,node_modules/fsevents
+frontend-lock,gensync,1.0.0-beta.2,dev,node_modules/gensync
+frontend-lock,glob-parent,6.0.2,dev,node_modules/glob-parent
+frontend-lock,globals,17.14.0,dev,node_modules/globals
+frontend-lock,hashery,1.5.1,dev,node_modules/hashery
+frontend-lock,hermes-estree,0.25.1,dev,node_modules/hermes-estree
+frontend-lock,hermes-parser,0.25.1,dev,node_modules/hermes-parser
+frontend-lock,hookified,1.15.1,dev,node_modules/hookified
+frontend-lock,hookified,2.2.0,dev,node_modules/qified/node_modules/hookified
+frontend-lock,ignore,5.3.2,dev,node_modules/ignore
+frontend-lock,immer,11.2.10,runtime,node_modules/immer
+frontend-lock,imurmurhash,0.1.4,dev,node_modules/imurmurhash
+frontend-lock,internmap,2.0.3,runtime,node_modules/internmap
+frontend-lock,is-extglob,2.1.1,dev,node_modules/is-extglob
+frontend-lock,is-glob,4.0.3,dev,node_modules/is-glob
+frontend-lock,isexe,2.0.0,dev,node_modules/isexe
+frontend-lock,js-tokens,4.0.0,dev,node_modules/js-tokens
+frontend-lock,jsesc,3.1.0,dev,node_modules/jsesc
+frontend-lock,json-schema-traverse,0.4.1,dev,node_modules/json-schema-traverse
+frontend-lock,json-stable-stringify-without-jsonify,1.0.1,dev,node_modules/json-stable-stringify-without-jsonify
+frontend-lock,json5,2.2.3,dev,node_modules/json5
+frontend-lock,keyv,5.6.0,dev,node_modules/keyv
+frontend-lock,levn,0.4.1,dev,node_modules/levn
+frontend-lock,lightningcss,1.33.0,dev,node_modules/lightningcss
+frontend-lock,lightningcss-android-arm64,1.33.0,dev;optional,node_modules/lightningcss-android-arm64
+frontend-lock,lightningcss-darwin-arm64,1.33.0,dev;optional,node_modules/lightningcss-darwin-arm64
+frontend-lock,lightningcss-darwin-x64,1.33.0,dev;optional,node_modules/lightningcss-darwin-x64
+frontend-lock,lightningcss-freebsd-x64,1.33.0,dev;optional,node_modules/lightningcss-freebsd-x64
+frontend-lock,lightningcss-linux-arm-gnueabihf,1.33.0,dev;optional,node_modules/lightningcss-linux-arm-gnueabihf
+frontend-lock,lightningcss-linux-arm64-gnu,1.33.0,dev;optional,node_modules/lightningcss-linux-arm64-gnu
+frontend-lock,lightningcss-linux-arm64-musl,1.33.0,dev;optional,node_modules/lightningcss-linux-arm64-musl
+frontend-lock,lightningcss-linux-x64-gnu,1.33.0,dev;optional,node_modules/lightningcss-linux-x64-gnu
+frontend-lock,lightningcss-linux-x64-musl,1.33.0,dev;optional,node_modules/lightningcss-linux-x64-musl
+frontend-lock,lightningcss-win32-arm64-msvc,1.33.0,dev;optional,node_modules/lightningcss-win32-arm64-msvc
+frontend-lock,lightningcss-win32-x64-msvc,1.33.0,dev;optional,node_modules/lightningcss-win32-x64-msvc
+frontend-lock,locate-path,6.0.0,dev,node_modules/locate-path
+frontend-lock,lru-cache,5.1.1,dev,node_modules/lru-cache
+frontend-lock,minimatch,11.0.9,dev,node_modules/minimatch
+frontend-lock,ms,2.1.3,dev,node_modules/ms
+frontend-lock,nanoid,3.3.20,dev,node_modules/nanoid
+frontend-lock,natural-compare,1.4.0,dev,node_modules/natural-compare
+frontend-lock,node-releases,2.0.65,dev,node_modules/node-releases
+frontend-lock,optionator,0.9.4,dev,node_modules/optionator
+frontend-lock,p-limit,3.1.0,dev,node_modules/p-limit
+frontend-lock,p-locate,5.0.0,dev,node_modules/p-locate
+frontend-lock,path-exists,4.0.0,dev,node_modules/path-exists
+frontend-lock,path-key,3.1.1,dev,node_modules/path-key
+frontend-lock,picocolors,1.1.1,dev,node_modules/picocolors
+frontend-lock,picomatch,4.0.7,dev,node_modules/picomatch
+frontend-lock,playwright-core,1.57.0,dev,node_modules/playwright-core
+frontend-lock,postcss,8.5.33,dev,node_modules/postcss
+frontend-lock,prelude-ls,1.2.1,dev,node_modules/prelude-ls
+frontend-lock,punycode,2.3.1,dev,node_modules/punycode
+frontend-lock,qified,0.10.1,dev,node_modules/qified
+frontend-lock,react,19.3.1,runtime,node_modules/react
+frontend-lock,react-dom,19.3.1,runtime,node_modules/react-dom
+frontend-lock,react-is,19.3.1,runtime,node_modules/react-is
+frontend-lock,react-redux,9.3.1,runtime,node_modules/react-redux
+frontend-lock,recharts,3.11.0,runtime,node_modules/recharts
+frontend-lock,redux,5.0.1,runtime,node_modules/redux
+frontend-lock,redux-thunk,3.1.0,runtime,node_modules/redux-thunk
+frontend-lock,reselect,5.2.0,runtime,node_modules/reselect
+frontend-lock,rolldown,1.2.19,dev,node_modules/rolldown
+frontend-lock,scheduler,0.28.0,runtime,node_modules/scheduler
+frontend-lock,semver,6.3.2,dev,node_modules/semver
+frontend-lock,shebang-command,2.0.0,dev,node_modules/shebang-command
+frontend-lock,shebang-regex,3.0.0,dev,node_modules/shebang-regex
+frontend-lock,source-map-js,1.2.3,dev,node_modules/source-map-js
+frontend-lock,tiny-invariant,1.3.3,runtime,node_modules/tiny-invariant
+frontend-lock,tinyglobby,0.2.17,dev,node_modules/tinyglobby
+frontend-lock,tslib,2.9.1,dev;optional,node_modules/tslib
+frontend-lock,type-check,0.4.0,dev,node_modules/type-check
+frontend-lock,update-browserslist-db,1.4.0,dev,node_modules/update-browserslist-db
+frontend-lock,uri-js,4.4.1,dev,node_modules/uri-js
+frontend-lock,use-sync-external-store,1.7.0,runtime,node_modules/use-sync-external-store
+frontend-lock,victory-vendor,37.4.1,runtime,node_modules/victory-vendor
+frontend-lock,vite,8.3.8,dev,node_modules/vite
+frontend-lock,which,2.0.2,dev,node_modules/which
+frontend-lock,word-wrap,1.2.5,dev,node_modules/word-wrap
+frontend-lock,yallist,3.1.1,dev,node_modules/yallist
+frontend-lock,yocto-queue,0.1.0,dev,node_modules/yocto-queue
+frontend-lock,zod,4.6.7,dev,node_modules/zod
+frontend-lock,zod-validation-error,4.0.2,dev,node_modules/zod-validation-error
+graph-memory,graphifyy,0.9.112,installed supporting dependency,isolated ignored environment metadata
+graph-memory,networkx,3.7,installed supporting dependency,isolated ignored environment metadata
+graph-memory,numpy,2.5.5,installed supporting dependency,isolated ignored environment metadata
+graph-memory,PyYAML,6.0.3,installed supporting dependency,isolated ignored environment metadata
+graph-memory,RapidFuzz,3.14.6,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter,0.25.2,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-bash,0.25.1,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-c,0.24.2,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-c-sharp,0.24.0,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-cpp,0.23.4,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-elixir,0.3.5,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-fortran,0.6.0,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-go,0.25.0,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-groovy,0.1.2,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-java,0.23.5,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-javascript,0.25.0,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-json,0.24.8,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-julia,0.23.1,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-kotlin,1.1.0,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-lua,0.5.0,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-objc,3.0.2,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-php,0.24.1,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-powershell,0.26.4,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-python,0.25.0,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-ruby,0.23.1,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-rust,0.24.2,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-scala,0.26.13,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-swift,0.7.4,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-typescript,0.23.2,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-verilog,1.0.3,installed supporting dependency,isolated ignored environment metadata
+graph-memory,tree-sitter-zig,1.1.2,installed supporting dependency,isolated ignored environment metadata
+publication-tools,contourpy,1.4.0,installed supporting dependency,isolated ignored environment metadata
+publication-tools,cycler,0.12.1,installed supporting dependency,isolated ignored environment metadata
+publication-tools,fonttools,4.68.0,installed supporting dependency,isolated ignored environment metadata
+publication-tools,kiwisolver,1.5.1,installed supporting dependency,isolated ignored environment metadata
+publication-tools,lxml,6.1.3,installed supporting dependency,isolated ignored environment metadata
+publication-tools,matplotlib,3.10.7,installed supporting dependency,isolated ignored environment metadata
+publication-tools,numpy,2.5.5,installed supporting dependency,isolated ignored environment metadata
+publication-tools,packaging,26.4,installed supporting dependency,isolated ignored environment metadata
+publication-tools,pillow,13.0.0,installed supporting dependency,isolated ignored environment metadata
+publication-tools,PyMuPDF,1.26.6,installed supporting dependency,isolated ignored environment metadata
+publication-tools,pyparsing,3.3.3,installed supporting dependency,isolated ignored environment metadata
+publication-tools,python-dateutil,4.0.0,installed supporting dependency,isolated ignored environment metadata
+publication-tools,python-docx,1.2.0,installed supporting dependency,isolated ignored environment metadata
+publication-tools,python-pptx,1.0.2,installed supporting dependency,isolated ignored environment metadata
+publication-tools,typing_extensions,4.16.0,installed supporting dependency,isolated ignored environment metadata
+publication-tools,tzdata,2026.6,installed supporting dependency,isolated ignored environment metadata
+publication-tools,xlsxwriter,3.3.4,installed supporting dependency,isolated ignored environment metadata
