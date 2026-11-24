@@ -48,25 +48,21 @@ and exact input identities. The script verifies frozen evaluation counts and
 leaves private data/model bytes unchanged. Original email text and per-message
 predictions are not published.
 
-Document tools are isolated from application dependencies:
+The editable DOCX can be updated in Word or LibreOffice Writer and exported to
+PDF. Other Word/font installations may paginate differently; the supplied PDF
+is the checked eight-page submission artifact.
 
-```bash
-uv venv --python 3.12.15 .tools/paper-venv
-uv pip install --python .tools/paper-venv/bin/python -r docs/paper/requirements.txt
-.tools/paper-venv/bin/python docs/paper/build.py
-libreoffice -env:UserInstallation=file:///tmp/mailsense-paper-lo-607 --headless --convert-to pdf --outdir docs/paper docs/paper/MailSense_Research_Paper.docx
-.tools/paper-venv/bin/python docs/paper/verify.py --record
-```
+MSE-610 removed the one-off paper builder, document verifier and isolated
+publication dependency manifest. The statistical analysis commands above remain
+supported. The original document tooling is archived in the
+[pre-cleanup revision](https://github.com/hixam001/mail-sense/tree/941aec0ebe4426264edc21bc09d10dd598285806/docs/paper).
 
-`--record` writes a new document receipt after regenerating; omit it to compare
-the current files with the stored receipt. LibreOffice is a local export tool,
-not an application dependency. Other Word/font installations may paginate
-differently; the supplied PDF is the checked eight-page submission artifact.
-
-[Manuscript source](paper/manuscript.json), [references](paper/references.json),
-[builder](paper/build.py), [verifier](paper/verify.py) and standalone PNG/SVG
-figures under `docs/paper/figures/` accompany the editable files. Plots are
-generated from the actual analysis, not decorative or generative images.
+[Manuscript source](paper/manuscript.json), [references](paper/references.json)
+and standalone PNG/SVG figures under `docs/paper/figures/` accompany the editable
+files. Plots were generated from the actual analysis, not decorative or generative
+images. The [document receipt](../artifacts/reports/paper_document.json) retains
+its original delivery hashes, including the archived tooling; it is historical
+evidence rather than a new check of the cleaned repository.
 
 ## Observed checks
 

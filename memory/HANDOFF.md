@@ -2,8 +2,8 @@
 
 Last updated: 2026-11-24 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
-Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-609 — Complete platform tutorial and project guide**.
+Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files** and **MSE-610 — Remove obsolete publication tooling**.
+Latest implementation: **MSE-610 — Documentation tooling cleanup**.
 Next implementation ticket: **None**.
 
 ## Read this at every task start
@@ -17,10 +17,37 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-All 42 assigned tickets are complete: 39 core application tasks and the paper,
-presentation and full guide. No implementation ticket remains. Preserve the
-frozen v1.0.0 tag. For new user-requested work, assign a new MSE ticket and analyze
-its requirements/dependencies before editing. Do not invent a next feature.
+All 43 assigned tickets are complete: 39 core tasks, the paper/presentation/guide
+and documentation-tooling cleanup. No pending implementation task remains.
+Preserve the frozen v1.0.0 tag. Assign and analyze a new ticket for new user scope.
+
+## Latest maintenance
+
+- **MSE-610:** Removed eight one-off publication scripts: learning builders and
+  verifiers for slides/guide, Python/JavaScript screenshot capture wrappers, and
+  paper builder/verifier. Removed `docs/learning/requirements.txt` and
+  `docs/paper/requirements.txt`, which served only those document environments.
+  Removed the matching ignored verifier bytecode cache.
+- All six finished PDF/DOCX/PPTX exports, notes, figures, structured source/API/
+  dependency snapshots and original receipt files remain byte-identical. The
+  searchable Markdown guide has a cleanup note, archived source links and an
+  updated CLI list; its old receipt fingerprint refers to the original delivery.
+- Current `docs/LEARNING_KIT.md` and `docs/PAPER.md` describe direct editing and
+  link original production tooling at Git revision
+  `941aec0ebe4426264edc21bc09d10dd598285806`. Frozen PDFs/DOCX/JSON and historical
+  receipts can mention removed paths; resolve them against that revision. Do not
+  rewrite old hashes or treat them as a fresh check of the cleaned repository.
+- Gravitas-owned cleanup verification passed: exact eight-script/two-manifest
+  removal, 200 unrelated tracked files unchanged, six preserved exports with
+  valid editable-file ZIPs, three historical receipt input sets reconciled to
+  Git, 301 local Markdown links resolving, archived source targets present in Git,
+  and v1.0.0 unchanged. Application/scientific scripts, tests, dependencies and
+  memory tools are byte-identical; application tests were not applicable.
+- Changed maintained documents: README, implementation plan, publication indexes,
+  searchable guide and this handoff. Rebuild/check all three graph outputs and
+  check staged/unstaged diff hygiene before committing/pushing. Scoped plan,
+  baseline and one-off verifier stay ignored under `.gravitas/sessions/MSE-610/`;
+  no replacement documentation script is added to the repository.
 
 ## Latest academic deliverable
 
@@ -35,16 +62,16 @@ its requirements/dependencies before editing. Do not invent a next feature.
   frontend lock 213, publication environment 17 and graph environment 31. CSV/JSON
   preserve exact versions and source paths; an OpenAPI snapshot preserves response
   schemas. Optional/platform and supporting packages are labeled distinctly.
-- Six current production screenshots use Chromium 158.0.8127.42 at 1366 × 900,
-  actual readiness/results and the authored synthetic example. The tracked capture
-  runner was executed successfully and cleaned its servers. Word cropping retains
+- Six production screenshots at the MSE-609 delivery use Chromium 158.0.8127.42 at 1366 × 900,
+  actual readiness/results and the authored synthetic example. The original capture
+  runner executed successfully and cleaned its servers; MSE-610 later removed it. Word cropping retains
   original PNG bytes. Five author fields/instructor remain blank; no date field.
 - `verify_guide.py` passed all native-text PDF round trips, 55 contents/bookmark
   targets, bounds, references, exact inventories against locks/prepared environments,
   current backend schema, 42 tickets, metrics/descriptives/counts/bootstrap/timings
   against source reports, screenshot bytes and receipt hashes. All 58 final pages
   visually reviewed. Receipt: `artifacts/reports/platform_guide.json`.
-- New publication scripts pass Ruff syntax/import checks. Final owned documentation
+- At delivery, publication scripts passed Ruff syntax/import checks. The final owned documentation
   gate checks both publication receipts, graph freshness/status and staged/unstaged
   diff hygiene. App unit/integration/build/performance reruns are not applicable:
   no runtime/code/lock/model/corpus changes. Recorded Nov 19 release and Nov 22
@@ -78,9 +105,10 @@ its requirements/dependencies before editing. Do not invent a next feature.
 - `backend/scripts/analyze_paper.py` run/verify reproduces the aggregate
   `artifacts/reports/paper_statistics.json`. Five new known-answer tests pass;
   the complete backend/bootstrap/memory suite passes 418 and Ruff passes.
-- Separate ignored `.tools/paper-venv` holds document/plot dependencies from
-  `docs/paper/requirements.txt`; app dependencies and frozen release tag unchanged.
-  Structured manuscript/references and build/verification scripts are committed.
+- MSE-607 used an isolated ignored `.tools/paper-venv` for document/plot dependencies.
+  MSE-610 removed its publication manifest and build/verification scripts; original
+  versions are available at the pre-cleanup Git revision above. Structured
+  manuscript/references remain; app dependencies and frozen release tag are unchanged.
 - Five substantive editing passes completed. All eight final PDF pages inspected;
   title/figure clipping and figure-column bounds corrected. Owned document check
   reconciles metadata, references, two-column body, all tables, paired test and
@@ -335,7 +363,7 @@ Their early scaffold/no-API states are superseded by this completed snapshot.
 
 ## Full implementation inventory
 
-**All 42 assigned tickets are complete (39 core plus MSE-607/608/609).** Preserve the full verified
+**All 43 assigned tickets are complete (39 core, three academic deliverables and MSE-610 cleanup).** Preserve the full verified
 inventory below. New scope needs a newly assigned ticket rather than an invented next task.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -384,8 +412,15 @@ Dependencies and detailed acceptance criteria are in
 | MSE-607 | Conference-style paper with new paired probability/statistics analysis, DOCX and PDF | Complete — analysis and eight-page documents verified |
 | MSE-608 | Project presentation with editable visuals, notes and PDF | Complete — 30 slides and notes verified |
 | MSE-609 | Complete platform tutorial and project reference guide | Complete — 58 pages, full tutorial/reference and inventories verified |
+| MSE-610 | Remove obsolete documentation production scripts and dependencies | Complete — exact removals, preserved outputs and maintained references verified |
 
 ## Verification and delivery evidence
+
+- **MSE-610:** Owned cleanup verifier passed exact deletions, unaffected-file and
+  document hashes, historical receipt/Git reconciliation, all 301 local Markdown
+  links and unchanged release tag. Final graph/status/reference/diff gates apply
+  after handoff edits and before commit/push. App tests were not applicable to
+  this documentation-only cleanup; no runtime or numerical-analysis change.
 
 - **MSE-609:** Owned handbook validation passed 58 pages/55 chapters, complete
   Word/PDF/Markdown text, clickable navigation/bookmarks, six original screenshots,

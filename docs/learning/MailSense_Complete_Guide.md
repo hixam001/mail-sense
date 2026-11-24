@@ -1,5 +1,14 @@
 # MailSense Complete Platform Guide
 
+> Maintenance note (MSE-610): the one-off publication builders, capture wrappers,
+> verifiers and their dependency manifests were removed after this guide was
+> delivered. Application and statistical-analysis commands remain supported.
+> The PDF/DOCX, structured JSON and original receipts are frozen delivery
+> snapshots. Original production tooling is in the
+> [pre-cleanup revision](https://github.com/hixam001/mail-sense/tree/941aec0ebe4426264edc21bc09d10dd598285806/docs).
+> This searchable guide updates the removed-tool references; it is no longer
+> byte-identical to the Markdown fingerprint in the original delivery receipt.
+
 User tutorial, statistical companion and maintainer reference
 
 Five author fields and the instructor field are reserved blank in the DOCX/PDF.
@@ -112,7 +121,7 @@ The appendices list every resolved frontend/backend dependency and all installed
 
 The supplied snapshot has 35 registry entries in the backend lock and 213 frontend packages, plus 17 publication and 31 graph-memory distributions: 296 environment-specific entries. The recorded Linux backend installation had 33 packages; lock entries include platform-specific alternatives.
 
-Sources: [frontend/package.json](../../frontend/package.json), [backend/pyproject.toml](../../backend/pyproject.toml), [memory/requirements.txt](../../memory/requirements.txt), [docs/learning/requirements.txt](requirements.txt)
+Sources: [frontend/package.json](../../frontend/package.json), [backend/pyproject.toml](../../backend/pyproject.toml), [memory/requirements.txt](../../memory/requirements.txt), [Archived publication dependency manifest](https://github.com/hixam001/mail-sense/blob/941aec0ebe4426264edc21bc09d10dd598285806/docs/learning/requirements.txt)
 
 
 <a id="g03"></a>
@@ -896,7 +905,7 @@ The one-time browser install and advisory lookup require network access. An exis
 
 Stop existing app servers before failure/offline runners so the test owns its fixed ports. Each runner cleans up only its own groups. Failure fixtures create a temporary private copy and restore/delete that stage; do not manually remove the working model to imitate them. Detailed test output, screenshots and logs remain ignored under test-results directories.
 
-Use impact-appropriate checks after a change. The publication builders have their own content/layout validators. A documentation edit does not justify claiming a new app suite run unless that command was actually executed.
+Use impact-appropriate checks after a change. The original publication builders had separate content/layout checks; that tooling is now archived under MSE-610. A documentation edit does not justify claiming a new app suite run unless that command was actually executed.
 
 Sources: [README.md](../../README.md), [scripts/browser_check.py](../../scripts/browser_check.py), [scripts/release_check.py](../../scripts/release_check.py)
 
@@ -983,7 +992,7 @@ Sources: [docs/SETUP.md](../SETUP.md), [docs/SRS.md](../SRS.md), [docs/MODEL_CAR
 | Browser executable absent | Install pinned Playwright Chromium or choose a trusted existing --browser path. |
 | OS offline check denied | Namespace support may be unavailable. Record the limitation; do not claim the OS-level check passed. Ordinary local app use is separate. |
 
-Stop after a failed integrity check and diagnose before retrying. Preserve unrelated user changes. For reports and publications, rerun the corresponding verifier after the last content/layout edit. A saved note saying pass is not evidence that a new run succeeded.
+Stop after a failed integrity check and diagnose before retrying. Preserve unrelated user changes. After editing a publication, inspect the new export; restore the archived tooling if you need its original content/layout checks. A saved note saying pass is not evidence that a new run succeeded.
 
 Sources: [docs/SETUP.md](../SETUP.md), [memory/HANDOFF.md](../../memory/HANDOFF.md), [scripts/offline_check.py](../../scripts/offline_check.py)
 
@@ -1132,7 +1141,7 @@ Sources: [docs/paper/manuscript.json](../paper/manuscript.json), [docs/RELEASE.m
 | TEST_PLAN /UI_VERIFICATION /RUNTIME_VERIFICATION | Acceptance, observed UI/runtime checks and their limits. |
 | REPRODUCIBILITY /RELEASE /DEMO | Independent checks, freeze/known limits and classroom sequence. |
 | UNIVERSITY_REPORT /PAPER | Academic explanation and eight-page conference paper. |
-| LEARNING_KIT /docs/learning | Presentation, this guide, structured sources, builders and validators. |
+| LEARNING_KIT /docs/learning | Presentation, this guide, structured sources and archived production history. |
 | memory/ /AGENTS | Working handoff, graph and durable delivery rules. |
 
 The paper’s primary literature includes Sahami et al.(Bayesian email filtering/costs), McCallum/Nigam(event models), Metsis et al.(spam variants/temporal considerations), Dietterich(paired comparisons), Wilson(intervals), Efron(bootstrap), Apache(corpus), scikit-learn(implementation) and NIST(odds-ratio inference). Full citations and clickable primary URLs are supplied with the paper.
@@ -1557,7 +1566,7 @@ This is an environment-specific inventory, not a claim that every package is cal
 | tzdata | 2026.6 | installed supporting dependency |
 | xlsxwriter | 3.3.4 | installed supporting dependency |
 
-Sources: [docs/learning/requirements.txt](requirements.txt), [docs/learning/dependency_inventory.csv](dependency_inventory.csv)
+Sources: [Archived publication dependency manifest](https://github.com/hixam001/mail-sense/blob/941aec0ebe4426264edc21bc09d10dd598285806/docs/learning/requirements.txt), [docs/learning/dependency_inventory.csv](dependency_inventory.csv)
 
 
 <a id="g51"></a>
@@ -1707,11 +1716,7 @@ Sources: [docs/IMPLEMENTATION_PLAN.md](../IMPLEMENTATION_PLAN.md), [memory/HANDO
 | smoke_check.py /offline_check.py | Boundary privacy/performance /isolated Linux network namespace. |
 | dependency_check.py | Network advisory lookup for exact sets; timestamped report. |
 | memory/graph.py | build /check explicit sourced memory graph. |
-| docs/paper/build.py /verify.py | Paper DOCX/figures and PDF/layout receipt. |
-| docs/learning/build_slides.py /verify_slides.py | PowerPoint/notes and PDF/layout/data receipt. |
-| docs/learning/build_guide.py /verify_guide.py | This guide DOCX/Markdown and PDF/inventory/layout receipt. |
-| docs/learning/capture_screens.py | Production tutorial captures; optional --browser; owns and cleans local servers. |
 
-Backend preparation/analysis entry points run as uv run --directory backend --frozen python -m scripts.<name> <action>. Root helpers use python3 scripts/<name>.py. Publication builders use the isolated learning/paper interpreter. Use --record only when intentionally regenerating a publication receipt, then verify the exact new artifact.
+Backend preparation/analysis entry points run as uv run --directory backend --frozen python -m scripts.<name> <action>. Root helpers use python3 scripts/<name>.py. Publication production scripts are archived at the pre-cleanup revision linked above; edit the delivered PPTX/DOCX directly for presentation changes. Historical publication receipts retain their original hashes.
 
 Sources: [backend/scripts/](../../backend/scripts), [scripts/](../../scripts), [docs/learning/](.), [docs/paper/](../paper)

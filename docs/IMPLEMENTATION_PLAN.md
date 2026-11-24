@@ -1,7 +1,7 @@
 # MailSense — Implementation Plan and Jira-Style Backlog
 
 **Version:** 1.0 · **Date:** 2026-11-19  
-**Status:** All 42 assigned tickets are complete: 39 core tasks and MSE-607/608/609 academic deliverables. No pending assigned task; see handoff.
+**Status:** All 43 assigned tickets are complete: 39 core tasks, three academic deliverables and MSE-610 documentation-tooling cleanup. No pending assigned task; see handoff.
 **Scope:** Complete university project, local React + FastAPI, SpamAssassin, Multinomial NB + Bernoulli NB
 
 ## 1. Delivery strategy
@@ -136,13 +136,14 @@ training, model result or later gate is completed by this foundation.
 
 **Gate 6 complete:** Academic report/figures, fresh installation, eight-step demo, final tests, OS-level offline verification and v1.0.0 freeze are complete. See [release checklist](RELEASE.md) and pinned evidence.
 
-## Post-release academic deliverable
+## Post-release documentation and maintenance
 
 | ID | Story / task | Dependencies | Acceptance |
 |---|---|---|---|
 | MSE-607 | Conference-style research paper with paired uncertainty/effect analysis and DOCX/PDF delivery | MSE-606 | 6–8 pages including references; two-column body; title page with five blank authors and instructor, no date field; verified original analysis, sources and scientific figures; five editing passes; rendered artifacts checked |
 | MSE-608 | Project PowerPoint with presenter notes and PDF handout | MSE-607 | Editable widescreen slides cover modules/methods/research/results/limits; readable native visuals and sources; rendered and verified |
 | MSE-609 | Complete platform tutorial and technical project guide, DOCX/PDF | MSE-608 | Setup through every screen and recovery; complete methods/architecture/API/artifact/dependency/test/delivery reference; checked navigation and rendered handbook |
+| MSE-610 | Remove obsolete documentation production scripts and dependencies | MSE-609 | Remove unused document builders/capture/verifiers and their dependency manifests; preserve finished documents and application/science tools; repair maintained references, explain historical snapshots, verify handoff/graph and Git hygiene |
 
 ## 3. Dependency and parallelization overview
 
@@ -209,6 +210,6 @@ Dates are deliberately **not invented**. Convert to calendar milestones after co
 - [x] Deduplicate exact normalized text, exclude conflicting labels and derive retained token/character records with verified counts for MSE-105.
 - [x] Freeze/verify seed-42 stratified membership without modifying retained records for MSE-106; complete Gate 1.
 
-**Next task:** None. All 42 assigned tickets are complete.
+**Next task:** None. All 43 assigned tickets are complete.
 All listed tickets have verified acceptance. Keep `memory/HANDOFF.md` and the
 graph synchronized when new user-requested work is assigned.

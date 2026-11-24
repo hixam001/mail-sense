@@ -20,7 +20,7 @@ layout; they contain only aggregates and the labeled synthetic example.
 All displayed metrics reconcile with the existing evaluation and paper reports.
 The deck cites recorded release/paper evidence; preparing it did not rerun the
 application's tests or produce new performance measurements. All 30 slides were
-rendered and visually reviewed. The verifier checks the PDF text/bounds, notes,
+rendered and visually reviewed. The original publication check covered PDF text/bounds, notes,
 native chart values, references, screenshot bytes and source identities.
 
 ## Complete platform guide
@@ -54,56 +54,31 @@ pages were visually reviewed, with detailed checks of dense tables, commands and
 references. The [guide receipt](../artifacts/reports/platform_guide.json) pins
 checked outputs and their data sources.
 
-## Rebuild the presentation
+## Editing and historical production tools
 
-Use a separate ignored environment, from the repository root:
+Edit the supplied PPTX in PowerPoint or LibreOffice Impress, and the DOCX in
+Word or LibreOffice Writer. Export a new PDF after changing the editable file;
+fonts or layout changes can alter pagination. The supplied PDFs are the checked
+exports from the original deliveries.
 
-```bash
-uv venv --python 3.12.15 .tools/learning-venv
-uv pip install --python .tools/learning-venv/bin/python -r docs/learning/requirements.txt
-.tools/learning-venv/bin/python docs/learning/build_slides.py
-libreoffice -env:UserInstallation=file:///tmp/mailsense-deck-lo-608 --headless --convert-to pdf --outdir docs/learning docs/learning/MailSense_Project_Presentation.pptx
-.tools/learning-venv/bin/python docs/learning/verify_slides.py --record
-```
+MSE-610 removed the one-off document builders, screenshot capture wrappers,
+publication verifiers and their two dependency manifests. They are not needed to
+run MailSense or use these documents. The application preparation, research
+analysis, browser/release checks and Graphify tools remain available through
+[setup](SETUP.md), [paper reproduction](PAPER.md) and the [memory guide](../memory/README.md).
 
-Omit `--record` to compare against the saved
-[verification receipt](../artifacts/reports/presentation.json). The editable
-[slide source](learning/slides.json), [builder](learning/build_slides.py) and
-[verifier](learning/verify_slides.py) are included. LibreOffice is used only for
-local export. App dependencies, models and the frozen v1.0.0 tag are unchanged.
+The original tooling remains available in the
+[pre-cleanup Git revision](https://github.com/hixam001/mail-sense/tree/941aec0ebe4426264edc21bc09d10dd598285806/docs).
+Structured [slides](learning/slides.json), [guide content](learning/guide.json),
+[page map](learning/guide_navigation.json), figures, screenshots and dependency/API
+snapshots are retained as records of how the delivered documents were prepared.
+They describe the original 42-ticket delivery. The searchable Markdown guide has
+an explicit cleanup note; its PDF/DOCX remain the original 58-page export.
 
-## Rebuild the handbook
-
-Use the same isolated publication environment above. The saved screenshots and
-snapshots are inputs; rebuilding documents alone does not start the app.
-
-```bash
-.tools/learning-venv/bin/python docs/learning/build_guide.py
-libreoffice -env:UserInstallation=file:///tmp/mailsense-guide-lo-609 --headless --convert-to pdf --outdir docs/learning docs/learning/MailSense_Complete_Guide.docx
-.tools/learning-venv/bin/python docs/learning/verify_guide.py --record
-.tools/learning-venv/bin/python docs/learning/verify_guide.py
-```
-
-The [structured source](learning/guide.json), [builder](learning/build_guide.py),
-[page map](learning/guide_navigation.json) and [verifier](learning/verify_guide.py)
-are included. The validator independently compares all native text with the PDF,
-contents/bookmark targets and page bounds; reconciles metrics, counts, bootstrap
-intervals and timings; compares inventories with actual locks/environments and the
-schema with the backend; and checks references, screenshot bytes and receipt hashes.
-Prepare the backend and graph environments before running that full reconciliation.
-Omit `--record` to verify an existing receipt. After editing, correct any overflow
-and update the page map to the observed export before recording new evidence.
-Other Word/font installations can repaginate; the supplied PDF is the checked copy.
-
-Optional screenshot refresh, after data/models and the production build are ready:
-
-```bash
-python3 docs/learning/capture_screens.py
-```
-
-Install the pinned Playwright test browser as described in [setup](SETUP.md), or
-pass `--browser /absolute/path/to/trusted-chromium`. The runner owns/cleans only
-servers it starts and refuses a development server when production is expected.
-Rebuild and verify the guide after replacing screenshots. Review changed
-dependency/API snapshots and related handbook text intentionally; do not edit
-receipt hashes to conceal drift.
+The [presentation receipt](../artifacts/reports/presentation.json) and
+[guide receipt](../artifacts/reports/platform_guide.json) record original validation
+at that revision. Their hashes are historical, including inputs removed by
+MSE-610 and the original Markdown guide. They have not been rewritten to imply a
+new document validation. Retrieve the pinned Git revision to inspect those exact
+inputs. Document-production dependency entries are historical supporting tools,
+not prerequisites for the application.
