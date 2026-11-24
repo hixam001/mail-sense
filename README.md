@@ -141,6 +141,7 @@ screenshots, runtime measurements, an authored failure example and limitations.
 | [Release and known limits](docs/RELEASE.md) | v1.0.0 checklist, evidence and supported scope |
 | [Setup](docs/SETUP.md) | Full preparation, locks, verification and recovery |
 | [Demo](docs/DEMO.md) | Eight-step classroom walkthrough and evidence mapping |
+| [Presentation and handbook](docs/LEARNING_KIT.md) | Project PowerPoint, presenter notes and full platform guide |
 | [Conference paper: PDF and DOCX](docs/PAPER.md) | Eight-page paper with new paired analysis and editable author fields |
 | [University report](docs/UNIVERSITY_REPORT.md) | Academic methods, figures, results and limitations |
 | [Reproducibility](docs/REPRODUCIBILITY.md) | Independent arithmetic, hashes, split and reference refits |

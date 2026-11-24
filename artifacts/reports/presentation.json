@@ -1,0 +1,180 @@
+{
+  "application_changes": false,
+  "application_evidence": "Recorded release/paper checks reused; app tests not rerun for this publication task.",
+  "blank_authors": 5,
+  "editable_native_chart": 1,
+  "files": {
+    "docs/learning/MailSense_Project_Presentation.pdf": "8be5b0b2a6220131b5135c3de39ba09e30b20f4cc96665c09ba0e08ef4fdf41a",
+    "docs/learning/MailSense_Project_Presentation.pptx": "ea7c6a2a2bb271ae5877738e04607ec1173755a0ff5b77e829ea37d1b871b4ff",
+    "docs/learning/build_slides.py": "7cd049fafd320c468345fb195d02e751e83c58ef0a318cda707afe12eebf7d55",
+    "docs/learning/presenter_notes.md": "e3c04e2b8ba8b9282ed8ca41563b9c869b9a302121a72b3025466ab96280693b",
+    "docs/learning/requirements.txt": "1ef433b1934e61f1be63270a61cde47d32a0c890a8638754fd028b9e4398f287",
+    "docs/learning/slides.json": "9a5bcdb4bd8f95c45e2601c8218bcea06ee9eaca68ef65b60492bbe9e113b05e",
+    "docs/learning/verify_slides.py": "4964193c83b4e61a81f003234a6ad3039091e2eaaf3b840a32dfe052d203b83a"
+  },
+  "instructor_blank": true,
+  "observations": [
+    {
+      "slide": 1,
+      "speaker_note_words": 74,
+      "visible_words": 46
+    },
+    {
+      "slide": 2,
+      "speaker_note_words": 64,
+      "visible_words": 39
+    },
+    {
+      "slide": 3,
+      "speaker_note_words": 65,
+      "visible_words": 41
+    },
+    {
+      "slide": 4,
+      "speaker_note_words": 69,
+      "visible_words": 53
+    },
+    {
+      "slide": 5,
+      "speaker_note_words": 65,
+      "visible_words": 31
+    },
+    {
+      "slide": 6,
+      "speaker_note_words": 67,
+      "visible_words": 62
+    },
+    {
+      "slide": 7,
+      "speaker_note_words": 72,
+      "visible_words": 39
+    },
+    {
+      "slide": 8,
+      "speaker_note_words": 67,
+      "visible_words": 43
+    },
+    {
+      "slide": 9,
+      "speaker_note_words": 63,
+      "visible_words": 43
+    },
+    {
+      "slide": 10,
+      "speaker_note_words": 63,
+      "visible_words": 39
+    },
+    {
+      "slide": 11,
+      "speaker_note_words": 68,
+      "visible_words": 33
+    },
+    {
+      "slide": 12,
+      "speaker_note_words": 74,
+      "visible_words": 46
+    },
+    {
+      "slide": 13,
+      "speaker_note_words": 65,
+      "visible_words": 39
+    },
+    {
+      "slide": 14,
+      "speaker_note_words": 74,
+      "visible_words": 37
+    },
+    {
+      "slide": 15,
+      "speaker_note_words": 74,
+      "visible_words": 45
+    },
+    {
+      "slide": 16,
+      "speaker_note_words": 57,
+      "visible_words": 42
+    },
+    {
+      "slide": 17,
+      "speaker_note_words": 55,
+      "visible_words": 60
+    },
+    {
+      "slide": 18,
+      "speaker_note_words": 77,
+      "visible_words": 46
+    },
+    {
+      "slide": 19,
+      "speaker_note_words": 64,
+      "visible_words": 67
+    },
+    {
+      "slide": 20,
+      "speaker_note_words": 64,
+      "visible_words": 45
+    },
+    {
+      "slide": 21,
+      "speaker_note_words": 78,
+      "visible_words": 56
+    },
+    {
+      "slide": 22,
+      "speaker_note_words": 80,
+      "visible_words": 41
+    },
+    {
+      "slide": 23,
+      "speaker_note_words": 90,
+      "visible_words": 54
+    },
+    {
+      "slide": 24,
+      "speaker_note_words": 81,
+      "visible_words": 45
+    },
+    {
+      "slide": 25,
+      "speaker_note_words": 67,
+      "visible_words": 51
+    },
+    {
+      "slide": 26,
+      "speaker_note_words": 77,
+      "visible_words": 47
+    },
+    {
+      "slide": 27,
+      "speaker_note_words": 65,
+      "visible_words": 40
+    },
+    {
+      "slide": 28,
+      "speaker_note_words": 312,
+      "visible_words": 87
+    },
+    {
+      "slide": 29,
+      "speaker_note_words": 65,
+      "visible_words": 43
+    },
+    {
+      "slide": 30,
+      "speaker_note_words": 80,
+      "visible_words": 66
+    }
+  ],
+  "primary_references": 10,
+  "result": "pass",
+  "safe_source_screenshots": 3,
+  "slides": 30,
+  "source_reports": {
+    "artifacts/reports/evaluation.json": "8faefc79665fb15c5a0a3ad5cab37cbf2d1fb92bd4bf3ac2b3628f8dd533422c",
+    "artifacts/reports/paper_statistics.json": "95d2121efb3cb07f7e86327142d6ff4cf018e60921479b8551702991a0f92158",
+    "artifacts/reports/runtime_smoke.json": "d7a3c12e67ba2e03e4dc16364fba028caa51c163881a708d11caaaec343bfa3c"
+  },
+  "speaker_notes": 30,
+  "task": "MSE-608",
+  "widescreen": "16:9"
+}

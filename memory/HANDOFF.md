@@ -1,10 +1,10 @@
 # MailSense project handoff
 
-Last updated: 2026-11-22 (Asia/Karachi).
+Last updated: 2026-11-24 (Asia/Karachi).
 Completed preparation: **MSE-100 — Delivery workflow** and **MSE-107 — Graphify memory consolidation**.
 Completed maintenance: **MSE-108 — Ignore local agent tooling and generated/private files**.
-Latest implementation: **MSE-607 — Conference-style research paper, DOCX and PDF**.
-Next implementation ticket: **None** — all assigned work complete.
+Latest implementation: **MSE-608 — Project presentation with notes and PDF**.
+Next implementation ticket: **MSE-609**.
 
 ## Read this at every task start
 
@@ -17,11 +17,26 @@ acceptance criteria; this handoff owns the live status of every ticket.
 
 ## Next task
 
-**None.** The original 39-ticket application backlog and post-release MSE-607
-paper are complete. Analyze and assign any new user-requested work with Gravitas
-before implementing; maintain the standing test/handoff/commit/push workflow.
+**MSE-609** — Continue directly to the full platform tutorial/project guide in
+DOCX/PDF/searchable source. Cover setup/preparation, all six routes with exact
+controls and expected results, equations and examples, architecture/source maps,
+APIs/artifacts, every library/tool/dependency, testing/privacy/performance,
+research extension, troubleshooting, demo/viva and delivery history. Render and
+verify all pages/navigation/data/inventories; update handoff/graph, commit/push.
 
 ## Latest academic deliverable
+
+- **MSE-608:** [Project presentation](../docs/LEARNING_KIT.md) provides editable
+  PowerPoint, PDF handout and presenter notes. Thirty 16:9 slides cover all
+  modules, architecture, equations, measured data/results, paired paper analysis,
+  error costs, demo, tests/privacy/offline, timings, limitations and ten primary
+  references. Native tables/diagrams/cost chart stay editable; three original UI
+  captures are byte-verified. Five author fields/instructor blank, no date field.
+- Owned deck validator passed every native text round trip to the rendered PDF,
+  all 30 note sets, slide bounds, source metrics/bootstrap values, XY chart values,
+  source references and screenshot hashes. All 30 slides visually reviewed.
+  Receipt: `artifacts/reports/presentation.json`. No app changes, retraining,
+  app test reruns or new benchmark claims; prior evidence is dated explicitly.
 
 - [Conference paper guide](../docs/PAPER.md) links the eight-page PDF and editable
   DOCX under `docs/paper/`. One cover plus seven two-column pages include abstract,
@@ -296,7 +311,7 @@ Their early scaffold/no-API states are superseded by this completed snapshot.
 
 ## Full implementation inventory
 
-**39 core implementation tickets plus MSE-607 are complete (40 tracked); 0 remain.** Preserve the full verified
+**41 of 42 assigned tickets are complete (39 core plus MSE-607/608); MSE-609 remains.** Preserve the full verified
 inventory below. New scope needs a newly assigned ticket rather than an invented next task.
 Dependencies and detailed acceptance criteria are in
 [IMPLEMENTATION_PLAN.md](../docs/IMPLEMENTATION_PLAN.md).
@@ -343,8 +358,18 @@ Dependencies and detailed acceptance criteria are in
 | MSE-605 | Finalize installation README and classroom demo script | Complete — acceptance verified |
 | MSE-606 | Freeze v1.0 and record known limitations after release gates pass | Complete — v1.0.0 release verified |
 | MSE-607 | Conference-style paper with new paired probability/statistics analysis, DOCX and PDF | Complete — analysis and eight-page documents verified |
+| MSE-608 | Project presentation with editable visuals, notes and PDF | Complete — 30 slides and notes verified |
+| MSE-609 | Complete platform tutorial and project reference guide | Not started — next |
 
 ## Verification and delivery evidence
+
+- **MSE-608:** Thirty editable widescreen slides and PDF pages, all with speaker
+  notes/source locations. Owned `verify_slides.py` passed data/chart/reference/
+  screenshot/notes/PDF text/bounds checks after final render. All slides visually
+  reviewed, especially formulas, confidence intervals, results, references and
+  code appendix. Ruff syntax/import checks for publication scripts passed.
+  Handoff/graph and staged/unstaged diff gates apply before commit/push; no
+  application tests were applicable to this documentation-only task.
 
 - **MSE-607:** Owned full verification passed 418 Python tests, Ruff, actual secondary-analysis run/verify and private-artifact preservation. Independent document validator passed 8 pages (1 cover+7 two-column), 5 blank author spaces/instructor, 10 cited sources, 5 reconciled tables and 2 data-derived scientific figures. Exact paired p independently checked by a direct binomial sum; class cells reconcile with frozen confusion matrices and cost sensitivity. Five editing passes and all 8 final pages visually reviewed. Final graph/reference/diff gates run before Jira commit/push; verify actual Git delivery after it. No frontend/runtime changes.
 
